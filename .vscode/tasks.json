@@ -2,12 +2,34 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "start",
-			"path": "server",
-			"problemMatcher": [],
-			"label": "yarn: start - server",
-			"detail": "yarn start"
+			"label": "start-frontend",
+			"type": "shell",
+			"command": "${workspaceFolder}/node_modules/.bin/nx",
+			"args": ["serve", "twenty-front"],
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "typescript",
+				"pattern": "$tsc",
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "nx run",
+					"endsPattern": "webpack compiled successfully"
+				}
+			}
+		},
+		{
+			"label": "stop-frontend",
+			"type": "shell",
+			"command": "echo ${input:terminate}",
+			"problemMatcher": []
+		}
+	],
+	"inputs": [
+		{
+			"id": "terminate",
+			"type": "command",
+			"command": "workbench.action.tasks.terminate",
+			"args": "start-frontend"
 		}
 	]
 }

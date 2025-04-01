@@ -3,84 +3,66 @@
   "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
   "configurations": [
     {
-      "name": "twenty-server - start debug",
-      "type": "node",
+      "name": "Frontend: Debug",
+      "type": "msedge",
       "request": "launch",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "nx",
-        "run",
-        "twenty-server:start"
-      ],
-      "outputCapture": "std",
-      "internalConsoleOptions": "openOnSessionStart",
-      "console": "internalConsole",
-      "cwd": "${workspaceFolder}/packages/twenty-server/"
-    },
-    {
-      "name": "twenty-server - worker debug",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "nx",
-        "run",
-        "twenty-server:worker"
-      ],
-      "outputCapture": "std",
-      "internalConsoleOptions": "openOnSessionStart",
-      "console": "internalConsole",
-      "cwd": "${workspaceFolder}/packages/twenty-server/"
-    },
-    {
-      "name": "twenty-server - command debug example",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "npx",
-      "runtimeVersion": "18",
-      "runtimeArgs": [
-        "nx",
-        "run",
-        "twenty-server:command",
-        "my-command",
-        "--my-parameter value"
-      ],
-      "outputCapture": "std",
-      "internalConsoleOptions": "openOnSessionStart",
-      "console": "internalConsole",
-      "cwd": "${workspaceFolder}/packages/twenty-server/"
-    },
-    {
-      "name": "Playwright Test current file",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["nx", "test", "twenty-e2e-testing", "${file}"],
-      "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}",
-      "internalConsoleOptions": "neverOpen",
-      "envFile": "${workspaceFolder}/packages/twenty-e2e-testing/.env"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "twenty-server - debug integration test file (to launch with test file open)",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "nx",
-        "run",
-        "twenty-server:jest",
-        "--",
-        "--config",
-        "./jest-integration.config.ts",
-        "${relativeFile}"
-      ],
-      "cwd": "${workspaceFolder}/packages/twenty-server",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}/packages/twenty-front",
+      "userDataDir": false,
       "env": {
-        "NODE_ENV": "test"
+        "REACT_APP_SERVER_BASE_URL": "http://localhost:3000",
+        "FRONTEND_URL": "http://localhost:3001"
       },
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**",
+        "**/webpack/**",
+        "**/runtime~main.js",
+        "**/vendor~main.js"
+      ],
+      "timeout": 30000,
+      "smartStep": true,
+      "sourceMaps": true,
+      "trace": false,
+      "preLaunchTask": "start-frontend",
+      "postDebugTask": "stop-frontend"
+    },
+    {
+      "name": "Backend: Debug",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nx",
+      "args": ["serve", "twenty-server"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js",
+        "${workspaceFolder}/packages/twenty-server/**/*.js"
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["Backend: Debug", "Frontend: Debug"],
+      "stopAll": true,
+      "presentation": {
+        "hidden": false,
+        "group": "fullstack",
+        "order": 1
+      }
     }
   ]
 }
