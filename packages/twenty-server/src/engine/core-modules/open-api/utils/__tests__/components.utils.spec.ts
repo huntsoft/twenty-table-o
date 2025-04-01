@@ -69,6 +69,12 @@ describe('computeSchemaComponents', () => {
             },
             type: 'array',
           },
+          fieldOpinions: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
           fieldBoolean: {
             type: 'boolean',
           },
@@ -258,6 +264,12 @@ describe('computeSchemaComponents', () => {
             },
             type: 'array',
           },
+          fieldOpinions: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
           fieldBoolean: {
             type: 'boolean',
           },
@@ -441,6 +453,12 @@ describe('computeSchemaComponents', () => {
             format: 'date',
           },
           fieldArray: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
+          fieldOpinions: {
             items: {
               type: 'string',
             },

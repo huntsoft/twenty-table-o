@@ -14,6 +14,7 @@ import { isFieldPhones } from '@/object-record/record-field/types/guards/isField
 import { isFieldRelationFromManyObjects } from '@/object-record/record-field/types/guards/isFieldRelationFromManyObjects';
 
 import { ArrayFieldInput } from '@/object-record/record-field/meta-types/input/components/ArrayFieldInput';
+import { OpinionsFieldInput } from '@/object-record/record-field/meta-types/input/components/OpinionsFieldInput';
 import { isFieldAddress } from '@/object-record/record-field/types/guards/isFieldAddress';
 import { isFieldArray } from '@/object-record/record-field/types/guards/isFieldArray';
 import { isFieldBoolean } from '@/object-record/record-field/types/guards/isFieldBoolean';
@@ -25,6 +26,7 @@ import { isFieldFullName } from '@/object-record/record-field/types/guards/isFie
 import { isFieldLinks } from '@/object-record/record-field/types/guards/isFieldLinks';
 import { isFieldMultiSelect } from '@/object-record/record-field/types/guards/isFieldMultiSelect';
 import { isFieldNumber } from '@/object-record/record-field/types/guards/isFieldNumber';
+import { isFieldOpinions } from '@/object-record/record-field/types/guards/isFieldOpinions';
 import { isFieldRating } from '@/object-record/record-field/types/guards/isFieldRating';
 import { isFieldRawJson } from '@/object-record/record-field/types/guards/isFieldRawJson';
 import { isFieldRelationToOneObject } from '@/object-record/record-field/types/guards/isFieldRelationToOneObject';
@@ -39,6 +41,7 @@ import { RelationToOneFieldInput } from '../meta-types/input/components/Relation
 import { TextFieldInput } from '../meta-types/input/components/TextFieldInput';
 import { FieldInputEvent } from '../types/FieldInputEvent';
 import { isFieldText } from '../types/guards/isFieldText';
+
 
 type FieldInputProps = {
   onSubmit?: FieldInputEvent;
@@ -161,6 +164,11 @@ export const FieldInput = ({
         />
       ) : isFieldArray(fieldDefinition) ? (
         <ArrayFieldInput
+          onCancel={onCancel}
+          onClickOutside={(event) => onClickOutside?.(() => {}, event)}
+        />
+      ) : isFieldOpinions(fieldDefinition) ? (
+        <OpinionsFieldInput
           onCancel={onCancel}
           onClickOutside={(event) => onClickOutside?.(() => {}, event)}
         />

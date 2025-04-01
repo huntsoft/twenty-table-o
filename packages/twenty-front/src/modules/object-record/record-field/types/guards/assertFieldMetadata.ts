@@ -17,6 +17,7 @@ import {
   FieldMetadata,
   FieldMultiSelectMetadata,
   FieldNumberMetadata,
+  FieldOpinionsMetadata,
   FieldPhoneMetadata,
   FieldPhonesMetadata,
   FieldRatingMetadata,
@@ -79,7 +80,9 @@ type AssertFieldMetadataFunction = <
                                                 ? FieldArrayMetadata
                                                 : E extends 'PHONES'
                                                   ? FieldPhonesMetadata
-                                                  : never,
+                                                  : E extends 'OPINIONS'
+                                                    ? FieldOpinionsMetadata
+                                                    : never,
 >(
   fieldType: E,
   fieldTypeGuard: (

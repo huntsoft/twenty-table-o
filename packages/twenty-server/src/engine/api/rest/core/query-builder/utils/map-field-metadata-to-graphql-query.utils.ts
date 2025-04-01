@@ -34,6 +34,7 @@ export const mapFieldMetadataToGraphqlQuery = (
     FieldMetadataType.RAW_JSON,
     FieldMetadataType.RICH_TEXT,
     FieldMetadataType.ARRAY,
+    FieldMetadataType.OPINIONS,
     FieldMetadataType.TS_VECTOR,
   ].includes(fieldType);
 

@@ -22,6 +22,8 @@ import { isFieldLinksValue } from '@/object-record/record-field/types/guards/isF
 import { isFieldMultiSelect } from '@/object-record/record-field/types/guards/isFieldMultiSelect';
 import { isFieldMultiSelectValue } from '@/object-record/record-field/types/guards/isFieldMultiSelectValue';
 import { isFieldNumber } from '@/object-record/record-field/types/guards/isFieldNumber';
+import { isFieldOpinions } from '@/object-record/record-field/types/guards/isFieldOpinions';
+import { isFieldOpinionsValue } from '@/object-record/record-field/types/guards/isFieldOpinionsValue';
 import { isFieldPhones } from '@/object-record/record-field/types/guards/isFieldPhones';
 import { isFieldPhonesValue } from '@/object-record/record-field/types/guards/isFieldPhonesValue';
 import { isFieldPosition } from '@/object-record/record-field/types/guards/isFieldPosition';
@@ -130,6 +132,15 @@ export const isFieldValueEmpty = ({
   if (isFieldEmails(fieldDefinition)) {
     return (
       !isFieldEmailsValue(fieldValue) || isValueEmpty(fieldValue.primaryEmail)
+    );
+  }
+
+  if (isFieldMultiSelect(fieldDefinition) || isFieldOpinions(fieldDefinition)) {
+    return (
+      !isFieldOpinionsValue(fieldValue) ||
+      !isFieldMultiSelectValue(fieldValue, selectOptionValues) ||
+      !isDefined(fieldValue) ||
+      !isNonEmptyArray(fieldValue)
     );
   }
 

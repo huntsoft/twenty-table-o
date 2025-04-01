@@ -3,10 +3,10 @@ import { ThemeColor } from 'twenty-ui';
 import { RATING_VALUES } from '@/object-record/record-field/meta-types/constants/RatingValues';
 import { ZodHelperLiteral } from '@/object-record/record-field/types/ZodHelperLiteral';
 import { ObjectRecord } from '@/object-record/types/ObjectRecord';
+import { ConnectedAccountProvider } from 'twenty-shared/types';
 import * as z from 'zod';
 import { RelationDefinitionType } from '~/generated-metadata/graphql';
 import { CurrencyCode } from './CurrencyCode';
-import { ConnectedAccountProvider } from 'twenty-shared/types';
 
 export type FieldUuidMetadata = {
   objectMetadataNameSingular?: string;
@@ -198,6 +198,13 @@ export type FieldTsVectorMetadata = {
   settings?: null;
 };
 
+export type FieldOpinionsMetadata = {
+  objectMetadataNameSingular?: string;
+  fieldName: string;
+  values: { label: string; value: string }[];
+  settings?: null;
+};
+
 export type FieldMetadata =
   | FieldBooleanMetadata
   | FieldCurrencyMetadata
@@ -220,7 +227,8 @@ export type FieldMetadata =
   | FieldArrayMetadata
   | FieldTsVectorMetadata
   | FieldRichTextV2Metadata
-  | FieldRichTextMetadata;
+  | FieldRichTextMetadata
+  | FieldOpinionsMetadata;
 
 export type FieldTextValue = string;
 export type FieldUUidValue = string; // TODO: can we replace with a template literal type, or maybe overkill ?
@@ -321,3 +329,5 @@ export type FieldPhonesValue = {
   primaryPhoneCallingCode?: string;
   additionalPhones?: PhoneRecord[] | null;
 };
+
+export type FieldOpinionsValue = string[];

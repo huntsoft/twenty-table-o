@@ -651,7 +651,8 @@ export enum FieldMetadataType {
   SELECT = 'SELECT',
   TEXT = 'TEXT',
   TS_VECTOR = 'TS_VECTOR',
-  UUID = 'UUID'
+  UUID = 'UUID',
+  OPINIONS = 'OPINIONS'
 }
 
 export enum FileFolder {

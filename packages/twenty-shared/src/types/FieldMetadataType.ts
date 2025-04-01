@@ -23,4 +23,5 @@ export enum FieldMetadataType {
   ACTOR = 'ACTOR',
   ARRAY = 'ARRAY',
   TS_VECTOR = 'TS_VECTOR',
+  OPINIONS = 'OPINIONS',
 }

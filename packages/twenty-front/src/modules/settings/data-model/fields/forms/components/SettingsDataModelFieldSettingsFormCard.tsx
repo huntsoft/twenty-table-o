@@ -138,6 +138,7 @@ const previewableTypes = [
   FieldMetadataType.LINKS,
   FieldMetadataType.MULTI_SELECT,
   FieldMetadataType.NUMBER,
+  FieldMetadataType.OPINIONS,
   FieldMetadataType.PHONES,
   FieldMetadataType.RATING,
   FieldMetadataType.RAW_JSON,

@@ -1,6 +1,6 @@
 import { OpenAPIV3_1 } from 'openapi-types';
-import { capitalize } from 'twenty-shared/utils';
 import { FieldMetadataType } from 'twenty-shared/types';
+import { capitalize } from 'twenty-shared/utils';
 
 import {
   computeDepthParameters,
@@ -99,6 +99,14 @@ const getSchemaComponentsProperties = ({
         };
         break;
       case FieldMetadataType.ARRAY:
+        itemProperty = {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        };
+        break;
+      case FieldMetadataType.OPINIONS:
         itemProperty = {
           type: 'array',
           items: {

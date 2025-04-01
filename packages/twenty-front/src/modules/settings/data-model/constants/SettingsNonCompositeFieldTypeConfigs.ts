@@ -22,6 +22,7 @@ import {
   FieldJsonValue,
   FieldMultiSelectValue,
   FieldNumberValue,
+  FieldOpinionsValue,
   FieldRatingValue,
   FieldRelationValue,
   FieldSelectValue,
@@ -126,4 +127,10 @@ export const SETTINGS_NON_COMPOSITE_FIELD_TYPE_CONFIGS: SettingsNonCompositeFiel
       category: 'Advanced',
       exampleValue: ['value1', 'value2'],
     } as const satisfies SettingsFieldTypeConfig<FieldArrayValue>,
+    [FieldMetadataType.OPINIONS]: {
+      label: 'Opinions',
+      Icon: IllustrationIconArray,
+      category: 'Advanced',
+      exampleValue: ['value1', 'value2'],
+    } as const satisfies SettingsFieldTypeConfig<FieldOpinionsValue>,
   };
