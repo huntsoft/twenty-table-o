@@ -39,6 +39,6 @@ export const OpinionsFieldInput = ({
           onDelete={handleDelete}
         />
       )}
-    ></MultiItemFieldInput>
+    />
   );
 };
