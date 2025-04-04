@@ -1,0 +1,189 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport3__sniptt_guards from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@sniptt_guards.js?v=226f7286"; const isNonEmptyString = __vite__cjsImport3__sniptt_guards["isNonEmptyString"];
+import { JsonArrow } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/internal/JsonArrow.tsx";
+import { JsonList } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/internal/JsonList.tsx";
+import { JsonNodeLabel } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/internal/JsonNodeLabel.tsx";
+import { JsonNode } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNode.tsx";
+import { useJsonTreeContextOrThrow } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/hooks/useJsonTreeContextOrThrow.tsx";
+import { ANIMATION } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/theme/index.ts";
+import { AnimatePresence, motion } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/framer-motion.js?v=226f7286";
+import __vite__cjsImport11_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useState = __vite__cjsImport11_react["useState"];
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledContainer = styled.li`
+  display: grid;
+  list-style-type: none;
+`;
+_c = StyledContainer;
+const StyledLabelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledLabelContainer;
+const StyledElementsCount = styled.span`
+  color: ${({ theme })=>theme.font.color.tertiary};
+`;
+_c2 = StyledElementsCount;
+const StyledEmptyState = styled.div`
+  color: ${({ theme })=>theme.font.color.tertiary};
+`;
+_c3 = StyledEmptyState;
+const StyledJsonList = styled(JsonList)``.withComponent(motion.ul);
+_c4 = StyledJsonList;
+export const JsonNestedNode = ({ label, Icon, elements, renderElementsCount, emptyElementsText, depth, keyPath })=>{
+    _s();
+    const { shouldExpandNodeInitially } = useJsonTreeContextOrThrow();
+    const hideRoot = !isDefined(label);
+    const [isOpen, setIsOpen] = useState(shouldExpandNodeInitially({
+        keyPath,
+        depth
+    }));
+    const renderedChildren = /*#__PURE__*/ _jsxDEV(StyledJsonList, {
+        initial: {
+            height: 0,
+            opacity: 0,
+            overflowY: 'clip'
+        },
+        animate: {
+            height: 'auto',
+            opacity: 1,
+            overflowY: 'clip'
+        },
+        exit: {
+            height: 0,
+            opacity: 0,
+            overflowY: 'clip'
+        },
+        transition: {
+            duration: ANIMATION.duration.normal
+        },
+        depth: depth,
+        children: elements.length === 0 ? /*#__PURE__*/ _jsxDEV(StyledEmptyState, {
+            children: emptyElementsText
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+            lineNumber: 82,
+            columnNumber: 9
+        }, this) : elements.map(({ id, label, value })=>{
+            const nextKeyPath = isNonEmptyString(keyPath) ? `${keyPath}.${id}` : String(id);
+            return /*#__PURE__*/ _jsxDEV(JsonNode, {
+                label: label,
+                value: value,
+                depth: depth + 1,
+                keyPath: nextKeyPath
+            }, id, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                lineNumber: 90,
+                columnNumber: 13
+            }, this);
+        })
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+        lineNumber: 62,
+        columnNumber: 5
+    }, this);
+    const handleArrowClick = ()=>{
+        setIsOpen(!isOpen);
+    };
+    if (hideRoot) {
+        return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+            children: /*#__PURE__*/ _jsxDEV(AnimatePresence, {
+                initial: false,
+                children: renderedChildren
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                lineNumber: 110,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+            lineNumber: 109,
+            columnNumber: 7
+        }, this);
+    }
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(StyledLabelContainer, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(JsonArrow, {
+                        isOpen: isOpen,
+                        onClick: handleArrowClick
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                        lineNumber: 118,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(JsonNodeLabel, {
+                        label: label,
+                        Icon: Icon
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                        lineNumber: 120,
+                        columnNumber: 9
+                    }, this),
+                    renderElementsCount && /*#__PURE__*/ _jsxDEV(StyledElementsCount, {
+                        children: renderElementsCount(elements.length)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                        lineNumber: 123,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                lineNumber: 117,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(AnimatePresence, {
+                initial: false,
+                children: isOpen && renderedChildren
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+                lineNumber: 129,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx",
+        lineNumber: 116,
+        columnNumber: 5
+    }, this);
+};
+_s(JsonNestedNode, "kcRr9jYEUh0miiTw3k4KX+GLmVk=", false, function() {
+    return [
+        useJsonTreeContextOrThrow
+    ];
+});
+_c5 = JsonNestedNode;
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledLabelContainer");
+$RefreshReg$(_c2, "StyledElementsCount");
+$RefreshReg$(_c3, "StyledEmptyState");
+$RefreshReg$(_c4, "StyledJsonList");
+$RefreshReg$(_c5, "JsonNestedNode");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-ui/src/json-visualizer/components/JsonNestedNode.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkpzb25OZXN0ZWROb2RlLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBpc05vbkVtcHR5U3RyaW5nIH0gZnJvbSAnQHNuaXB0dC9ndWFyZHMnO1xuaW1wb3J0IHsgSWNvbkNvbXBvbmVudCB9IGZyb20gJ0B1aS9kaXNwbGF5JztcbmltcG9ydCB7IEpzb25BcnJvdyB9IGZyb20gJ0B1aS9qc29uLXZpc3VhbGl6ZXIvY29tcG9uZW50cy9pbnRlcm5hbC9Kc29uQXJyb3cnO1xuaW1wb3J0IHsgSnNvbkxpc3QgfSBmcm9tICdAdWkvanNvbi12aXN1YWxpemVyL2NvbXBvbmVudHMvaW50ZXJuYWwvSnNvbkxpc3QnO1xuaW1wb3J0IHsgSnNvbk5vZGVMYWJlbCB9IGZyb20gJ0B1aS9qc29uLXZpc3VhbGl6ZXIvY29tcG9uZW50cy9pbnRlcm5hbC9Kc29uTm9kZUxhYmVsJztcbmltcG9ydCB7IEpzb25Ob2RlIH0gZnJvbSAnQHVpL2pzb24tdmlzdWFsaXplci9jb21wb25lbnRzL0pzb25Ob2RlJztcbmltcG9ydCB7IHVzZUpzb25UcmVlQ29udGV4dE9yVGhyb3cgfSBmcm9tICdAdWkvanNvbi12aXN1YWxpemVyL2hvb2tzL3VzZUpzb25UcmVlQ29udGV4dE9yVGhyb3cnO1xuaW1wb3J0IHsgQU5JTUFUSU9OIH0gZnJvbSAnQHVpL3RoZW1lJztcbmltcG9ydCB7IEFuaW1hdGVQcmVzZW5jZSwgbW90aW9uIH0gZnJvbSAnZnJhbWVyLW1vdGlvbic7XG5pbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IEpzb25WYWx1ZSB9IGZyb20gJ3R5cGUtZmVzdCc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxuY29uc3QgU3R5bGVkQ29udGFpbmVyID0gc3R5bGVkLmxpYFxuICBkaXNwbGF5OiBncmlkO1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG5gO1xuXG5jb25zdCBTdHlsZWRMYWJlbENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEVsZW1lbnRzQ291bnQgPSBzdHlsZWQuc3BhbmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci50ZXJ0aWFyeX07XG5gO1xuXG5jb25zdCBTdHlsZWRFbXB0eVN0YXRlID0gc3R5bGVkLmRpdmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci50ZXJ0aWFyeX07XG5gO1xuXG5jb25zdCBTdHlsZWRKc29uTGlzdCA9IHN0eWxlZChKc29uTGlzdClgYC53aXRoQ29tcG9uZW50KG1vdGlvbi51bCk7XG5cbmV4cG9ydCBjb25zdCBKc29uTmVzdGVkTm9kZSA9ICh7XG4gIGxhYmVsLFxuICBJY29uLFxuICBlbGVtZW50cyxcbiAgcmVuZGVyRWxlbWVudHNDb3VudCxcbiAgZW1wdHlFbGVtZW50c1RleHQsXG4gIGRlcHRoLFxuICBrZXlQYXRoLFxufToge1xuICBsYWJlbD86IHN0cmluZztcbiAgSWNvbjogSWNvbkNvbXBvbmVudDtcbiAgZWxlbWVudHM6IEFycmF5PHsgaWQ6IHN0cmluZyB8IG51bWJlcjsgbGFiZWw6IHN0cmluZzsgdmFsdWU6IEpzb25WYWx1ZSB9PjtcbiAgcmVuZGVyRWxlbWVudHNDb3VudD86IChjb3VudDogbnVtYmVyKSA9PiBzdHJpbmc7XG4gIGVtcHR5RWxlbWVudHNUZXh0OiBzdHJpbmc7XG4gIGRlcHRoOiBudW1iZXI7XG4gIGtleVBhdGg6IHN0cmluZztcbn0pID0+IHtcbiAgY29uc3QgeyBzaG91bGRFeHBhbmROb2RlSW5pdGlhbGx5IH0gPSB1c2VKc29uVHJlZUNvbnRleHRPclRocm93KCk7XG5cbiAgY29uc3QgaGlkZVJvb3QgPSAhaXNEZWZpbmVkKGxhYmVsKTtcblxuICBjb25zdCBbaXNPcGVuLCBzZXRJc09wZW5dID0gdXNlU3RhdGUoXG4gICAgc2hvdWxkRXhwYW5kTm9kZUluaXRpYWxseSh7IGtleVBhdGgsIGRlcHRoIH0pLFxuICApO1xuXG4gIGNvbnN0IHJlbmRlcmVkQ2hpbGRyZW4gPSAoXG4gICAgPFN0eWxlZEpzb25MaXN0XG4gICAgICBpbml0aWFsPXt7XG4gICAgICAgIGhlaWdodDogMCxcbiAgICAgICAgb3BhY2l0eTogMCxcbiAgICAgICAgb3ZlcmZsb3dZOiAnY2xpcCcsXG4gICAgICB9fVxuICAgICAgYW5pbWF0ZT17e1xuICAgICAgICBoZWlnaHQ6ICdhdXRvJyxcbiAgICAgICAgb3BhY2l0eTogMSxcbiAgICAgICAgb3ZlcmZsb3dZOiAnY2xpcCcsXG4gICAgICB9fVxuICAgICAgZXhpdD17e1xuICAgICAgICBoZWlnaHQ6IDAsXG4gICAgICAgIG9wYWNpdHk6IDAsXG4gICAgICAgIG92ZXJmbG93WTogJ2NsaXAnLFxuICAgICAgfX1cbiAgICAgIHRyYW5zaXRpb249e3sgZHVyYXRpb246IEFOSU1BVElPTi5kdXJhdGlvbi5ub3JtYWwgfX1cbiAgICAgIGRlcHRoPXtkZXB0aH1cbiAgICA+XG4gICAgICB7ZWxlbWVudHMubGVuZ3RoID09PSAwID8gKFxuICAgICAgICA8U3R5bGVkRW1wdHlTdGF0ZT57ZW1wdHlFbGVtZW50c1RleHR9PC9TdHlsZWRFbXB0eVN0YXRlPlxuICAgICAgKSA6IChcbiAgICAgICAgZWxlbWVudHMubWFwKCh7IGlkLCBsYWJlbCwgdmFsdWUgfSkgPT4ge1xuICAgICAgICAgIGNvbnN0IG5leHRLZXlQYXRoID0gaXNOb25FbXB0eVN0cmluZyhrZXlQYXRoKVxuICAgICAgICAgICAgPyBgJHtrZXlQYXRofS4ke2lkfWBcbiAgICAgICAgICAgIDogU3RyaW5nKGlkKTtcblxuICAgICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICA8SnNvbk5vZGVcbiAgICAgICAgICAgICAga2V5PXtpZH1cbiAgICAgICAgICAgICAgbGFiZWw9e2xhYmVsfVxuICAgICAgICAgICAgICB2YWx1ZT17dmFsdWV9XG4gICAgICAgICAgICAgIGRlcHRoPXtkZXB0aCArIDF9XG4gICAgICAgICAgICAgIGtleVBhdGg9e25leHRLZXlQYXRofVxuICAgICAgICAgICAgLz5cbiAgICAgICAgICApO1xuICAgICAgICB9KVxuICAgICAgKX1cbiAgICA8L1N0eWxlZEpzb25MaXN0PlxuICApO1xuXG4gIGNvbnN0IGhhbmRsZUFycm93Q2xpY2sgPSAoKSA9PiB7XG4gICAgc2V0SXNPcGVuKCFpc09wZW4pO1xuICB9O1xuXG4gIGlmIChoaWRlUm9vdCkge1xuICAgIHJldHVybiAoXG4gICAgICA8U3R5bGVkQ29udGFpbmVyPlxuICAgICAgICA8QW5pbWF0ZVByZXNlbmNlIGluaXRpYWw9e2ZhbHNlfT57cmVuZGVyZWRDaGlsZHJlbn08L0FuaW1hdGVQcmVzZW5jZT5cbiAgICAgIDwvU3R5bGVkQ29udGFpbmVyPlxuICAgICk7XG4gIH1cblxuICByZXR1cm4gKFxuICAgIDxTdHlsZWRDb250YWluZXI+XG4gICAgICA8U3R5bGVkTGFiZWxDb250YWluZXI+XG4gICAgICAgIDxKc29uQXJyb3cgaXNPcGVuPXtpc09wZW59IG9uQ2xpY2s9e2hhbmRsZUFycm93Q2xpY2t9IC8+XG5cbiAgICAgICAgPEpzb25Ob2RlTGFiZWwgbGFiZWw9e2xhYmVsfSBJY29uPXtJY29ufSAvPlxuXG4gICAgICAgIHtyZW5kZXJFbGVtZW50c0NvdW50ICYmIChcbiAgICAgICAgICA8U3R5bGVkRWxlbWVudHNDb3VudD5cbiAgICAgICAgICAgIHtyZW5kZXJFbGVtZW50c0NvdW50KGVsZW1lbnRzLmxlbmd0aCl9XG4gICAgICAgICAgPC9TdHlsZWRFbGVtZW50c0NvdW50PlxuICAgICAgICApfVxuICAgICAgPC9TdHlsZWRMYWJlbENvbnRhaW5lcj5cblxuICAgICAgPEFuaW1hdGVQcmVzZW5jZSBpbml0aWFsPXtmYWxzZX0+XG4gICAgICAgIHtpc09wZW4gJiYgcmVuZGVyZWRDaGlsZHJlbn1cbiAgICAgIDwvQW5pbWF0ZVByZXNlbmNlPlxuICAgIDwvU3R5bGVkQ29udGFpbmVyPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJzdHlsZWQiLCJpc05vbkVtcHR5U3RyaW5nIiwiSnNvbkFycm93IiwiSnNvbkxpc3QiLCJKc29uTm9kZUxhYmVsIiwiSnNvbk5vZGUiLCJ1c2VKc29uVHJlZUNvbnRleHRPclRocm93IiwiQU5JTUFUSU9OIiwiQW5pbWF0ZVByZXNlbmNlIiwibW90aW9uIiwidXNlU3RhdGUiLCJpc0RlZmluZWQiLCJTdHlsZWRDb250YWluZXIiLCJsaSIsIlN0eWxlZExhYmVsQ29udGFpbmVyIiwiZGl2IiwidGhlbWUiLCJzcGFjaW5nIiwiU3R5bGVkRWxlbWVudHNDb3VudCIsInNwYW4iLCJmb250IiwiY29sb3IiLCJ0ZXJ0aWFyeSIsIlN0eWxlZEVtcHR5U3RhdGUiLCJTdHlsZWRKc29uTGlzdCIsIndpdGhDb21wb25lbnQiLCJ1bCIsIkpzb25OZXN0ZWROb2RlIiwibGFiZWwiLCJJY29uIiwiZWxlbWVudHMiLCJyZW5kZXJFbGVtZW50c0NvdW50IiwiZW1wdHlFbGVtZW50c1RleHQiLCJkZXB0aCIsImtleVBhdGgiLCJzaG91bGRFeHBhbmROb2RlSW5pdGlhbGx5IiwiaGlkZVJvb3QiLCJpc09wZW4iLCJzZXRJc09wZW4iLCJyZW5kZXJlZENoaWxkcmVuIiwiaW5pdGlhbCIsImhlaWdodCIsIm9wYWNpdHkiLCJvdmVyZmxvd1kiLCJhbmltYXRlIiwiZXhpdCIsInRyYW5zaXRpb24iLCJkdXJhdGlvbiIsIm5vcm1hbCIsImxlbmd0aCIsIm1hcCIsImlkIiwidmFsdWUiLCJuZXh0S2V5UGF0aCIsIlN0cmluZyIsImhhbmRsZUFycm93Q2xpY2siLCJvbkNsaWNrIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsT0FBT0EsWUFBWSxrQkFBa0I7QUFDckMsU0FBU0MsZ0JBQWdCLFFBQVEsaUJBQWlCO0FBRWxE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

@@ -1,0 +1,195 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport4_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useContext = __vite__cjsImport4_react["useContext"];
+import { AppTooltip, OverflowingTextWithTooltip, TooltipDelay } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { FieldContext } from "/src/modules/object-record/record-field/contexts/FieldContext.ts";
+import { useFieldFocus } from "/src/modules/object-record/record-field/hooks/useFieldFocus.ts";
+import { RecordInlineCellValue } from "/src/modules/object-record/record-inline-cell/components/RecordInlineCellValue.tsx";
+import { getRecordFieldInputId } from "/src/modules/object-record/utils/getRecordFieldInputId.ts";
+import { assertFieldMetadata } from "/src/modules/object-record/record-field/types/guards/assertFieldMetadata.ts";
+import { isFieldText } from "/src/modules/object-record/record-field/types/guards/isFieldText.ts";
+import { FieldMetadataType } from "/src/generated-metadata/graphql.ts";
+import { useRecordInlineCellContext } from "/src/modules/object-record/record-inline-cell/components/RecordInlineCellContext.tsx";
+const StyledIconContainer = styled.div`
+  align-items: center;
+  color: ${({ theme })=>theme.font.color.tertiary};
+  display: flex;
+  width: 16px;
+
+  svg {
+    align-items: center;
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    width: 16px;
+  }
+`;
+_c = StyledIconContainer;
+const StyledLabelAndIconContainer = styled.div`
+  align-items: center;
+  color: ${({ theme })=>theme.font.color.tertiary};
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(1)};
+  height: 18px;
+  padding-top: 3px;
+`;
+_c1 = StyledLabelAndIconContainer;
+const StyledValueContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+  position: relative;
+`;
+_c2 = StyledValueContainer;
+const StyledLabelContainer = styled.div`
+  color: ${({ theme })=>theme.font.color.tertiary};
+  font-size: ${({ theme })=>theme.font.size.sm};
+  width: ${({ width })=>width}px;
+`;
+_c3 = StyledLabelContainer;
+const StyledInlineCellBaseContainer = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  gap: ${({ theme })=>theme.spacing(1)};
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+`;
+_c4 = StyledInlineCellBaseContainer;
+export const StyledSkeletonDiv = styled.div`
+  height: 24px;
+`;
+export const RecordInlineCellContainer = ()=>{
+    _s();
+    const { readonly, IconLabel, label, labelWidth, showLabel } = useRecordInlineCellContext();
+    const { recordId, fieldDefinition } = useContext(FieldContext);
+    if (isFieldText(fieldDefinition)) {
+        assertFieldMetadata(FieldMetadataType.TEXT, isFieldText, fieldDefinition);
+    }
+    const { setIsFocused } = useFieldFocus();
+    const handleContainerMouseEnter = ()=>{
+        if (!readonly) {
+            setIsFocused(true);
+        }
+    };
+    const handleContainerMouseLeave = ()=>{
+        if (!readonly) {
+            setIsFocused(false);
+        }
+    };
+    const theme = useTheme();
+    const labelId = `label-${getRecordFieldInputId(recordId, fieldDefinition?.metadata?.fieldName)}`;
+    return /*#__PURE__*/ _jsxDEV(StyledInlineCellBaseContainer, {
+        onMouseEnter: handleContainerMouseEnter,
+        onMouseLeave: handleContainerMouseLeave,
+        children: [
+            (IconLabel || label) && /*#__PURE__*/ _jsxDEV(StyledLabelAndIconContainer, {
+                id: labelId,
+                children: [
+                    IconLabel && /*#__PURE__*/ _jsxDEV(StyledIconContainer, {
+                        children: /*#__PURE__*/ _jsxDEV(IconLabel, {
+                            stroke: theme.icon.stroke.sm
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                            lineNumber: 111,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                        lineNumber: 110,
+                        columnNumber: 13
+                    }, this),
+                    showLabel && label && /*#__PURE__*/ _jsxDEV(StyledLabelContainer, {
+                        width: labelWidth,
+                        children: /*#__PURE__*/ _jsxDEV(OverflowingTextWithTooltip, {
+                            text: label,
+                            displayedMaxRows: 1
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                            lineNumber: 116,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                        lineNumber: 115,
+                        columnNumber: 13
+                    }, this),
+                    !showLabel && !fieldDefinition?.disableTooltip && /*#__PURE__*/ _jsxDEV(AppTooltip, {
+                        anchorSelect: `#${labelId}`,
+                        content: label,
+                        clickable: true,
+                        noArrow: true,
+                        place: "bottom",
+                        positionStrategy: "fixed",
+                        delay: TooltipDelay.shortDelay
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                        lineNumber: 121,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                lineNumber: 108,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledValueContainer, {
+                children: /*#__PURE__*/ _jsxDEV(RecordInlineCellValue, {}, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                    lineNumber: 134,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+                lineNumber: 133,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx",
+        lineNumber: 103,
+        columnNumber: 5
+    }, this);
+};
+_s(RecordInlineCellContainer, "IVTKzATjrIYbXpcvNw34SAcUUEk=", false, function() {
+    return [
+        useRecordInlineCellContext,
+        useFieldFocus,
+        useTheme
+    ];
+});
+_c5 = RecordInlineCellContainer;
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "StyledIconContainer");
+$RefreshReg$(_c1, "StyledLabelAndIconContainer");
+$RefreshReg$(_c2, "StyledValueContainer");
+$RefreshReg$(_c3, "StyledLabelContainer");
+$RefreshReg$(_c4, "StyledInlineCellBaseContainer");
+$RefreshReg$(_c5, "RecordInlineCellContainer");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-inline-cell/components/RecordInlineCellContainer.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlJlY29yZElubGluZUNlbGxDb250YWluZXIudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZVRoZW1lIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuaW1wb3J0IHsgdXNlQ29udGV4dCB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7XG4gIEFwcFRvb2x0aXAsXG4gIE92ZXJmbG93aW5nVGV4dFdpdGhUb29sdGlwLFxuICBUb29sdGlwRGVsYXksXG59IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IEZpZWxkQ29udGV4dCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZmllbGQvY29udGV4dHMvRmllbGRDb250ZXh0JztcbmltcG9ydCB7IHVzZUZpZWxkRm9jdXMgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL2hvb2tzL3VzZUZpZWxkRm9jdXMnO1xuaW1wb3J0IHsgUmVjb3JkSW5saW5lQ2VsbFZhbHVlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1pbmxpbmUtY2VsbC9jb21wb25lbnRzL1JlY29yZElubGluZUNlbGxWYWx1ZSc7XG5pbXBvcnQgeyBnZXRSZWNvcmRGaWVsZElucHV0SWQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvdXRpbHMvZ2V0UmVjb3JkRmllbGRJbnB1dElkJztcblxuaW1wb3J0IHsgYXNzZXJ0RmllbGRNZXRhZGF0YSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZmllbGQvdHlwZXMvZ3VhcmRzL2Fzc2VydEZpZWxkTWV0YWRhdGEnO1xuaW1wb3J0IHsgaXNGaWVsZFRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL3R5cGVzL2d1YXJkcy9pc0ZpZWxkVGV4dCc7XG5pbXBvcnQgeyBGaWVsZE1ldGFkYXRhVHlwZSB9IGZyb20gJ34vZ2VuZXJhdGVkLW1ldGFkYXRhL2dyYXBocWwnO1xuaW1wb3J0IHsgdXNlUmVjb3JkSW5saW5lQ2VsbENvbnRleHQgfSBmcm9tICcuL1JlY29yZElubGluZUNlbGxDb250ZXh0JztcblxuY29uc3QgU3R5bGVkSWNvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IudGVydGlhcnl9O1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTZweDtcblxuICBzdmcge1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBoZWlnaHQ6IDE2cHg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgd2lkdGg6IDE2cHg7XG4gIH1cbmA7XG5cbmNvbnN0IFN0eWxlZExhYmVsQW5kSWNvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IudGVydGlhcnl9O1xuICBkaXNwbGF5OiBmbGV4O1xuICBnYXA6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygxKX07XG4gIGhlaWdodDogMThweDtcbiAgcGFkZGluZy10b3A6IDNweDtcbmA7XG5cbmNvbnN0IFN0eWxlZFZhbHVlQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1ncm93OiAxO1xuICBtaW4td2lkdGg6IDA7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbmA7XG5cbmNvbnN0IFN0eWxlZExhYmVsQ29udGFpbmVyID0gc3R5bGVkLmRpdjx7IHdpZHRoPzogbnVtYmVyIH0+YFxuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLnRlcnRpYXJ5fTtcbiAgZm9udC1zaXplOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuc2l6ZS5zbX07XG4gIHdpZHRoOiAkeyh7IHdpZHRoIH0pID0+IHdpZHRofXB4O1xuYDtcblxuY29uc3QgU3R5bGVkSW5saW5lQ2VsbEJhc2VDb250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgaGVpZ2h0OiBmaXQtY29udGVudDtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMSl9O1xuICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG5gO1xuXG5leHBvcnQgY29uc3QgU3R5bGVkU2tlbGV0b25EaXYgPSBzdHlsZWQuZGl2YFxuICBoZWlnaHQ6IDI0cHg7XG5gO1xuXG5leHBvcnQgY29uc3QgUmVjb3JkSW5saW5lQ2VsbENvbnRhaW5lciA9ICgpID0+IHtcbiAgY29uc3QgeyByZWFkb25seSwgSWNvbkxhYmVsLCBsYWJlbCwgbGFiZWxXaWR0aCwgc2hvd0xhYmVsIH0gPVxuICAgIHVzZVJlY29yZElubGluZUNlbGxDb250ZXh0KCk7XG5cbiAgY29uc3QgeyByZWNvcmRJZCwgZmllbGREZWZpbml0aW9uIH0gPSB1c2VDb250ZXh0KEZpZWxkQ29udGV4dCk7XG5cbiAgaWYgKGlzRmllbGRUZXh0KGZpZWxkRGVmaW5pdGlvbikpIHtcbiAgICBhc3NlcnRGaWVsZE1ldGFkYXRhKEZpZWxkTWV0YWRhdGFUeXBlLlRFWFQsIGlzRmllbGRUZXh0LCBmaWVsZERlZmluaXRpb24pO1xuICB9XG5cbiAgY29uc3QgeyBzZXRJc0ZvY3VzZWQgfSA9IHVzZUZpZWxkRm9jdXMoKTtcblxuICBjb25zdCBoYW5kbGVDb250YWluZXJNb3VzZUVudGVyID0gKCkgPT4ge1xuICAgIGlmICghcmVhZG9ubHkpIHtcbiAgICAgIHNldElzRm9jdXNlZCh0cnVlKTtcbiAgICB9XG4gIH07XG5cbiAgY29uc3QgaGFuZGxlQ29udGFpbmVyTW91c2VMZWF2ZSA9ICgpID0+IHtcbiAgICBpZiAoIXJlYWRvbmx5KSB7XG4gICAgICBzZXRJc0ZvY3VzZWQoZmFsc2UpO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCB0aGVtZSA9IHVzZVRoZW1lKCk7XG4gIGNvbnN0IGxhYmVsSWQgPSBgbGFiZWwtJHtnZXRSZWNvcmRGaWVsZElucHV0SWQoXG4gICAgcmVjb3JkSWQsXG4gICAgZmllbGREZWZpbml0aW9uPy5tZXRhZGF0YT8uZmllbGROYW1lLFxuICApfWA7XG5cbiAgcmV0dXJuIChcbiAgICA8U3R5bGVkSW5saW5lQ2VsbEJhc2VDb250YWluZXJcbiAgICAgIG9uTW91c2VFbnRlcj17aGFuZGxlQ29udGFpbmVyTW91c2VFbnRlcn1cbiAgICAgIG9uTW91c2VMZWF2ZT17aGFuZGxlQ29udGFpbmVyTW91c2VMZWF2ZX1cbiAgICA+XG4gICAgICB7KEljb25MYWJlbCB8fCBsYWJlbCkgJiYgKFxuICAgICAgICA8U3R5bGVkTGFiZWxBbmRJY29uQ29udGFpbmVyIGlkPXtsYWJlbElkfT5cbiAgICAgICAgICB7SWNvbkxhYmVsICYmIChcbiAgICAgICAgICAgIDxTdHlsZWRJY29uQ29udGFpbmVyPlxuICAgICAgICAgICAgICA8SWNvbkxhYmVsIHN0cm9rZT17dGhlbWUuaWNvbi5zdHJva2Uuc219IC8+XG4gICAgICAgICAgICA8L1N0eWxlZEljb25Db250YWluZXI+XG4gICAgICAgICAgKX1cbiAgICAgICAgICB7c2hvd0xhYmVsICYmIGxhYmVsICYmIChcbiAgICAgICAgICAgIDxTdHlsZWRMYWJlbENvbnRhaW5lciB3aWR0aD17bGFiZWxXaWR0aH0+XG4gICAgICAgICAgICAgIDxPdmVyZmxvd2luZ1RleHRXaXRoVG9vbHRpcCB0ZXh0PXtsYWJlbH0gZGlzcGxheWVkTWF4Um93cz17MX0gLz5cbiAgICAgICAgICAgIDwvU3R5bGVkTGFiZWxDb250YWluZXI+XG4gICAgICAgICAgKX1cbiAgICAgICAgICB7LyogVE9ETzogRGlzcGxheWluZyBUb29sdGlwcyBvbiB0aGUgYm9hcmQgaXMgY2F1c2luZyBwZXJmb3JtYW5jZSBpc3N1ZXMgaHR0cHM6Ly9yZWFjdC10b29sdGlwLmNvbS9kb2NzL2V4YW1wbGVzL3JlbmRlciAqL31cbiAgICAgICAgICB7IXNob3dMYWJlbCAmJiAhZmllbGREZWZpbml0aW9uPy5kaXNhYmxlVG9vbHRpcCAmJiAoXG4gICAgICAgICAgICA8QXBwVG9vbHRpcFxuICAgICAgICAgICAgICBhbmNob3JTZWxlY3Q9e2AjJHtsYWJlbElkfWB9XG4gICAgICAgICAgICAgIGNvbnRlbnQ9e2xhYmVsfVxuICAgICAgICAgICAgICBjbGlja2FibGVcbiAgICAgICAgICAgICAgbm9BcnJvd1xuICAgICAgICAgICAgICBwbGFjZT1cImJvdHRvbVwiXG4gICAgICAgICAgICAgIHBvc2l0aW9uU3RyYXRlZ3k9XCJmaXhlZFwiXG4gICAgICAgICAgICAgIGRlbGF5PXtUb29sdGlwRGVsYXkuc2hvcnREZWxheX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgKX1cbiAgICAgICAgPC9TdHlsZWRMYWJlbEFuZEljb25Db250YWluZXI+XG4gICAgICApfVxuICAgICAgPFN0eWxlZFZhbHVlQ29udGFpbmVyPlxuICAgICAgICA8UmVjb3JkSW5saW5lQ2VsbFZhbHVlIC8+XG4gICAgICA8L1N0eWxlZFZhbHVlQ29udGFpbmVyPlxuICAgIDwvU3R5bGVkSW5saW5lQ2VsbEJhc2VDb250YWluZXI+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbInVzZVRoZW1lIiwic3R5bGVkIiwidXNlQ29udGV4dCIsIkFwcFRvb2x0aXAiLCJPdmVyZmxvd2luZ1RleHRXaXRoVG9vbHRpcCIsIlRvb2x0aXBEZWxheSIsIkZpZWxkQ29udGV4dCIsInVzZUZpZWxkRm9jdXMiLCJSZWNvcmRJbmxpbmVDZWxsVmFsdWUiLCJnZXRSZWNvcmRGaWVsZElucHV0SWQiLCJhc3NlcnRGaWVsZE1ldGFkYXRhIiwiaXNGaWVsZFRleHQiLCJGaWVsZE1ldGFkYXRhVHlwZSIsInVzZVJlY29yZElubGluZUNlbGxDb250ZXh0IiwiU3R5bGVkSWNvbkNvbnRhaW5lciIsImRpdiIsInRoZW1lIiwiZm9udCIsImNvbG9yIiwidGVydGlhcnkiLCJTdHlsZWRMYWJlbEFuZEljb25Db250YWluZXIiLCJzcGFjaW5nIiwiU3R5bGVkVmFsdWVDb250YWluZXIiLCJTdHlsZWRMYWJlbENvbnRhaW5lciIsInNpemUiLCJzbSIsIndpZHRoIiwiU3R5bGVkSW5saW5lQ2VsbEJhc2VDb250YWluZXIiLCJTdHlsZWRTa2VsZXRvbkRpdiIsIlJlY29yZElubGluZUNlbGxDb250YWluZXIiLCJyZWFkb25seSIsIkljb25MYWJlbCIsImxhYmVsIiwibGFiZWxXaWR0aCIsInNob3dMYWJlbCIsInJlY29yZElkIiwiZmllbGREZWZpbml0aW9uIiwiVEVYVCIsInNldElzRm9jdXNlZCIsImhhbmRsZUNvbnRhaW5lck1vdXNlRW50ZXIiLCJoYW5kbGVDb250YWluZXJNb3VzZUxlYXZlIiwibGFiZWxJZCIsIm1ldGFkYXRhIiwiZmllbGROYW1lIiwib25Nb3VzZUVudGVyIiwib25Nb3VzZUxlYXZlIiwiaWQiLCJzdHJva2UiLCJpY29uIiwidGV4dCIsImRpc3BsYXllZE1heFJvd3MiLCJkaXNhYmxlVG9vbHRpcCIsImFuY2hvclNlbGVjdCIsImNvbnRlbnQiLCJjbGlja2FibGUiLCJub0Fycm93IiwicGxhY2UiLCJwb3NpdGlvblN0cmF0ZWd5IiwiZGVsYXkiLCJzaG9ydERlbGF5Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0EsUUFBUSxRQUFRLGlCQUFpQjtBQUMxQyxPQUFPQyxZQUFZLGtCQUFrQjtBQUNyQyxTQUFTQyxVQUFVLFFBQVEsUUFBUTtBQUNuQyxTQUNFQyxVQUFVLEVBQ1ZDLDBCQUEwQixFQUMxQkMsWUFBWSxRQUNQLFlBQVk7QUFFbkIsU0FBU0MsWUFBWSxRQUFRLHFEQUFxRDtBQUNsRixTQUFTQyxhQUFhLFFBQVEsbURBQW1EO0FBQ2pGLFNBQVNDLHFCQUFxQixRQUFRLHNFQUFzRTtB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

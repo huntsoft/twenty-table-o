@@ -1,0 +1,255 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useListenRightDrawerClose } from "/src/modules/ui/layout/right-drawer/hooks/useListenRightDrawerClose.ts";
+import { WorkflowDiagramCustomMarkers } from "/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCustomMarkers.tsx";
+import { useRightDrawerState } from "/src/modules/workflow/workflow-diagram/hooks/useRightDrawerState.ts";
+import { workflowDiagramState } from "/src/modules/workflow/workflow-diagram/states/workflowDiagramState.ts";
+import { workflowReactFlowRefState } from "/src/modules/workflow/workflow-diagram/states/workflowReactFlowRefState.ts";
+import { getOrganizedDiagram } from "/src/modules/workflow/workflow-diagram/utils/getOrganizedDiagram.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { Background, ReactFlow, applyEdgeChanges, applyNodeChanges, useReactFlow } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@xyflow_react.js?v=226f7286";
+import "/@fs/D:/twenty-table-o/node_modules/@xyflow/react/dist/style.css";
+import __vite__cjsImport12_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const React = __vite__cjsImport12_react.__esModule ? __vite__cjsImport12_react.default : __vite__cjsImport12_react; const useEffect = __vite__cjsImport12_react["useEffect"]; const useMemo = __vite__cjsImport12_react["useMemo"]; const useRef = __vite__cjsImport12_react["useRef"];
+import { useRecoilValue, useSetRecoilState } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { THEME_COMMON, Tag } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledResetReactflowStyles = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  /* Below we reset the default styling of Reactflow */
+  .react-flow__node-input,
+  .react-flow__node-default,
+  .react-flow__node-output,
+  .react-flow__node-group {
+    padding: 0;
+    width: auto;
+    text-align: start;
+    white-space: nowrap;
+  }
+
+  .react-flow__handle {
+    min-height: 0;
+    min-width: 0;
+  }
+  .react-flow__handle-top {
+    transform: translate(-50%, -50%);
+  }
+  .react-flow__handle-bottom {
+    transform: translate(-50%, 100%);
+  }
+  .react-flow__handle.connectionindicator {
+    cursor: pointer;
+  }
+
+  --xy-node-border-radius: none;
+  --xy-node-border: none;
+  --xy-node-background-color: none;
+  --xy-node-boxshadow-hover: none;
+  --xy-node-boxshadow-selected: none;
+`;
+_c = StyledResetReactflowStyles;
+const StyledStatusTagContainer = styled.div`
+  left: 0;
+  top: 0;
+  position: absolute;
+  padding: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledStatusTagContainer;
+const defaultFitViewOptions = {
+    minZoom: 1,
+    maxZoom: 1
+};
+export const WorkflowDiagramCanvasBase = ({ nodeTypes, edgeTypes, children, tagContainerTestId, tagColor, tagText })=>{
+    _s();
+    const theme = useTheme();
+    const reactflow = useReactFlow();
+    const setWorkflowReactFlowRefState = useSetRecoilState(workflowReactFlowRefState);
+    const workflowDiagram = useRecoilValue(workflowDiagramState);
+    const { nodes, edges } = useMemo(()=>isDefined(workflowDiagram) ? getOrganizedDiagram(workflowDiagram) : {
+            nodes: [],
+            edges: []
+        }, [
+        workflowDiagram
+    ]);
+    const { rightDrawerState } = useRightDrawerState();
+    const rightDrawerWidth = Number(THEME_COMMON.rightDrawerWidth.replace('px', ''));
+    const setWorkflowDiagram = useSetRecoilState(workflowDiagramState);
+    const handleNodesChange = (nodeChanges)=>{
+        setWorkflowDiagram((diagram)=>{
+            if (isDefined(diagram) === false) {
+                throw new Error('It must be impossible for the nodes to be updated if the diagram is not defined yet. Be sure the diagram is rendered only when defined.');
+            }
+            return {
+                ...diagram,
+                nodes: applyNodeChanges(nodeChanges, diagram.nodes)
+            };
+        });
+    };
+    const handleEdgesChange = (edgeChanges)=>{
+        setWorkflowDiagram((diagram)=>{
+            if (isDefined(diagram) === false) {
+                throw new Error('It must be impossible for the edges to be updated if the diagram is not defined yet. Be sure the diagram is rendered only when defined.');
+            }
+            return {
+                ...diagram,
+                edges: applyEdgeChanges(edgeChanges, diagram.edges)
+            };
+        });
+    };
+    useListenRightDrawerClose(()=>{
+        reactflow.setNodes((nodes)=>nodes.map((node)=>({
+                    ...node,
+                    selected: false
+                })));
+    });
+    const containerRef = useRef(null);
+    useEffect(()=>{
+        if (!isDefined(containerRef.current) || !reactflow.viewportInitialized) {
+            return;
+        }
+        const currentViewport = reactflow.getViewport();
+        const flowBounds = reactflow.getNodesBounds(reactflow.getNodes());
+        let visibleRightDrawerWidth = 0;
+        if (rightDrawerState === 'normal') {
+            visibleRightDrawerWidth = rightDrawerWidth;
+        }
+        const viewportX = (containerRef.current.offsetWidth + visibleRightDrawerWidth) / 2 - flowBounds.width / 2;
+        reactflow.setViewport({
+            ...currentViewport,
+            x: viewportX - visibleRightDrawerWidth
+        }, {
+            duration: 300
+        });
+    }, [
+        reactflow,
+        rightDrawerState,
+        rightDrawerWidth
+    ]);
+    return /*#__PURE__*/ _jsxDEV(StyledResetReactflowStyles, {
+        ref: containerRef,
+        children: [
+            /*#__PURE__*/ _jsxDEV(WorkflowDiagramCustomMarkers, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+                lineNumber: 213,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(ReactFlow, {
+                ref: (node)=>{
+                    if (isDefined(node)) {
+                        setWorkflowReactFlowRefState({
+                            current: node
+                        });
+                    }
+                },
+                onInit: ()=>{
+                    if (!isDefined(containerRef.current)) {
+                        throw new Error('Expect the container ref to be defined');
+                    }
+                    const flowBounds = reactflow.getNodesBounds(reactflow.getNodes());
+                    reactflow.setViewport({
+                        x: containerRef.current.offsetWidth / 2 - flowBounds.width / 2,
+                        y: 150,
+                        zoom: defaultFitViewOptions.maxZoom
+                    });
+                },
+                minZoom: defaultFitViewOptions.minZoom,
+                maxZoom: defaultFitViewOptions.maxZoom,
+                nodeTypes: nodeTypes,
+                edgeTypes: edgeTypes,
+                nodes: nodes,
+                edges: edges,
+                onNodesChange: handleNodesChange,
+                onEdgesChange: handleEdgesChange,
+                onBeforeDelete: async ()=>{
+                    // Abort all non-programmatic deletions
+                    return false;
+                },
+                proOptions: {
+                    hideAttribution: true
+                },
+                multiSelectionKeyCode: null,
+                nodesFocusable: false,
+                edgesFocusable: false,
+                nodesDraggable: false,
+                nodesConnectable: false,
+                paneClickDistance: 10,
+                children: [
+                    /*#__PURE__*/ _jsxDEV(Background, {
+                        color: theme.border.color.medium,
+                        size: 2
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+                        lineNumber: 254,
+                        columnNumber: 9
+                    }, this),
+                    children
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+                lineNumber: 215,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledStatusTagContainer, {
+                "data-testid": tagContainerTestId,
+                children: /*#__PURE__*/ _jsxDEV(Tag, {
+                    color: tagColor,
+                    text: tagText
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+                    lineNumber: 260,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+                lineNumber: 259,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx",
+        lineNumber: 212,
+        columnNumber: 5
+    }, this);
+};
+_s(WorkflowDiagramCanvasBase, "CWx47C6M+e6wX1lBXdJDaq0uXmA=", false, function() {
+    return [
+        useTheme,
+        useReactFlow,
+        useSetRecoilState,
+        useRecoilValue,
+        useRightDrawerState,
+        useSetRecoilState,
+        useListenRightDrawerClose
+    ];
+});
+_c2 = WorkflowDiagramCanvasBase;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledResetReactflowStyles");
+$RefreshReg$(_c1, "StyledStatusTagContainer");
+$RefreshReg$(_c2, "WorkflowDiagramCanvasBase");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-diagram/components/WorkflowDiagramCanvasBase.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldvcmtmbG93RGlhZ3JhbUNhbnZhc0Jhc2UudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZUxpc3RlblJpZ2h0RHJhd2VyQ2xvc2UgfSBmcm9tICdAL3VpL2xheW91dC9yaWdodC1kcmF3ZXIvaG9va3MvdXNlTGlzdGVuUmlnaHREcmF3ZXJDbG9zZSc7XG5pbXBvcnQgeyBXb3JrZmxvd0RpYWdyYW1DdXN0b21NYXJrZXJzIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1kaWFncmFtL2NvbXBvbmVudHMvV29ya2Zsb3dEaWFncmFtQ3VzdG9tTWFya2Vycyc7XG5pbXBvcnQgeyB1c2VSaWdodERyYXdlclN0YXRlIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1kaWFncmFtL2hvb2tzL3VzZVJpZ2h0RHJhd2VyU3RhdGUnO1xuaW1wb3J0IHsgd29ya2Zsb3dEaWFncmFtU3RhdGUgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LWRpYWdyYW0vc3RhdGVzL3dvcmtmbG93RGlhZ3JhbVN0YXRlJztcbmltcG9ydCB7IHdvcmtmbG93UmVhY3RGbG93UmVmU3RhdGUgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LWRpYWdyYW0vc3RhdGVzL3dvcmtmbG93UmVhY3RGbG93UmVmU3RhdGUnO1xuaW1wb3J0IHtcbiAgV29ya2Zsb3dEaWFncmFtRWRnZSxcbiAgV29ya2Zsb3dEaWFncmFtRWRnZVR5cGUsXG4gIFdvcmtmbG93RGlhZ3JhbU5vZGUsXG4gIFdvcmtmbG93RGlhZ3JhbU5vZGVUeXBlLFxufSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LWRpYWdyYW0vdHlwZXMvV29ya2Zsb3dEaWFncmFtJztcbmltcG9ydCB7IGdldE9yZ2FuaXplZERpYWdyYW0gfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LWRpYWdyYW0vdXRpbHMvZ2V0T3JnYW5pemVkRGlhZ3JhbSc7XG5pbXBvcnQgeyB1c2VUaGVtZSB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7XG4gIEJhY2tncm91bmQsXG4gIEVkZ2VDaGFuZ2UsXG4gIEVkZ2VQcm9wcyxcbiAgRml0Vmlld09wdGlvbnMsXG4gIE5vZGVDaGFuZ2UsXG4gIE5vZGVQcm9wcyxcbiAgUmVhY3RGbG93LFxuICBhcHBseUVkZ2VDaGFuZ2VzLFxuICBhcHBseU5vZGVDaGFuZ2VzLFxuICB1c2VSZWFjdEZsb3csXG59IGZyb20gJ0B4eWZsb3cvcmVhY3QnO1xuaW1wb3J0ICdAeHlmbG93L3JlYWN0L2Rpc3Qvc3R5bGUuY3NzJztcbmltcG9ydCBSZWFjdCwgeyB1c2VFZmZlY3QsIHVzZU1lbW8sIHVzZVJlZiB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IHVzZVJlY29pbFZhbHVlLCB1c2VTZXRSZWNvaWxTdGF0ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgeyBUSEVNRV9DT01NT04sIFRhZywgVGFnQ29sb3IgfSBmcm9tICd0d2VudHktdWknO1xuaW1wb3J0IHsgaXNEZWZpbmVkIH0gZnJvbSAndHdlbnR5LXNoYXJlZC91dGlscyc7XG5cbmNvbnN0IFN0eWxlZFJlc2V0UmVhY3RmbG93U3R5bGVzID0gc3R5bGVkLmRpdmBcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogMTAwJTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuXG4gIC8qIEJlbG93IHdlIHJlc2V0IHRoZSBkZWZhdWx0IHN0eWxpbmcgb2YgUmVhY3RmbG93ICovXG4gIC5yZWFjdC1mbG93X19ub2RlLWlucHV0LFxuICAucmVhY3QtZmxvd19fbm9kZS1kZWZhdWx0LFxuICAucmVhY3QtZmxvd19fbm9kZS1vdXRwdXQsXG4gIC5yZWFjdC1mbG93X19ub2RlLWdyb3VwIHtcbiAgICBwYWRkaW5nOiAwO1xuICAgIHdpZHRoOiBhdXRvO1xuICAgIHRleHQtYWxpZ246IHN0YXJ0O1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIH1cblxuICAucmVhY3QtZmxvd19faGFuZGxlIHtcbiAgICBtaW4taGVpZ2h0OiAwO1xuICAgIG1pbi13aWR0aDogMDtcbiAgfVxuICAucmVhY3QtZmxvd19faGFuZGxlLXRvcCB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gIH1cbiAgLnJlYWN0LWZsb3dfX2hhbmRsZS1ib3R0b20ge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIDEwMCUpO1xuICB9XG4gIC5yZWFjdC1mbG93X19oYW5kbGUuY29ubmVjdGlvbmluZGljYXRvciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG5cbiAgLS14eS1ub2RlLWJvcmRlci1yYWRpdXM6IG5vbmU7XG4gIC0teHktbm9kZS1ib3JkZXI6IG5vbmU7XG4gIC0teHktbm9kZS1iYWNrZ3JvdW5kLWNvbG9yOiBub25lO1xuICAtLXh5LW5vZGUtYm94c2hhZG93LWhvdmVyOiBub25lO1xuICAtLXh5LW5vZGUtYm94c2hhZG93LXNlbGVjdGVkOiBub25lO1xuYDtcblxuY29uc3QgU3R5bGVkU3RhdHVzVGFnQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHBhZGRpbmc6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygyKX07XG5gO1xuXG5jb25zdCBkZWZhdWx0Rml0Vmlld09wdGlvbnMgPSB7XG4gIG1pblpvb206IDEsXG4gIG1heFpvb206IDEsXG59IHNhdGlzZmllcyBGaXRWaWV3T3B0aW9ucztcblxuZXhwb3J0IGNvbnN0IFdvcmtmbG93RGlhZ3JhbUNhbnZhc0Jhc2UgPSAoe1xuICBub2RlVHlwZXMsXG4gIGVkZ2VUeXBlcyxcbiAgY2hpbGRyZW4sXG4gIHRhZ0NvbnRhaW5lclRlc3RJZCxcbiAgdGFnQ29sb3IsXG4gIHRhZ1RleHQsXG59OiB7XG4gIG5vZGVUeXBlczogUGFydGlhbDxcbiAgICBSZWNvcmQ8XG4gICAgICBXb3JrZmxvd0RpYWdyYW1Ob2RlVHlwZSxcbiAgICAgIFJlYWN0LkNvbXBvbmVudFR5cGU8XG4gICAgICAgIE5vZGVQcm9wcyAmIHtcbiAgICAgICAgICBkYXRhOiBhbnk7XG4gICAgICAgICAgdHlwZTogYW55O1xuICAgICAgICB9XG4gICAgICA+XG4gICAgPlxuICA+O1xuICBlZGdlVHlwZXM6IFBhcnRpYWw8XG4gICAgUmVjb3JkPFxuICAgICAgV29ya2Zsb3dEaWFncmFtRWRnZVR5cGUsXG4gICAgICBSZWFjdC5Db21wb25lbnRUeXBlPFxuICAgICAgICBFZGdlUHJvcHMgJiB7XG4gICAgICAgICAgZGF0YTogYW55O1xuICAgICAgICAgIHR5cGU6IGFueTtcbiAgICAgICAgfVxuICAgICAgPlxuICAgID5cbiAgPjtcbiAgY2hpbGRyZW4/OiBSZWFjdC5SZWFjdE5vZGU7XG4gIHRhZ0NvbnRhaW5lclRlc3RJZDogc3RyaW5nO1xuICB0YWdDb2xvcjogVGFnQ29sb3I7XG4gIHRhZ1RleHQ6IHN0cmluZztcbn0pID0+IHtcbiAgY29uc3QgdGhlbWUgPSB1c2VUaGVtZSgpO1xuXG4gIGNvbnN0IHJlYWN0ZmxvdyA9IHVzZVJlYWN0RmxvdygpO1xuICBjb25zdCBzZXRXb3JrZmxvd1JlYWN0Rmxvd1JlZlN0YXRlID0gdXNlU2V0UmVjb2lsU3RhdGUoXG4gICAgd29ya2Zsb3dSZWFjdEZsb3dSZWZTdGF0ZSxcbiAgKTtcblxuICBjb25zdCB3b3JrZmxvd0RpYWdyYW0gPSB1c2VSZWNvaWxWYWx1ZSh3b3JrZmxvd0RpYWdyYW1TdGF0ZSk7XG5cbiAgY29uc3QgeyBub2RlcywgZWRnZXMgfSA9IHVzZU1lbW8oXG4gICAgKCkgPT5cbiAgICAgIGlzRGVmaW5lZCh3b3JrZmxvd0RpYWdyYW0pXG4gICAgICAgID8gZ2V0T3JnYW5pemVkRGlhZ3JhbSh3b3JrZmxvd0RpYWdyYW0pXG4gICAgICAgIDogeyBub2RlczogW10sIGVkZ2VzOiBbXSB9LFxuICAgIFt3b3JrZmxvd0RpYWdyYW1dLFxuICApO1xuXG4gIGNvbnN0IHsgcmlnaHREcmF3ZXJTdGF0ZSB9ID0gdXNlUmlnaHREcmF3ZXJTdGF0ZSgpO1xuXG4gIGNvbnN0IHJpZ2h0RHJhd2VyV2lkdGggPSBOdW1iZXIoXG4gICAgVEhFTUVfQ09NTU9OLnJpZ2h0RHJhd2VyV2lkdGgucmVwbGFjZSgncHgnLCAnJyksXG4gICk7XG5cbiAgY29uc3Qgc2V0V29ya2Zsb3dEaWFncmFtID0gdXNlU2V0UmVjb2lsU3RhdGUod29ya2Zsb3dEaWFncmFtU3RhdGUpO1xuXG4gIGNvbnN0IGhhbmRsZU5vZGVzQ2hhbmdlID0gKFxuICAgIG5vZGVDaGFuZ2VzOiBBcnJheTxOb2RlQ2hhbmdlPFdvcmtmbG93RGlhZ3JhbU5vZGU+PixcbiAgKSA9PiB7XG4gICAgc2V0V29ya2Zsb3dEaWFncmFtKChkaWFncmFtKSA9PiB7XG4gICAgICBpZiAoaXNEZWZpbmVkKGRpYWdyYW0pID09PSBmYWxzZSkge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgICAgICAgJ0l0IG11c3QgYmUgaW1wb3NzaWJsZSBmb3IgdGhlIG5vZGVzIHRvIGJlIHVwZGF0ZWQgaWYgdGhlIGRpYWdyYW0gaXMgbm90IGRlZmluZWQgeWV0LiBCZSBzdXJlIHRoZSBkaWFncmFtIGlzIHJlbmRlcmVkIG9ubHkgd2hlbiBkZWZpbmVkLicsXG4gICAgICAgICk7XG4gICAgICB9XG5cbiAgICAgIHJldHVybiB7XG4gICAgICAgIC4uLmRpYWdyYW0sXG4gICAgICAgIG5vZGVzOiBhcHBseU5vZGVDaGFuZ2VzKG5vZGVDaGFuZ2VzLCBkaWFncmFtLm5vZGVzKSxcbiAgICAgIH07XG4gICAgfSk7XG4gIH07XG5cbiAgY29uc3QgaGFuZGxlRWRnZXNDaGFuZ2UgPSAoXG4gICAgZWRnZUNoYW5nZXM6IEFycmF5PEVkZ2VDaGFuZ2U8V29ya2Zsb3dEaWFncmFtRWRnZT4+LFxuICApID0+IHtcbiAgICBzZXRXb3JrZmxvd0RpYWdyYW0oKGRpYWdyYW0pID0+IHtcbiAgICAgIGlmIChpc0RlZmluZWQoZGlhZ3JhbSkgPT09IGZhbHNlKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihcbiAgICAgICAgICAnSXQgbXVzdCBiZSBpbXBvc3NpYmxlIGZvciB0aGUgZWRnZXMgdG8gYmUgdXBkYXRlZCBpZiB0aGUgZGlhZ3JhbSBpcyBub3QgZGVmaW5lZCB5ZXQuIEJlIHN1cmUgdGhlIGRpYWdyYW0gaXMgcmVuZGVyZWQgb25seSB3aGVuIGRlZmluZWQuJyxcbiAgICAgICAgKTtcbiAgICAgIH1cblxuICAgICAgcmV0dXJuIHtcbiAgICAgICAgLi4uZGlhZ3JhbSxcbiAgICAgICAgZWRnZXM6IGFwcGx5RWRnZUNoYW5nZXMoZWRnZUNoYW5nZXMsIGRpYWdyYW0uZWRnZXMpLFxuICAgICAgfTtcbiAgICB9KTtcbiAgfTtcblxuICB1c2VMaXN0ZW5SaWdodERyYXdlckNsb3NlKCgpID0+IHtcbiAgICByZWFjdGZsb3cuc2V0Tm9kZXMoKG5vZGVzKSA9PlxuICAgICAgbm9kZXMubWFwKChub2RlKSA9PiAoeyAuLi5ub2RlLCBzZWxlY3RlZDogZmFsc2UgfSkpLFxuICAgICk7XG4gIH0pO1xuXG4gIGNvbnN0IGNvbnRhaW5lclJlZiA9IHVzZVJlZjxIVE1MRGl2RWxlbWVudD4obnVsbCk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBpZiAoIWlzRGVmaW5lZChjb250YWluZXJSZWYuY3VycmVudCkgfHwgIXJlYWN0Zmxvdy52aWV3cG9ydEluaXRpYWxpemVkKSB7XG4gICAgICByZXR1cm47XG4gICAgfVxuXG4gICAgY29uc3QgY3VycmVudFZpZXdwb3J0ID0gcmVhY3RmbG93LmdldFZpZXdwb3J0KCk7XG5cbiAgICBjb25zdCBmbG93Qm91bmRzID0gcmVhY3RmbG93LmdldE5vZGVzQm91bmRzKHJlYWN0Zmxvdy5nZXROb2RlcygpKTtcblxuICAgIGxldCB2aXNpYmxlUmlnaHREcmF3ZXJXaWR0aCA9IDA7XG4gICAgaWYgKHJpZ2h0RHJhd2VyU3RhdGUgPT09ICdub3JtYWwnKSB7XG4gICAgICB2aXNpYmxlUmlnaHREcmF3ZXJXaWR0aCA9IHJpZ2h0RHJhd2VyV2lkdGg7XG4gICAgfVxuXG4gICAgY29uc3Qgdmlld3BvcnRYID1cbiAgICAgIChjb250YWluZXJSZWYuY3VycmVudC5vZmZzZXRXaWR0aCArIHZpc2libGVSaWdodERyYXdlcldpZHRoKSAvIDIgLVxuICAgICAgZmxvd0JvdW5kcy53aWR0aCAvIDI7XG5cbiAgICByZWFjdGZsb3cuc2V0Vmlld3BvcnQoXG4gICAgICB7XG4gICAgICAgIC4uLmN1cnJlbnRWaWV3cG9ydCxcbiAgICAgICAgeDogdmlld3BvcnRYIC0gdmlzaWJsZVJpZ2h0RHJhd2VyV2lkdGgsXG4gICAgICB9LFxuICAgICAgeyBkdXJhdGlvbjogMzAwIH0sXG4gICAgKTtcbiAgfSwgW3JlYWN0ZmxvdywgcmlnaHREcmF3ZXJTdGF0ZSwgcmlnaHREcmF3ZXJXaWR0aF0pO1xuXG4gIHJldHVybiAoXG4gICAgPFN0eWxlZFJlc2V0UmVhY3RmbG93U3R5bGVzIHJlZj17Y29udGFpbmVyUmVmfT5cbiAgICAgIDxXb3JrZmxvd0RpYWdyYW1DdXN0b21NYXJrZXJzIC8+XG5cbiAgICAgIDxSZWFjdEZsb3dcbiAgICAgICAgcmVmPXsobm9kZSkgPT4ge1xuICAgICAgICAgIGlmIChpc0RlZmluZWQobm9kZSkpIHtcbiAgICAgICAgICAgIHNldFdvcmtmbG93UmVhY3RGbG93UmVmU3RhdGUoeyBjdXJyZW50OiBub2RlIH0pO1xuICAgICAgICAgIH1cbiAgICAgICAgfX1cbiAgICAgICAgb25Jbml0PXsoKSA9PiB7XG4gICAgICAgICAgaWYgKCFpc0RlZmluZWQoY29udGFpbmVyUmVmLmN1cnJlbnQpKSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ0V4cGVjdCB0aGUgY29udGFpbmVyIHJlZiB0byBiZSBkZWZpbmVkJyk7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgY29uc3QgZmxvd0JvdW5kcyA9IHJlYWN0Zmxvdy5nZXROb2Rlc0JvdW5kcyhyZWFjdGZsb3cuZ2V0Tm9kZXMoKSk7XG5cbiAgICAgICAgICByZWFjdGZsb3cuc2V0Vmlld3BvcnQoe1xuICAgICAgICAgICAgeDogY29udGFpbmVyUmVmLmN1cnJlbnQub2Zmc2V0V2lkdGggLyAyIC0gZmxvd0JvdW5kcy53aWR0aCAvIDIsXG4gICAgICAgICAgICB5OiAxNTAsXG4gICAgICAgICAgICB6b29tOiBkZWZhdWx0Rml0Vmlld09wdGlvbnMubWF4Wm9vbSxcbiAgICAgICAgICB9KTtcbiAgICAgICAgfX1cbiAgICAgICAgbWluWm9vbT17ZGVmYXVsdEZpdFZpZXdPcHRpb25zLm1pblpvb219XG4gICAgICAgIG1heFpvb209e2RlZmF1bHRGaXRWaWV3T3B0aW9ucy5tYXhab29tfVxuICAgICAgICBub2RlVHlwZXM9e25vZGVUeXBlc31cbiAgICAgICAgZWRnZVR5cGVzPXtlZGdlVHlwZXN9XG4gICAgICAgIG5vZGVzPXtub2Rlc31cbiAgICAgICAgZWRnZXM9e2VkZ2VzfVxuICAgICAgICBvbk5vZGVzQ2hhbmdlPXtoYW5kbGVOb2Rlc0NoYW5nZX1cbiAgICAgICAgb25FZGdlc0NoYW5nZT17aGFuZGxlRWRnZXNDaGFuZ2V9XG4gICAgICAgIG9uQmVmb3JlRGVsZXRlPXthc3luYyAoKSA9PiB7XG4gICAgICAgICAgLy8gQWJvcnQgYWxsIG5vbi1wcm9ncmFtbWF0aWMgZGVsZXRpb25zXG4gICAgICAgICAgcmV0dXJuIGZhbHNlO1xuICAgICAgICB9fVxuICAgICAgICBwcm9PcHRpb25zPXt7IGhpZGVBdHRyaWJ1dGlvbjogdHJ1ZSB9fVxuICAgICAgICBtdWx0aVNlbGVjdGlvbktleUNvZGU9e251bGx9XG4gICAgICAgIG5vZGVzRm9jdXNhYmxlPXtmYWxzZX1cbiAgICAgICAgZWRnZXNGb2N1c2FibGU9e2ZhbHNlfVxuICAgICAgICBub2Rlc0RyYWdnYWJsZT17ZmFsc2V9XG4gICAgICAgIG5vZGVzQ29ubmVjdGFibGU9e2ZhbHNlfVxuICAgICAgICBwYW5lQ2xpY2tEaXN0YW5jZT17MTB9IC8vIEZpeCBzbWFsbCB1bndhbnRlZCB1c2VyIGRyYWdnaW5nIGRvZXMgbm90IHNlbGVjdCBub2RlXG4gICAgICA+XG4gICAgICAgIDxCYWNrZ3JvdW5kIGNvbG9yPXt0aGVtZS5ib3JkZXIuY29sb3IubWVkaXVtfSBzaXplPXsyfSAvPlxuXG4gICAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDwvUmVhY3RGbG93PlxuXG4gICAgICA8U3R5bGVkU3RhdHVzVGFnQ29udGFpbmVyIGRhdGEtdGVzdGlkPXt0YWdDb250YWluZXJUZXN0SWR9PlxuICAgICAgICA8VGFnIGNvbG9yPXt0YWdDb2xvcn0gdGV4dD17dGFnVGV4dH0gLz5cbiAgICAgIDwvU3R5bGVkU3RhdHVzVGFnQ29udGFpbmVyPlxuICAgIDwvU3R5bGVkUmVzZXRSZWFjdGZsb3dTdHlsZXM+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbInVzZUxpc3RlblJpZ2h0RHJhd2VyQ2xvc2UiLCJXb3JrZmxvd0RpYWdyYW1DdXN0b21NYXJrZXJzIiwidXNlUmlnaHREcmF3ZXJTdGF0ZSIsIndvcmtmbG93RGlhZ3JhbVN0YXRlIiwid29ya2Zsb3dSZWFjdEZsb3dSZWZTdGF0ZSIsImdldE9yZ2FuaXplZERpYWdyYW0iLCJ1c2VUaGVtZSIsInN0eWxlZCIsIkJhY2tncm91bmQiLCJSZWFjdEZsb3ciLCJhcHBseUVkZ2VDaGFuZ2VzIiwiYXBwbHlOb2RlQ2hhbmdlcyIsInVzZVJlYWN0RmxvdyIsIlJlYWN0IiwidXNlRWZmZWN0IiwidXNlTWVtbyIsInVzZVJlZiIsInVzZVJlY29pbFZhbHVlIiwidXNlU2V0UmVjb2lsU3RhdGUiLCJUSEVNRV9DT01NT04iLCJUYWciLCJpc0RlZmluZWQiLCJTdHlsZWRSZXNldFJlYWN0Zmxvd1N0eWxlcyIsImRpdiIsIlN0eWxlZFN0YXR1c1RhZ0NvbnRhaW5lciIsInRoZW1lIiwic3BhY2luZyIsImRlZmF1bHRGaXRWaWV3T3B0aW9ucyIsIm1pblpvb20iLCJtYXhab29tIiwiV29ya2Zsb3dEaWFncmFtQ2FudmFzQmFzZSIsIm5vZGVUeXBlcyIsImVkZ2VUeXBlcyIsImNoaWxkcmVuIiwidGFnQ29udGFpbmVyVGVzdElkIiwidGFnQ29sb3IiLCJ0YWdUZXh0IiwicmVhY3RmbG93Iiwic2V0V29ya2Zsb3dSZWFjdEZsb3dSZWZTdGF0ZSIsIndvcmtmbG93RGlhZ3JhbSIsIm5vZGVzIiwiZWRnZXMiLCJyaWdodERyYXdlclN0YXRlIiwicmlnaHREcmF3ZXJXaWR0aCIsIk51bWJlciIsInJlcGxhY2UiLCJzZXRXb3JrZmxvd0RpYWdyYW0iLCJoYW5kbGVOb2Rlc0NoYW5nZSIsIm5vZGVDaGFuZ2VzIiwiZGlhZ3JhbSIsIkVycm9yIiwiaGFuZGxlRWRnZXNDaGFuZ2UiLCJlZGdlQ2hhbmdlcyIsInNldE5vZGVzIiwibWFwIiwibm9kZSIsInNlbGVjdGVkIiwiY29udGFpbmVyUmVmIiwiY3VycmVudCIsInZpZXdwb3J0SW5pdGlhbGl6ZWQiLCJjdXJyZW50Vmlld3BvcnQiLCJnZXRWaWV3cG9ydCIsImZsb3dCb3VuZHMiLCJnZXROb2Rlc0JvdW5kcyIsImdldE5vZGVzIiwidmlzaWJsZVJpZ2h0RHJhd2VyV2lkdGgiLCJ2aWV3cG9ydFgiLCJvZmZzZXRXaWR0aCIsIndpZHRoIiwic2V0Vmlld3BvcnQiLCJ4IiwiZHVyYXRpb24iLCJyZWYiLCJvbkluaXQiLCJ5Iiwiem9vbSIsIm9uTm9kZXNDaGFuZ2UiLCJvbkVkZ2VzQ2hhbmdlIiwib25CZWZvcmVEZWxldGUiLCJwcm9PcHRpb25zIiwiaGlkZUF0dHJpYnV0aW9uIiwibXVsdGlTZWxlY3Rpb25LZXlDb2RlIiwibm9kZXNGb2N1c2FibGUiLCJlZGdlc0ZvY3VzYWJsZSIsIm5vZGVzRHJhZ2dhYmxlIiwibm9kZXNDb25uZWN0YWJsZSIsInBhbmVDbGlja0Rpc3RhbmNlIiwiY29sb3IiLCJib3JkZXIiLCJtZWRpdW0iLCJzaXplIiwiZGF0YS10ZXN0aWQiLCJ0ZXh0Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0EseUJBQXlCLFFBQVEsMkRBQTJEO0FBQ3JHLFNBQVNDLDRCQUE0QixRQUFRLHNFQUFzRTtBQUNuSCxTQUFTQyxtQkFBbUIsUUFBUSx3REFB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

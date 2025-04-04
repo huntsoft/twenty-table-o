@@ -1,0 +1,141 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useFilteredObjectMetadataItems } from "/src/modules/object-metadata/hooks/useFilteredObjectMetadataItems.ts";
+import { Select } from "/src/modules/ui/input/components/Select.tsx";
+import { WorkflowStepBody } from "/src/modules/workflow/workflow-steps/components/WorkflowStepBody.tsx";
+import { WorkflowStepHeader } from "/src/modules/workflow/workflow-steps/components/WorkflowStepHeader.tsx";
+import { MANUAL_TRIGGER_AVAILABILITY_OPTIONS } from "/src/modules/workflow/workflow-trigger/constants/ManualTriggerAvailabilityOptions.ts";
+import { getManualTriggerDefaultSettings } from "/src/modules/workflow/workflow-trigger/utils/getManualTriggerDefaultSettings.ts";
+import { getTriggerIcon } from "/src/modules/workflow/workflow-trigger/utils/getTriggerIcon.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+import { useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+export const WorkflowEditTriggerManualForm = ({ trigger, triggerOptions })=>{
+    _s();
+    const theme = useTheme();
+    const { getIcon } = useIcons();
+    const { activeObjectMetadataItems } = useFilteredObjectMetadataItems();
+    const availableMetadata = activeObjectMetadataItems.map((item)=>({
+            label: item.labelPlural,
+            value: item.nameSingular,
+            Icon: getIcon(item.icon)
+        }));
+    const manualTriggerAvailability = isDefined(trigger.settings.objectType) ? 'WHEN_RECORD_SELECTED' : 'EVERYWHERE';
+    const headerTitle = isDefined(trigger.name) ? trigger.name : 'Manual Trigger';
+    const headerIcon = getTriggerIcon({
+        type: 'MANUAL'
+    });
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(WorkflowStepHeader, {
+                onTitleChange: (newName)=>{
+                    if (triggerOptions.readonly === true) {
+                        return;
+                    }
+                    triggerOptions.onTriggerUpdate({
+                        ...trigger,
+                        name: newName
+                    });
+                },
+                Icon: getIcon(headerIcon),
+                iconColor: theme.font.color.tertiary,
+                initialTitle: headerTitle,
+                headerType: "Trigger · Manual",
+                disabled: triggerOptions.readonly
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx",
+                lineNumber: 58,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(WorkflowStepBody, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(Select, {
+                        dropdownId: "workflow-edit-manual-trigger-availability",
+                        label: "Available",
+                        fullWidth: true,
+                        disabled: triggerOptions.readonly,
+                        value: manualTriggerAvailability,
+                        options: MANUAL_TRIGGER_AVAILABILITY_OPTIONS,
+                        onChange: (updatedTriggerType)=>{
+                            if (triggerOptions.readonly === true) {
+                                return;
+                            }
+                            triggerOptions.onTriggerUpdate({
+                                ...trigger,
+                                settings: getManualTriggerDefaultSettings({
+                                    availability: updatedTriggerType,
+                                    activeObjectMetadataItems
+                                })
+                            });
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx",
+                        lineNumber: 76,
+                        columnNumber: 9
+                    }, this),
+                    manualTriggerAvailability === 'WHEN_RECORD_SELECTED' ? /*#__PURE__*/ _jsxDEV(Select, {
+                        dropdownId: "workflow-edit-manual-trigger-object",
+                        label: "Object",
+                        fullWidth: true,
+                        value: trigger.settings.objectType,
+                        options: availableMetadata,
+                        disabled: triggerOptions.readonly,
+                        onChange: (updatedObject)=>{
+                            if (triggerOptions.readonly === true) {
+                                return;
+                            }
+                            triggerOptions.onTriggerUpdate({
+                                ...trigger,
+                                settings: {
+                                    objectType: updatedObject,
+                                    outputSchema: {}
+                                }
+                            });
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx",
+                        lineNumber: 99,
+                        columnNumber: 11
+                    }, this) : null
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx",
+                lineNumber: 75,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(WorkflowEditTriggerManualForm, "vPTRhTvVdRc6BVAtQghhPWpuZ6s=", false, function() {
+    return [
+        useTheme,
+        useIcons,
+        useFilteredObjectMetadataItems
+    ];
+});
+_c = WorkflowEditTriggerManualForm;
+var _c;
+$RefreshReg$(_c, "WorkflowEditTriggerManualForm");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManualForm.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldvcmtmbG93RWRpdFRyaWdnZXJNYW51YWxGb3JtLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VGaWx0ZXJlZE9iamVjdE1ldGFkYXRhSXRlbXMgfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS9ob29rcy91c2VGaWx0ZXJlZE9iamVjdE1ldGFkYXRhSXRlbXMnO1xuaW1wb3J0IHsgU2VsZWN0IH0gZnJvbSAnQC91aS9pbnB1dC9jb21wb25lbnRzL1NlbGVjdCc7XG5pbXBvcnQge1xuICBXb3JrZmxvd01hbnVhbFRyaWdnZXIsXG4gIFdvcmtmbG93TWFudWFsVHJpZ2dlckF2YWlsYWJpbGl0eSxcbn0gZnJvbSAnQC93b3JrZmxvdy90eXBlcy9Xb3JrZmxvdyc7XG5pbXBvcnQgeyBXb3JrZmxvd1N0ZXBCb2R5IH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93U3RlcEJvZHknO1xuaW1wb3J0IHsgV29ya2Zsb3dTdGVwSGVhZGVyIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93U3RlcEhlYWRlcic7XG5pbXBvcnQgeyBNQU5VQUxfVFJJR0dFUl9BVkFJTEFCSUxJVFlfT1BUSU9OUyB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctdHJpZ2dlci9jb25zdGFudHMvTWFudWFsVHJpZ2dlckF2YWlsYWJpbGl0eU9wdGlvbnMnO1xuaW1wb3J0IHsgZ2V0TWFudWFsVHJpZ2dlckRlZmF1bHRTZXR0aW5ncyB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctdHJpZ2dlci91dGlscy9nZXRNYW51YWxUcmlnZ2VyRGVmYXVsdFNldHRpbmdzJztcbmltcG9ydCB7IGdldFRyaWdnZXJJY29uIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy10cmlnZ2VyL3V0aWxzL2dldFRyaWdnZXJJY29uJztcbmltcG9ydCB7IHVzZVRoZW1lIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHsgaXNEZWZpbmVkIH0gZnJvbSAndHdlbnR5LXNoYXJlZC91dGlscyc7XG5pbXBvcnQgeyBTZWxlY3RPcHRpb24sIHVzZUljb25zIH0gZnJvbSAndHdlbnR5LXVpJztcblxudHlwZSBXb3JrZmxvd0VkaXRUcmlnZ2VyTWFudWFsRm9ybVByb3BzID0ge1xuICB0cmlnZ2VyOiBXb3JrZmxvd01hbnVhbFRyaWdnZXI7XG4gIHRyaWdnZXJPcHRpb25zOlxuICAgIHwge1xuICAgICAgICByZWFkb25seTogdHJ1ZTtcbiAgICAgICAgb25UcmlnZ2VyVXBkYXRlPzogdW5kZWZpbmVkO1xuICAgICAgfVxuICAgIHwge1xuICAgICAgICByZWFkb25seT86IGZhbHNlO1xuICAgICAgICBvblRyaWdnZXJVcGRhdGU6ICh0cmlnZ2VyOiBXb3JrZmxvd01hbnVhbFRyaWdnZXIpID0+IHZvaWQ7XG4gICAgICB9O1xufTtcblxuZXhwb3J0IGNvbnN0IFdvcmtmbG93RWRpdFRyaWdnZXJNYW51YWxGb3JtID0gKHtcbiAgdHJpZ2dlcixcbiAgdHJpZ2dlck9wdGlvbnMsXG59OiBXb3JrZmxvd0VkaXRUcmlnZ2VyTWFudWFsRm9ybVByb3BzKSA9PiB7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcbiAgY29uc3QgeyBnZXRJY29uIH0gPSB1c2VJY29ucygpO1xuXG4gIGNvbnN0IHsgYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcyB9ID0gdXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zKCk7XG5cbiAgY29uc3QgYXZhaWxhYmxlTWV0YWRhdGE6IEFycmF5PFNlbGVjdE9wdGlvbjxzdHJpbmc+PiA9XG4gICAgYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcy5tYXAoKGl0ZW0pID0+ICh7XG4gICAgICBsYWJlbDogaXRlbS5sYWJlbFBsdXJhbCxcbiAgICAgIHZhbHVlOiBpdGVtLm5hbWVTaW5ndWxhcixcbiAgICAgIEljb246IGdldEljb24oaXRlbS5pY29uKSxcbiAgICB9KSk7XG5cbiAgY29uc3QgbWFudWFsVHJpZ2dlckF2YWlsYWJpbGl0eTogV29ya2Zsb3dNYW51YWxUcmlnZ2VyQXZhaWxhYmlsaXR5ID1cbiAgICBpc0RlZmluZWQodHJpZ2dlci5zZXR0aW5ncy5vYmplY3RUeXBlKVxuICAgICAgPyAnV0hFTl9SRUNPUkRfU0VMRUNURUQnXG4gICAgICA6ICdFVkVSWVdIRVJFJztcblxuICBjb25zdCBoZWFkZXJUaXRsZSA9IGlzRGVmaW5lZCh0cmlnZ2VyLm5hbWUpID8gdHJpZ2dlci5uYW1lIDogJ01hbnVhbCBUcmlnZ2VyJztcblxuICBjb25zdCBoZWFkZXJJY29uID0gZ2V0VHJpZ2dlckljb24oe1xuICAgIHR5cGU6ICdNQU5VQUwnLFxuICB9KTtcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8V29ya2Zsb3dTdGVwSGVhZGVyXG4gICAgICAgIG9uVGl0bGVDaGFuZ2U9eyhuZXdOYW1lOiBzdHJpbmcpID0+IHtcbiAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICB9XG5cbiAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgIG5hbWU6IG5ld05hbWUsXG4gICAgICAgICAgfSk7XG4gICAgICAgIH19XG4gICAgICAgIEljb249e2dldEljb24oaGVhZGVySWNvbil9XG4gICAgICAgIGljb25Db2xvcj17dGhlbWUuZm9udC5jb2xvci50ZXJ0aWFyeX1cbiAgICAgICAgaW5pdGlhbFRpdGxlPXtoZWFkZXJUaXRsZX1cbiAgICAgICAgaGVhZGVyVHlwZT1cIlRyaWdnZXIgwrcgTWFudWFsXCJcbiAgICAgICAgZGlzYWJsZWQ9e3RyaWdnZXJPcHRpb25zLnJlYWRvbmx5fVxuICAgICAgLz5cbiAgICAgIDxXb3JrZmxvd1N0ZXBCb2R5PlxuICAgICAgICA8U2VsZWN0XG4gICAgICAgICAgZHJvcGRvd25JZD1cIndvcmtmbG93LWVkaXQtbWFudWFsLXRyaWdnZXItYXZhaWxhYmlsaXR5XCJcbiAgICAgICAgICBsYWJlbD1cIkF2YWlsYWJsZVwiXG4gICAgICAgICAgZnVsbFdpZHRoXG4gICAgICAgICAgZGlzYWJsZWQ9e3RyaWdnZXJPcHRpb25zLnJlYWRvbmx5fVxuICAgICAgICAgIHZhbHVlPXttYW51YWxUcmlnZ2VyQXZhaWxhYmlsaXR5fVxuICAgICAgICAgIG9wdGlvbnM9e01BTlVBTF9UUklHR0VSX0FWQUlMQUJJTElUWV9PUFRJT05TfVxuICAgICAgICAgIG9uQ2hhbmdlPXsodXBkYXRlZFRyaWdnZXJUeXBlKSA9PiB7XG4gICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgICAuLi50cmlnZ2VyLFxuICAgICAgICAgICAgICBzZXR0aW5nczogZ2V0TWFudWFsVHJpZ2dlckRlZmF1bHRTZXR0aW5ncyh7XG4gICAgICAgICAgICAgICAgYXZhaWxhYmlsaXR5OiB1cGRhdGVkVHJpZ2dlclR5cGUsXG4gICAgICAgICAgICAgICAgYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcyxcbiAgICAgICAgICAgICAgfSksXG4gICAgICAgICAgICB9KTtcbiAgICAgICAgICB9fVxuICAgICAgICAvPlxuXG4gICAgICAgIHttYW51YWxUcmlnZ2VyQXZhaWxhYmlsaXR5ID09PSAnV0hFTl9SRUNPUkRfU0VMRUNURUQnID8gKFxuICAgICAgICAgIDxTZWxlY3RcbiAgICAgICAgICAgIGRyb3Bkb3duSWQ9XCJ3b3JrZmxvdy1lZGl0LW1hbnVhbC10cmlnZ2VyLW9iamVjdFwiXG4gICAgICAgICAgICBsYWJlbD1cIk9iamVjdFwiXG4gICAgICAgICAgICBmdWxsV2lkdGhcbiAgICAgICAgICAgIHZhbHVlPXt0cmlnZ2VyLnNldHRpbmdzLm9iamVjdFR5cGV9XG4gICAgICAgICAgICBvcHRpb25zPXthdmFpbGFibGVNZXRhZGF0YX1cbiAgICAgICAgICAgIGRpc2FibGVkPXt0cmlnZ2VyT3B0aW9ucy5yZWFkb25seX1cbiAgICAgICAgICAgIG9uQ2hhbmdlPXsodXBkYXRlZE9iamVjdCkgPT4ge1xuICAgICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgICAgIC4uLnRyaWdnZXIsXG4gICAgICAgICAgICAgICAgc2V0dGluZ3M6IHtcbiAgICAgICAgICAgICAgICAgIG9iamVjdFR5cGU6IHVwZGF0ZWRPYmplY3QsXG4gICAgICAgICAgICAgICAgICBvdXRwdXRTY2hlbWE6IHt9LFxuICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgIH0pO1xuICAgICAgICAgICAgfX1cbiAgICAgICAgICAvPlxuICAgICAgICApIDogbnVsbH1cbiAgICAgIDwvV29ya2Zsb3dTdGVwQm9keT5cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zIiwiU2VsZWN0IiwiV29ya2Zsb3dTdGVwQm9keSIsIldvcmtmbG93U3RlcEhlYWRlciIsIk1BTlVBTF9UUklHR0VSX0FWQUlMQUJJTElUWV9PUFRJT05TIiwiZ2V0TWFudWFsVHJpZ2dlckRlZmF1bHRTZXR0aW5ncyIsImdldFRyaWdnZXJJY29uIiwidXNlVGhlbWUiLCJpc0RlZmluZWQiLCJ1c2VJY29ucyIsIldvcmtmbG93RWRpdFRyaWdnZXJNYW51YWxGb3JtIiwidHJpZ2dlciIsInRyaWdnZXJPcHRpb25zIiwidGhlbWUiLCJnZXRJY29uIiwiYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcyIsImF2YWlsYWJsZU1ldGFkYXRhIiwibWFwIiwiaXRlbSIsImxhYmVsIiwibGFiZWxQbHVyYWwiLCJ2YWx1ZSIsIm5hbWVTaW5ndWxhciIsIkljb24iLCJpY29uIiwibWFudWFsVHJpZ2dlckF2YWlsYWJpbGl0eSIsInNldHRpbmdzIiwib2JqZWN0VHlwZSIsImhlYWRlclRpdGxlIiwibmFtZSIsImhlYWRlckljb24iLCJ0eXBlIiwib25UaXRsZUNoYW5nZSIsIm5ld05hbWUiLCJyZWFkb25seSIsIm9uVHJpZ2dlclVwZGF0ZSIsImljb25Db2xvciIsImZvbnQiLCJjb2xvciIsInRlcnRpYXJ5IiwiaW5pdGlhbFRpdGxlIiwiaGVhZGVyVHlwZSIsImRpc2FibGVkIiwiZHJvcGRvd25JZCIsImZ1bGxXaWR0aCIsIm9wdGlvbnMiLCJvbkNoYW5nZSIsInVwZGF0ZWRUcmlnZ2VyVHlwZSIsImF2YWlsYWJpbGl0eSIsInVwZGF0ZWRPYmplY3QiLCJvdXRwdXRTY2hlbWEiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSw4QkFBOEIsUUFBUSx5REFBeUQ7QUFDeEcsU0FBU0MsTUFBTSxRQUFRLCtCQUErQjtBQUt0RCxTQUFTQyxnQkFBZ0IsUUFBUSx3REFBd0Q7QUFDekYsU0FBU0Msa0JBQWtCLFFBQVEsMERBQTBEO0FBQzdGLFNBQVNDLG1DQUFtQyxRQUFRLHlFQUF5RTtBQUM3SCxTQUFTQywrQkFBK0IsUUFBUSxvRUFBb0U7QUFDcEgsU0FBU0MsY0FBYyxRQUFRLG1EQUFtRDtBQUNsRixTQUFTQyxRQUFRLFFBQVEsaUJBQWlCO0FBQzFDLFNBQVNDLFNBQVMsUUFBUSxzQkFBc0I7QUFDaEQsU0FBdUJDLFFBQVEsUUFBUSxZQUFZO0FBZW5ELE9BQU8sTUFBTUMsZ0NBQWdDLENBQUMsRUFDNUNDLE9BQU8sRUFDUEMsY0FBYyxFQUNxQjs7SUFDbkMsTUFBTUMsUUFBUU47SUFDZCxNQUFNLEVBQUVPLE9BQU8sRUFBRSxHQUFHTDtJQUVwQixNQUFNLEVBQUVNLHlCQUF5QixFQUFFLEdBQUdmO0lBRXRDLE1BQU1nQixvQkFDSkQsMEJBQTBCRSxHQUFHLENBQUMsQ0FBQ0MsT0FBVSxDQUFBO1lBQ3ZDQyxPQUFPRCxLQUFLRSxXQUFXO1lBQ3ZCQyxPQUFPSCxLQUFLSSxZQUFZO1lBQ3hCQyxNQUFNVCxRQUFRSSxLQUFLTSxJQUFJO1FBQ3pCLENBQUE7SUFFRixNQUFNQyw0QkFDSmpCLFVBQVVHLFFBQVFlLFFBQVEsQ0FBQ0MsVUFBVSxJQUNqQyx5QkFDQTtJQUVOLE1BQU1DLGNBQWNwQixVQUFVRyxRQUFRa0IsSUFBSSxJQUFJbEIsUUFBUWtCLElBQUksR0FBRztJQUU3RCxNQUFNQyxhQUFheEIsZUFBZTtRQUNoQ3lCLE1BQU07SUFDUjtJQUVBLHFCQUNFOzswQkFDRSxRQUFDNUI7Z0JBQ0M2QixlQUFlLENBQUNDO29CQUNkLElBQUlyQixlQUFlc0IsUUFBUSxLQUFLLE1BQU07d0JBQ3BDO29CQUNGO29CQUVBdEIsZUFBZXVCLGVBQWUsQ0FBQzt3QkFDN0IsR0FBR3hCLE9BQU87d0JBQ1ZrQixNQUFNSTtvQkFDUjtnQkFDRjtnQkFDQVYsTUFBTVQsUUFBUWdCO2dCQUNkTSxXQUFXdkIsTUFBTXdCLElBQUksQ0FBQ0MsS0FBSyxDQUFDQyxRQUFRO2dCQUNwQ0MsY0FBY1o7Z0JBQ2RhLFlBQVc7Z0JBQ1hDLFVBQVU5QixlQUFlc0IsUUFBUTs7Ozs7OzBCQUVuQyxRQUFDaEM7O2tDQUNDLFFBQUNEO3dCQUNDMEMsWUFBVzt3QkFDWHhCLE9BQU07d0JBQ055QixTQUFTO3dCQUNURixVQUFVOUIsZUFBZXNCLFFBQVE7d0JBQ2pDYixPQUFPSTt3QkFDUG9CLFNBQVN6Qzt3QkFDVDBDLFVBQVUsQ0FBQ0M7NEJBQ1QsSUFBSW5DLGVBQWVzQixRQUFRLEtBQUssTUFBTTtnQ0FDcEM7NEJBQ0Y7NEJBRUF0QixlQUFldUIsZUFBZSxDQUFDO2dDQUM3QixHQUFHeEIsT0FBTztnQ0FDVmUsVUFBVXJCLGdDQUFnQztvQ0FDeEMyQyxjQUFjRDtvQ0FDZGhDO2dDQUNGOzRCQUNGO3dCQUNGOzs7Ozs7b0JBR0RVLDhCQUE4Qix1Q0FDN0IsUUFBQ3hCO3dCQUNDMEMsWUFBVzt3QkFDWHhCLE9BQU07d0JBQ055QixTQUFTO3dCQUNUdkIsT0FBT1YsUUFBUWUsUUFBUSxDQUFDQyxVQUFVO3dCQUNsQ2tCLFNBQVM3Qjt3QkFDVDBCLFVBQVU5QixlQUFlc0IsUUFBUTt3QkFDakNZLFVBQVUsQ0FBQ0c7NEJBQ1QsSUFBSXJDLGVBQWVzQixRQUFRLEtBQUssTUFBTTtnQ0FDcEM7NEJBQ0Y7NEJBRUF0QixlQUFldUIsZUFBZSxDQUFDO2dDQUM3QixHQUFHeEIsT0FBTztnQ0FDVmUsVUFBVTtvQ0FDUkMsWUFBWXNCO29DQUNaQyxjQUFjLENBQUM7Z0NBQ2pCOzRCQUNGO3dCQUNGOzs7OzsrQkFFQTs7Ozs7Ozs7O0FBSVosRUFBRTtHQS9GV3hDOztRQUlHSDtRQUNNRTtRQUVrQlQ7OztLQVAzQlUifQ==

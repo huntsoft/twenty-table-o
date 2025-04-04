@@ -1,0 +1,163 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { usePhonesField } from "/src/modules/object-record/record-field/meta-types/hooks/usePhonesField.ts";
+import { PhonesFieldMenuItem } from "/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldMenuItem.tsx";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { parsePhoneNumber } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/libphonenumber-js.js?v=226f7286";
+import ReactPhoneNumberInput from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-phone-number-input.js?v=226f7286";
+import "/@fs/D:/twenty-table-o/node_modules/react-phone-number-input/style.css";
+import { TEXT_INPUT_STYLE } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { MultiItemFieldInput } from "/src/modules/object-record/record-field/meta-types/input/components/MultiItemFieldInput.tsx";
+import { createPhonesFromFieldValue } from "/src/modules/object-record/record-field/meta-types/input/utils/phonesUtils.ts";
+import { PhoneCountryPickerDropdownButton } from "/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx";
+import { css } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import { FieldMetadataType } from "/src/generated-metadata/graphql.ts";
+import { stripSimpleQuotesFromString } from "/src/utils/string/stripSimpleQuotesFromString.ts";
+export const DEFAULT_PHONE_CALLING_CODE = '1';
+const StyledCustomPhoneInputContainer = styled.div`
+  ${({ hasItem, theme })=>hasItem && css`
+      background-color: ${theme.background.transparent.lighter};
+      border-radius: 4px;
+      border: 1px solid ${theme.border.color.medium};
+      height: 30px;
+    `}
+`;
+const StyledCustomPhoneInput = styled(ReactPhoneNumberInput)`
+  ${TEXT_INPUT_STYLE}
+  padding: 0;
+  height: 100%;
+
+  .PhoneInputInput {
+    background: none;
+    border: none;
+    color: ${({ theme })=>theme.font.color.primary};
+    margin-left: ${({ theme })=>theme.spacing(2)};
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: ${({ theme })=>theme.font.color.light};
+      font-family: ${({ theme })=>theme.font.family};
+      font-weight: ${({ theme })=>theme.font.weight.medium};
+    }
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  & svg {
+    border-radius: ${({ theme })=>theme.border.radius.xs};
+    height: 12px;
+  }
+  width: calc(100% - ${({ theme })=>theme.spacing(8)});
+`;
+export const PhonesFieldInput = ({ onCancel, onClickOutside })=>{
+    _s();
+    const { persistPhonesField, hotkeyScope, fieldValue, fieldDefinition } = usePhonesField();
+    const phones = createPhonesFromFieldValue(fieldValue);
+    const defaultCountry = stripSimpleQuotesFromString(fieldDefinition?.defaultValue?.primaryPhoneCountryCode);
+    const handlePersistPhones = (updatedPhones)=>{
+        const [nextPrimaryPhone, ...nextAdditionalPhones] = updatedPhones;
+        persistPhonesField({
+            primaryPhoneNumber: nextPrimaryPhone?.number ?? '',
+            primaryPhoneCountryCode: nextPrimaryPhone?.countryCode ?? '',
+            primaryPhoneCallingCode: nextPrimaryPhone?.callingCode ?? '',
+            additionalPhones: nextAdditionalPhones
+        });
+    };
+    const isPrimaryPhone = (index)=>index === 0 && phones?.length > 1;
+    return /*#__PURE__*/ _jsxDEV(MultiItemFieldInput, {
+        items: phones,
+        onPersist: handlePersistPhones,
+        onClickOutside: onClickOutside,
+        onCancel: onCancel,
+        placeholder: "Phone",
+        fieldMetadataType: FieldMetadataType.PHONES,
+        formatInput: (input)=>{
+            const phone = parsePhoneNumber(input);
+            if (phone !== undefined) {
+                return {
+                    number: phone.nationalNumber,
+                    callingCode: `+${phone.countryCallingCode}`,
+                    countryCode: phone.country
+                };
+            }
+            return {
+                number: '',
+                callingCode: '',
+                countryCode: ''
+            };
+        },
+        renderItem: ({ value: phone, index, handleEdit, handleSetPrimary, handleDelete })=>/*#__PURE__*/ _jsxDEV(PhonesFieldMenuItem, {
+                dropdownId: `${hotkeyScope}-phones-${index}`,
+                isPrimary: isPrimaryPhone(index),
+                phone: phone,
+                onEdit: handleEdit,
+                onSetAsPrimary: handleSetPrimary,
+                onDelete: handleDelete
+            }, index, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx",
+                lineNumber: 128,
+                columnNumber: 9
+            }, void 0),
+        renderInput: ({ value, onChange, autoFocus, placeholder })=>{
+            return /*#__PURE__*/ _jsxDEV(StyledCustomPhoneInputContainer, {
+                hasItem: !!phones.length,
+                children: /*#__PURE__*/ _jsxDEV(StyledCustomPhoneInput, {
+                    autoFocus: autoFocus,
+                    placeholder: placeholder,
+                    value: value,
+                    onChange: onChange,
+                    international: true,
+                    withCountryCallingCode: true,
+                    countrySelectComponent: PhoneCountryPickerDropdownButton,
+                    defaultCountry: defaultCountry
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx",
+                    lineNumber: 141,
+                    columnNumber: 13
+                }, void 0)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx",
+                lineNumber: 140,
+                columnNumber: 11
+            }, void 0);
+        },
+        hotkeyScope: hotkeyScope
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx",
+        lineNumber: 99,
+        columnNumber: 5
+    }, this);
+};
+_s(PhonesFieldInput, "EaoddRWnTO90+c/Eog6E0WNmeEw=", false, function() {
+    return [
+        usePhonesField
+    ];
+});
+_c = PhonesFieldInput;
+var _c;
+$RefreshReg$(_c, "PhonesFieldInput");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-field/meta-types/input/components/PhonesFieldInput.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlBob25lc0ZpZWxkSW5wdXQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZVBob25lc0ZpZWxkIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1maWVsZC9tZXRhLXR5cGVzL2hvb2tzL3VzZVBob25lc0ZpZWxkJztcbmltcG9ydCB7IFBob25lc0ZpZWxkTWVudUl0ZW0gfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL21ldGEtdHlwZXMvaW5wdXQvY29tcG9uZW50cy9QaG9uZXNGaWVsZE1lbnVJdGVtJztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IEUxNjROdW1iZXIsIHBhcnNlUGhvbmVOdW1iZXIgfSBmcm9tICdsaWJwaG9uZW51bWJlci1qcyc7XG5pbXBvcnQgUmVhY3RQaG9uZU51bWJlcklucHV0IGZyb20gJ3JlYWN0LXBob25lLW51bWJlci1pbnB1dCc7XG5pbXBvcnQgJ3JlYWN0LXBob25lLW51bWJlci1pbnB1dC9zdHlsZS5jc3MnO1xuaW1wb3J0IHsgVEVYVF9JTlBVVF9TVFlMRSB9IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IE11bHRpSXRlbUZpZWxkSW5wdXQgfSBmcm9tICcuL011bHRpSXRlbUZpZWxkSW5wdXQnO1xuXG5pbXBvcnQgeyBjcmVhdGVQaG9uZXNGcm9tRmllbGRWYWx1ZSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZmllbGQvbWV0YS10eXBlcy9pbnB1dC91dGlscy9waG9uZXNVdGlscyc7XG5pbXBvcnQgeyBQaG9uZUNvdW50cnlQaWNrZXJEcm9wZG93bkJ1dHRvbiB9IGZyb20gJ0AvdWkvaW5wdXQvY29tcG9uZW50cy9pbnRlcm5hbC9waG9uZS9jb21wb25lbnRzL1Bob25lQ291bnRyeVBpY2tlckRyb3Bkb3duQnV0dG9uJztcbmltcG9ydCB7IGNzcyB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCB7IEZpZWxkTWV0YWRhdGFUeXBlIH0gZnJvbSAnfi9nZW5lcmF0ZWQtbWV0YWRhdGEvZ3JhcGhxbCc7XG5pbXBvcnQgeyBzdHJpcFNpbXBsZVF1b3Rlc0Zyb21TdHJpbmcgfSBmcm9tICd+L3V0aWxzL3N0cmluZy9zdHJpcFNpbXBsZVF1b3Rlc0Zyb21TdHJpbmcnO1xuXG5leHBvcnQgY29uc3QgREVGQVVMVF9QSE9ORV9DQUxMSU5HX0NPREUgPSAnMSc7XG5cbmNvbnN0IFN0eWxlZEN1c3RvbVBob25lSW5wdXRDb250YWluZXIgPSBzdHlsZWQuZGl2PHtcbiAgaGFzSXRlbTogYm9vbGVhbjtcbn0+YFxuICAkeyh7IGhhc0l0ZW0sIHRoZW1lIH0pID0+XG4gICAgaGFzSXRlbSAmJlxuICAgIGNzc2BcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICR7dGhlbWUuYmFja2dyb3VuZC50cmFuc3BhcmVudC5saWdodGVyfTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkICR7dGhlbWUuYm9yZGVyLmNvbG9yLm1lZGl1bX07XG4gICAgICBoZWlnaHQ6IDMwcHg7XG4gICAgYH1cbmA7XG5cbmNvbnN0IFN0eWxlZEN1c3RvbVBob25lSW5wdXQgPSBzdHlsZWQoUmVhY3RQaG9uZU51bWJlcklucHV0KWBcbiAgJHtURVhUX0lOUFVUX1NUWUxFfVxuICBwYWRkaW5nOiAwO1xuICBoZWlnaHQ6IDEwMCU7XG5cbiAgLlBob25lSW5wdXRJbnB1dCB7XG4gICAgYmFja2dyb3VuZDogbm9uZTtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5wcmltYXJ5fTtcbiAgICBtYXJnaW4tbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcblxuICAgICY6OnBsYWNlaG9sZGVyLFxuICAgICY6Oi13ZWJraXQtaW5wdXQtcGxhY2Vob2xkZXIge1xuICAgICAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5saWdodH07XG4gICAgICBmb250LWZhbWlseTogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmZhbWlseX07XG4gICAgICBmb250LXdlaWdodDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LndlaWdodC5tZWRpdW19O1xuICAgIH1cblxuICAgIDpmb2N1cyB7XG4gICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cbiAgfVxuXG4gICYgc3ZnIHtcbiAgICBib3JkZXItcmFkaXVzOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5yYWRpdXMueHN9O1xuICAgIGhlaWdodDogMTJweDtcbiAgfVxuICB3aWR0aDogY2FsYygxMDAlIC0gJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDgpfSk7XG5gO1xuXG50eXBlIFBob25lc0ZpZWxkSW5wdXRQcm9wcyA9IHtcbiAgb25DYW5jZWw/OiAoKSA9PiB2b2lkO1xuICBvbkNsaWNrT3V0c2lkZT86IChldmVudDogTW91c2VFdmVudCB8IFRvdWNoRXZlbnQpID0+IHZvaWQ7XG59O1xuXG5leHBvcnQgY29uc3QgUGhvbmVzRmllbGRJbnB1dCA9ICh7XG4gIG9uQ2FuY2VsLFxuICBvbkNsaWNrT3V0c2lkZSxcbn06IFBob25lc0ZpZWxkSW5wdXRQcm9wcykgPT4ge1xuICBjb25zdCB7IHBlcnNpc3RQaG9uZXNGaWVsZCwgaG90a2V5U2NvcGUsIGZpZWxkVmFsdWUsIGZpZWxkRGVmaW5pdGlvbiB9ID1cbiAgICB1c2VQaG9uZXNGaWVsZCgpO1xuXG4gIGNvbnN0IHBob25lcyA9IGNyZWF0ZVBob25lc0Zyb21GaWVsZFZhbHVlKGZpZWxkVmFsdWUpO1xuXG4gIGNvbnN0IGRlZmF1bHRDb3VudHJ5ID0gc3RyaXBTaW1wbGVRdW90ZXNGcm9tU3RyaW5nKFxuICAgIGZpZWxkRGVmaW5pdGlvbj8uZGVmYXVsdFZhbHVlPy5wcmltYXJ5UGhvbmVDb3VudHJ5Q29kZSxcbiAgKTtcblxuICBjb25zdCBoYW5kbGVQZXJzaXN0UGhvbmVzID0gKFxuICAgIHVwZGF0ZWRQaG9uZXM6IHtcbiAgICAgIG51bWJlcjogc3RyaW5nO1xuICAgICAgY291bnRyeUNvZGU6IHN0cmluZztcbiAgICAgIGNhbGxpbmdDb2RlOiBzdHJpbmc7XG4gICAgfVtdLFxuICApID0+IHtcbiAgICBjb25zdCBbbmV4dFByaW1hcnlQaG9uZSwgLi4ubmV4dEFkZGl0aW9uYWxQaG9uZXNdID0gdXBkYXRlZFBob25lcztcbiAgICBwZXJzaXN0UGhvbmVzRmllbGQoe1xuICAgICAgcHJpbWFyeVBob25lTnVtYmVyOiBuZXh0UHJpbWFyeVBob25lPy5udW1iZXIgPz8gJycsXG4gICAgICBwcmltYXJ5UGhvbmVDb3VudHJ5Q29kZTogbmV4dFByaW1hcnlQaG9uZT8uY291bnRyeUNvZGUgPz8gJycsXG4gICAgICBwcmltYXJ5UGhvbmVDYWxsaW5nQ29kZTogbmV4dFByaW1hcnlQaG9uZT8uY2FsbGluZ0NvZGUgPz8gJycsXG4gICAgICBhZGRpdGlvbmFsUGhvbmVzOiBuZXh0QWRkaXRpb25hbFBob25lcyxcbiAgICB9KTtcbiAgfTtcblxuICBjb25zdCBpc1ByaW1hcnlQaG9uZSA9IChpbmRleDogbnVtYmVyKSA9PiBpbmRleCA9PT0gMCAmJiBwaG9uZXM/Lmxlbmd0aCA+IDE7XG5cbiAgcmV0dXJuIChcbiAgICA8TXVsdGlJdGVtRmllbGRJbnB1dFxuICAgICAgaXRlbXM9e3Bob25lc31cbiAgICAgIG9uUGVyc2lzdD17aGFuZGxlUGVyc2lzdFBob25lc31cbiAgICAgIG9uQ2xpY2tPdXRzaWRlPXtvbkNsaWNrT3V0c2lkZX1cbiAgICAgIG9uQ2FuY2VsPXtvbkNhbmNlbH1cbiAgICAgIHBsYWNlaG9sZGVyPVwiUGhvbmVcIlxuICAgICAgZmllbGRNZXRhZGF0YVR5cGU9e0ZpZWxkTWV0YWRhdGFUeXBlLlBIT05FU31cbiAgICAgIGZvcm1hdElucHV0PXsoaW5wdXQpID0+IHtcbiAgICAgICAgY29uc3QgcGhvbmUgPSBwYXJzZVBob25lTnVtYmVyKGlucHV0KTtcbiAgICAgICAgaWYgKHBob25lICE9PSB1bmRlZmluZWQpIHtcbiAgICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgbnVtYmVyOiBwaG9uZS5uYXRpb25hbE51bWJlcixcbiAgICAgICAgICAgIGNhbGxpbmdDb2RlOiBgKyR7cGhvbmUuY291bnRyeUNhbGxpbmdDb2RlfWAsXG4gICAgICAgICAgICBjb3VudHJ5Q29kZTogcGhvbmUuY291bnRyeSBhcyBzdHJpbmcsXG4gICAgICAgICAgfTtcbiAgICAgICAgfVxuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgIG51bWJlcjogJycsXG4gICAgICAgICAgY2FsbGluZ0NvZGU6ICcnLFxuICAgICAgICAgIGNvdW50cnlDb2RlOiAnJyxcbiAgICAgICAgfTtcbiAgICAgIH19XG4gICAgICByZW5kZXJJdGVtPXsoe1xuICAgICAgICB2YWx1ZTogcGhvbmUsXG4gICAgICAgIGluZGV4LFxuICAgICAgICBoYW5kbGVFZGl0LFxuICAgICAgICBoYW5kbGVTZXRQcmltYXJ5LFxuICAgICAgICBoYW5kbGVEZWxldGUsXG4gICAgICB9KSA9PiAoXG4gICAgICAgIDxQaG9uZXNGaWVsZE1lbnVJdGVtXG4gICAgICAgICAga2V5PXtpbmRleH1cbiAgICAgICAgICBkcm9wZG93bklkPXtgJHtob3RrZXlTY29wZX0tcGhvbmVzLSR7aW5kZXh9YH1cbiAgICAgICAgICBpc1ByaW1hcnk9e2lzUHJpbWFyeVBob25lKGluZGV4KX1cbiAgICAgICAgICBwaG9uZT17cGhvbmV9XG4gICAgICAgICAgb25FZGl0PXtoYW5kbGVFZGl0fVxuICAgICAgICAgIG9uU2V0QXNQcmltYXJ5PXtoYW5kbGVTZXRQcmltYXJ5fVxuICAgICAgICAgIG9uRGVsZXRlPXtoYW5kbGVEZWxldGV9XG4gICAgICAgIC8+XG4gICAgICApfVxuICAgICAgcmVuZGVySW5wdXQ9eyh7IHZhbHVlLCBvbkNoYW5nZSwgYXV0b0ZvY3VzLCBwbGFjZWhvbGRlciB9KSA9PiB7XG4gICAgICAgIHJldHVybiAoXG4gICAgICAgICAgPFN0eWxlZEN1c3RvbVBob25lSW5wdXRDb250YWluZXIgaGFzSXRlbT17ISFwaG9uZXMubGVuZ3RofT5cbiAgICAgICAgICAgIDxTdHlsZWRDdXN0b21QaG9uZUlucHV0XG4gICAgICAgICAgICAgIGF1dG9Gb2N1cz17YXV0b0ZvY3VzfVxuICAgICAgICAgICAgICBwbGFjZWhvbGRlcj17cGxhY2Vob2xkZXJ9XG4gICAgICAgICAgICAgIHZhbHVlPXt2YWx1ZSBhcyBFMTY0TnVtYmVyfVxuICAgICAgICAgICAgICBvbkNoYW5nZT17b25DaGFuZ2UgYXMgdW5rbm93biBhcyAobmV3VmFsdWU6IEUxNjROdW1iZXIpID0+IHZvaWR9XG4gICAgICAgICAgICAgIGludGVybmF0aW9uYWw9e3RydWV9XG4gICAgICAgICAgICAgIHdpdGhDb3VudHJ5Q2FsbGluZ0NvZGU9e3RydWV9XG4gICAgICAgICAgICAgIGNvdW50cnlTZWxlY3RDb21wb25lbnQ9e1Bob25lQ291bnRyeVBpY2tlckRyb3Bkb3duQnV0dG9ufVxuICAgICAgICAgICAgICBkZWZhdWx0Q291bnRyeT17ZGVmYXVsdENvdW50cnl9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvU3R5bGVkQ3VzdG9tUGhvbmVJbnB1dENvbnRhaW5lcj5cbiAgICAgICAgKTtcbiAgICAgIH19XG4gICAgICBob3RrZXlTY29wZT17aG90a2V5U2NvcGV9XG4gICAgLz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlUGhvbmVzRmllbGQiLCJQaG9uZXNGaWVsZE1lbnVJdGVtIiwic3R5bGVkIiwicGFyc2VQaG9uZU51bWJlciIsIlJlYWN0UGhvbmVOdW1iZXJJbnB1dCIsIlRFWFRfSU5QVVRfU1RZTEUiLCJNdWx0aUl0ZW1GaWVsZElucHV0IiwiY3JlYXRlUGhvbmVzRnJvbUZpZWxkVmFsdWUiLCJQaG9uZUNvdW50cnlQaWNrZXJEcm9wZG93bkJ1dHRvbiIsImNzcyIsIkZpZWxkTWV0YWRhdGFUeXBlIiwic3RyaXBTaW1wbGVRdW90ZXNGcm9tU3RyaW5nIiwiREVGQVVMVF9QSE9ORV9DQUxMSU5HX0NPREUiLCJTdHlsZWRDdXN0b21QaG9uZUlucHV0Q29udGFpbmVyIiwiZGl2IiwiaGFzSXRlbSIsInRoZW1lIiwiYmFja2dyb3VuZCIsInRyYW5zcGFyZW50IiwibGlnaHRlciIsImJvcmRlciIsImNvbG9yIiwibWVkaXVtIiwiU3R5bGVkQ3VzdG9tUGhvbmVJbnB1dCIsImZvbnQiLCJwcmltYXJ5Iiwic3BhY2luZyIsImxpZ2h0IiwiZmFtaWx5Iiwid2VpZ2h0IiwicmFkaXVzIiwieHMiLCJQaG9uZXNGaWVsZElucHV0Iiwib25DYW5jZWwiLCJvbkNsaWNrT3V0c2lkZSIsInBlcnNpc3RQaG9uZXNGaWVsZCIsImhvdGtleVNjb3BlIiwiZmllbGRWYWx1ZSIsImZpZWxkRGVmaW5pdGlvbiIsInBob25lcyIsImRlZmF1bHRDb3VudHJ5IiwiZGVmYXVsdFZhbHVlIiwicHJpbWFyeVBob25lQ291bnRyeUNvZGUiLCJoYW5kbGVQZXJzaXN0UGhvbmVzIiwidXBkYXRlZFBob25lcyIsIm5leHRQcmltYXJ5UGhvbmUiLCJuZXh0QWRkaXRpb25hbFBob25lcyIsInByaW1hcnlQaG9uZU51bWJlciIsIm51bWJlciIsImNvdW50cnlDb2RlIiwicHJpbWFyeVBob25lQ2FsbGluZ0NvZGUiLCJjYWxsaW5nQ29kZSIsImFkZGl0aW9uYWxQaG9uZXMiLCJpc1ByaW1hcnlQaG9uZSIsImluZGV4IiwibGVuZ3RoIiwiaXRlbXMiLCJvblBlcnNpc3QiLCJwbGFjZWhvbGRlciIsImZpZWxkTWV0YWRhdGFUeXBlIiwiUEhPTkVTIiwiZm9ybWF0SW5wdXQiLCJpbnB1dCIsInBob25lIiwidW5kZWZpbmVkIiwibmF0aW9uYWxOdW1iZXIiLCJjb3VudHJ5Q2FsbGluZ0NvZGUiLCJjb3VudHJ5IiwicmVuZGVySXRlbSIsInZhbHVlIiwiaGFuZGxlRWRpdCIsImhhbmRsZVNldFByaW1hcnkiLCJoYW5kbGVEZWxldGUiLCJkcm9wZG93bklkIiwiaXNQcmltYXJ5Iiwib25FZGl0Iiwib25TZXRBc1ByaW1hcnkiLCJvbkRlbGV0ZSIsInJlbmRlcklucHV0Iiwib25DaGFuZ2UiLCJhdXRvRm9jdXMiLCJpbnRlcm5hdGlvbmFsIiwid2l0aENvdW50cnlDYWxsaW5nQ29kZSIsImNvdW50cnlTZWxlY3RDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSxjQUFjLFFBQVEsK0RBQStEO0FBQzlGLFNBQVNDLG1CQUFtQixRQUFRLCtFQUErRTtBQUNuSCxPQUFPQyxZQUFZLGtCQUFrQjtBQUNyQyxTQUFxQkMsZ0JBQWdCLFFBQVEsb0JBQW9CO0FBQ2pFLE9BQU9DLDJCQUEyQiwyQkFBMkI7QUFDN0QsT0FBTyxxQ0FBcUM7QUFDNUMsU0FBU0MsZ0JBQWdCLFFBQVEsWUFBWTtBQUU3QyxTQUFTQyxtQkFBbUIsUUFBUSx3QkFBd0I7QUFFNUQsU0FBU0MsMEJBQTBCLFFBQVEsa0VBQWtFO0FBQzdHLFNBQVNDLGdDQUFnQyxRQUFRLG1GQUFtRjtBQUNwSSxTQUFTQyxHQUFHLFFBQVEsaUJBQWlCO0FBQ3JDLFNBQVNDLGlCQUFpQixRQUFRLCtCQUErQjtBQUNqRSxTQUFTQywyQkFBMkIsUUFBUSw2Q0FBNkM7QUFFekYsT0FBTyxNQUFNQyw2QkFBNkIsSUFBSTtBQUU5QyxNQUFNQyxrQ0FBa0NYLE9BQU9ZLEdBQUcsQUFFaEQsQ0FBQztFQUNELEVBQUUsQ0FBQyxFQUFFQyxPQUFPLEVBQUVDLEtBQUssRUFBRSxHQUNuQkQsV0FDQU4sR0FBRyxDQUFDO3dCQUNnQixFQUFFTyxNQUFNQyxVQUFVLENBQUNDLFdBQVcsQ0FBQ0MsT0FBTyxDQUFDOzt3QkFFdkMsRUFBRUgsTUFBTUksTUFBTSxDQUFDQyxLQUFLLENBQUNDLE1BQU0sQ0FBQzs7SUFFaEQsQ0FBQyxDQUFDO0FBQ04sQ0FBQztBQUVELE1BQU1DLHlCQUF5QnJCLE9BQU9FLHNCQUFzQixDQUFDO0VBQzNELEVBQUVDLGlCQUFpQjs7Ozs7OztXQU9WLEVBQUUsQ0FBQyxFQUFFVyxLQUFLLEVBQUUsR0FBS0Es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

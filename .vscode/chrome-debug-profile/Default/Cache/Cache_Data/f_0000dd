@@ -1,0 +1,139 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { FavoriteFolderPickerFooter } from "/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPickerFooter.tsx";
+import { FavoriteFolderPickerList } from "/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPickerList.tsx";
+import { FavoriteFolderPickerSearchInput } from "/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPickerSearchInput.tsx";
+import { useFavoriteFolderPicker } from "/src/modules/favorites/favorite-folder-picker/hooks/useFavoriteFolderPicker.ts";
+import { FavoriteFolderPickerInstanceContext } from "/src/modules/favorites/favorite-folder-picker/states/context/FavoriteFolderPickerInstanceContext.ts";
+import { favoriteFolderSearchFilterComponentState } from "/src/modules/favorites/favorite-folder-picker/states/favoriteFoldersSearchFilterComponentState.ts";
+import { isFavoriteFolderCreatingState } from "/src/modules/favorites/states/isFavoriteFolderCreatingState.ts";
+import { DropdownMenu } from "/src/modules/ui/layout/dropdown/components/DropdownMenu.tsx";
+import { DropdownMenuItemsContainer } from "/src/modules/ui/layout/dropdown/components/DropdownMenuItemsContainer.tsx";
+import { DropdownMenuSeparator } from "/src/modules/ui/layout/dropdown/components/DropdownMenuSeparator.tsx";
+import { useScopedHotkeys } from "/src/modules/ui/utilities/hotkey/hooks/useScopedHotkeys.ts";
+import { useAvailableComponentInstanceIdOrThrow } from "/src/modules/ui/utilities/state/component-state/hooks/useAvailableComponentInstanceIdOrThrow.ts";
+import { useRecoilComponentStateV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentStateV2.ts";
+import { useRecoilState } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import __vite__cjsImport16_tsKeyEnum from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/ts-key-enum.js?v=226f7286"; const Key = __vite__cjsImport16_tsKeyEnum["Key"];
+const NO_FOLDER_ID = 'no-folder';
+export const FavoriteFolderPicker = ({ onSubmit, record, objectNameSingular, dropdownId })=>{
+    _s();
+    const [isFavoriteFolderCreating, setIsFavoriteFolderCreating] = useRecoilState(isFavoriteFolderCreatingState);
+    const instanceId = useAvailableComponentInstanceIdOrThrow(FavoriteFolderPickerInstanceContext);
+    const { favoriteFolders, toggleFolderSelection } = useFavoriteFolderPicker({
+        record,
+        objectNameSingular
+    });
+    const [favoriteFoldersSearchFilter] = useRecoilComponentStateV2(favoriteFolderSearchFilterComponentState);
+    const filteredFolders = favoriteFolders.filter((folder)=>folder.name.toLowerCase().includes(favoriteFoldersSearchFilter.toLowerCase()));
+    const showNoFolderOption = !favoriteFoldersSearchFilter || 'no folder'.includes(favoriteFoldersSearchFilter.toLowerCase());
+    useScopedHotkeys(Key.Escape, ()=>{
+        if (isFavoriteFolderCreating) {
+            setIsFavoriteFolderCreating(false);
+            return;
+        }
+        onSubmit?.();
+    }, instanceId, [
+        onSubmit,
+        isFavoriteFolderCreating
+    ]);
+    useScopedHotkeys(Key.Enter, ()=>{
+        if (filteredFolders.length === 1 && !showNoFolderOption) {
+            toggleFolderSelection(filteredFolders[0].id);
+            onSubmit?.();
+            return;
+        }
+        if (showNoFolderOption && filteredFolders.length === 0) {
+            toggleFolderSelection(NO_FOLDER_ID);
+            onSubmit?.();
+            return;
+        }
+    }, instanceId, [
+        filteredFolders,
+        showNoFolderOption,
+        toggleFolderSelection,
+        onSubmit
+    ]);
+    return /*#__PURE__*/ _jsxDEV(DropdownMenu, {
+        "data-select-disable": true,
+        children: [
+            /*#__PURE__*/ _jsxDEV(FavoriteFolderPickerSearchInput, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                lineNumber: 94,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(DropdownMenuSeparator, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                lineNumber: 95,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(DropdownMenuItemsContainer, {
+                hasMaxHeight: true,
+                children: /*#__PURE__*/ _jsxDEV(FavoriteFolderPickerList, {
+                    folders: favoriteFolders,
+                    toggleFolderSelection: toggleFolderSelection
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                    lineNumber: 97,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                lineNumber: 96,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(DropdownMenuSeparator, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                lineNumber: 102,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(FavoriteFolderPickerFooter, {
+                dropdownId: dropdownId
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+                lineNumber: 103,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx",
+        lineNumber: 93,
+        columnNumber: 5
+    }, this);
+};
+_s(FavoriteFolderPicker, "VWGo/t8yqdQP0ZJEANuJVqcwwX8=", false, function() {
+    return [
+        useRecoilState,
+        useAvailableComponentInstanceIdOrThrow,
+        useFavoriteFolderPicker,
+        useRecoilComponentStateV2,
+        useScopedHotkeys,
+        useScopedHotkeys
+    ];
+});
+_c = FavoriteFolderPicker;
+var _c;
+$RefreshReg$(_c, "FavoriteFolderPicker");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/favorites/favorite-folder-picker/components/FavoriteFolderPicker.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkZhdm9yaXRlRm9sZGVyUGlja2VyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBGYXZvcml0ZUZvbGRlclBpY2tlckZvb3RlciB9IGZyb20gJ0AvZmF2b3JpdGVzL2Zhdm9yaXRlLWZvbGRlci1waWNrZXIvY29tcG9uZW50cy9GYXZvcml0ZUZvbGRlclBpY2tlckZvb3Rlcic7XG5pbXBvcnQgeyBGYXZvcml0ZUZvbGRlclBpY2tlckxpc3QgfSBmcm9tICdAL2Zhdm9yaXRlcy9mYXZvcml0ZS1mb2xkZXItcGlja2VyL2NvbXBvbmVudHMvRmF2b3JpdGVGb2xkZXJQaWNrZXJMaXN0JztcbmltcG9ydCB7IEZhdm9yaXRlRm9sZGVyUGlja2VyU2VhcmNoSW5wdXQgfSBmcm9tICdAL2Zhdm9yaXRlcy9mYXZvcml0ZS1mb2xkZXItcGlja2VyL2NvbXBvbmVudHMvRmF2b3JpdGVGb2xkZXJQaWNrZXJTZWFyY2hJbnB1dCc7XG5pbXBvcnQgeyB1c2VGYXZvcml0ZUZvbGRlclBpY2tlciB9IGZyb20gJ0AvZmF2b3JpdGVzL2Zhdm9yaXRlLWZvbGRlci1waWNrZXIvaG9va3MvdXNlRmF2b3JpdGVGb2xkZXJQaWNrZXInO1xuaW1wb3J0IHsgRmF2b3JpdGVGb2xkZXJQaWNrZXJJbnN0YW5jZUNvbnRleHQgfSBmcm9tICdAL2Zhdm9yaXRlcy9mYXZvcml0ZS1mb2xkZXItcGlja2VyL3N0YXRlcy9jb250ZXh0L0Zhdm9yaXRlRm9sZGVyUGlja2VySW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IGZhdm9yaXRlRm9sZGVyU2VhcmNoRmlsdGVyQ29tcG9uZW50U3RhdGUgfSBmcm9tICdAL2Zhdm9yaXRlcy9mYXZvcml0ZS1mb2xkZXItcGlja2VyL3N0YXRlcy9mYXZvcml0ZUZvbGRlcnNTZWFyY2hGaWx0ZXJDb21wb25lbnRTdGF0ZSc7XG5pbXBvcnQgeyBpc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmdTdGF0ZSB9IGZyb20gJ0AvZmF2b3JpdGVzL3N0YXRlcy9pc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmdTdGF0ZSc7XG5pbXBvcnQgeyBPYmplY3RSZWNvcmQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvdHlwZXMvT2JqZWN0UmVjb3JkJztcbmltcG9ydCB7IERyb3Bkb3duTWVudSB9IGZyb20gJ0AvdWkvbGF5b3V0L2Ryb3Bkb3duL2NvbXBvbmVudHMvRHJvcGRvd25NZW51JztcbmltcG9ydCB7IERyb3Bkb3duTWVudUl0ZW1zQ29udGFpbmVyIH0gZnJvbSAnQC91aS9sYXlvdXQvZHJvcGRvd24vY29tcG9uZW50cy9Ecm9wZG93bk1lbnVJdGVtc0NvbnRhaW5lcic7XG5pbXBvcnQgeyBEcm9wZG93bk1lbnVTZXBhcmF0b3IgfSBmcm9tICdAL3VpL2xheW91dC9kcm9wZG93bi9jb21wb25lbnRzL0Ryb3Bkb3duTWVudVNlcGFyYXRvcic7XG5pbXBvcnQgeyB1c2VTY29wZWRIb3RrZXlzIH0gZnJvbSAnQC91aS91dGlsaXRpZXMvaG90a2V5L2hvb2tzL3VzZVNjb3BlZEhvdGtleXMnO1xuaW1wb3J0IHsgdXNlQXZhaWxhYmxlQ29tcG9uZW50SW5zdGFuY2VJZE9yVGhyb3cgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9zdGF0ZS9jb21wb25lbnQtc3RhdGUvaG9va3MvdXNlQXZhaWxhYmxlQ29tcG9uZW50SW5zdGFuY2VJZE9yVGhyb3cnO1xuaW1wb3J0IHsgdXNlUmVjb2lsQ29tcG9uZW50U3RhdGVWMiB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3N0YXRlL2NvbXBvbmVudC1zdGF0ZS9ob29rcy91c2VSZWNvaWxDb21wb25lbnRTdGF0ZVYyJztcblxuaW1wb3J0IHsgdXNlUmVjb2lsU3RhdGUgfSBmcm9tICdyZWNvaWwnO1xuaW1wb3J0IHsgS2V5IH0gZnJvbSAndHMta2V5LWVudW0nO1xuXG50eXBlIEZhdm9yaXRlRm9sZGVyUGlja2VyUHJvcHMgPSB7XG4gIG9uU3VibWl0PzogKCkgPT4gdm9pZDtcbiAgcmVjb3JkPzogT2JqZWN0UmVjb3JkO1xuICBvYmplY3ROYW1lU2luZ3VsYXI6IHN0cmluZztcbiAgZHJvcGRvd25JZDogc3RyaW5nO1xufTtcblxuY29uc3QgTk9fRk9MREVSX0lEID0gJ25vLWZvbGRlcic7XG5cbmV4cG9ydCBjb25zdCBGYXZvcml0ZUZvbGRlclBpY2tlciA9ICh7XG4gIG9uU3VibWl0LFxuICByZWNvcmQsXG4gIG9iamVjdE5hbWVTaW5ndWxhcixcbiAgZHJvcGRvd25JZCxcbn06IEZhdm9yaXRlRm9sZGVyUGlja2VyUHJvcHMpID0+IHtcbiAgY29uc3QgW2lzRmF2b3JpdGVGb2xkZXJDcmVhdGluZywgc2V0SXNGYXZvcml0ZUZvbGRlckNyZWF0aW5nXSA9XG4gICAgdXNlUmVjb2lsU3RhdGUoaXNGYXZvcml0ZUZvbGRlckNyZWF0aW5nU3RhdGUpO1xuXG4gIGNvbnN0IGluc3RhbmNlSWQgPSB1c2VBdmFpbGFibGVDb21wb25lbnRJbnN0YW5jZUlkT3JUaHJvdyhcbiAgICBGYXZvcml0ZUZvbGRlclBpY2tlckluc3RhbmNlQ29udGV4dCxcbiAgKTtcblxuICBjb25zdCB7IGZhdm9yaXRlRm9sZGVycywgdG9nZ2xlRm9sZGVyU2VsZWN0aW9uIH0gPSB1c2VGYXZvcml0ZUZvbGRlclBpY2tlcih7XG4gICAgcmVjb3JkLFxuICAgIG9iamVjdE5hbWVTaW5ndWxhcixcbiAgfSk7XG5cbiAgY29uc3QgW2Zhdm9yaXRlRm9sZGVyc1NlYXJjaEZpbHRlcl0gPSB1c2VSZWNvaWxDb21wb25lbnRTdGF0ZVYyKFxuICAgIGZhdm9yaXRlRm9sZGVyU2VhcmNoRmlsdGVyQ29tcG9uZW50U3RhdGUsXG4gICk7XG5cbiAgY29uc3QgZmlsdGVyZWRGb2xkZXJzID0gZmF2b3JpdGVGb2xkZXJzLmZpbHRlcigoZm9sZGVyKSA9PlxuICAgIGZvbGRlci5uYW1lXG4gICAgICAudG9Mb3dlckNhc2UoKVxuICAgICAgLmluY2x1ZGVzKGZhdm9yaXRlRm9sZGVyc1NlYXJjaEZpbHRlci50b0xvd2VyQ2FzZSgpKSxcbiAgKTtcblxuICBjb25zdCBzaG93Tm9Gb2xkZXJPcHRpb24gPVxuICAgICFmYXZvcml0ZUZvbGRlcnNTZWFyY2hGaWx0ZXIgfHxcbiAgICAnbm8gZm9sZGVyJy5pbmNsdWRlcyhmYXZvcml0ZUZvbGRlcnNTZWFyY2hGaWx0ZXIudG9Mb3dlckNhc2UoKSk7XG5cbiAgdXNlU2NvcGVkSG90a2V5cyhcbiAgICBLZXkuRXNjYXBlLFxuICAgICgpID0+IHtcbiAgICAgIGlmIChpc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmcpIHtcbiAgICAgICAgc2V0SXNGYXZvcml0ZUZvbGRlckNyZWF0aW5nKGZhbHNlKTtcbiAgICAgICAgcmV0dXJuO1xuICAgICAgfVxuICAgICAgb25TdWJtaXQ/LigpO1xuICAgIH0sXG4gICAgaW5zdGFuY2VJZCxcbiAgICBbb25TdWJtaXQsIGlzRmF2b3JpdGVGb2xkZXJDcmVhdGluZ10sXG4gICk7XG5cbiAgdXNlU2NvcGVkSG90a2V5cyhcbiAgICBLZXkuRW50ZXIsXG4gICAgKCkgPT4ge1xuICAgICAgaWYgKGZpbHRlcmVkRm9sZGVycy5sZW5ndGggPT09IDEgJiYgIXNob3dOb0ZvbGRlck9wdGlvbikge1xuICAgICAgICB0b2dnbGVGb2xkZXJTZWxlY3Rpb24oZmlsdGVyZWRGb2xkZXJzWzBdLmlkKTtcbiAgICAgICAgb25TdWJtaXQ/LigpO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG5cbiAgICAgIGlmIChzaG93Tm9Gb2xkZXJPcHRpb24gJiYgZmlsdGVyZWRGb2xkZXJzLmxlbmd0aCA9PT0gMCkge1xuICAgICAgICB0b2dnbGVGb2xkZXJTZWxlY3Rpb24oTk9fRk9MREVSX0lEKTtcbiAgICAgICAgb25TdWJtaXQ/LigpO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgfSxcbiAgICBpbnN0YW5jZUlkLFxuICAgIFtmaWx0ZXJlZEZvbGRlcnMsIHNob3dOb0ZvbGRlck9wdGlvbiwgdG9nZ2xlRm9sZGVyU2VsZWN0aW9uLCBvblN1Ym1pdF0sXG4gICk7XG5cbiAgcmV0dXJuIChcbiAgICA8RHJvcGRvd25NZW51IGRhdGEtc2VsZWN0LWRpc2FibGU+XG4gICAgICA8RmF2b3JpdGVGb2xkZXJQaWNrZXJTZWFyY2hJbnB1dCAvPlxuICAgICAgPERyb3Bkb3duTWVudVNlcGFyYXRvciAvPlxuICAgICAgPERyb3Bkb3duTWVudUl0ZW1zQ29udGFpbmVyIGhhc01heEhlaWdodD5cbiAgICAgICAgPEZhdm9yaXRlRm9sZGVyUGlja2VyTGlzdFxuICAgICAgICAgIGZvbGRlcnM9e2Zhdm9yaXRlRm9sZGVyc31cbiAgICAgICAgICB0b2dnbGVGb2xkZXJTZWxlY3Rpb249e3RvZ2dsZUZvbGRlclNlbGVjdGlvbn1cbiAgICAgICAgLz5cbiAgICAgIDwvRHJvcGRvd25NZW51SXRlbXNDb250YWluZXI+XG4gICAgICA8RHJvcGRvd25NZW51U2VwYXJhdG9yIC8+XG4gICAgICA8RmF2b3JpdGVGb2xkZXJQaWNrZXJGb290ZXIgZHJvcGRvd25JZD17ZHJvcGRvd25JZH0gLz5cbiAgICA8L0Ryb3Bkb3duTWVudT5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsiRmF2b3JpdGVGb2xkZXJQaWNrZXJGb290ZXIiLCJGYXZvcml0ZUZvbGRlclBpY2tlckxpc3QiLCJGYXZvcml0ZUZvbGRlclBpY2tlclNlYXJjaElucHV0IiwidXNlRmF2b3JpdGVGb2xkZXJQaWNrZXIiLCJGYXZvcml0ZUZvbGRlclBpY2tlckluc3RhbmNlQ29udGV4dCIsImZhdm9yaXRlRm9sZGVyU2VhcmNoRmlsdGVyQ29tcG9uZW50U3RhdGUiLCJpc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmdTdGF0ZSIsIkRyb3Bkb3duTWVudSIsIkRyb3Bkb3duTWVudUl0ZW1zQ29udGFpbmVyIiwiRHJvcGRvd25NZW51U2VwYXJhdG9yIiwidXNlU2NvcGVkSG90a2V5cyIsInVzZUF2YWlsYWJsZUNvbXBvbmVudEluc3RhbmNlSWRPclRocm93IiwidXNlUmVjb2lsQ29tcG9uZW50U3RhdGVWMiIsInVzZVJlY29pbFN0YXRlIiwiS2V5IiwiTk9fRk9MREVSX0lEIiwiRmF2b3JpdGVGb2xkZXJQaWNrZXIiLCJvblN1Ym1pdCIsInJlY29yZCIsIm9iamVjdE5hbWVTaW5ndWxhciIsImRyb3Bkb3duSWQiLCJpc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmciLCJzZXRJc0Zhdm9yaXRlRm9sZGVyQ3JlYXRpbmciLCJpbnN0YW5jZUlkIiwiZmF2b3JpdGVGb2xkZXJzIiwidG9nZ2xlRm9sZGVyU2VsZWN0aW9uIiwiZmF2b3JpdGVGb2xkZXJzU2VhcmNoRmlsdGVyIiwiZmlsdGVyZWRGb2xkZXJzIiwiZmlsdGVyIiwiZm9sZGVyIiwibmFtZSIsInRvTG93ZXJDYXNlIiwiaW5jbHVkZXMiLCJzaG93Tm9Gb2xkZXJPcHRpb24iLCJFc2NhcGUiLCJFbnRlciIsImxlbmd0aCIsImlkIiwiZGF0YS1zZWxlY3QtZGlzYWJsZSIsImhhc01heEhlaWdodCIsImZvbGRlcnMiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSwwQkFBMEIsUUFBUSwyRUFBMkU7QUFDdEgsU0FBU0Msd0JBQXdCLFFBQVEseUVBQXlFO0FBQ2xILFNBQVNDLCtCQUErQixRQUFRLGdGQUFnRjtBQUNoSSxTQUFTQyx1QkFBdUIsUUFBUSxtRUFBbUU7QUFDM0csU0FBU0MsbUNBQW1DLFFBQVEsd0ZBQXdGO0FBQzVJLFNBQVNDLHdDQUF3QyxRQUFRLHNGQUFzRjtBQUMvSSxTQUFTQyw2QkFBNkIsUUFBUSxtREFBbUQ7QUFFakcsU0FBU0MsWUFBWSxRQUFRLCtDQUErQztBQUM1RSxTQUFTQywwQkFBMEIsUUFBUSw2REFBNkQ7QUFDeEcsU0FBU0MscUJBQXFCLFFBQVEsd0RBQXdEO0FBQzlGLFNBQVNDLGdCQUFnQixRQUFRLCtDQUErQztBQUNoRixTQUFTQyxzQ0FBc0MsUUFBUSxvRkFBb0Y7QUFDM0ksU0FBU0MseUJBQXlCLFFBQVEsdUVBQXVFO0FBRWpILFNBQVNDLGNBQWMsUUFBUSxTQUFTO0FBQ3hDLFNBQVNDLEdBQUcsUUFBUSxjQUFjO0FBU2xDLE1BQU1DLGVBQWU7QUFFckIsT0FBTyxNQUFNQyx1QkFBdUIsQ0FBQyxFQUNuQ0MsUUFBUSxFQUNSQyxNQUFNLEVBQ05DLGtCQUFrQixFQUNsQkMsVUFBVSxFQUNnQjs7SUFDMUIsTUFBTSxDQUFDQywwQkFBMEJDLDRCQUE0QixHQUMzRFQsZUFBZVA7SUFFakIsTUFBTWlCLGFBQWFaLHVDQUNqQlA7SUFHRixNQUFNLEVBQUVvQixlQUFlLEVBQUVDLHFCQUFxQixFQUFFLEdBQUd0Qix3QkFBd0I7UUFDekVlO1FBQ0FDO0lBQ0Y7SUFFQSxNQUFNLENBQUNPLDRCQUE0QixHQUFHZCwwQkFDcENQO0lBR0YsTUFBTXNCLGtCQUFrQkgsZ0JBQWdCSSxNQUFNLENBQUMsQ0FBQ0MsU0FDOUNBLE9BQU9DLElBQUksQ0FDUkMsV0FBVyxHQUNYQyxRQUFRLENBQUNOLDRCQUE0QkssV0FBVztJQUdyRCxNQUFNRSxxQkFDSixDQUFDUCwrQkFDRCxZQUFZTSxRQUFRLENBQUNOLDRCQUE0QkssV0FBVztJQUU5RHJCLGlCQUNFSSxJQUFJb0IsTUFBTSxFQUNWO1FBQ0UsSUFBSWIsMEJBQTBCO1lBQzVCQyw0QkFBNEI7WUFDNUI7UUFDRjtRQUNBTDtJQUNGLEdBQ0FNLFlBQ0E7UUFBQ047UUFBVUk7S0FBeUI7SUFHdENYLGlCQUNFSSxJQUFJcUIsS0FBSyxFQUNUO1FBQ0UsSUFBSVIsZ0JBQWdCUyxNQUFNLEtBQUssS0FBSyxDQUFDSCxvQkFBb0I7WUFDdkRSLHNCQUFzQkUsZUFBZSxDQUFDLEVBQUUsQ0FBQ1UsRUFBRTtZQUMzQ3BCO1lBQ0E7UUFDRjtRQUVBLElBQUlnQixzQkFBc0JOLGdCQUFnQlMsTUFBTSxLQUFLLEdBQUc7WUFDdERYLHNCQUFzQlY7WUFDdEJFO1lBQ0E7UUFDRjtJQUNGLEdBQ0FNLFlBQ0E7UUFBQ0k7UUFBaUJNO1FBQW9CUjtRQUF1QlI7S0FBUztJQUd4RSxxQkFDRSxRQUFDVjtRQUFhK0IscUJBQW1COzswQkFDL0IsUUFBQ3BDOzs7OzswQkFDRCxRQUFDTzs7Ozs7MEJBQ0QsUUFBQ0Q7Z0JBQTJCK0IsWUFBWTswQkFDdEMsY0FBQSxRQUFDdEM7b0JBQ0N1QyxTQUFTaEI7b0JBQ1RDLHVCQUF1QkE7Ozs7Ozs7Ozs7OzBCQUczQixRQUFDaEI7Ozs7OzBCQUNELFFBQUNUO2dCQUEyQm9CLFlBQVlBOzs7Ozs7Ozs7Ozs7QUFHOUMsRUFBRTtHQTlFV0o7O1FBT1RIO1FBRWlCRjtRQUlnQ1I7UUFLYlM7UUFjdENGO1FBYUFBOzs7S0E3Q1dNIn0=

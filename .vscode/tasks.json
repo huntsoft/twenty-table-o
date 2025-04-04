@@ -5,7 +5,7 @@
 			"label": "start-frontend",
 			"type": "shell",
 			"command": "${workspaceFolder}/node_modules/.bin/nx",
-			"args": ["serve", "twenty-front"],
+			"args": ["serve", "twenty-front", "--sourcemap"],
 			"isBackground": true,
 			"problemMatcher": {
 				"owner": "typescript",
@@ -13,14 +13,86 @@
 				"background": {
 					"activeOnStart": true,
 					"beginsPattern": "nx run",
-					"endsPattern": "webpack compiled successfully"
+					"endsPattern": "webpack compiled successfully|Compiled successfully|compiled successfully"
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
 			}
 		},
 		{
 			"label": "stop-frontend",
 			"type": "shell",
 			"command": "echo ${input:terminate}",
+			"problemMatcher": []
+		},
+		{
+			"label": "start-backend",
+			"type": "shell",
+			"command": "${workspaceFolder}/node_modules/.bin/nx",
+			"args": ["serve", "twenty-server", "--sourcemap"],
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "typescript",
+				"pattern": "$tsc",
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "nx run",
+					"endsPattern": "Nest application successfully started|Listening at"
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		},
+		{
+			"label": "stop-backend",
+			"type": "shell",
+			"command": "echo ${input:terminateBackend}",
+			"problemMatcher": []
+		},
+		{
+			"label": "launch-chrome-debug",
+			"type": "shell",
+			"windows": {
+				"command": "${workspaceFolder}/scripts/launch-chrome-debug.bat"
+			},
+			"linux": {
+				"command": "bash ${workspaceFolder}/scripts/launch-chrome-debug.sh"
+			},
+			"osx": {
+				"command": "bash ${workspaceFolder}/scripts/launch-chrome-debug.sh"
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "start-frontend-and-chrome",
+			"dependsOrder": "sequence",
+			"dependsOn": ["start-frontend", "launch-chrome-debug"],
+			"problemMatcher": []
+		},
+		{
+			"label": "launch-edge-debug",
+			"type": "shell",
+			"windows": {
+				"command": "${workspaceFolder}/scripts/launch-edge-debug.bat"
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "start-frontend-and-edge",
+			"dependsOrder": "sequence",
+			"dependsOn": ["start-frontend", "launch-edge-debug"],
 			"problemMatcher": []
 		}
 	],
@@ -30,6 +102,12 @@
 			"type": "command",
 			"command": "workbench.action.tasks.terminate",
 			"args": "start-frontend"
+		},
+		{
+			"id": "terminateBackend",
+			"type": "command",
+			"command": "workbench.action.tasks.terminate",
+			"args": "start-backend"
 		}
 	]
 }

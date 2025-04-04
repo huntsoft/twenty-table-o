@@ -1,0 +1,406 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/onboarding/ChooseYourPlan.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { SubTitle } from "/src/modules/auth/components/SubTitle.tsx";
+import { Title } from "/src/modules/auth/components/Title.tsx";
+import { useAuth } from "/src/modules/auth/hooks/useAuth.ts";
+import { billingCheckoutSessionState } from "/src/modules/auth/states/billingCheckoutSessionState.ts";
+import { SubscriptionBenefit } from "/src/modules/billing/components/SubscriptionBenefit.tsx";
+import { SubscriptionPrice } from "/src/modules/billing/components/SubscriptionPrice.tsx";
+import { TrialCard } from "/src/modules/billing/components/TrialCard.tsx";
+import { useHandleCheckoutSession } from "/src/modules/billing/hooks/useHandleCheckoutSession.ts";
+import { isBillingPriceLicensed } from "/src/modules/billing/utils/isBillingPriceLicensed.ts";
+import { billingState } from "/src/modules/client-config/states/billingState.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { Trans as Trans_ } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { useRecoilState, useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { ActionLink, CAL_LINK, CardPicker, Loader, MainButton } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { BillingPlanKey, SubscriptionInterval, useBillingBaseProductPricesQuery } from "/src/generated/graphql.tsx";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledSubscriptionContainer = styled.div`
+  background-color: ${({ theme })=>theme.background.secondary};
+  border: 1px solid ${({ theme })=>theme.border.color.medium};
+  border-radius: ${({ theme })=>theme.border.radius.md};
+
+  display: flex;
+  flex-direction: column;
+  margin: ${({ theme })=>theme.spacing(8)} 0
+    ${({ theme, withLongerMarginBottom })=>theme.spacing(withLongerMarginBottom ? 8 : 2)};
+  width: 100%;
+`;
+_c = StyledSubscriptionContainer;
+const StyledSubscriptionPriceContainer = styled.div`
+  align-items: center;
+  border-bottom: 1px solid ${({ theme })=>theme.border.color.light};
+  display: flex;
+  flex-direction: column;
+  margin: ${({ theme })=>theme.spacing(4)} ${({ theme })=>theme.spacing(3)}
+    0 ${({ theme })=>theme.spacing(4)};
+  padding-bottom: ${({ theme })=>theme.spacing(3)};
+`;
+_c1 = StyledSubscriptionPriceContainer;
+const StyledBenefitsContainer = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  padding: ${({ theme })=>theme.spacing(4)} ${({ theme })=>theme.spacing(3)};
+`;
+_c2 = StyledBenefitsContainer;
+const StyledChooseTrialContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: ${({ theme })=>theme.spacing(8)};
+  gap: ${({ theme })=>theme.spacing(2)};
+`;
+_c3 = StyledChooseTrialContainer;
+const StyledLinkGroup = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: ${({ theme })=>theme.spacing(1)};
+  justify-content: center;
+  margin-top: ${({ theme })=>theme.spacing(4)};
+
+  > span {
+    background-color: ${({ theme })=>theme.font.color.light};
+    border-radius: 50%;
+    height: 2px;
+    width: 2px;
+  }
+`;
+_c4 = StyledLinkGroup;
+export const ChooseYourPlan = ()=>{
+    _s();
+    const billing = useRecoilValue(billingState);
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const [billingCheckoutSession, setBillingCheckoutSession] = useRecoilState(billingCheckoutSessionState);
+    const { data: plans } = useBillingBaseProductPricesQuery();
+    const currentPlan = billingCheckoutSession.plan || BillingPlanKey.PRO;
+    const getPlanBenefits = (planKey)=>{
+        if (planKey === BillingPlanKey.ENTERPRISE) {
+            return [
+                $__i18n._({
+                    id: "scmRyR",
+                    message: "Full access"
+                }),
+                $__i18n._({
+                    id: "GQCXQS",
+                    message: "Unlimited contacts"
+                }),
+                $__i18n._({
+                    id: "lfQsvW",
+                    message: "Email integration"
+                }),
+                $__i18n._({
+                    id: "8skTDV",
+                    message: "Custom objects"
+                }),
+                $__i18n._({
+                    id: "0RqpZr",
+                    message: "API & Webhooks"
+                }),
+                $__i18n._({
+                    id: "kAtmAv",
+                    message: "20 000 workflow node executions"
+                }),
+                $__i18n._({
+                    id: "vlvAkg",
+                    message: "SSO (SAML / OIDC)"
+                })
+            ];
+        }
+        return [
+            $__i18n._({
+                id: "scmRyR",
+                message: "Full access"
+            }),
+            $__i18n._({
+                id: "GQCXQS",
+                message: "Unlimited contacts"
+            }),
+            $__i18n._({
+                id: "lfQsvW",
+                message: "Email integration"
+            }),
+            $__i18n._({
+                id: "8skTDV",
+                message: "Custom objects"
+            }),
+            $__i18n._({
+                id: "0RqpZr",
+                message: "API & Webhooks"
+            }),
+            $__i18n._({
+                id: "AvXug3",
+                message: "10 000 workflow node executions"
+            })
+        ];
+    };
+    const benefits = getPlanBenefits(currentPlan);
+    const baseProduct = plans?.plans.find((plan)=>plan.planKey === currentPlan)?.baseProduct;
+    const baseProductPrice = baseProduct?.prices.find((price)=>isBillingPriceLicensed(price) && price.recurringInterval === SubscriptionInterval.Month);
+    const hasWithoutCreditCardTrialPeriod = billing?.trialPeriods.some((trialPeriod)=>!trialPeriod.isCreditCardRequired && trialPeriod.duration !== 0);
+    const withCreditCardTrialPeriod = billing?.trialPeriods.find((trialPeriod)=>trialPeriod.isCreditCardRequired);
+    const { handleCheckoutSession, isSubmitting } = useHandleCheckoutSession({
+        recurringInterval: billingCheckoutSession.interval,
+        plan: billingCheckoutSession.plan,
+        requirePaymentMethod: billingCheckoutSession.requirePaymentMethod
+    });
+    const handleTrialPeriodChange = (withCreditCard)=>{
+        return ()=>{
+            if (isDefined(baseProductPrice) && billingCheckoutSession.requirePaymentMethod !== withCreditCard) {
+                setBillingCheckoutSession({
+                    plan: currentPlan,
+                    interval: baseProductPrice.recurringInterval,
+                    requirePaymentMethod: withCreditCard
+                });
+            }
+        };
+    };
+    const handleSwitchPlan = (planKey)=>{
+        return ()=>{
+            if (isDefined(baseProductPrice)) {
+                setBillingCheckoutSession({
+                    plan: planKey,
+                    interval: baseProductPrice.recurringInterval,
+                    requirePaymentMethod: billingCheckoutSession.requirePaymentMethod
+                });
+            }
+        };
+    };
+    const { signOut } = useAuth();
+    const withCreditCardTrialPeriodDuration = withCreditCardTrialPeriod?.duration;
+    const alternatePlan = currentPlan === BillingPlanKey.PRO ? BillingPlanKey.ENTERPRISE : BillingPlanKey.PRO;
+    const alternatePlanName = plans?.plans.find((plan)=>plan.planKey === alternatePlan)?.baseProduct.name;
+    return isDefined(baseProductPrice) && isDefined(billing) && /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(Title, {
+                noMarginTop: true,
+                children: hasWithoutCreditCardTrialPeriod ? $__i18n._({
+                    id: "9qP96p",
+                    message: "Choose your Trial"
+                }) : $__i18n._({
+                    id: "zSGbaR",
+                    message: "Get your subscription"
+                })
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 192,
+                columnNumber: 9
+            }, this),
+            hasWithoutCreditCardTrialPeriod ? /*#__PURE__*/ _jsxDEV(SubTitle, {
+                children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                    message: "Cancel anytime",
+                    id: "0TllC8"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                    lineNumber: 199,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 198,
+                columnNumber: 11
+            }, this) : withCreditCardTrialPeriod && /*#__PURE__*/ _jsxDEV(SubTitle, {
+                children: $__i18n._({
+                    id: "/bfFKe",
+                    message: "Enjoy a {withCreditCardTrialPeriodDuration}-days free trial",
+                    values: {
+                        withCreditCardTrialPeriodDuration: withCreditCardTrialPeriodDuration
+                    }
+                })
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 203,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledSubscriptionContainer, {
+                withLongerMarginBottom: !hasWithoutCreditCardTrialPeriod,
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledSubscriptionPriceContainer, {
+                        children: /*#__PURE__*/ _jsxDEV(SubscriptionPrice, {
+                            type: baseProductPrice.recurringInterval,
+                            price: baseProductPrice.unitAmount / 100
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                            lineNumber: 212,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 211,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledBenefitsContainer, {
+                        children: benefits.map((benefit)=>/*#__PURE__*/ _jsxDEV(SubscriptionBenefit, {
+                                children: benefit
+                            }, benefit, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                                lineNumber: 219,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 217,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 208,
+                columnNumber: 9
+            }, this),
+            hasWithoutCreditCardTrialPeriod && /*#__PURE__*/ _jsxDEV(StyledChooseTrialContainer, {
+                children: billing.trialPeriods.map((trialPeriod)=>/*#__PURE__*/ _jsxDEV(CardPicker, {
+                        checked: billingCheckoutSession.requirePaymentMethod === trialPeriod.isCreditCardRequired,
+                        handleChange: handleTrialPeriodChange(trialPeriod.isCreditCardRequired),
+                        children: /*#__PURE__*/ _jsxDEV(TrialCard, {
+                            duration: trialPeriod.duration,
+                            withCreditCard: trialPeriod.isCreditCardRequired
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                            lineNumber: 236,
+                            columnNumber: 17
+                        }, this)
+                    }, trialPeriod.duration, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 226,
+                        columnNumber: 15
+                    }, this))
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 224,
+                columnNumber: 11
+            }, this),
+            /*#__PURE__*/ _jsxDEV(MainButton, {
+                title: $__i18n._({
+                    id: "xGVfLh",
+                    message: "Continue"
+                }),
+                onClick: handleCheckoutSession,
+                width: 200,
+                Icon: ()=>isSubmitting && /*#__PURE__*/ _jsxDEV(Loader, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 248,
+                        columnNumber: 39
+                    }, void 0),
+                disabled: isSubmitting
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 244,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledLinkGroup, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(ActionLink, {
+                        onClick: signOut,
+                        children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                            message: "Log out",
+                            id: "FgAxTj"
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                            lineNumber: 253,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 252,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV("span", {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 255,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(ActionLink, {
+                        onClick: handleSwitchPlan(alternatePlan),
+                        children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                            message: "Switch to {alternatePlanName}",
+                            id: "lz+f/E",
+                            values: {
+                                alternatePlanName: alternatePlanName
+                            }
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                            lineNumber: 257,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 256,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV("span", {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 259,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(ActionLink, {
+                        href: CAL_LINK,
+                        target: "_blank",
+                        rel: "noreferrer",
+                        children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                            message: "Book a Call",
+                            id: "2yl5lQ"
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                            lineNumber: 261,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                        lineNumber: 260,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx",
+                lineNumber: 251,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(ChooseYourPlan, "a4JwXRU4dwY3uUkOSYwTKzEY5S4=", false, function() {
+    return [
+        useRecoilValue,
+        useRecoilState,
+        useBillingBaseProductPricesQuery,
+        useHandleCheckoutSession,
+        useAuth
+    ];
+});
+_c5 = ChooseYourPlan;
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "StyledSubscriptionContainer");
+$RefreshReg$(_c1, "StyledSubscriptionPriceContainer");
+$RefreshReg$(_c2, "StyledBenefitsContainer");
+$RefreshReg$(_c3, "StyledChooseTrialContainer");
+$RefreshReg$(_c4, "StyledLinkGroup");
+$RefreshReg$(_c5, "ChooseYourPlan");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/ChooseYourPlan.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNob29zZVlvdXJQbGFuLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBTdWJUaXRsZSB9IGZyb20gJ0AvYXV0aC9jb21wb25lbnRzL1N1YlRpdGxlJztcbmltcG9ydCB7IFRpdGxlIH0gZnJvbSAnQC9hdXRoL2NvbXBvbmVudHMvVGl0bGUnO1xuaW1wb3J0IHsgdXNlQXV0aCB9IGZyb20gJ0AvYXV0aC9ob29rcy91c2VBdXRoJztcbmltcG9ydCB7IGJpbGxpbmdDaGVja291dFNlc3Npb25TdGF0ZSB9IGZyb20gJ0AvYXV0aC9zdGF0ZXMvYmlsbGluZ0NoZWNrb3V0U2Vzc2lvblN0YXRlJztcbmltcG9ydCB7IFN1YnNjcmlwdGlvbkJlbmVmaXQgfSBmcm9tICdAL2JpbGxpbmcvY29tcG9uZW50cy9TdWJzY3JpcHRpb25CZW5lZml0JztcbmltcG9ydCB7IFN1YnNjcmlwdGlvblByaWNlIH0gZnJvbSAnQC9iaWxsaW5nL2NvbXBvbmVudHMvU3Vic2NyaXB0aW9uUHJpY2UnO1xuaW1wb3J0IHsgVHJpYWxDYXJkIH0gZnJvbSAnQC9iaWxsaW5nL2NvbXBvbmVudHMvVHJpYWxDYXJkJztcbmltcG9ydCB7IHVzZUhhbmRsZUNoZWNrb3V0U2Vzc2lvbiB9IGZyb20gJ0AvYmlsbGluZy9ob29rcy91c2VIYW5kbGVDaGVja291dFNlc3Npb24nO1xuaW1wb3J0IHsgaXNCaWxsaW5nUHJpY2VMaWNlbnNlZCB9IGZyb20gJ0AvYmlsbGluZy91dGlscy9pc0JpbGxpbmdQcmljZUxpY2Vuc2VkJztcbmltcG9ydCB7IGJpbGxpbmdTdGF0ZSB9IGZyb20gJ0AvY2xpZW50LWNvbmZpZy9zdGF0ZXMvYmlsbGluZ1N0YXRlJztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IFRyYW5zLCB1c2VMaW5ndWkgfSBmcm9tICdAbGluZ3VpL3JlYWN0L21hY3JvJztcbmltcG9ydCB7IHVzZVJlY29pbFN0YXRlLCB1c2VSZWNvaWxWYWx1ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQge1xuICBBY3Rpb25MaW5rLFxuICBDQUxfTElOSyxcbiAgQ2FyZFBpY2tlcixcbiAgTG9hZGVyLFxuICBNYWluQnV0dG9uLFxufSBmcm9tICd0d2VudHktdWknO1xuaW1wb3J0IHtcbiAgQmlsbGluZ1BsYW5LZXksXG4gIEJpbGxpbmdQcmljZUxpY2Vuc2VkRHRvLFxuICBTdWJzY3JpcHRpb25JbnRlcnZhbCxcbiAgdXNlQmlsbGluZ0Jhc2VQcm9kdWN0UHJpY2VzUXVlcnksXG59IGZyb20gJ34vZ2VuZXJhdGVkL2dyYXBocWwnO1xuaW1wb3J0IHsgaXNEZWZpbmVkIH0gZnJvbSAndHdlbnR5LXNoYXJlZC91dGlscyc7XG5cbmNvbnN0IFN0eWxlZFN1YnNjcmlwdGlvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXY8e1xuICB3aXRoTG9uZ2VyTWFyZ2luQm90dG9tOiBib29sZWFuO1xufT5gXG4gIGJhY2tncm91bmQtY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYmFja2dyb3VuZC5zZWNvbmRhcnl9O1xuICBib3JkZXI6IDFweCBzb2xpZCAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5jb2xvci5tZWRpdW19O1xuICBib3JkZXItcmFkaXVzOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5yYWRpdXMubWR9O1xuXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1hcmdpbjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDgpfSAwXG4gICAgJHsoeyB0aGVtZSwgd2l0aExvbmdlck1hcmdpbkJvdHRvbSB9KSA9PlxuICAgICAgdGhlbWUuc3BhY2luZyh3aXRoTG9uZ2VyTWFyZ2luQm90dG9tID8gOCA6IDIpfTtcbiAgd2lkdGg6IDEwMCU7XG5gO1xuXG5jb25zdCBTdHlsZWRTdWJzY3JpcHRpb25QcmljZUNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5jb2xvci5saWdodH07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1hcmdpbjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDQpfSAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMyl9XG4gICAgMCAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNCl9O1xuICBwYWRkaW5nLWJvdHRvbTogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDMpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEJlbmVmaXRzQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgd2lkdGg6IDEwMCU7XG4gIGdhcDogMTZweDtcbiAgcGFkZGluZzogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDQpfSAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMyl9O1xuYDtcblxuY29uc3QgU3R5bGVkQ2hvb3NlVHJpYWxDb250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLWJvdHRvbTogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDgpfTtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkTGlua0dyb3VwID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMSl9O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDQpfTtcblxuICA+IHNwYW4ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5saWdodH07XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgIGhlaWdodDogMnB4O1xuICAgIHdpZHRoOiAycHg7XG4gIH1cbmA7XG5cbmV4cG9ydCBjb25zdCBDaG9vc2VZb3VyUGxhbiA9ICgpID0+IHtcbiAgY29uc3QgYmlsbGluZyA9IHVzZVJlY29pbFZhbHVlKGJpbGxpbmdTdGF0ZSk7XG4gIGNvbnN0IHsgdCB9ID0gdXNlTGluZ3VpKCk7XG5cbiAgY29uc3QgW2JpbGxpbmdDaGVja291dFNlc3Npb24sIHNldEJpbGxpbmdDaGVja291dFNlc3Npb25dID0gdXNlUmVjb2lsU3RhdGUoXG4gICAgYmlsbGluZ0NoZWNrb3V0U2Vzc2lvblN0YXRlLFxuICApO1xuXG4gIGNvbnN0IHsgZGF0YTogcGxhbnMgfSA9IHVzZUJpbGxpbmdCYXNlUHJvZHVjdFByaWNlc1F1ZXJ5KCk7XG5cbiAgY29uc3QgY3VycmVudFBsYW4gPSBiaWxsaW5nQ2hlY2tvdXRTZXNzaW9uLnBsYW4gfHwgQmlsbGluZ1BsYW5LZXkuUFJPO1xuXG4gIGNvbnN0IGdldFBsYW5CZW5lZml0cyA9IChwbGFuS2V5OiBCaWxsaW5nUGxhbktleSkgPT4ge1xuICAgIGlmIChwbGFuS2V5ID09PSBCaWxsaW5nUGxhbktleS5FTlRFUlBSSVNFKSB7XG4gICAgICByZXR1cm4gW1xuICAgICAgICB0YEZ1bGwgYWNjZXNzYCxcbiAgICAgICAgdGBVbmxpbWl0ZWQgY29udGFjdHNgLFxuICAgICAgICB0YEVtYWlsIGludGVncmF0aW9uYCxcbiAgICAgICAgdGBDdXN0b20gb2JqZWN0c2AsXG4gICAgICAgIHRgQVBJICYgV2ViaG9va3NgLFxuICAgICAgICB0YDIwIDAwMCB3b3JrZmxvdyBub2RlIGV4ZWN1dGlvbnNgLFxuICAgICAgICB0YFNTTyAoU0FNTCAvIE9JREMpYCxcbiAgICAgIF07XG4gICAgfVxuXG4gICAgcmV0dXJuIFtcbiAgICAgIHRgRnVsbCBhY2Nlc3NgLFxuICAgICAgdGBVbmxpbWl0ZWQgY29udGFjdHNgLFxuICAgICAgdGBFbWFpbCBpbnRlZ3JhdGlvbmAsXG4gICAgICB0YEN1c3RvbSBvYmplY3RzYCxcbiAgICAgIHRgQVBJICYgV2ViaG9va3NgLFxuICAgICAgdGAxMCAwMDAgd29ya2Zsb3cgbm9kZSBleGVjdXRpb25zYCxcbiAgICBdO1xuICB9O1xuXG4gIGNvbnN0IGJlbmVmaXRzID0gZ2V0UGxhbkJlbmVmaXRzKGN1cnJlbnRQbGFuKTtcblxuICBjb25zdCBiYXNlUHJvZHVjdCA9IHBsYW5zPy5wbGFucy5maW5kKFxuICAgIChwbGFuKSA9PiBwbGFuLnBsYW5LZXkgPT09IGN1cnJlbnRQbGFuLFxuICApPy5iYXNlUHJvZHVjdDtcblxuICBjb25zdCBiYXNlUHJvZHVjdFByaWNlID0gYmFzZVByb2R1Y3Q/LnByaWNlcy5maW5kKFxuICAgIChwcmljZSk6IHByaWNlIGlzIEJpbGxpbmdQcmljZUxpY2Vuc2VkRHRvID0+XG4gICAgICBpc0JpbGxpbmdQcmljZUxpY2Vuc2VkKHByaWNlKSAmJlxuICAgICAgcHJpY2UucmVjdXJyaW5nSW50ZXJ2YWwgPT09IFN1YnNjcmlwdGlvbkludGVydmFsLk1vbnRoLFxuICApO1xuXG4gIGNvbnN0IGhhc1dpdGhvdXRDcmVkaXRDYXJkVHJpYWxQZXJpb2QgPSBiaWxsaW5nPy50cmlhbFBlcmlvZHMuc29tZShcbiAgICAodHJpYWxQZXJpb2QpID0+XG4gICAgICAhdHJpYWxQZXJpb2QuaXNDcmVkaXRDYXJkUmVxdWlyZWQgJiYgdHJpYWxQZXJpb2QuZHVyYXRpb24gIT09IDAsXG4gICk7XG4gIGNvbnN0IHdpdGhDcmVkaXRDYXJkVHJpYWxQZXJpb2QgPSBiaWxsaW5nPy50cmlhbFBlcmlvZHMuZmluZChcbiAgICAodHJpYWxQZXJpb2QpID0+IHRyaWFsUGVyaW9kLmlzQ3JlZGl0Q2FyZFJlcXVpcmVkLFxuICApO1xuXG4gIGNvbnN0IHsgaGFuZGxlQ2hlY2tvdXRTZXNzaW9uLCBpc1N1Ym1pdHRpbmcgfSA9IHVzZUhhbmRsZUNoZWNrb3V0U2Vzc2lvbih7XG4gICAgcmVjdXJyaW5nSW50ZXJ2YWw6IGJpbGxpbmdDaGVja291dFNlc3Npb24uaW50ZXJ2YWwsXG4gICAgcGxhbjogYmlsbGluZ0NoZWNrb3V0U2Vzc2lvbi5wbGFuLFxuICAgIHJlcXVpcmVQYXltZW50TWV0aG9kOiBiaWxsaW5nQ2hlY2tvdXRTZXNzaW9uLnJlcXVpcmVQYXltZW50TWV0aG9kLFxuICB9KTtcblxuICBjb25zdCBoYW5kbGVUcmlhbFBlcmlvZENoYW5nZSA9ICh3aXRoQ3JlZGl0Q2FyZDogYm9vbGVhbikgPT4ge1xuICAgIHJldHVybiAoKSA9PiB7XG4gICAgICBpZiAoXG4gICAgICAgIGlzRGVmaW5lZChiYXNlUHJvZHVjdFByaWNlKSAmJlxuICAgICAgICBiaWxsaW5nQ2hlY2tvdXRTZXNzaW9uLnJlcXVpcmVQYXltZW50TWV0aG9kICE9PSB3aXRoQ3JlZGl0Q2FyZFxuICAgICAgKSB7XG4gICAgICAgIHNldEJpbGxpbmdDaGVja291dFNlc3Npb24oe1xuICAgICAgICAgIHBsYW46IGN1cnJlbnRQbGFuLFxuICAgICAgICAgIGludGVydmFsOiBiYXNlUHJvZHVjdFByaWNlLnJlY3VycmluZ0ludGVydmFsLFxuICAgICAgICAgIHJlcXVpcmVQYXltZW50TWV0aG9kOiB3aXRoQ3JlZGl0Q2FyZCxcbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgfTtcbiAgfTtcblxuICBjb25zdCBoYW5kbGVTd2l0Y2hQbGFuID0gKHBsYW5LZXk6IEJpbGxpbmdQbGFuS2V5KSA9PiB7XG4gICAgcmV0dXJuICgpID0+IHtcbiAgICAgIGlmIChpc0RlZmluZWQoYmFzZVByb2R1Y3RQcmljZSkpIHtcbiAgICAgICAgc2V0QmlsbGluZ0NoZWNrb3V0U2Vzc2lvbih7XG4gICAgICAgICAgcGxhbjogcGxhbktleSxcbiAgICAgICAgICBpbnRlcnZhbDogYmFzZVByb2R1Y3RQcmljZS5yZWN1cnJpbmdJbnRlcnZhbCxcbiAgICAgICAgICByZXF1aXJlUGF5bWVudE1ldGhvZDogYmlsbGluZ0NoZWNrb3V0U2Vzc2lvbi5yZXF1aXJlUGF5bWVudE1ldGhvZCxcbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgfTtcbiAgfTtcblxuICBjb25zdCB7IHNpZ25PdXQgfSA9IHVzZUF1dGgoKTtcblxuICBjb25zdCB3aXRoQ3JlZGl0Q2FyZFRyaWFsUGVyaW9kRHVyYXRpb24gPSB3aXRoQ3JlZGl0Q2FyZFRyaWFsUGVyaW9kPy5kdXJhdGlvbjtcblxuICBjb25zdCBhbHRlcm5hdGVQbGFuID1cbiAgICBjdXJyZW50UGxhbiA9PT0gQmlsbGluZ1BsYW5LZXkuUFJPXG4gICAgICA/IEJpbGxpbmdQbGFuS2V5LkVOVEVSUFJJU0VcbiAgICAgIDogQmlsbGluZ1BsYW5LZXkuUFJPO1xuXG4gIGNvbnN0IGFsdGVybmF0ZVBsYW5OYW1lID0gcGxhbnM/LnBsYW5zLmZpbmQoXG4gICAgKHBsYW4pID0+IHBsYW4ucGxhbktleSA9PT0gYWx0ZXJuYXRlUGxhbixcbiAgKT8uYmFzZVByb2R1Y3QubmFtZTtcblxuICByZXR1cm4gKFxuICAgIGlzRGVmaW5lZChiYXNlUHJvZHVjdFByaWNlKSAmJlxuICAgIGlzRGVmaW5lZChiaWxsaW5nKSAmJiAoXG4gICAgICA8PlxuICAgICAgICA8VGl0bGUgbm9NYXJnaW5Ub3A+XG4gICAgICAgICAge2hhc1dpdGhvdXRDcmVkaXRDYXJkVHJpYWxQZXJpb2RcbiAgICAgICAgICAgID8gdGBDaG9vc2UgeW91ciBUcmlhbGBcbiAgICAgICAgICAgIDogdGBHZXQgeW91ciBzdWJzY3JpcHRpb25gfVxuICAgICAgICA8L1RpdGxlPlxuICAgICAgICB7aGFzV2l0aG91dENyZWRpdENhcmRUcmlhbFBlcmlvZCA/IChcbiAgICAgICAgICA8U3ViVGl0bGU+XG4gICAgICAgICAgICA8VHJhbnM+Q2FuY2VsIGFueXRpbWU8L1RyYW5zPlxuICAgICAgICAgIDwvU3ViVGl0bGU+XG4gICAgICAgICkgOiAoXG4gICAgICAgICAgd2l0aENyZWRpdENhcmRUcmlhbFBlcmlvZCAmJiAoXG4gICAgICAgICAgICA8U3ViVGl0bGU+XG4gICAgICAgICAgICAgIHt0YEVuam95IGEgJHt3aXRoQ3JlZGl0Q2FyZFRyaWFsUGVyaW9kRHVyYXRpb259LWRheXMgZnJlZSB0cmlhbGB9XG4gICAgICAgICAgICA8L1N1YlRpdGxlPlxuICAgICAgICAgIClcbiAgICAgICAgKX1cbiAgICAgICAgPFN0eWxlZFN1YnNjcmlwdGlvbkNvbnRhaW5lclxuICAgICAgICAgIHdpdGhMb25nZXJNYXJnaW5Cb3R0b209eyFoYXNXaXRob3V0Q3JlZGl0Q2FyZFRyaWFsUGVyaW9kfVxuICAgICAgICA+XG4gICAgICAgICAgPFN0eWxlZFN1YnNjcmlwdGlvblByaWNlQ29udGFpbmVyPlxuICAgICAgICAgICAgPFN1YnNjcmlwdGlvblByaWNlXG4gICAgICAgICAgICAgIHR5cGU9e2Jhc2VQcm9kdWN0UHJpY2UucmVjdXJyaW5nSW50ZXJ2YWx9XG4gICAgICAgICAgICAgIHByaWNlPXtiYXNlUHJvZHVjdFByaWNlLnVuaXRBbW91bnQgLyAxMDB9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvU3R5bGVkU3Vic2NyaXB0aW9uUHJpY2VDb250YWluZXI+XG4gICAgICAgICAgPFN0eWxlZEJlbmVmaXRzQ29udGFpbmVyPlxuICAgICAgICAgICAge2JlbmVmaXRzLm1hcCgoYmVuZWZpdCkgPT4gKFxuICAgICAgICAgICAgICA8U3Vic2NyaXB0aW9uQmVuZWZpdCBrZXk9e2JlbmVmaXR9PntiZW5lZml0fTwvU3Vic2NyaXB0aW9uQmVuZWZpdD5cbiAgICAgICAgICAgICkpfVxuICAgICAgICAgIDwvU3R5bGVkQmVuZWZpdHNDb250YWluZXI+XG4gICAgICAgIDwvU3R5bGVkU3Vic2NyaXB0aW9uQ29udGFpbmVyPlxuICAgICAgICB7aGFzV2l0aG91dENyZWRpdENhcmRUcmlhbFBlcmlvZCAmJiAoXG4gICAgICAgICAgPFN0eWxlZENob29zZVRyaWFsQ29udGFpbmVyPlxuICAgICAgICAgICAge2JpbGxpbmcudHJpYWxQZXJpb2RzLm1hcCgodHJpYWxQZXJpb2QpID0+IChcbiAgICAgICAgICAgICAgPENhcmRQaWNrZXJcbiAgICAgICAgICAgICAgICBjaGVja2VkPXtcbiAgICAgICAgICAgICAgICAgIGJpbGxpbmdDaGVja291dFNlc3Npb24ucmVxdWlyZVBheW1lbnRNZXRob2QgPT09XG4gICAgICAgICAgICAgICAgICB0cmlhbFBlcmlvZC5pc0NyZWRpdENhcmRSZXF1aXJlZFxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBoYW5kbGVDaGFuZ2U9e2hhbmRsZVRyaWFsUGVyaW9kQ2hhbmdlKFxuICAgICAgICAgICAgICAgICAgdHJpYWxQZXJpb2QuaXNDcmVkaXRDYXJkUmVxdWlyZWQsXG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICBrZXk9e3RyaWFsUGVyaW9kLmR1cmF0aW9ufVxuICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgPFRyaWFsQ2FyZFxuICAgICAgICAgICAgICAgICAgZHVyYXRpb249e3RyaWFsUGVyaW9kLmR1cmF0aW9ufVxuICAgICAgICAgICAgICAgICAgd2l0aENyZWRpdENhcmQ9e3RyaWFsUGVyaW9kLmlzQ3JlZGl0Q2FyZFJlcXVpcmVkfVxuICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDwvQ2FyZFBpY2tlcj5cbiAgICAgICAgICAgICkpfVxuICAgICAgICAgIDwvU3R5bGVkQ2hvb3NlVHJpYWxDb250YWluZXI+XG4gICAgICAgICl9XG4gICAgICAgIDxNYWluQnV0dG9uXG4gICAgICAgICAgdGl0bGU9e3RgQ29udGludWVgfVxuICAgICAgICAgIG9uQ2xpY2s9e2hhbmRsZUNoZWNrb3V0U2Vzc2lvbn1cbiAgICAgICAgICB3aWR0aD17MjAwfVxuICAgICAgICAgIEljb249eygpID0+IGlzU3VibWl0dGluZyAmJiA8TG9hZGVyIC8+fVxuICAgICAgICAgIGRpc2FibGVkPXtpc1N1Ym1pdHRpbmd9XG4gICAgICAgIC8+XG4gICAgICAgIDxTdHlsZWRMaW5rR3JvdXA+XG4gICAgICAgICAgPEFjdGlvbkxpbmsgb25DbGljaz17c2lnbk91dH0+XG4gICAgICAgICAgICA8VHJhbnM+TG9nIG91dDwvVHJhbnM+XG4gICAgICAgICAgPC9BY3Rpb25MaW5rPlxuICAgICAgICAgIDxzcGFuIC8+XG4gICAgICAgICAgPEFjdGlvbkxpbmsgb25DbGljaz17aGFuZGxlU3dpdGNoUGxhbihhbHRlcm5hdGVQbGFuKX0+XG4gICAgICAgICAgICA8VHJhbnM+U3dpdGNoIHRvIHthbHRlcm5hdGVQbGFuTmFtZX08L1RyYW5zPlxuICAgICAgICAgIDwvQWN0aW9uTGluaz5cbiAgICAgICAgICA8c3BhbiAvPlxuICAgICAgICAgIDxBY3Rpb25MaW5rIGhyZWY9e0NBTF9MSU5LfSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub3JlZmVycmVyXCI+XG4gICAgICAgICAgICA8VHJhbnM+Qm9vayBhIENhbGw8L1RyYW5zPlxuICAgICAgICAgIDwvQWN0aW9uTGluaz5cbiAgICAgICAgPC9TdHlsZWRMaW5rR3JvdXA+XG4gICAgICA8Lz5cbiAgICApXG4gICk7XG59O1xuIl0sIm5hbWVzIjpbIlN1YlRpdGxlIiwiVGl0bGUiLCJ1c2VBdXRoIiwiYmlsbGluZ0NoZWNrb3V0U2Vzc2lvblN0YXRlIiwiU3Vic2NyaXB0aW9uQmVuZWZpdCIsIlN1YnNjcmlwdGlvblByaWNlIiwiVHJpYWxDYXJkIiwidXNlSGFuZGxlQ2hlY2tvdXRTZXNzaW9uIiwiaXNCaWxsaW5nUHJpY2VMaWNlbnNlZCIsImJpbGxpbmdTdGF0ZSIsInN0eWxlZCIsInVzZVJlY29pbFN0YXRlIiwidXNlUmVjb2lsVmFsdWUiLCJBY3Rpb25MaW5rIiwiQ0FMX0xJTksiLCJDYXJkUGlja2VyIiwiTG9hZGVyIiwiTWFpbkJ1dHRvbiIsIkJpbGxpbmdQbGFuS2V5IiwiU3Vic2NyaXB0aW9uSW50ZXJ2YWwiLCJ1c2VCaWxsaW5nQmFzZVByb2R1Y3RQcmljZXNRdWVyeSIsImlzRGVmaW5lZCIsIlN0eWxlZFN1YnNjcmlwdGlvbkNvbnRhaW5lciIsImRpdiIsInRoZW1lIiwiYmFja2dyb3VuZCIsInNlY29uZGFyeSIsImJvcmRlciIsImNvbG9yIiwibWVkaXVtIiwicmFkaXVzIiwibWQiLCJzcGFjaW5nIiwid2l0aExvbmdlck1hcmdpbkJvdHRvbSIsIlN0eWxlZFN1YnNjcmlwdGlvblByaWNlQ29udGFpbmVyIiwibGlnaHQiLCJTdHlsZWRCZW5lZml0c0NvbnRhaW5lciIsIlN0eWxlZENob29zZVRyaWFsQ29udGFpbmVyIiwiU3R5bGVkTGlua0dyb3VwIiwiZm9udCIsIkNob29zZVlvdXJQbGFuIiwiYmlsbGluZyIsInVzZUxpbmd1aSIsImJpbGxpbmdDaGVja291dFNlc3Npb24iLCJzZXRCaWxsaW5nQ2hlY2tvdXRTZXNzaW9uIiwiZGF0YSIsInBsYW5zIiwiY3VycmVudFBsYW4iLCJwbGFuIiwiUFJPIiwiZ2V0UGxhbkJlbmVmaXRzIiwicGxhbktleSIsIkVOVEVSUFJJU0UiLCJiZW5lZml0cyIsImJhc2VQcm9kdWN0IiwiZmluZCIsImJhc2VQcm9kdWN0UHJpY2UiLCJwcmljZXMiLCJwcmljZSIsInJlY3VycmluZ0ludGVydmFsIiwiTW9udGgiLCJoYXNXaXRob3V0Q3JlZGl0Q2FyZFRyaWFsUGVyaW9kIiwidHJpYWxQZXJpb2RzIiwic29tZSIsInRyaWFsUGVyaW9kIiwiaXNDcmVkaXRDYXJkUmVxdWlyZWQiLCJkdXJhdGlvbiIsIndpdGhDcmVkaXRDYXJkVHJpYWxQZXJpb2QiLCJoYW5kbGVDaGVja291dFNlc3Npb24iLCJpc1N1Ym1pdHRpbmciLCJpbnRlcnZhbCIsInJlcXVpcmVQYXltZW50TWV0aG9kIiwiaGFuZGxlVHJpYWxQZXJpb2RDaGFuZ2UiLCJ3aXRoQ3JlZGl0Q2FyZCIsImhhbmRsZVN3aXRjaFBsYW4iLCJzaWduT3V0Iiwid2l0aENyZWRpdENhcmRUcmlhbFBlcmlvZER1cmF0aW9uIiwiYWx0ZXJuYXRlUGxhbiIsImFsdGVybmF0ZVBsYW5OYW1lIiwibmFtZSIsIm5vTWFyZ2luVG9wIiwidHlwZSIsInVuaXRBbW91bnQiLCJtYXAiLCJiZW5lZml0IiwiY2hlY2tlZCIsImhhbmRsZUNoYW5nZSIsInRpdGxlIiwib25DbGljayIsIndpZHRoIiwiSWNvbiIsImRpc2FibGVkIiwic3BhbiIsImhyZWYiLCJ0YXJnZXQiLCJyZWwiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSxRQUFRLFFBQVEsNkJBQTZCO0FBQ3RELFNBQVNDLEtBQUssUUFBUSwwQkFBMEI7QUFDaEQsU0FBU0MsT0FBTyxRQUFRLHVCQUF1QjtBQUMvQyxTQUFTQywyQkFBMkIsUUFBUSw0Q0FBNEM7QUFDeEYsU0FBU0MsbUJBQW1CLFFBQVEsMkNBQTJDO0FBQy9FLFNBQVNDLGlCQUFpQixRQUFRLHlDQUF5QztBQUMzRSxTQUFTQyxTQUFTLFFBQVEsaUNBQWlDO0FBQzNELFNBQVNDLHdCQUF3QixRQUFRLDJDQUEyQztBQUNwRixTQUFTQyxzQkFBc0IsUUFBUSx5Q0FBeUM7QUFDaEYsU0FBU0MsWUFBWSxRQUFRLHNDQUFzQztBQUNuRSxPQUFPQyxZQUFZLGtCQUFrQjs7O0FBRXJDLFNBQVNDLGNBQWMsRUFBRUMsY0FBYyxRQUFRLFNBQVM7QUFDeEQsU0FDRUMsVUFBVSxFQUNWQyxRQUFRLEVBQ1JDLFVBQVUsRUFDVkMsTUFBTSxFQUNOQyxVQUFVLFFBQ0wsWUFBWTtBQUNuQixTQUNFQyxjQUFjLEVBRWRDLG9CQUFvQixFQUNwQkMsZ0NBQWdDLFFBQzNCLHNCQUFzQjtBQUM3QixTQUFTQyxTQUFTLFFBQVEsc0JBQXNCO0FBRWhELE1BQU1DLDhCQUE4QlosT0FBT2EsR0FBRyxBQUU1QyxDQUFDO29CQUNpQixFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLFVBQVUsQ0FBQ0MsU0FBUyxDQUFD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

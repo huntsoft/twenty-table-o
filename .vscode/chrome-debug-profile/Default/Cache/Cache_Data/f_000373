@@ -1,0 +1,234 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/activities/calendar/components/CalendarEventDetails.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { css, useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { Chip, ChipAccent, ChipSize, ChipVariant, IconCalendarEvent } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { CalendarEventParticipantsResponseStatus } from "/src/modules/activities/calendar/components/CalendarEventParticipantsResponseStatus.tsx";
+import { useObjectMetadataItem } from "/src/modules/object-metadata/hooks/useObjectMetadataItem.ts";
+import { CoreObjectNameSingular } from "/src/modules/object-metadata/types/CoreObjectNameSingular.ts";
+import { formatFieldMetadataItemAsFieldDefinition } from "/src/modules/object-metadata/utils/formatFieldMetadataItemAsFieldDefinition.ts";
+import { FieldContext } from "/src/modules/object-record/record-field/contexts/FieldContext.ts";
+import { RecordFieldComponentInstanceContext } from "/src/modules/object-record/record-field/states/contexts/RecordFieldComponentInstanceContext.ts";
+import { RecordInlineCell } from "/src/modules/object-record/record-inline-cell/components/RecordInlineCell.tsx";
+import { PropertyBox } from "/src/modules/object-record/record-inline-cell/property-box/components/PropertyBox.tsx";
+import { getRecordFieldInputId } from "/src/modules/object-record/utils/getRecordFieldInputId.ts";
+import { mapArrayToObject } from "/src/utils/array/mapArrayToObject.ts";
+import { beautifyPastDateRelativeToNow } from "/src/utils/date-utils.ts";
+const StyledContainer = styled.div`
+  background: ${({ theme })=>theme.background.secondary};
+  align-items: flex-start;
+  border-bottom: 1px solid ${({ theme })=>theme.border.color.medium};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme })=>theme.spacing(6)};
+  padding: ${({ theme })=>theme.spacing(6)};
+  width: 100%;
+  box-sizing: border-box;
+`;
+_c = StyledContainer;
+const StyledEventChip = styled(Chip)`
+  gap: ${({ theme })=>theme.spacing(2)};
+  padding-left: ${({ theme })=>theme.spacing(2)};
+  padding-right: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledEventChip;
+const StyledHeader = styled.header``;
+_c2 = StyledHeader;
+const StyledTitle = styled.h2`
+  color: ${({ theme })=>theme.font.color.primary};
+  font-weight: ${({ theme })=>theme.font.weight.semiBold};
+  margin: ${({ theme })=>theme.spacing(0, 0, 2)};
+
+  ${({ canceled })=>canceled && css`
+      text-decoration: line-through;
+    `}
+`;
+_c3 = StyledTitle;
+const StyledCreatedAt = styled.div`
+  color: ${({ theme })=>theme.font.color.tertiary};
+`;
+_c4 = StyledCreatedAt;
+const StyledFields = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme })=>theme.spacing(3)};
+  width: 100%;
+`;
+_c5 = StyledFields;
+const StyledPropertyBox = styled(PropertyBox)`
+  height: ${({ theme })=>theme.spacing(6)};
+  padding: 0;
+  width: 100%;
+`;
+_c6 = StyledPropertyBox;
+export const CalendarEventDetails = ({ calendarEvent })=>{
+    _s();
+    const theme = useTheme();
+    const { objectMetadataItem } = useObjectMetadataItem({
+        objectNameSingular: CoreObjectNameSingular.CalendarEvent
+    });
+    const fieldsToDisplay = [
+        'startsAt',
+        'endsAt',
+        'conferenceLink',
+        'location',
+        'description'
+    ];
+    const fieldsByName = mapArrayToObject(objectMetadataItem.fields, ({ name })=>name);
+    const { calendarEventParticipants } = calendarEvent;
+    const Fields = fieldsToDisplay.map((fieldName)=>/*#__PURE__*/ _jsxDEV(StyledPropertyBox, {
+            children: /*#__PURE__*/ _jsxDEV(FieldContext.Provider, {
+                value: {
+                    recordId: calendarEvent.id,
+                    hotkeyScope: 'calendar-event-details',
+                    isLabelIdentifier: false,
+                    fieldDefinition: formatFieldMetadataItemAsFieldDefinition({
+                        field: fieldsByName[fieldName],
+                        objectMetadataItem,
+                        showLabel: true,
+                        labelWidth: 72
+                    }),
+                    useUpdateRecord: ()=>[
+                            ()=>undefined,
+                            {
+                                loading: false
+                            }
+                        ],
+                    maxWidth: 300
+                },
+                children: /*#__PURE__*/ _jsxDEV(RecordFieldComponentInstanceContext.Provider, {
+                    value: {
+                        instanceId: getRecordFieldInputId(calendarEvent.id, fieldName)
+                    },
+                    children: /*#__PURE__*/ _jsxDEV(RecordInlineCell, {
+                        readonly: true
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                        lineNumber: 122,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                    lineNumber: 117,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                lineNumber: 102,
+                columnNumber: 7
+            }, this)
+        }, fieldName, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+            lineNumber: 101,
+            columnNumber: 5
+        }, this));
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(StyledEventChip, {
+                accent: ChipAccent.TextSecondary,
+                size: ChipSize.Large,
+                variant: ChipVariant.Highlighted,
+                clickable: false,
+                leftComponent: ()=>/*#__PURE__*/ _jsxDEV(IconCalendarEvent, {
+                        size: theme.icon.size.md
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                        lineNumber: 135,
+                        columnNumber: 30
+                    }, void 0),
+                label: "Event"
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                lineNumber: 130,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledHeader, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledTitle, {
+                        canceled: calendarEvent.isCanceled,
+                        children: calendarEvent.title
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                        lineNumber: 139,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledCreatedAt, {
+                        children: [
+                            "Created",
+                            ' ',
+                            beautifyPastDateRelativeToNow(new Date(calendarEvent.externalCreatedAt))
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                        lineNumber: 142,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                lineNumber: 138,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledFields, {
+                children: [
+                    Fields.slice(0, 2),
+                    calendarEventParticipants && /*#__PURE__*/ _jsxDEV(CalendarEventParticipantsResponseStatus, {
+                        participants: calendarEventParticipants
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                        lineNumber: 152,
+                        columnNumber: 11
+                    }, this),
+                    Fields.slice(2)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+                lineNumber: 149,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx",
+        lineNumber: 129,
+        columnNumber: 5
+    }, this);
+};
+_s(CalendarEventDetails, "m9xAow1ORMXASPLKZ2gcd/OBQX4=", false, function() {
+    return [
+        useTheme,
+        useObjectMetadataItem
+    ];
+});
+_c7 = CalendarEventDetails;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledEventChip");
+$RefreshReg$(_c2, "StyledHeader");
+$RefreshReg$(_c3, "StyledTitle");
+$RefreshReg$(_c4, "StyledCreatedAt");
+$RefreshReg$(_c5, "StyledFields");
+$RefreshReg$(_c6, "StyledPropertyBox");
+$RefreshReg$(_c7, "CalendarEventDetails");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/activities/calendar/components/CalendarEventDetails.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNhbGVuZGFyRXZlbnREZXRhaWxzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBjc3MsIHVzZVRoZW1lIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuaW1wb3J0IHtcbiAgQ2hpcCxcbiAgQ2hpcEFjY2VudCxcbiAgQ2hpcFNpemUsXG4gIENoaXBWYXJpYW50LFxuICBJY29uQ2FsZW5kYXJFdmVudCxcbn0gZnJvbSAndHdlbnR5LXVpJztcblxuaW1wb3J0IHsgQ2FsZW5kYXJFdmVudFBhcnRpY2lwYW50c1Jlc3BvbnNlU3RhdHVzIH0gZnJvbSAnQC9hY3Rpdml0aWVzL2NhbGVuZGFyL2NvbXBvbmVudHMvQ2FsZW5kYXJFdmVudFBhcnRpY2lwYW50c1Jlc3BvbnNlU3RhdHVzJztcbmltcG9ydCB7IENhbGVuZGFyRXZlbnQgfSBmcm9tICdAL2FjdGl2aXRpZXMvY2FsZW5kYXIvdHlwZXMvQ2FsZW5kYXJFdmVudCc7XG5pbXBvcnQgeyB1c2VPYmplY3RNZXRhZGF0YUl0ZW0gfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS9ob29rcy91c2VPYmplY3RNZXRhZGF0YUl0ZW0nO1xuaW1wb3J0IHsgQ29yZU9iamVjdE5hbWVTaW5ndWxhciB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL3R5cGVzL0NvcmVPYmplY3ROYW1lU2luZ3VsYXInO1xuaW1wb3J0IHsgZm9ybWF0RmllbGRNZXRhZGF0YUl0ZW1Bc0ZpZWxkRGVmaW5pdGlvbiB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL3V0aWxzL2Zvcm1hdEZpZWxkTWV0YWRhdGFJdGVtQXNGaWVsZERlZmluaXRpb24nO1xuaW1wb3J0IHsgRmllbGRDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1maWVsZC9jb250ZXh0cy9GaWVsZENvbnRleHQnO1xuaW1wb3J0IHsgUmVjb3JkRmllbGRDb21wb25lbnRJbnN0YW5jZUNvbnRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL3N0YXRlcy9jb250ZXh0cy9SZWNvcmRGaWVsZENvbXBvbmVudEluc3RhbmNlQ29udGV4dCc7XG5pbXBvcnQgeyBSZWNvcmRJbmxpbmVDZWxsIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1pbmxpbmUtY2VsbC9jb21wb25lbnRzL1JlY29yZElubGluZUNlbGwnO1xuaW1wb3J0IHsgUHJvcGVydHlCb3ggfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWlubGluZS1jZWxsL3Byb3BlcnR5LWJveC9jb21wb25lbnRzL1Byb3BlcnR5Qm94JztcbmltcG9ydCB7IGdldFJlY29yZEZpZWxkSW5wdXRJZCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC91dGlscy9nZXRSZWNvcmRGaWVsZElucHV0SWQnO1xuaW1wb3J0IHsgbWFwQXJyYXlUb09iamVjdCB9IGZyb20gJ34vdXRpbHMvYXJyYXkvbWFwQXJyYXlUb09iamVjdCc7XG5pbXBvcnQgeyBiZWF1dGlmeVBhc3REYXRlUmVsYXRpdmVUb05vdyB9IGZyb20gJ34vdXRpbHMvZGF0ZS11dGlscyc7XG5cbnR5cGUgQ2FsZW5kYXJFdmVudERldGFpbHNQcm9wcyA9IHtcbiAgY2FsZW5kYXJFdmVudDogQ2FsZW5kYXJFdmVudDtcbn07XG5cbmNvbnN0IFN0eWxlZENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGJhY2tncm91bmQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYmFja2dyb3VuZC5zZWNvbmRhcnl9O1xuICBhbGlnbi1pdGVtczogZmxleC1zdGFydDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYm9yZGVyLmNvbG9yLm1lZGl1bX07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDYpfTtcbiAgcGFkZGluZzogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDYpfTtcbiAgd2lkdGg6IDEwMCU7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG5gO1xuXG5jb25zdCBTdHlsZWRFdmVudENoaXAgPSBzdHlsZWQoQ2hpcClgXG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbiAgcGFkZGluZy1sZWZ0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuICBwYWRkaW5nLXJpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkSGVhZGVyID0gc3R5bGVkLmhlYWRlcmBgO1xuXG5jb25zdCBTdHlsZWRUaXRsZSA9IHN0eWxlZC5oMjx7IGNhbmNlbGVkPzogYm9vbGVhbiB9PmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5wcmltYXJ5fTtcbiAgZm9udC13ZWlnaHQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC53ZWlnaHQuc2VtaUJvbGR9O1xuICBtYXJnaW46ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygwLCAwLCAyKX07XG5cbiAgJHsoeyBjYW5jZWxlZCB9KSA9PlxuICAgIGNhbmNlbGVkICYmXG4gICAgY3NzYFxuICAgICAgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7XG4gICAgYH1cbmA7XG5cbmNvbnN0IFN0eWxlZENyZWF0ZWRBdCA9IHN0eWxlZC5kaXZgXG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IudGVydGlhcnl9O1xuYDtcblxuY29uc3QgU3R5bGVkRmllbGRzID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMyl9O1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZFByb3BlcnR5Qm94ID0gc3R5bGVkKFByb3BlcnR5Qm94KWBcbiAgaGVpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNil9O1xuICBwYWRkaW5nOiAwO1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmV4cG9ydCBjb25zdCBDYWxlbmRhckV2ZW50RGV0YWlscyA9ICh7XG4gIGNhbGVuZGFyRXZlbnQsXG59OiBDYWxlbmRhckV2ZW50RGV0YWlsc1Byb3BzKSA9PiB7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcbiAgY29uc3QgeyBvYmplY3RNZXRhZGF0YUl0ZW0gfSA9IHVzZU9iamVjdE1ldGFkYXRhSXRlbSh7XG4gICAgb2JqZWN0TmFtZVNpbmd1bGFyOiBDb3JlT2JqZWN0TmFtZVNpbmd1bGFyLkNhbGVuZGFyRXZlbnQsXG4gIH0pO1xuXG4gIGNvbnN0IGZpZWxkc1RvRGlzcGxheSA9IFtcbiAgICAnc3RhcnRzQXQnLFxuICAgICdlbmRzQXQnLFxuICAgICdjb25mZXJlbmNlTGluaycsXG4gICAgJ2xvY2F0aW9uJyxcbiAgICAnZGVzY3JpcHRpb24nLFxuICBdO1xuXG4gIGNvbnN0IGZpZWxkc0J5TmFtZSA9IG1hcEFycmF5VG9PYmplY3QoXG4gICAgb2JqZWN0TWV0YWRhdGFJdGVtLmZpZWxkcyxcbiAgICAoeyBuYW1lIH0pID0+IG5hbWUsXG4gICk7XG5cbiAgY29uc3QgeyBjYWxlbmRhckV2ZW50UGFydGljaXBhbnRzIH0gPSBjYWxlbmRhckV2ZW50O1xuXG4gIGNvbnN0IEZpZWxkcyA9IGZpZWxkc1RvRGlzcGxheS5tYXAoKGZpZWxkTmFtZSkgPT4gKFxuICAgIDxTdHlsZWRQcm9wZXJ0eUJveCBrZXk9e2ZpZWxkTmFtZX0+XG4gICAgICA8RmllbGRDb250ZXh0LlByb3ZpZGVyXG4gICAgICAgIHZhbHVlPXt7XG4gICAgICAgICAgcmVjb3JkSWQ6IGNhbGVuZGFyRXZlbnQuaWQsXG4gICAgICAgICAgaG90a2V5U2NvcGU6ICdjYWxlbmRhci1ldmVudC1kZXRhaWxzJyxcbiAgICAgICAgICBpc0xhYmVsSWRlbnRpZmllcjogZmFsc2UsXG4gICAgICAgICAgZmllbGREZWZpbml0aW9uOiBmb3JtYXRGaWVsZE1ldGFkYXRhSXRlbUFzRmllbGREZWZpbml0aW9uKHtcbiAgICAgICAgICAgIGZpZWxkOiBmaWVsZHNCeU5hbWVbZmllbGROYW1lXSxcbiAgICAgICAgICAgIG9iamVjdE1ldGFkYXRhSXRlbSxcbiAgICAgICAgICAgIHNob3dMYWJlbDogdHJ1ZSxcbiAgICAgICAgICAgIGxhYmVsV2lkdGg6IDcyLFxuICAgICAgICAgIH0pLFxuICAgICAgICAgIHVzZVVwZGF0ZVJlY29yZDogKCkgPT4gWygpID0+IHVuZGVmaW5lZCwgeyBsb2FkaW5nOiBmYWxzZSB9XSxcbiAgICAgICAgICBtYXhXaWR0aDogMzAwLFxuICAgICAgICB9fVxuICAgICAgPlxuICAgICAgICA8UmVjb3JkRmllbGRDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXJcbiAgICAgICAgICB2YWx1ZT17e1xuICAgICAgICAgICAgaW5zdGFuY2VJZDogZ2V0UmVjb3JkRmllbGRJbnB1dElkKGNhbGVuZGFyRXZlbnQuaWQsIGZpZWxkTmFtZSksXG4gICAgICAgICAgfX1cbiAgICAgICAgPlxuICAgICAgICAgIDxSZWNvcmRJbmxpbmVDZWxsIHJlYWRvbmx5IC8+XG4gICAgICAgIDwvUmVjb3JkRmllbGRDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICA8L0ZpZWxkQ29udGV4dC5Qcm92aWRlcj5cbiAgICA8L1N0eWxlZFByb3BlcnR5Qm94PlxuICApKTtcblxuICByZXR1cm4gKFxuICAgIDxTdHlsZWRDb250YWluZXI+XG4gICAgICA8U3R5bGVkRXZlbnRDaGlwXG4gICAgICAgIGFjY2VudD17Q2hpcEFjY2VudC5UZXh0U2Vjb25kYXJ5fVxuICAgICAgICBzaXplPXtDaGlwU2l6ZS5MYXJnZX1cbiAgICAgICAgdmFyaWFudD17Q2hpcFZhcmlhbnQuSGlnaGxpZ2h0ZWR9XG4gICAgICAgIGNsaWNrYWJsZT17ZmFsc2V9XG4gICAgICAgIGxlZnRDb21wb25lbnQ9eygpID0+IDxJY29uQ2FsZW5kYXJFdmVudCBzaXplPXt0aGVtZS5pY29uLnNpemUubWR9IC8+fVxuICAgICAgICBsYWJlbD1cIkV2ZW50XCJcbiAgICAgIC8+XG4gICAgICA8U3R5bGVkSGVhZGVyPlxuICAgICAgICA8U3R5bGVkVGl0bGUgY2FuY2VsZWQ9e2NhbGVuZGFyRXZlbnQuaXNDYW5jZWxlZH0+XG4gICAgICAgICAge2NhbGVuZGFyRXZlbnQudGl0bGV9XG4gICAgICAgIDwvU3R5bGVkVGl0bGU+XG4gICAgICAgIDxTdHlsZWRDcmVhdGVkQXQ+XG4gICAgICAgICAgQ3JlYXRlZHsnICd9XG4gICAgICAgICAge2JlYXV0aWZ5UGFzdERhdGVSZWxhdGl2ZVRvTm93KFxuICAgICAgICAgICAgbmV3IERhdGUoY2FsZW5kYXJFdmVudC5leHRlcm5hbENyZWF0ZWRBdCksXG4gICAgICAgICAgKX1cbiAgICAgICAgPC9TdHlsZWRDcmVhdGVkQXQ+XG4gICAgICA8L1N0eWxlZEhlYWRlcj5cbiAgICAgIDxTdHlsZWRGaWVsZHM+XG4gICAgICAgIHtGaWVsZHMuc2xpY2UoMCwgMil9XG4gICAgICAgIHtjYWxlbmRhckV2ZW50UGFydGljaXBhbnRzICYmIChcbiAgICAgICAgICA8Q2FsZW5kYXJFdmVudFBhcnRpY2lwYW50c1Jlc3BvbnNlU3RhdHVzXG4gICAgICAgICAgICBwYXJ0aWNpcGFudHM9e2NhbGVuZGFyRXZlbnRQYXJ0aWNpcGFudHN9XG4gICAgICAgICAgLz5cbiAgICAgICAgKX1cbiAgICAgICAge0ZpZWxkcy5zbGljZSgyKX1cbiAgICAgIDwvU3R5bGVkRmllbGRzPlxuICAgIDwvU3R5bGVkQ29udGFpbmVyPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJjc3MiLCJ1c2VUaGVtZSIsInN0eWxlZCIsIkNoaXAiLCJDaGlwQWNjZW50IiwiQ2hpcFNpemUiLCJDaGlwVmFyaWFudCIsIkljb25DYWxlbmRhckV2ZW50IiwiQ2FsZW5kYXJFdmVudFBhcnRpY2lwYW50c1Jlc3BvbnNlU3RhdHVzIiwidXNlT2JqZWN0TWV0YWRhdGFJdGVtIiwiQ29yZU9iamVjdE5hbWVTaW5ndWxhciIsImZvcm1hdEZpZWxkTWV0YWRhdGFJdGVtQXNGaWVsZERlZmluaXRpb24iLCJGaWVsZENvbnRleHQiLCJSZWNvcmRGaWVsZENvbXBvbmVudEluc3RhbmNlQ29udGV4dCIsIlJlY29yZElubGluZUNlbGwiLCJQcm9wZXJ0eUJveCIsImdldFJlY29yZEZpZWxkSW5wdXRJZCIsIm1hcEFycmF5VG9PYmplY3QiLCJiZWF1dGlmeVBhc3REYXRlUmVsYXRpdmVUb05vdyIsIlN0eWxlZENvbnRhaW5lciIsImRpdiIsInRoZW1lIiwiYmFja2dyb3VuZCIsInNlY29uZGFyeSIsImJvcmRlciIsImNvbG9yIiwibWVkaXVtIiwic3BhY2luZyIsIlN0eWxlZEV2ZW50Q2hpcCIsIlN0eWxlZEhlYWRlciIsImhlYWRlciIsIlN0eWxlZFRpdGxlIiwiaDIiLCJmb250IiwicHJpbWFyeSIsIndlaWdodCIsInNlbWlCb2xkIiwiY2FuY2VsZWQiLCJTdHlsZWRDcmVhdGVkQXQiLCJ0ZXJ0aWFyeSIsIlN0eWxlZEZpZWxkcyIsIlN0eWxlZFByb3BlcnR5Qm94IiwiQ2FsZW5kYXJFdmVudERldGFpbHMiLCJjYWxlbmRhckV2ZW50Iiwib2JqZWN0TWV0YWRhdGFJdGVtIiwib2JqZWN0TmFtZVNpbmd1bGFyIiwiQ2FsZW5kYXJFdmVudCIsImZpZWxkc1RvRGlzcGxheSIsImZpZWxkc0J5TmFtZSIsImZpZWxkcyIsIm5hbWUiLCJjYWxlbmRhckV2ZW50UGFydGljaXBhbnRzIiwiRmllbGRzIiwibWFwIiwiZmllbGROYW1lIiwiUHJvdmlkZXIiLCJ2YWx1ZSIsInJlY29yZElkIiwiaWQiLCJob3RrZXlTY29wZSIsImlzTGFiZWxJZGVudGlmaWVyIiwiZmllbGREZWZpbml0aW9uIiwiZmllbGQiLCJzaG93TGFiZWwiLCJsYWJlbFdpZHRoIiwidXNlVXBkYXRlUmVjb3JkIiwidW5kZWZpbmVkIiwibG9hZGluZyIsIm1heFdpZHRoIiwiaW5zdGFuY2VJZCIsInJlYWRvbmx5IiwiYWNjZW50IiwiVGV4dFNlY29uZGFyeSIsInNpemUiLCJMYXJnZSIsInZhcmlhbnQiLCJIaWdobGlnaHRlZCIsImNsaWNrYWJsZSIsImxlZnRDb21wb25lbnQiLCJpY29uIiwibWQiLCJsYWJlbCIsImlzQ2FuY2VsZWQiLCJ0aXRsZSIsIkRhdGUiLCJleHRlcm5hbENyZWF0ZWRBdCIsInNsaWNlIiwicGFydGljaXBhbnRzIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0EsR0FBRyxFQUFFQyxRQUFRLFFBQVEsaUJBQWlCO0FBQy9DLE9BQU9DLFlBQVksa0JBQWtCO0FBQ3JDLFNBQ0VDLElBQUksRUFDSkMsVUFBVSxFQUNWQyxRQUFRLEVBQ1JDLFdBQVcsRUFDWEMsaUJBQWlCLFFBQ1osWUFBWTtBQUVuQixTQUFTQyx1Q0FBdUMsUUFBUSwyRUFBMkU7QUFFbkksU0FBU0MscUJBQXFCLFFBQVEsZ0RBQWdEO0FBQ3RGLFNBQVNDLHNCQUFzQixRQUFRLGlEQUFpRDtBQUN4RixTQUFTQyx3Q0FBd0MsUUFBUSxtRUFBbUU7QUFDNUgsU0FBU0MsWUFBWSxRQUFRLHFEQUFxRDtBQUNsRixTQUFTQyxtQ0FBbUMsUUFBUSxtRkFBbUY7QUFDdkksU0FBU0MsZ0JBQWdCLFFBQVEsaUVBQWlFO0FBQ2xHLFNBQVNDLFdBQVcsUUFBUSx5RUFBeUU7QUFDckcsU0FBU0MscUJBQXFCLFFBQVEsOENBQThDO0FBQ3BGLFNBQVNDLGdCQUFnQixRQUFRLGlDQUFpQztBQUNsRSxTQUFTQyw2QkFBNkIsUUFBUSxxQkFBcUI7QUFNbkUsTUFBTUMsa0JBQWtCakIsT0FBT2tCLEdBQUcsQ0FBQztjQUNyQixFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLFVBQVUsQ0FBQ0MsU0FBUyxDQUFDOzsyQkFFL0IsRUFBRSxDQUFDLEVBQUVGLEtBQUssRUFBRSxHQUFLQSxNQUFNRyxN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

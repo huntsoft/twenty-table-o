@@ -1,0 +1,182 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/activities/emails/components/EmailThreads.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { AnimatedPlaceholder, AnimatedPlaceholderEmptyContainer, AnimatedPlaceholderEmptySubTitle, AnimatedPlaceholderEmptyTextContainer, AnimatedPlaceholderEmptyTitle, EMPTY_PLACEHOLDER_TRANSITION_PROPS, H1Title, H1TitleFontColor, Section } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { ActivityList } from "/src/modules/activities/components/ActivityList.tsx";
+import { CustomResolverFetchMoreLoader } from "/src/modules/activities/components/CustomResolverFetchMoreLoader.tsx";
+import { SkeletonLoader } from "/src/modules/activities/components/SkeletonLoader.tsx";
+import { EmailThreadPreview } from "/src/modules/activities/emails/components/EmailThreadPreview.tsx";
+import { TIMELINE_THREADS_DEFAULT_PAGE_SIZE } from "/src/modules/activities/emails/constants/Messaging.ts";
+import { getTimelineThreadsFromCompanyId } from "/src/modules/activities/emails/graphql/queries/getTimelineThreadsFromCompanyId.ts";
+import { getTimelineThreadsFromPersonId } from "/src/modules/activities/emails/graphql/queries/getTimelineThreadsFromPersonId.ts";
+import { useCustomResolver } from "/src/modules/activities/hooks/useCustomResolver.ts";
+import { CoreObjectNameSingular } from "/src/modules/object-metadata/types/CoreObjectNameSingular.ts";
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme })=>theme.spacing(6)};
+  padding: ${({ theme })=>theme.spacing(6, 6, 2)};
+  height: 100%;
+  overflow: auto;
+`;
+_c = StyledContainer;
+const StyledH1Title = styled(H1Title)`
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledH1Title;
+const StyledEmailCount = styled.span`
+  color: ${({ theme })=>theme.font.color.light};
+`;
+export const EmailThreads = ({ targetableObject })=>{
+    _s();
+    const [query, queryName] = targetableObject.targetObjectNameSingular === CoreObjectNameSingular.Person ? [
+        getTimelineThreadsFromPersonId,
+        'getTimelineThreadsFromPersonId'
+    ] : [
+        getTimelineThreadsFromCompanyId,
+        'getTimelineThreadsFromCompanyId'
+    ];
+    const { data, firstQueryLoading, isFetchingMore, fetchMoreRecords } = useCustomResolver(query, queryName, 'timelineThreads', targetableObject, TIMELINE_THREADS_DEFAULT_PAGE_SIZE);
+    const { totalNumberOfThreads, timelineThreads } = data?.[queryName] ?? {};
+    const hasMoreTimelineThreads = timelineThreads && totalNumberOfThreads ? timelineThreads?.length < totalNumberOfThreads : false;
+    const handleLastRowVisible = async ()=>{
+        if (hasMoreTimelineThreads) {
+            await fetchMoreRecords();
+        }
+    };
+    if (firstQueryLoading) {
+        return /*#__PURE__*/ _jsxDEV(SkeletonLoader, {}, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+            lineNumber: 76,
+            columnNumber: 12
+        }, this);
+    }
+    if (!firstQueryLoading && !timelineThreads?.length) {
+        return /*#__PURE__*/ _jsxDEV(AnimatedPlaceholderEmptyContainer, {
+            ...EMPTY_PLACEHOLDER_TRANSITION_PROPS,
+            children: [
+                /*#__PURE__*/ _jsxDEV(AnimatedPlaceholder, {
+                    type: "emptyInbox"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                    lineNumber: 85,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ _jsxDEV(AnimatedPlaceholderEmptyTextContainer, {
+                    children: [
+                        /*#__PURE__*/ _jsxDEV(AnimatedPlaceholderEmptyTitle, {
+                            children: "Empty Inbox"
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                            lineNumber: 87,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ _jsxDEV(AnimatedPlaceholderEmptySubTitle, {
+                            children: "No email exchange has occurred with this record yet."
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                            lineNumber: 90,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                    lineNumber: 86,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+            lineNumber: 81,
+            columnNumber: 7
+        }, this);
+    }
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        children: /*#__PURE__*/ _jsxDEV(Section, {
+            children: [
+                /*#__PURE__*/ _jsxDEV(StyledH1Title, {
+                    title: /*#__PURE__*/ _jsxDEV(_Fragment, {
+                        children: [
+                            "Inbox ",
+                            /*#__PURE__*/ _jsxDEV(StyledEmailCount, {
+                                children: totalNumberOfThreads
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                                lineNumber: 104,
+                                columnNumber: 21
+                            }, void 0)
+                        ]
+                    }, void 0, true),
+                    fontColor: H1TitleFontColor.Primary
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                    lineNumber: 101,
+                    columnNumber: 9
+                }, this),
+                !firstQueryLoading && /*#__PURE__*/ _jsxDEV(ActivityList, {
+                    children: timelineThreads?.map((thread)=>/*#__PURE__*/ _jsxDEV(EmailThreadPreview, {
+                            thread: thread
+                        }, thread.id, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                            lineNumber: 112,
+                            columnNumber: 15
+                        }, this))
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                    lineNumber: 110,
+                    columnNumber: 11
+                }, this),
+                /*#__PURE__*/ _jsxDEV(CustomResolverFetchMoreLoader, {
+                    loading: isFetchingMore || firstQueryLoading,
+                    onLastRowVisible: handleLastRowVisible
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+                    lineNumber: 116,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+            lineNumber: 100,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx",
+        lineNumber: 99,
+        columnNumber: 5
+    }, this);
+};
+_s(EmailThreads, "NK1WNNL9ECUZI2s/iipX1AaVUxQ=", false, function() {
+    return [
+        useCustomResolver
+    ];
+});
+_c2 = EmailThreads;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledH1Title");
+$RefreshReg$(_c2, "EmailThreads");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/activities/emails/components/EmailThreads.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkVtYWlsVGhyZWFkcy50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuaW1wb3J0IHtcbiAgQW5pbWF0ZWRQbGFjZWhvbGRlcixcbiAgQW5pbWF0ZWRQbGFjZWhvbGRlckVtcHR5Q29udGFpbmVyLFxuICBBbmltYXRlZFBsYWNlaG9sZGVyRW1wdHlTdWJUaXRsZSxcbiAgQW5pbWF0ZWRQbGFjZWhvbGRlckVtcHR5VGV4dENvbnRhaW5lcixcbiAgQW5pbWF0ZWRQbGFjZWhvbGRlckVtcHR5VGl0bGUsXG4gIEVNUFRZX1BMQUNFSE9MREVSX1RSQU5TSVRJT05fUFJPUFMsXG4gIEgxVGl0bGUsXG4gIEgxVGl0bGVGb250Q29sb3IsXG4gIFNlY3Rpb24sXG59IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IEFjdGl2aXR5TGlzdCB9IGZyb20gJ0AvYWN0aXZpdGllcy9jb21wb25lbnRzL0FjdGl2aXR5TGlzdCc7XG5pbXBvcnQgeyBDdXN0b21SZXNvbHZlckZldGNoTW9yZUxvYWRlciB9IGZyb20gJ0AvYWN0aXZpdGllcy9jb21wb25lbnRzL0N1c3RvbVJlc29sdmVyRmV0Y2hNb3JlTG9hZGVyJztcbmltcG9ydCB7IFNrZWxldG9uTG9hZGVyIH0gZnJvbSAnQC9hY3Rpdml0aWVzL2NvbXBvbmVudHMvU2tlbGV0b25Mb2FkZXInO1xuaW1wb3J0IHsgRW1haWxUaHJlYWRQcmV2aWV3IH0gZnJvbSAnQC9hY3Rpdml0aWVzL2VtYWlscy9jb21wb25lbnRzL0VtYWlsVGhyZWFkUHJldmlldyc7XG5pbXBvcnQgeyBUSU1FTElORV9USFJFQURTX0RFRkFVTFRfUEFHRV9TSVpFIH0gZnJvbSAnQC9hY3Rpdml0aWVzL2VtYWlscy9jb25zdGFudHMvTWVzc2FnaW5nJztcbmltcG9ydCB7IGdldFRpbWVsaW5lVGhyZWFkc0Zyb21Db21wYW55SWQgfSBmcm9tICdAL2FjdGl2aXRpZXMvZW1haWxzL2dyYXBocWwvcXVlcmllcy9nZXRUaW1lbGluZVRocmVhZHNGcm9tQ29tcGFueUlkJztcbmltcG9ydCB7IGdldFRpbWVsaW5lVGhyZWFkc0Zyb21QZXJzb25JZCB9IGZyb20gJ0AvYWN0aXZpdGllcy9lbWFpbHMvZ3JhcGhxbC9xdWVyaWVzL2dldFRpbWVsaW5lVGhyZWFkc0Zyb21QZXJzb25JZCc7XG5pbXBvcnQgeyB1c2VDdXN0b21SZXNvbHZlciB9IGZyb20gJ0AvYWN0aXZpdGllcy9ob29rcy91c2VDdXN0b21SZXNvbHZlcic7XG5pbXBvcnQgeyBBY3Rpdml0eVRhcmdldGFibGVPYmplY3QgfSBmcm9tICdAL2FjdGl2aXRpZXMvdHlwZXMvQWN0aXZpdHlUYXJnZXRhYmxlRW50aXR5JztcbmltcG9ydCB7IENvcmVPYmplY3ROYW1lU2luZ3VsYXIgfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS90eXBlcy9Db3JlT2JqZWN0TmFtZVNpbmd1bGFyJztcbmltcG9ydCB7IFRpbWVsaW5lVGhyZWFkLCBUaW1lbGluZVRocmVhZHNXaXRoVG90YWwgfSBmcm9tICd+L2dlbmVyYXRlZC9ncmFwaHFsJztcblxuY29uc3QgU3R5bGVkQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNil9O1xuICBwYWRkaW5nOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNiwgNiwgMil9O1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBhdXRvO1xuYDtcblxuY29uc3QgU3R5bGVkSDFUaXRsZSA9IHN0eWxlZChIMVRpdGxlKWBcbiAgZGlzcGxheTogZmxleDtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkRW1haWxDb3VudCA9IHN0eWxlZC5zcGFuYFxuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLmxpZ2h0fTtcbmA7XG5cbmV4cG9ydCBjb25zdCBFbWFpbFRocmVhZHMgPSAoe1xuICB0YXJnZXRhYmxlT2JqZWN0LFxufToge1xuICB0YXJnZXRhYmxlT2JqZWN0OiBBY3Rpdml0eVRhcmdldGFibGVPYmplY3Q7XG59KSA9PiB7XG4gIGNvbnN0IFtxdWVyeSwgcXVlcnlOYW1lXSA9XG4gICAgdGFyZ2V0YWJsZU9iamVjdC50YXJnZXRPYmplY3ROYW1lU2luZ3VsYXIgPT09IENvcmVPYmplY3ROYW1lU2luZ3VsYXIuUGVyc29uXG4gICAgICA/IFtnZXRUaW1lbGluZVRocmVhZHNGcm9tUGVyc29uSWQsICdnZXRUaW1lbGluZVRocmVhZHNGcm9tUGVyc29uSWQnXVxuICAgICAgOiBbZ2V0VGltZWxpbmVUaHJlYWRzRnJvbUNvbXBhbnlJZCwgJ2dldFRpbWVsaW5lVGhyZWFkc0Zyb21Db21wYW55SWQnXTtcblxuICBjb25zdCB7IGRhdGEsIGZpcnN0UXVlcnlMb2FkaW5nLCBpc0ZldGNoaW5nTW9yZSwgZmV0Y2hNb3JlUmVjb3JkcyB9ID1cbiAgICB1c2VDdXN0b21SZXNvbHZlcjxUaW1lbGluZVRocmVhZHNXaXRoVG90YWw+KFxuICAgICAgcXVlcnksXG4gICAgICBxdWVyeU5hbWUsXG4gICAgICAndGltZWxpbmVUaHJlYWRzJyxcbiAgICAgIHRhcmdldGFibGVPYmplY3QsXG4gICAgICBUSU1FTElORV9USFJFQURTX0RFRkFVTFRfUEFHRV9TSVpFLFxuICAgICk7XG5cbiAgY29uc3QgeyB0b3RhbE51bWJlck9mVGhyZWFkcywgdGltZWxpbmVUaHJlYWRzIH0gPSBkYXRhPy5bcXVlcnlOYW1lXSA/PyB7fTtcbiAgY29uc3QgaGFzTW9yZVRpbWVsaW5lVGhyZWFkcyA9XG4gICAgdGltZWxpbmVUaHJlYWRzICYmIHRvdGFsTnVtYmVyT2ZUaHJlYWRzXG4gICAgICA/IHRpbWVsaW5lVGhyZWFkcz8ubGVuZ3RoIDwgdG90YWxOdW1iZXJPZlRocmVhZHNcbiAgICAgIDogZmFsc2U7XG5cbiAgY29uc3QgaGFuZGxlTGFzdFJvd1Zpc2libGUgPSBhc3luYyAoKSA9PiB7XG4gICAgaWYgKGhhc01vcmVUaW1lbGluZVRocmVhZHMpIHtcbiAgICAgIGF3YWl0IGZldGNoTW9yZVJlY29yZHMoKTtcbiAgICB9XG4gIH07XG5cbiAgaWYgKGZpcnN0UXVlcnlMb2FkaW5nKSB7XG4gICAgcmV0dXJuIDxTa2VsZXRvbkxvYWRlciAvPjtcbiAgfVxuXG4gIGlmICghZmlyc3RRdWVyeUxvYWRpbmcgJiYgIXRpbWVsaW5lVGhyZWFkcz8ubGVuZ3RoKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxBbmltYXRlZFBsYWNlaG9sZGVyRW1wdHlDb250YWluZXJcbiAgICAgICAgLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIHJlYWN0L2pzeC1wcm9wcy1uby1zcHJlYWRpbmdcbiAgICAgICAgey4uLkVNUFRZX1BMQUNFSE9MREVSX1RSQU5TSVRJT05fUFJPUFN9XG4gICAgICA+XG4gICAgICAgIDxBbmltYXRlZFBsYWNlaG9sZGVyIHR5cGU9XCJlbXB0eUluYm94XCIgLz5cbiAgICAgICAgPEFuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVRleHRDb250YWluZXI+XG4gICAgICAgICAgPEFuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVRpdGxlPlxuICAgICAgICAgICAgRW1wdHkgSW5ib3hcbiAgICAgICAgICA8L0FuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVRpdGxlPlxuICAgICAgICAgIDxBbmltYXRlZFBsYWNlaG9sZGVyRW1wdHlTdWJUaXRsZT5cbiAgICAgICAgICAgIE5vIGVtYWlsIGV4Y2hhbmdlIGhhcyBvY2N1cnJlZCB3aXRoIHRoaXMgcmVjb3JkIHlldC5cbiAgICAgICAgICA8L0FuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVN1YlRpdGxlPlxuICAgICAgICA8L0FuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVRleHRDb250YWluZXI+XG4gICAgICA8L0FuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eUNvbnRhaW5lcj5cbiAgICApO1xuICB9XG5cbiAgcmV0dXJuIChcbiAgICA8U3R5bGVkQ29udGFpbmVyPlxuICAgICAgPFNlY3Rpb24+XG4gICAgICAgIDxTdHlsZWRIMVRpdGxlXG4gICAgICAgICAgdGl0bGU9e1xuICAgICAgICAgICAgPD5cbiAgICAgICAgICAgICAgSW5ib3ggPFN0eWxlZEVtYWlsQ291bnQ+e3RvdGFsTnVtYmVyT2ZUaHJlYWRzfTwvU3R5bGVkRW1haWxDb3VudD5cbiAgICAgICAgICAgIDwvPlxuICAgICAgICAgIH1cbiAgICAgICAgICBmb250Q29sb3I9e0gxVGl0bGVGb250Q29sb3IuUHJpbWFyeX1cbiAgICAgICAgLz5cbiAgICAgICAgeyFmaXJzdFF1ZXJ5TG9hZGluZyAmJiAoXG4gICAgICAgICAgPEFjdGl2aXR5TGlzdD5cbiAgICAgICAgICAgIHt0aW1lbGluZVRocmVhZHM/Lm1hcCgodGhyZWFkOiBUaW1lbGluZVRocmVhZCkgPT4gKFxuICAgICAgICAgICAgICA8RW1haWxUaHJlYWRQcmV2aWV3IGtleT17dGhyZWFkLmlkfSB0aHJlYWQ9e3RocmVhZH0gLz5cbiAgICAgICAgICAgICkpfVxuICAgICAgICAgIDwvQWN0aXZpdHlMaXN0PlxuICAgICAgICApfVxuICAgICAgICA8Q3VzdG9tUmVzb2x2ZXJGZXRjaE1vcmVMb2FkZXJcbiAgICAgICAgICBsb2FkaW5nPXtpc0ZldGNoaW5nTW9yZSB8fCBmaXJzdFF1ZXJ5TG9hZGluZ31cbiAgICAgICAgICBvbkxhc3RSb3dWaXNpYmxlPXtoYW5kbGVMYXN0Um93VmlzaWJsZX1cbiAgICAgICAgLz5cbiAgICAgIDwvU2VjdGlvbj5cbiAgICA8L1N0eWxlZENvbnRhaW5lcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsic3R5bGVkIiwiQW5pbWF0ZWRQbGFjZWhvbGRlciIsIkFuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eUNvbnRhaW5lciIsIkFuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVN1YlRpdGxlIiwiQW5pbWF0ZWRQbGFjZWhvbGRlckVtcHR5VGV4dENvbnRhaW5lciIsIkFuaW1hdGVkUGxhY2Vob2xkZXJFbXB0eVRpdGxlIiwiRU1QVFlfUExBQ0VIT0xERVJfVFJBTlNJVElPTl9QUk9QUyIsIkgxVGl0bGUiLCJIMVRpdGxlRm9udENvbG9yIiwiU2VjdGlvbiIsIkFjdGl2aXR5TGlzdCIsIkN1c3RvbVJlc29sdmVyRmV0Y2hNb3JlTG9hZGVyIiwiU2tlbGV0b25Mb2FkZXIiLCJFbWFpbFRocmVhZFByZXZpZXciLCJUSU1FTElORV9USFJFQURTX0RFRkFVTFRfUEFHRV9TSVpFIiwiZ2V0VGltZWxpbmVUaHJlYWRzRnJvbUNvbXBhbnlJZCIsImdldFRpbWVsaW5lVGhyZWFkc0Zyb21QZXJzb25JZCIsInVzZUN1c3RvbVJlc29sdmVyIiwiQ29yZU9iamVjdE5hbWVTaW5ndWxhciIsIlN0eWxlZENvbnRhaW5lciIsImRpdiIsInRoZW1lIiwic3BhY2luZyIsIlN0eWxlZEgxVGl0bGUiLCJTdHlsZWRFbWFpbENvdW50Iiwic3BhbiIsImZvbnQiLCJjb2xvciIsImxpZ2h0IiwiRW1haWxUaHJlYWRzIiwidGFyZ2V0YWJsZU9iamVjdCIsInF1ZXJ5IiwicXVlcnlOYW1lIiwidGFyZ2V0T2JqZWN0TmFtZVNpbmd1bGFyIiwiUGVyc29uIiwiZGF0YSIsImZpcnN0UXVlcnlMb2FkaW5nIiwiaXNGZXRjaGluZ01vcmUiLCJmZXRjaE1vcmVSZWNvcmRzIiwidG90YWxOdW1iZXJPZlRocmVhZHMiLCJ0aW1lbGluZVRocmVhZHMiLCJoYXNNb3JlVGltZWxpbmVUaHJlYWRzIiwibGVuZ3RoIiwiaGFuZGxlTGFzdFJvd1Zpc2libGUiLCJ0eXBlIiwidGl0bGUiLCJmb250Q29sb3IiLCJQcmltYXJ5IiwibWFwIiwidGhyZWFkIiwiaWQiLCJsb2FkaW5nIiwib25MYXN0Um93VmlzaWJsZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLE9BQU9BLFlBQVksa0JBQWtCO0FBQ3JDLFNBQ0VDLG1CQUFtQixFQUNuQkMsaUNBQWlDLEVBQ2pDQyxnQ0FBZ0MsRUFDaENDLHFDQUFxQyxFQUNyQ0MsNkJBQTZCLEVBQzdCQyxrQ0FBa0MsRUFDbENDLE9BQU8sRUFDUEMsZ0JBQWdCLEVBQ2hCQyxPQUFPLFFBQ0YsWUFBWTtBQUVuQixTQUFTQyxZQUFZLFFBQVEsdUNBQXVDO0FBQ3BFLFNBQVNDLDZCQUE2QixRQUFRLHdEQUF3RDtBQUN0RyxTQUFTQyxjQUFjLFFBQVEseUNBQXlDO0FBQ3hFLFNBQVNDLGtCQUFrQixRQUFRLG9EQUFvRDtBQUN2RixTQUFTQyxrQ0FBa0MsUUFBUSwwQ0FBMEM7QUFDN0YsU0FBU0MsK0JBQStCLFFBQVEsc0VBQXNFO0FBQ3RILFNBQVNDLDhCQUE4QixRQUFRLHFFQUFxRTtBQUNwSCxTQUFTQyxpQkFBaUIsUUFBUSx1Q0FBdUM7QUFFekUsU0FBU0Msc0JBQXNCLFFBQVEsaURBQWlEO0FBR3hGLE1BQU1DLGtCQUFrQm5CLE9BQU9vQixHQUFHLENBQUM7OztPQUc1QixFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLE9BQU8sQ0FBQyxHQUFHO1dBQzlCLEVBQUUsQ0FBQyxFQUFFRCxLQUFLLEVBQUUsR0FBS0EsTUFBTUMsT0FBTyxDQUFDLEdBQUcsR0FBRyxHQUFHOzs7QUFHbkQsQ0FBQztLQVBLSDtBQVNOLE1BQU1JLGdCQUFnQnZCLE9BQU9PLFFBQVEsQ0FBQzs7T0FFL0IsRUFBRSxDQUFDLEVBQUVjLEtBQUssRUFBRSxHQUFLQSxNQUFNQyxPQUFPLENBQUMsR0FBRztBQUN6QyxDQUFDO01BSEtDO0FBS04sTUFBTUMsbUJBQW1CeEIsT0FBT3lCLElBQUksQ0FBQztTQUM1QixFQUFFLENBQUMsRUFBRUosS0FBSyxFQUFFLEdBQUtBLE1BQU1LLElBQUksQ0FBQ0MsS0FBSyxDQUFDQyxLQUFLLENBQUM7QUFDakQsQ0FBQztBQUVELE9BQU8sTUFBTUMsZUFBZSxDQUFDLEVBQzNCQyxnQkFBZ0IsRUFHakI7O0lBQ0MsTUFBTSxDQUFDQyxPQUFPQyxVQUFVLEdBQ3RCRixpQkFBaUJHLHdCQUF3QixLQUFLZix1QkFBdUJnQixNQUFNLEdBQ3ZFO1FBQUNsQjtRQUFnQztLQUFpQyxHQUNsRTtRQUFDRDtRQUFpQztLQUFrQztJQUUxRSxNQUFNLEVBQUVvQixJQUFJLEVBQUVDLGlCQUFpQixFQUFFQyxjQUFjLEVBQUVDLGdCQUFnQixFQUFFLEdBQ2pFckIsa0JBQ0VjLE9BQ0FDLFdBQ0EsbUJBQ0FGLGtCQUNBaEI7SUFHSixNQUFNLEVBQUV5QixvQkFBb0IsRUFBRUMsZUFBZSxFQUFFLEdBQUdMLE1BQU0sQ0FBQ0gsVUFBVSxJQUFJLENBQUM7SUFDeEUsTUFBTVMseUJBQ0pELG1CQUFtQkQsdUJBQ2ZDLGlCQUFpQkUsU0FBU0gsdUJBQzFCO0lBRU4sTUFBTUksdUJBQXVCO1FBQzNCLElBQUlGLHdCQUF3QjtZQUMxQixNQUFNSDtRQUNSO0lBQ0Y7SUFFQSxJQUFJRixtQkFBbUI7UUFDckIscUJBQU8sUUFBQ3hCOzs7OztJQUNWO0lBRUEsSUFBSSxDQUFDd0IscUJBQXFCLENBQUNJLGlCQUFpQkUsUUFBUTtRQUNsRCxxQkFDRSxRQUFDeEM7WUFFRSxHQUFHSSxrQ0FBa0M7OzhCQUV0QyxRQUFDTDtvQkFBb0IyQyxNQUFLOzs7Ozs7OEJBQzFCLFFBQUN4Qzs7c0NBQ0MsUUFBQ0M7c0NBQThCOzs7Ozs7c0NBRy9CLFFBQUNGO3NDQUFpQzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBTTFDO0lBRUEscUJBQ0UsUUFBQ2dCO2tCQUNDLGNBQUEsUUFBQ1Y7OzhCQUNDLFFBQUNjO29CQUNDc0IscUJBQ0U7OzRCQUFFOzBDQUNNLFFBQUNyQjswQ0FBa0JlOzs7Ozs7OztvQkFHN0JPLFdBQVd0QyxpQkFBaUJ1QyxPQUFPOzs7Ozs7Z0JBRXBDLENBQUNYLG1DQUNBLFFBQUMxQjs4QkFDRThCLGlCQUFpQlEsSUFBSSxDQUFDQyx1QkFDckIsUUFBQ3BDOzRCQUFtQ29DLFFBQVFBOzJCQUFuQkEsT0FBT0MsRUFBRTs7Ozs7Ozs7Ozs4QkFJeEMsUUFBQ3ZDO29CQUNDd0MsU0FBU2Qsa0JBQWtCRDtvQkFDM0JnQixrQkFBa0JUOzs7Ozs7Ozs7Ozs7Ozs7OztBQUs1QixFQUFFO0dBL0VXZDs7UUFXVFo7OztNQVhTWSJ9

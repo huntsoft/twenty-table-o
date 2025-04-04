@@ -1,0 +1,172 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useCountries } from "/src/modules/ui/input/components/internal/hooks/useCountries.ts";
+import { Dropdown } from "/src/modules/ui/layout/dropdown/components/Dropdown.tsx";
+import { useDropdown } from "/src/modules/ui/layout/dropdown/hooks/useDropdown.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport7_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useEffect = __vite__cjsImport7_react["useEffect"]; const useState = __vite__cjsImport7_react["useState"];
+import { IconChevronDown, IconWorld } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { CountryPickerHotkeyScope } from "/src/modules/ui/input/components/internal/phone/types/CountryPickerHotkeyScope.ts";
+import { PhoneCountryPickerDropdownSelect } from "/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownSelect.tsx";
+import "/@fs/D:/twenty-table-o/node_modules/react-phone-number-input/style.css";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledDropdownButtonContainer = styled.div`
+  align-items: center;
+  background: none;
+  border-radius: ${({ theme })=>theme.border.radius.xs} 0 0
+    ${({ theme })=>theme.border.radius.xs};
+  color: ${({ color })=>color ?? 'none'};
+  cursor: pointer;
+  display: flex;
+
+  height: 32px;
+
+  padding-left: ${({ theme })=>theme.spacing(2)};
+  padding-right: ${({ theme })=>theme.spacing(1)};
+  user-select: none;
+
+  border-right: 1px solid ${({ theme })=>theme.border.color.medium};
+
+  &:hover {
+    background-color: ${({ theme })=>theme.background.transparent.light};
+  }
+`;
+const StyledIconContainer = styled.div`
+  align-items: center;
+  color: ${({ theme })=>theme.font.color.tertiary};
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(0.5)};
+  justify-content: center;
+
+  svg {
+    align-items: center;
+    display: flex;
+    height: 12px;
+    width: 16px;
+    justify-content: center;
+  }
+`;
+const StyledCheveronIconContainer = styled.div`
+  svg {
+    align-items: center;
+    display: flex;
+    height: 14px;
+    width: 14px;
+    justify-content: center;
+  }
+`;
+export const PhoneCountryPickerDropdownButton = ({ value, onChange })=>{
+    _s();
+    const theme = useTheme();
+    const [selectedCountry, setSelectedCountry] = useState();
+    const { isDropdownOpen, closeDropdown } = useDropdown('country-picker-dropdown-id');
+    const handleChange = (countryCode)=>{
+        closeDropdown();
+        onChange(countryCode);
+    };
+    const countries = useCountries();
+    useEffect(()=>{
+        const country = countries.find(({ countryCode })=>countryCode === value);
+        if (isDefined(country)) {
+            setSelectedCountry(country);
+        }
+    }, [
+        countries,
+        value
+    ]);
+    return /*#__PURE__*/ _jsxDEV(Dropdown, {
+        dropdownId: "country-picker-dropdown-id",
+        dropdownHotkeyScope: {
+            scope: CountryPickerHotkeyScope.CountryPicker
+        },
+        clickableComponent: /*#__PURE__*/ _jsxDEV(StyledDropdownButtonContainer, {
+            isUnfolded: isDropdownOpen,
+            children: /*#__PURE__*/ _jsxDEV(StyledIconContainer, {
+                children: [
+                    selectedCountry ? /*#__PURE__*/ _jsxDEV(selectedCountry.Flag, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+                        lineNumber: 105,
+                        columnNumber: 32
+                    }, void 0) : /*#__PURE__*/ _jsxDEV(IconWorld, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+                        lineNumber: 105,
+                        columnNumber: 59
+                    }, void 0),
+                    /*#__PURE__*/ _jsxDEV(StyledCheveronIconContainer, {
+                        children: /*#__PURE__*/ _jsxDEV(IconChevronDown, {
+                            size: theme.icon.size.sm
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+                            lineNumber: 107,
+                            columnNumber: 15
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+                        lineNumber: 106,
+                        columnNumber: 13
+                    }, void 0)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+                lineNumber: 104,
+                columnNumber: 11
+            }, void 0)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+            lineNumber: 103,
+            columnNumber: 9
+        }, void 0),
+        dropdownComponents: /*#__PURE__*/ _jsxDEV(PhoneCountryPickerDropdownSelect, {
+            countries: countries,
+            selectedCountry: selectedCountry,
+            onChange: handleChange
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+            lineNumber: 113,
+            columnNumber: 9
+        }, void 0),
+        dropdownPlacement: "bottom-start",
+        dropdownOffset: {
+            x: 0,
+            y: 4
+        }
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx",
+        lineNumber: 99,
+        columnNumber: 5
+    }, this);
+};
+_s(PhoneCountryPickerDropdownButton, "h3HbiY5nIfUfr3hC8HyEOyV9C7M=", false, function() {
+    return [
+        useTheme,
+        useDropdown,
+        useCountries
+    ];
+});
+_c = PhoneCountryPickerDropdownButton;
+var _c;
+$RefreshReg$(_c, "PhoneCountryPickerDropdownButton");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/internal/phone/components/PhoneCountryPickerDropdownButton.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlBob25lQ291bnRyeVBpY2tlckRyb3Bkb3duQnV0dG9uLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VDb3VudHJpZXMgfSBmcm9tICdAL3VpL2lucHV0L2NvbXBvbmVudHMvaW50ZXJuYWwvaG9va3MvdXNlQ291bnRyaWVzJztcbmltcG9ydCB7IENvdW50cnkgfSBmcm9tICdAL3VpL2lucHV0L2NvbXBvbmVudHMvaW50ZXJuYWwvdHlwZXMvQ291bnRyeSc7XG5pbXBvcnQgeyBEcm9wZG93biB9IGZyb20gJ0AvdWkvbGF5b3V0L2Ryb3Bkb3duL2NvbXBvbmVudHMvRHJvcGRvd24nO1xuaW1wb3J0IHsgdXNlRHJvcGRvd24gfSBmcm9tICdAL3VpL2xheW91dC9kcm9wZG93bi9ob29rcy91c2VEcm9wZG93bic7XG5pbXBvcnQgeyB1c2VUaGVtZSB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IHVzZUVmZmVjdCwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBJY29uQ2hldnJvbkRvd24sIEljb25Xb3JsZCB9IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IENvdW50cnlQaWNrZXJIb3RrZXlTY29wZSB9IGZyb20gJy4uL3R5cGVzL0NvdW50cnlQaWNrZXJIb3RrZXlTY29wZSc7XG5cbmltcG9ydCB7IFBob25lQ291bnRyeVBpY2tlckRyb3Bkb3duU2VsZWN0IH0gZnJvbSAnLi9QaG9uZUNvdW50cnlQaWNrZXJEcm9wZG93blNlbGVjdCc7XG5cbmltcG9ydCAncmVhY3QtcGhvbmUtbnVtYmVyLWlucHV0L3N0eWxlLmNzcyc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxudHlwZSBTdHlsZWREcm9wZG93bkJ1dHRvblByb3BzID0ge1xuICBpc1VuZm9sZGVkOiBib29sZWFuO1xufTtcblxuY29uc3QgU3R5bGVkRHJvcGRvd25CdXR0b25Db250YWluZXIgPSBzdHlsZWQuZGl2PFN0eWxlZERyb3Bkb3duQnV0dG9uUHJvcHM+YFxuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiBub25lO1xuICBib3JkZXItcmFkaXVzOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5yYWRpdXMueHN9IDAgMFxuICAgICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYm9yZGVyLnJhZGl1cy54c307XG4gIGNvbG9yOiAkeyh7IGNvbG9yIH0pID0+IGNvbG9yID8/ICdub25lJ307XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogZmxleDtcblxuICBoZWlnaHQ6IDMycHg7XG5cbiAgcGFkZGluZy1sZWZ0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuICBwYWRkaW5nLXJpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMSl9O1xuICB1c2VyLXNlbGVjdDogbm9uZTtcblxuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5jb2xvci5tZWRpdW19O1xuXG4gICY6aG92ZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYmFja2dyb3VuZC50cmFuc3BhcmVudC5saWdodH07XG4gIH1cbmA7XG5cbmNvbnN0IFN0eWxlZEljb25Db250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLnRlcnRpYXJ5fTtcbiAgZGlzcGxheTogZmxleDtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMC41KX07XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuXG4gIHN2ZyB7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGhlaWdodDogMTJweDtcbiAgICB3aWR0aDogMTZweDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgfVxuYDtcblxuY29uc3QgU3R5bGVkQ2hldmVyb25JY29uQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgc3ZnIHtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgaGVpZ2h0OiAxNHB4O1xuICAgIHdpZHRoOiAxNHB4O1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB9XG5gO1xuXG5leHBvcnQgY29uc3QgUGhvbmVDb3VudHJ5UGlja2VyRHJvcGRvd25CdXR0b24gPSAoe1xuICB2YWx1ZSxcbiAgb25DaGFuZ2UsXG59OiB7XG4gIHZhbHVlOiBzdHJpbmc7XG4gIG9uQ2hhbmdlOiAoY291bnRyeUNvZGU6IHN0cmluZykgPT4gdm9pZDtcbn0pID0+IHtcbiAgY29uc3QgdGhlbWUgPSB1c2VUaGVtZSgpO1xuXG4gIGNvbnN0IFtzZWxlY3RlZENvdW50cnksIHNldFNlbGVjdGVkQ291bnRyeV0gPSB1c2VTdGF0ZTxDb3VudHJ5PigpO1xuXG4gIGNvbnN0IHsgaXNEcm9wZG93bk9wZW4sIGNsb3NlRHJvcGRvd24gfSA9IHVzZURyb3Bkb3duKFxuICAgICdjb3VudHJ5LXBpY2tlci1kcm9wZG93bi1pZCcsXG4gICk7XG5cbiAgY29uc3QgaGFuZGxlQ2hhbmdlID0gKGNvdW50cnlDb2RlOiBzdHJpbmcpID0+IHtcbiAgICBjbG9zZURyb3Bkb3duKCk7XG4gICAgb25DaGFuZ2UoY291bnRyeUNvZGUpO1xuICB9O1xuXG4gIGNvbnN0IGNvdW50cmllcyA9IHVzZUNvdW50cmllcygpO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgY29uc3QgY291bnRyeSA9IGNvdW50cmllcy5maW5kKCh7IGNvdW50cnlDb2RlIH0pID0+IGNvdW50cnlDb2RlID09PSB2YWx1ZSk7XG4gICAgaWYgKGlzRGVmaW5lZChjb3VudHJ5KSkge1xuICAgICAgc2V0U2VsZWN0ZWRDb3VudHJ5KGNvdW50cnkpO1xuICAgIH1cbiAgfSwgW2NvdW50cmllcywgdmFsdWVdKTtcblxuICByZXR1cm4gKFxuICAgIDxEcm9wZG93blxuICAgICAgZHJvcGRvd25JZD1cImNvdW50cnktcGlja2VyLWRyb3Bkb3duLWlkXCJcbiAgICAgIGRyb3Bkb3duSG90a2V5U2NvcGU9e3sgc2NvcGU6IENvdW50cnlQaWNrZXJIb3RrZXlTY29wZS5Db3VudHJ5UGlja2VyIH19XG4gICAgICBjbGlja2FibGVDb21wb25lbnQ9e1xuICAgICAgICA8U3R5bGVkRHJvcGRvd25CdXR0b25Db250YWluZXIgaXNVbmZvbGRlZD17aXNEcm9wZG93bk9wZW59PlxuICAgICAgICAgIDxTdHlsZWRJY29uQ29udGFpbmVyPlxuICAgICAgICAgICAge3NlbGVjdGVkQ291bnRyeSA/IDxzZWxlY3RlZENvdW50cnkuRmxhZyAvPiA6IDxJY29uV29ybGQgLz59XG4gICAgICAgICAgICA8U3R5bGVkQ2hldmVyb25JY29uQ29udGFpbmVyPlxuICAgICAgICAgICAgICA8SWNvbkNoZXZyb25Eb3duIHNpemU9e3RoZW1lLmljb24uc2l6ZS5zbX0gLz5cbiAgICAgICAgICAgIDwvU3R5bGVkQ2hldmVyb25JY29uQ29udGFpbmVyPlxuICAgICAgICAgIDwvU3R5bGVkSWNvbkNvbnRhaW5lcj5cbiAgICAgICAgPC9TdHlsZWREcm9wZG93bkJ1dHRvbkNvbnRhaW5lcj5cbiAgICAgIH1cbiAgICAgIGRyb3Bkb3duQ29tcG9uZW50cz17XG4gICAgICAgIDxQaG9uZUNvdW50cnlQaWNrZXJEcm9wZG93blNlbGVjdFxuICAgICAgICAgIGNvdW50cmllcz17Y291bnRyaWVzfVxuICAgICAgICAgIHNlbGVjdGVkQ291bnRyeT17c2VsZWN0ZWRDb3VudHJ5fVxuICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XG4gICAgICAgIC8+XG4gICAgICB9XG4gICAgICBkcm9wZG93blBsYWNlbWVudD1cImJvdHRvbS1zdGFydFwiXG4gICAgICBkcm9wZG93bk9mZnNldD17eyB4OiAwLCB5OiA0IH19XG4gICAgLz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlQ291bnRyaWVzIiwiRHJvcGRvd24iLCJ1c2VEcm9wZG93biIsInVzZVRoZW1lIiwic3R5bGVkIiwidXNlRWZmZWN0IiwidXNlU3RhdGUiLCJJY29uQ2hldnJvbkRvd24iLCJJY29uV29ybGQiLCJDb3VudHJ5UGlja2VySG90a2V5U2NvcGUiLCJQaG9uZUNvdW50cnlQaWNrZXJEcm9wZG93blNlbGVjdCIsImlzRGVmaW5lZCIsIlN0eWxlZERyb3Bkb3duQnV0dG9uQ29udGFpbmVyIiwiZGl2IiwidGhlbWUiLCJib3JkZXIiLCJyYWRpdXMiLCJ4cyIsImNvbG9yIiwic3BhY2luZyIsIm1lZGl1bSIsImJhY2tncm91bmQiLCJ0cmFuc3BhcmVudCIsImxpZ2h0IiwiU3R5bGVkSWNvbkNvbnRhaW5lciIsImZvbnQiLCJ0ZXJ0aWFyeSIsIlN0eWxlZENoZXZlcm9uSWNvbkNvbnRhaW5lciIsIlBob25lQ291bnRyeVBpY2tlckRyb3Bkb3duQnV0dG9uIiwidmFsdWUiLCJvbkNoYW5nZSIsInNlbGVjdGVkQ291bnRyeSIsInNldFNlbGVjdGVkQ291bnRyeSIsImlzRHJvcGRvd25PcGVuIiwiY2xvc2VEcm9wZG93biIsImhhbmRsZUNoYW5nZSIsImNvdW50cnlDb2RlIiwiY291bnRyaWVzIiwiY291bnRyeSIsImZpbmQiLCJkcm9wZG93bklkIiwiZHJvcGRvd25Ib3RrZXlTY29wZSIsInNjb3BlIiwiQ291bnRyeVBpY2tlciIsImNsaWNrYWJsZUNvbXBvbmVudCIsImlzVW5mb2xkZWQiLCJGbGFnIiwic2l6ZSIsImljb24iLCJzbSIsImRyb3Bkb3duQ29tcG9uZW50cyIsImRyb3Bkb3duUGxhY2VtZW50IiwiZHJvcGRvd25PZmZzZXQiLCJ4IiwieSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLFNBQVNBLFlBQVksUUFBUSxvREFBb0Q7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

@@ -1,0 +1,337 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/onboarding/CreateProfile.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { zodResolver } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@hookform_resolvers_zod.js?v=226f7286";
+import __vite__cjsImport4_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useCallback = __vite__cjsImport4_react["useCallback"]; const useState = __vite__cjsImport4_react["useState"];
+import { Controller, useForm } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-hook-form.js?v=226f7286";
+import { useRecoilState } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import __vite__cjsImport7_tsKeyEnum from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/ts-key-enum.js?v=226f7286"; const Key = __vite__cjsImport7_tsKeyEnum["Key"];
+import { H2Title, MainButton } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { z } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/zod.js?v=226f7286";
+import { SubTitle } from "/src/modules/auth/components/SubTitle.tsx";
+import { Title } from "/src/modules/auth/components/Title.tsx";
+import { currentWorkspaceMemberState } from "/src/modules/auth/states/currentWorkspaceMemberState.ts";
+import { CoreObjectNameSingular } from "/src/modules/object-metadata/types/CoreObjectNameSingular.ts";
+import { useUpdateOneRecord } from "/src/modules/object-record/hooks/useUpdateOneRecord.ts";
+import { useOnboardingStatus } from "/src/modules/onboarding/hooks/useOnboardingStatus.ts";
+import { useSetNextOnboardingStatus } from "/src/modules/onboarding/hooks/useSetNextOnboardingStatus.ts";
+import { ProfilePictureUploader } from "/src/modules/settings/profile/components/ProfilePictureUploader.tsx";
+import { PageHotkeyScope } from "/src/modules/types/PageHotkeyScope.ts";
+import { SnackBarVariant } from "/src/modules/ui/feedback/snack-bar-manager/components/SnackBar.tsx";
+import { useSnackBar } from "/src/modules/ui/feedback/snack-bar-manager/hooks/useSnackBar.ts";
+import { TextInputV2 } from "/src/modules/ui/input/components/TextInputV2.tsx";
+import { useScopedHotkeys } from "/src/modules/ui/utilities/hotkey/hooks/useScopedHotkeys.ts";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { Trans as Trans_ } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { OnboardingStatus } from "/src/generated/graphql.tsx";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledContentContainer = styled.div`
+  width: 100%;
+`;
+_c = StyledContentContainer;
+const StyledSectionContainer = styled.div`
+  margin-top: ${({ theme })=>theme.spacing(8)};
+`;
+_c1 = StyledSectionContainer;
+const StyledButtonContainer = styled.div`
+  margin-top: ${({ theme })=>theme.spacing(8)};
+  width: 200px;
+`;
+_c2 = StyledButtonContainer;
+const StyledComboInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  > * + * {
+    margin-left: ${({ theme })=>theme.spacing(4)};
+  }
+`;
+_c3 = StyledComboInputContainer;
+const validationSchema = z.object({
+    firstName: z.string().min(1, {
+        message: 'First name can not be empty'
+    }),
+    lastName: z.string().min(1, {
+        message: 'Last name can not be empty'
+    })
+}).required();
+export const CreateProfile = ()=>{
+    _s();
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const onboardingStatus = useOnboardingStatus();
+    const setNextOnboardingStatus = useSetNextOnboardingStatus();
+    const { enqueueSnackBar } = useSnackBar();
+    const [currentWorkspaceMember, setCurrentWorkspaceMember] = useRecoilState(currentWorkspaceMemberState);
+    const { updateOneRecord } = useUpdateOneRecord({
+        objectNameSingular: CoreObjectNameSingular.WorkspaceMember
+    });
+    // Form
+    const { control, handleSubmit, formState: { isValid, isSubmitting }, getValues } = useForm({
+        mode: 'onChange',
+        defaultValues: {
+            firstName: currentWorkspaceMember?.name?.firstName ?? '',
+            lastName: currentWorkspaceMember?.name?.lastName ?? ''
+        },
+        resolver: zodResolver(validationSchema)
+    });
+    const onSubmit = useCallback(async (data)=>{
+        try {
+            if (!currentWorkspaceMember?.id) {
+                throw new Error('User is not logged in');
+            }
+            if (!data.firstName || !data.lastName) {
+                throw new Error('First name or last name is missing');
+            }
+            await updateOneRecord({
+                idToUpdate: currentWorkspaceMember?.id,
+                updateOneRecordInput: {
+                    name: {
+                        firstName: data.firstName,
+                        lastName: data.lastName
+                    },
+                    colorScheme: 'System'
+                }
+            });
+            setCurrentWorkspaceMember((current)=>{
+                if (isDefined(current)) {
+                    return {
+                        ...current,
+                        name: {
+                            firstName: data.firstName,
+                            lastName: data.lastName
+                        },
+                        colorScheme: 'System'
+                    };
+                }
+                return current;
+            });
+            setNextOnboardingStatus();
+        } catch (error) {
+            enqueueSnackBar(error?.message, {
+                variant: SnackBarVariant.Error
+            });
+        }
+    }, [
+        currentWorkspaceMember?.id,
+        setNextOnboardingStatus,
+        enqueueSnackBar,
+        setCurrentWorkspaceMember,
+        updateOneRecord
+    ]);
+    const [isEditingMode, setIsEditingMode] = useState(false);
+    useScopedHotkeys(Key.Enter, ()=>{
+        if (isEditingMode) {
+            onSubmit(getValues());
+        }
+    }, PageHotkeyScope.CreateProfile);
+    if (onboardingStatus !== OnboardingStatus.PROFILE_CREATION) {
+        return null;
+    }
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(Title, {
+                noMarginTop: true,
+                children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                    message: "Create profile",
+                    id: "gSyzEV"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                    lineNumber: 154,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                lineNumber: 153,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(SubTitle, {
+                children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                    message: "How you'll be identified on the app.",
+                    id: "B06Bgk"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                    lineNumber: 157,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                lineNumber: 156,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledContentContainer, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledSectionContainer, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(H2Title, {
+                                title: "Picture"
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                lineNumber: 161,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(ProfilePictureUploader, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                lineNumber: 162,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                        lineNumber: 160,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledSectionContainer, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(H2Title, {
+                                title: $__i18n._({
+                                    id: "6YtxFj",
+                                    message: "Name"
+                                }),
+                                description: $__i18n._({
+                                    id: "3RASGN",
+                                    message: "Your name as it will be displayed on the app"
+                                })
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                lineNumber: 165,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(StyledComboInputContainer, {
+                                children: [
+                                    /*#__PURE__*/ _jsxDEV(Controller, {
+                                        name: "firstName",
+                                        control: control,
+                                        render: ({ field: { onChange, onBlur, value }, fieldState: { error } })=>/*#__PURE__*/ _jsxDEV(TextInputV2, {
+                                                autoFocus: true,
+                                                label: $__i18n._({
+                                                    id: "kODvZJ",
+                                                    message: "First Name"
+                                                }),
+                                                value: value,
+                                                onFocus: ()=>setIsEditingMode(true),
+                                                onBlur: ()=>{
+                                                    onBlur();
+                                                    setIsEditingMode(false);
+                                                },
+                                                onChange: onChange,
+                                                placeholder: "Tim",
+                                                error: error?.message,
+                                                fullWidth: true
+                                            }, void 0, false, {
+                                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                                lineNumber: 178,
+                                                columnNumber: 17
+                                            }, void 0)
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                        lineNumber: 171,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDEV(Controller, {
+                                        name: "lastName",
+                                        control: control,
+                                        render: ({ field: { onChange, onBlur, value }, fieldState: { error } })=>/*#__PURE__*/ _jsxDEV(TextInputV2, {
+                                                label: $__i18n._({
+                                                    id: "UXBCwc",
+                                                    message: "Last Name"
+                                                }),
+                                                value: value,
+                                                onFocus: ()=>setIsEditingMode(true),
+                                                onBlur: ()=>{
+                                                    onBlur();
+                                                    setIsEditingMode(false);
+                                                },
+                                                onChange: onChange,
+                                                placeholder: "Cook",
+                                                error: error?.message,
+                                                fullWidth: true
+                                            }, void 0, false, {
+                                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                                lineNumber: 201,
+                                                columnNumber: 17
+                                            }, void 0)
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                        lineNumber: 194,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                                lineNumber: 170,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                        lineNumber: 164,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                lineNumber: 159,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledButtonContainer, {
+                children: /*#__PURE__*/ _jsxDEV(MainButton, {
+                    title: $__i18n._({
+                        id: "xGVfLh",
+                        message: "Continue"
+                    }),
+                    onClick: handleSubmit(onSubmit),
+                    disabled: !isValid || isSubmitting,
+                    fullWidth: true
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                    lineNumber: 220,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx",
+                lineNumber: 219,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(CreateProfile, "DPBGnx7IuArM8J5pJd9b3MN4yv0=", false, function() {
+    return [
+        useOnboardingStatus,
+        useSetNextOnboardingStatus,
+        useSnackBar,
+        useRecoilState,
+        useUpdateOneRecord,
+        useForm,
+        useScopedHotkeys
+    ];
+});
+_c4 = CreateProfile;
+var _c, _c1, _c2, _c3, _c4;
+$RefreshReg$(_c, "StyledContentContainer");
+$RefreshReg$(_c1, "StyledSectionContainer");
+$RefreshReg$(_c2, "StyledButtonContainer");
+$RefreshReg$(_c3, "StyledComboInputContainer");
+$RefreshReg$(_c4, "CreateProfile");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/pages/onboarding/CreateProfile.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNyZWF0ZVByb2ZpbGUudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IHpvZFJlc29sdmVyIH0gZnJvbSAnQGhvb2tmb3JtL3Jlc29sdmVycy96b2QnO1xuaW1wb3J0IHsgdXNlQ2FsbGJhY2ssIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgQ29udHJvbGxlciwgU3VibWl0SGFuZGxlciwgdXNlRm9ybSB9IGZyb20gJ3JlYWN0LWhvb2stZm9ybSc7XG5pbXBvcnQgeyB1c2VSZWNvaWxTdGF0ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgeyBLZXkgfSBmcm9tICd0cy1rZXktZW51bSc7XG5pbXBvcnQgeyBIMlRpdGxlLCBNYWluQnV0dG9uIH0gZnJvbSAndHdlbnR5LXVpJztcbmltcG9ydCB7IHogfSBmcm9tICd6b2QnO1xuXG5pbXBvcnQgeyBTdWJUaXRsZSB9IGZyb20gJ0AvYXV0aC9jb21wb25lbnRzL1N1YlRpdGxlJztcbmltcG9ydCB7IFRpdGxlIH0gZnJvbSAnQC9hdXRoL2NvbXBvbmVudHMvVGl0bGUnO1xuaW1wb3J0IHsgY3VycmVudFdvcmtzcGFjZU1lbWJlclN0YXRlIH0gZnJvbSAnQC9hdXRoL3N0YXRlcy9jdXJyZW50V29ya3NwYWNlTWVtYmVyU3RhdGUnO1xuaW1wb3J0IHsgQ29yZU9iamVjdE5hbWVTaW5ndWxhciB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL3R5cGVzL0NvcmVPYmplY3ROYW1lU2luZ3VsYXInO1xuaW1wb3J0IHsgdXNlVXBkYXRlT25lUmVjb3JkIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL2hvb2tzL3VzZVVwZGF0ZU9uZVJlY29yZCc7XG5pbXBvcnQgeyB1c2VPbmJvYXJkaW5nU3RhdHVzIH0gZnJvbSAnQC9vbmJvYXJkaW5nL2hvb2tzL3VzZU9uYm9hcmRpbmdTdGF0dXMnO1xuaW1wb3J0IHsgdXNlU2V0TmV4dE9uYm9hcmRpbmdTdGF0dXMgfSBmcm9tICdAL29uYm9hcmRpbmcvaG9va3MvdXNlU2V0TmV4dE9uYm9hcmRpbmdTdGF0dXMnO1xuaW1wb3J0IHsgUHJvZmlsZVBpY3R1cmVVcGxvYWRlciB9IGZyb20gJ0Avc2V0dGluZ3MvcHJvZmlsZS9jb21wb25lbnRzL1Byb2ZpbGVQaWN0dXJlVXBsb2FkZXInO1xuaW1wb3J0IHsgUGFnZUhvdGtleVNjb3BlIH0gZnJvbSAnQC90eXBlcy9QYWdlSG90a2V5U2NvcGUnO1xuaW1wb3J0IHsgU25hY2tCYXJWYXJpYW50IH0gZnJvbSAnQC91aS9mZWVkYmFjay9zbmFjay1iYXItbWFuYWdlci9jb21wb25lbnRzL1NuYWNrQmFyJztcbmltcG9ydCB7IHVzZVNuYWNrQmFyIH0gZnJvbSAnQC91aS9mZWVkYmFjay9zbmFjay1iYXItbWFuYWdlci9ob29rcy91c2VTbmFja0Jhcic7XG5pbXBvcnQgeyBUZXh0SW5wdXRWMiB9IGZyb20gJ0AvdWkvaW5wdXQvY29tcG9uZW50cy9UZXh0SW5wdXRWMic7XG5pbXBvcnQgeyB1c2VTY29wZWRIb3RrZXlzIH0gZnJvbSAnQC91aS91dGlsaXRpZXMvaG90a2V5L2hvb2tzL3VzZVNjb3BlZEhvdGtleXMnO1xuaW1wb3J0IHsgV29ya3NwYWNlTWVtYmVyIH0gZnJvbSAnQC93b3Jrc3BhY2UtbWVtYmVyL3R5cGVzL1dvcmtzcGFjZU1lbWJlcic7XG5pbXBvcnQgeyBUcmFucywgdXNlTGluZ3VpIH0gZnJvbSAnQGxpbmd1aS9yZWFjdC9tYWNybyc7XG5pbXBvcnQgeyBPbmJvYXJkaW5nU3RhdHVzIH0gZnJvbSAnfi9nZW5lcmF0ZWQvZ3JhcGhxbCc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxuY29uc3QgU3R5bGVkQ29udGVudENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIHdpZHRoOiAxMDAlO1xuYDtcblxuY29uc3QgU3R5bGVkU2VjdGlvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIG1hcmdpbi10b3A6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZyg4KX07XG5gO1xuXG5jb25zdCBTdHlsZWRCdXR0b25Db250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBtYXJnaW4tdG9wOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoOCl9O1xuICB3aWR0aDogMjAwcHg7XG5gO1xuXG5jb25zdCBTdHlsZWRDb21ib0lucHV0Q29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgPiAqICsgKiB7XG4gICAgbWFyZ2luLWxlZnQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZyg0KX07XG4gIH1cbmA7XG5cbmNvbnN0IHZhbGlkYXRpb25TY2hlbWEgPSB6XG4gIC5vYmplY3Qoe1xuICAgIGZpcnN0TmFtZTogei5zdHJpbmcoKS5taW4oMSwgeyBtZXNzYWdlOiAnRmlyc3QgbmFtZSBjYW4gbm90IGJlIGVtcHR5JyB9KSxcbiAgICBsYXN0TmFtZTogei5zdHJpbmcoKS5taW4oMSwgeyBtZXNzYWdlOiAnTGFzdCBuYW1lIGNhbiBub3QgYmUgZW1wdHknIH0pLFxuICB9KVxuICAucmVxdWlyZWQoKTtcblxudHlwZSBGb3JtID0gei5pbmZlcjx0eXBlb2YgdmFsaWRhdGlvblNjaGVtYT47XG5cbmV4cG9ydCBjb25zdCBDcmVhdGVQcm9maWxlID0gKCkgPT4ge1xuICBjb25zdCB7IHQgfSA9IHVzZUxpbmd1aSgpO1xuICBjb25zdCBvbmJvYXJkaW5nU3RhdHVzID0gdXNlT25ib2FyZGluZ1N0YXR1cygpO1xuICBjb25zdCBzZXROZXh0T25ib2FyZGluZ1N0YXR1cyA9IHVzZVNldE5leHRPbmJvYXJkaW5nU3RhdHVzKCk7XG4gIGNvbnN0IHsgZW5xdWV1ZVNuYWNrQmFyIH0gPSB1c2VTbmFja0JhcigpO1xuICBjb25zdCBbY3VycmVudFdvcmtzcGFjZU1lbWJlciwgc2V0Q3VycmVudFdvcmtzcGFjZU1lbWJlcl0gPSB1c2VSZWNvaWxTdGF0ZShcbiAgICBjdXJyZW50V29ya3NwYWNlTWVtYmVyU3RhdGUsXG4gICk7XG4gIGNvbnN0IHsgdXBkYXRlT25lUmVjb3JkIH0gPSB1c2VVcGRhdGVPbmVSZWNvcmQ8V29ya3NwYWNlTWVtYmVyPih7XG4gICAgb2JqZWN0TmFtZVNpbmd1bGFyOiBDb3JlT2JqZWN0TmFtZVNpbmd1bGFyLldvcmtzcGFjZU1lbWJlcixcbiAgfSk7XG5cbiAgLy8gRm9ybVxuICBjb25zdCB7XG4gICAgY29udHJvbCxcbiAgICBoYW5kbGVTdWJtaXQsXG4gICAgZm9ybVN0YXRlOiB7IGlzVmFsaWQsIGlzU3VibWl0dGluZyB9LFxuICAgIGdldFZhbHVlcyxcbiAgfSA9IHVzZUZvcm08Rm9ybT4oe1xuICAgIG1vZGU6ICdvbkNoYW5nZScsXG4gICAgZGVmYXVsdFZhbHVlczoge1xuICAgICAgZmlyc3ROYW1lOiBjdXJyZW50V29ya3NwYWNlTWVtYmVyPy5uYW1lPy5maXJzdE5hbWUgPz8gJycsXG4gICAgICBsYXN0TmFtZTogY3VycmVudFdvcmtzcGFjZU1lbWJlcj8ubmFtZT8ubGFzdE5hbWUgPz8gJycsXG4gICAgfSxcbiAgICByZXNvbHZlcjogem9kUmVzb2x2ZXIodmFsaWRhdGlvblNjaGVtYSksXG4gIH0pO1xuXG4gIGNvbnN0IG9uU3VibWl0OiBTdWJtaXRIYW5kbGVyPEZvcm0+ID0gdXNlQ2FsbGJhY2soXG4gICAgYXN5bmMgKGRhdGEpID0+IHtcbiAgICAgIHRyeSB7XG4gICAgICAgIGlmICghY3VycmVudFdvcmtzcGFjZU1lbWJlcj8uaWQpIHtcbiAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ1VzZXIgaXMgbm90IGxvZ2dlZCBpbicpO1xuICAgICAgICB9XG4gICAgICAgIGlmICghZGF0YS5maXJzdE5hbWUgfHwgIWRhdGEubGFzdE5hbWUpIHtcbiAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ0ZpcnN0IG5hbWUgb3IgbGFzdCBuYW1lIGlzIG1pc3NpbmcnKTtcbiAgICAgICAgfVxuXG4gICAgICAgIGF3YWl0IHVwZGF0ZU9uZVJlY29yZCh7XG4gICAgICAgICAgaWRUb1VwZGF0ZTogY3VycmVudFdvcmtzcGFjZU1lbWJlcj8uaWQsXG4gICAgICAgICAgdXBkYXRlT25lUmVjb3JkSW5wdXQ6IHtcbiAgICAgICAgICAgIG5hbWU6IHtcbiAgICAgICAgICAgICAgZmlyc3ROYW1lOiBkYXRhLmZpcnN0TmFtZSxcbiAgICAgICAgICAgICAgbGFzdE5hbWU6IGRhdGEubGFzdE5hbWUsXG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgY29sb3JTY2hlbWU6ICdTeXN0ZW0nLFxuICAgICAgICAgIH0sXG4gICAgICAgIH0pO1xuXG4gICAgICAgIHNldEN1cnJlbnRXb3Jrc3BhY2VNZW1iZXIoKGN1cnJlbnQpID0+IHtcbiAgICAgICAgICBpZiAoaXNEZWZpbmVkKGN1cnJlbnQpKSB7XG4gICAgICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgICAuLi5jdXJyZW50LFxuICAgICAgICAgICAgICBuYW1lOiB7XG4gICAgICAgICAgICAgICAgZmlyc3ROYW1lOiBkYXRhLmZpcnN0TmFtZSxcbiAgICAgICAgICAgICAgICBsYXN0TmFtZTogZGF0YS5sYXN0TmFtZSxcbiAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgY29sb3JTY2hlbWU6ICdTeXN0ZW0nLFxuICAgICAgICAgICAgfTtcbiAgICAgICAgICB9XG4gICAgICAgICAgcmV0dXJuIGN1cnJlbnQ7XG4gICAgICAgIH0pO1xuICAgICAgICBzZXROZXh0T25ib2FyZGluZ1N0YXR1cygpO1xuICAgICAgfSBjYXRjaCAoZXJyb3I6IGFueSkge1xuICAgICAgICBlbnF1ZXVlU25hY2tCYXIoZXJyb3I/Lm1lc3NhZ2UsIHtcbiAgICAgICAgICB2YXJpYW50OiBTbmFja0JhclZhcmlhbnQuRXJyb3IsXG4gICAgICAgIH0pO1xuICAgICAgfVxuICAgIH0sXG4gICAgW1xuICAgICAgY3VycmVudFdvcmtzcGFjZU1lbWJlcj8uaWQsXG4gICAgICBzZXROZXh0T25ib2FyZGluZ1N0YXR1cyxcbiAgICAgIGVucXVldWVTbmFja0JhcixcbiAgICAgIHNldEN1cnJlbnRXb3Jrc3BhY2VNZW1iZXIsXG4gICAgICB1cGRhdGVPbmVSZWNvcmQsXG4gICAgXSxcbiAgKTtcblxuICBjb25zdCBbaXNFZGl0aW5nTW9kZSwgc2V0SXNFZGl0aW5nTW9kZV0gPSB1c2VTdGF0ZShmYWxzZSk7XG5cbiAgdXNlU2NvcGVkSG90a2V5cyhcbiAgICBLZXkuRW50ZXIsXG4gICAgKCkgPT4ge1xuICAgICAgaWYgKGlzRWRpdGluZ01vZGUpIHtcbiAgICAgICAgb25TdWJtaXQoZ2V0VmFsdWVzKCkpO1xuICAgICAgfVxuICAgIH0sXG4gICAgUGFnZUhvdGtleVNjb3BlLkNyZWF0ZVByb2ZpbGUsXG4gICk7XG5cbiAgaWYgKG9uYm9hcmRpbmdTdGF0dXMgIT09IE9uYm9hcmRpbmdTdGF0dXMuUFJPRklMRV9DUkVBVElPTikge1xuICAgIHJldHVybiBudWxsO1xuICB9XG5cbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPFRpdGxlIG5vTWFyZ2luVG9wPlxuICAgICAgICA8VHJhbnM+Q3JlYXRlIHByb2ZpbGU8L1RyYW5zPlxuICAgICAgPC9UaXRsZT5cbiAgICAgIDxTdWJUaXRsZT5cbiAgICAgICAgPFRyYW5zPkhvdyB5b3UnbGwgYmUgaWRlbnRpZmllZCBvbiB0aGUgYXBwLjwvVHJhbnM+XG4gICAgICA8L1N1YlRpdGxlPlxuICAgICAgPFN0eWxlZENvbnRlbnRDb250YWluZXI+XG4gICAgICAgIDxTdHlsZWRTZWN0aW9uQ29udGFpbmVyPlxuICAgICAgICAgIDxIMlRpdGxlIHRpdGxlPVwiUGljdHVyZVwiIC8+XG4gICAgICAgICAgPFByb2ZpbGVQaWN0dXJlVXBsb2FkZXIgLz5cbiAgICAgICAgPC9TdHlsZWRTZWN0aW9uQ29udGFpbmVyPlxuICAgICAgICA8U3R5bGVkU2VjdGlvbkNvbnRhaW5lcj5cbiAgICAgICAgICA8SDJUaXRsZVxuICAgICAgICAgICAgdGl0bGU9e3RgTmFtZWB9XG4gICAgICAgICAgICBkZXNjcmlwdGlvbj17dGBZb3VyIG5hbWUgYXMgaXQgd2lsbCBiZSBkaXNwbGF5ZWQgb24gdGhlIGFwcGB9XG4gICAgICAgICAgLz5cbiAgICAgICAgICB7LyogVE9ETzogV2hlbiByZWFjdC13ZWItaG9vay1mb3JtIGlzIGFkZGVkIHRvIGVkaXQgcGFnZSB3ZSBzaG91bGQgY3JlYXRlIGEgZGVkaWNhdGVkIGNvbXBvbmVudCB3aXRoIGNvbnRleHQgKi99XG4gICAgICAgICAgPFN0eWxlZENvbWJvSW5wdXRDb250YWluZXI+XG4gICAgICAgICAgICA8Q29udHJvbGxlclxuICAgICAgICAgICAgICBuYW1lPVwiZmlyc3ROYW1lXCJcbiAgICAgICAgICAgICAgY29udHJvbD17Y29udHJvbH1cbiAgICAgICAgICAgICAgcmVuZGVyPXsoe1xuICAgICAgICAgICAgICAgIGZpZWxkOiB7IG9uQ2hhbmdlLCBvbkJsdXIsIHZhbHVlIH0sXG4gICAgICAgICAgICAgICAgZmllbGRTdGF0ZTogeyBlcnJvciB9LFxuICAgICAgICAgICAgICB9KSA9PiAoXG4gICAgICAgICAgICAgICAgPFRleHRJbnB1dFYyXG4gICAgICAgICAgICAgICAgICBhdXRvRm9jdXNcbiAgICAgICAgICAgICAgICAgIGxhYmVsPXt0YEZpcnN0IE5hbWVgfVxuICAgICAgICAgICAgICAgICAgdmFsdWU9e3ZhbHVlfVxuICAgICAgICAgICAgICAgICAgb25Gb2N1cz17KCkgPT4gc2V0SXNFZGl0aW5nTW9kZSh0cnVlKX1cbiAgICAgICAgICAgICAgICAgIG9uQmx1cj17KCkgPT4ge1xuICAgICAgICAgICAgICAgICAgICBvbkJsdXIoKTtcbiAgICAgICAgICAgICAgICAgICAgc2V0SXNFZGl0aW5nTW9kZShmYWxzZSk7XG4gICAgICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9e29uQ2hhbmdlfVxuICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJUaW1cIlxuICAgICAgICAgICAgICAgICAgZXJyb3I9e2Vycm9yPy5tZXNzYWdlfVxuICAgICAgICAgICAgICAgICAgZnVsbFdpZHRoXG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8Q29udHJvbGxlclxuICAgICAgICAgICAgICBuYW1lPVwibGFzdE5hbWVcIlxuICAgICAgICAgICAgICBjb250cm9sPXtjb250cm9sfVxuICAgICAgICAgICAgICByZW5kZXI9eyh7XG4gICAgICAgICAgICAgICAgZmllbGQ6IHsgb25DaGFuZ2UsIG9uQmx1ciwgdmFsdWUgfSxcbiAgICAgICAgICAgICAgICBmaWVsZFN0YXRlOiB7IGVycm9yIH0sXG4gICAgICAgICAgICAgIH0pID0+IChcbiAgICAgICAgICAgICAgICA8VGV4dElucHV0VjJcbiAgICAgICAgICAgICAgICAgIGxhYmVsPXt0YExhc3QgTmFtZWB9XG4gICAgICAgICAgICAgICAgICB2YWx1ZT17dmFsdWV9XG4gICAgICAgICAgICAgICAgICBvbkZvY3VzPXsoKSA9PiBzZXRJc0VkaXRpbmdNb2RlKHRydWUpfVxuICAgICAgICAgICAgICAgICAgb25CbHVyPXsoKSA9PiB7XG4gICAgICAgICAgICAgICAgICAgIG9uQmx1cigpO1xuICAgICAgICAgICAgICAgICAgICBzZXRJc0VkaXRpbmdNb2RlKGZhbHNlKTtcbiAgICAgICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgICAgICBvbkNoYW5nZT17b25DaGFuZ2V9XG4gICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkNvb2tcIlxuICAgICAgICAgICAgICAgICAgZXJyb3I9e2Vycm9yPy5tZXNzYWdlfVxuICAgICAgICAgICAgICAgICAgZnVsbFdpZHRoXG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9TdHlsZWRDb21ib0lucHV0Q29udGFpbmVyPlxuICAgICAgICA8L1N0eWxlZFNlY3Rpb25Db250YWluZXI+XG4gICAgICA8L1N0eWxlZENvbnRlbnRDb250YWluZXI+XG4gICAgICA8U3R5bGVkQnV0dG9uQ29udGFpbmVyPlxuICAgICAgICA8TWFpbkJ1dHRvblxuICAgICAgICAgIHRpdGxlPXt0YENvbnRpbnVlYH1cbiAgICAgICAgICBvbkNsaWNrPXtoYW5kbGVTdWJtaXQob25TdWJtaXQpfVxuICAgICAgICAgIGRpc2FibGVkPXshaXNWYWxpZCB8fCBpc1N1Ym1pdHRpbmd9XG4gICAgICAgICAgZnVsbFdpZHRoXG4gICAgICAgIC8+XG4gICAgICA8L1N0eWxlZEJ1dHRvbkNvbnRhaW5lcj5cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsic3R5bGVkIiwiem9kUmVzb2x2ZXIiLCJ1c2VDYWxsYmFjayIsInVzZVN0YXRlIiwiQ29udHJvbGxlciIsInVzZUZvcm0iLCJ1c2VSZWNvaWxTdGF0ZSIsIktleSIsIkgyVGl0bGUiLCJNYWluQnV0dG9uIiwieiIsIlN1YlRpdGxlIiwiVGl0bGUiLCJjdXJyZW50V29ya3NwYWNlTWVtYmVyU3RhdGUiLCJDb3JlT2JqZWN0TmFtZVNpbmd1bGFyIiwidXNlVXBkYXRlT25lUmVjb3JkIiwidXNlT25ib2FyZGluZ1N0YXR1cyIsInVzZVNldE5leHRPbmJvYXJkaW5nU3RhdHVzIiwiUHJvZmlsZVBpY3R1cmVVcGxvYWRlciIsIlBhZ2VIb3RrZXlTY29wZSIsIlNuYWNrQmFyVmFyaWFudCIsInVzZVNuYWNrQmFyIiwiVGV4dElucHV0VjIiLCJ1c2VTY29wZWRIb3RrZXlzIiwiT25ib2FyZGluZ1N0YXR1cyIsImlzRGVmaW5lZCIsIlN0eWxlZENvbnRlbnRDb250YWluZXIiLCJkaXYiLCJTdHlsZWRTZWN0aW9uQ29udGFpbmVyIiwidGhlbWUiLCJzcGFjaW5nIiwiU3R5bGVkQnV0dG9uQ29udGFpbmVyIiwiU3R5bGVkQ29tYm9JbnB1dENvbnRhaW5lciIsInZhbGlkYXRpb25TY2hlbWEiLCJvYmplY3QiLCJmaXJzdE5hbWUiLCJzdHJpbmciLCJtaW4iLCJtZXNzYWdlIiwibGFzdE5hbWUiLCJyZXF1aXJlZCIsIkNyZWF0ZVByb2ZpbGUiLCJ1c2VMaW5ndWkiLCJvbmJvYXJkaW5nU3RhdHVzIiwic2V0TmV4dE9uYm9hcmRpbmdTdGF0dXMiLCJlbnF1ZXVlU25hY2tCYXIiLCJjdXJyZW50V29ya3NwYWNlTWVtYmVyIiwic2V0Q3VycmVudFdvcmtzcGFjZU1lbWJlciIsInVwZGF0ZU9uZVJlY29yZCIsIm9iamVjdE5hbWVTaW5ndWxhciIsIldvcmtzcGFjZU1lbWJlciIsImNvbnRyb2wiLCJoYW5kbGVTdWJtaXQiLCJmb3JtU3RhdGUiLCJpc1ZhbGlkIiwiaXNTdWJtaXR0aW5nIiwiZ2V0VmFsdWVzIiwibW9kZSIsImRlZmF1bHRWYWx1ZXMiLCJuYW1lIiwicmVzb2x2ZXIiLCJvblN1Ym1pdCIsImRhdGEiLCJpZCIsIkVycm9yIiwiaWRUb1VwZGF0ZSIsInVwZGF0ZU9uZVJlY29yZElucHV0IiwiY29sb3JTY2hlbWUiLCJjdXJyZW50IiwiZXJyb3IiLCJ2YXJpYW50IiwiaXNFZGl0aW5nTW9kZSIsInNldElzRWRpdGluZ01vZGUiLCJFbnRlciIsIlBST0ZJTEVfQ1JFQVRJT04iLCJub01hcmdpblRvcCIsInRpdGxlIiwiZGVzY3JpcHRpb24iLCJyZW5kZXIiLCJmaWVsZCIsIm9uQ2hhbmdlIiwib25CbHVyIiwidmFsdWUiLCJmaWVsZFN0YXRlIiwiYXV0b0ZvY3VzIiwibGFiZWwiLCJvbkZvY3VzIiwicGxhY2Vob2xkZXIiLCJmdWxsV2lkdGgiLCJvbkNsaWNrIiwiZGlzYWJsZWQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxPQUFPQSxZQUFZLGtCQUFrQjtBQUNyQyxTQUFTQyxXQUFXLFFBQVEsMEJBQTBCO0FBQ3RELFNBQVNDLFdBQVcsRUFBRUMsUUFBUSxRQUFRLFFBQVE7QUFDOUMsU0FBU0MsVUFBVSxFQUFpQkMsT0FBTyxRQUFRLGtCQUFrQjtBQUNyRSxTQUFTQyxjQUFjLFFBQVEsU0FBUztB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

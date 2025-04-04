@@ -1,0 +1,166 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/settings/components/SettingsNavigationDrawerItems.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { AdvancedSettingsWrapper } from "/src/modules/settings/components/AdvancedSettingsWrapper.tsx";
+import { SettingsNavigationDrawerItem } from "/src/modules/settings/components/SettingsNavigationDrawerItem.tsx";
+import { useSettingsNavigationItems } from "/src/modules/settings/hooks/useSettingsNavigationItems.tsx";
+import { NavigationDrawerItemGroup } from "/src/modules/ui/navigation/navigation-drawer/components/NavigationDrawerItemGroup.tsx";
+import { NavigationDrawerSection } from "/src/modules/ui/navigation/navigation-drawer/components/NavigationDrawerSection.tsx";
+import { NavigationDrawerSectionTitle } from "/src/modules/ui/navigation/navigation-drawer/components/NavigationDrawerSectionTitle.tsx";
+import { getNavigationSubItemLeftAdornment } from "/src/modules/ui/navigation/navigation-drawer/utils/getNavigationSubItemLeftAdornment.ts";
+import { ScrollWrapper } from "/src/modules/ui/utilities/scroll/components/ScrollWrapper.tsx";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { matchPath, resolvePath, useLocation } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-router-dom.js?v=226f7286";
+import { getSettingsPath } from "/src/utils/navigation/getSettingsPath.ts";
+const StyledInnerContainer = styled.div`
+  height: 100%;
+`;
+_c = StyledInnerContainer;
+export const SettingsNavigationDrawerItems = ()=>{
+    _s();
+    const settingsNavigationItems = useSettingsNavigationItems();
+    const currentPathName = useLocation().pathname;
+    const getSelectedIndexForSubItems = (subItems)=>{
+        return subItems.findIndex((subItem)=>{
+            const href = subItem.path ? getSettingsPath(subItem.path) : '';
+            const pathName = resolvePath(href).pathname;
+            return matchPath({
+                path: pathName,
+                end: subItem.matchSubPages === false
+            }, currentPathName);
+        });
+    };
+    return /*#__PURE__*/ _jsxDEV(ScrollWrapper, {
+        contextProviderName: "navigationDrawer",
+        componentInstanceId: `scroll-wrapper-settings-navigation-drawer`,
+        scrollbarVariant: "no-padding",
+        heightMode: "fit-content",
+        defaultEnableXScroll: false,
+        children: /*#__PURE__*/ _jsxDEV(StyledInnerContainer, {
+            children: settingsNavigationItems.map((section)=>{
+                const allItemsHidden = section.items.every((item)=>item.isHidden);
+                if (allItemsHidden) {
+                    return null;
+                }
+                return /*#__PURE__*/ _jsxDEV(NavigationDrawerSection, {
+                    children: [
+                        section.isAdvanced ? /*#__PURE__*/ _jsxDEV(AdvancedSettingsWrapper, {
+                            hideDot: true,
+                            children: /*#__PURE__*/ _jsxDEV(NavigationDrawerSectionTitle, {
+                                label: section.label
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                                lineNumber: 61,
+                                columnNumber: 19
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                            lineNumber: 60,
+                            columnNumber: 17
+                        }, this) : /*#__PURE__*/ _jsxDEV(NavigationDrawerSectionTitle, {
+                            label: section.label
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                            lineNumber: 64,
+                            columnNumber: 17
+                        }, this),
+                        section.items.map((item, index)=>{
+                            const subItems = item.subItems;
+                            if (Array.isArray(subItems) && subItems.length > 0) {
+                                const selectedSubItemIndex = getSelectedIndexForSubItems(subItems);
+                                return /*#__PURE__*/ _jsxDEV(NavigationDrawerItemGroup, {
+                                    children: [
+                                        /*#__PURE__*/ _jsxDEV(SettingsNavigationDrawerItem, {
+                                            item: item,
+                                            subItemState: item.indentationLevel ? getNavigationSubItemLeftAdornment({
+                                                arrayLength: section.items.length,
+                                                index,
+                                                selectedIndex: selectedSubItemIndex
+                                            }) : undefined
+                                        }, void 0, false, {
+                                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                                            lineNumber: 76,
+                                            columnNumber: 23
+                                        }, this),
+                                        subItems.map((subItem, subIndex)=>/*#__PURE__*/ _jsxDEV(SettingsNavigationDrawerItem, {
+                                                item: subItem,
+                                                subItemState: subItem.indentationLevel ? getNavigationSubItemLeftAdornment({
+                                                    arrayLength: subItems.length,
+                                                    index: subIndex,
+                                                    selectedIndex: selectedSubItemIndex
+                                                }) : undefined
+                                            }, subItem.path || `subitem-${subIndex}`, false, {
+                                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                                                lineNumber: 89,
+                                                columnNumber: 25
+                                            }, this))
+                                    ]
+                                }, item.path || `group-${index}`, true, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                                    lineNumber: 73,
+                                    columnNumber: 21
+                                }, this);
+                            }
+                            return /*#__PURE__*/ _jsxDEV(SettingsNavigationDrawerItem, {
+                                item: item,
+                                subItemState: item.indentationLevel ? getNavigationSubItemLeftAdornment({
+                                    arrayLength: section.items.length,
+                                    index,
+                                    selectedIndex: index
+                                }) : undefined
+                            }, item.path || `item-${index}`, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                                lineNumber: 107,
+                                columnNumber: 19
+                            }, this);
+                        })
+                    ]
+                }, section.label, true, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+                    lineNumber: 58,
+                    columnNumber: 13
+                }, this);
+            })
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+            lineNumber: 50,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx",
+        lineNumber: 43,
+        columnNumber: 5
+    }, this);
+};
+_s(SettingsNavigationDrawerItems, "rd9zAE/O8kRgly4j3powXsa+e4U=", false, function() {
+    return [
+        useSettingsNavigationItems,
+        useLocation
+    ];
+});
+_c1 = SettingsNavigationDrawerItems;
+var _c, _c1;
+$RefreshReg$(_c, "StyledInnerContainer");
+$RefreshReg$(_c1, "SettingsNavigationDrawerItems");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/settings/components/SettingsNavigationDrawerItems.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNldHRpbmdzTmF2aWdhdGlvbkRyYXdlckl0ZW1zLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBZHZhbmNlZFNldHRpbmdzV3JhcHBlciB9IGZyb20gJ0Avc2V0dGluZ3MvY29tcG9uZW50cy9BZHZhbmNlZFNldHRpbmdzV3JhcHBlcic7XG5pbXBvcnQgeyBTZXR0aW5nc05hdmlnYXRpb25EcmF3ZXJJdGVtIH0gZnJvbSAnQC9zZXR0aW5ncy9jb21wb25lbnRzL1NldHRpbmdzTmF2aWdhdGlvbkRyYXdlckl0ZW0nO1xuaW1wb3J0IHtcbiAgU2V0dGluZ3NOYXZpZ2F0aW9uSXRlbSxcbiAgU2V0dGluZ3NOYXZpZ2F0aW9uU2VjdGlvbixcbiAgdXNlU2V0dGluZ3NOYXZpZ2F0aW9uSXRlbXMsXG59IGZyb20gJ0Avc2V0dGluZ3MvaG9va3MvdXNlU2V0dGluZ3NOYXZpZ2F0aW9uSXRlbXMnO1xuaW1wb3J0IHsgTmF2aWdhdGlvbkRyYXdlckl0ZW1Hcm91cCB9IGZyb20gJ0AvdWkvbmF2aWdhdGlvbi9uYXZpZ2F0aW9uLWRyYXdlci9jb21wb25lbnRzL05hdmlnYXRpb25EcmF3ZXJJdGVtR3JvdXAnO1xuaW1wb3J0IHsgTmF2aWdhdGlvbkRyYXdlclNlY3Rpb24gfSBmcm9tICdAL3VpL25hdmlnYXRpb24vbmF2aWdhdGlvbi1kcmF3ZXIvY29tcG9uZW50cy9OYXZpZ2F0aW9uRHJhd2VyU2VjdGlvbic7XG5pbXBvcnQgeyBOYXZpZ2F0aW9uRHJhd2VyU2VjdGlvblRpdGxlIH0gZnJvbSAnQC91aS9uYXZpZ2F0aW9uL25hdmlnYXRpb24tZHJhd2VyL2NvbXBvbmVudHMvTmF2aWdhdGlvbkRyYXdlclNlY3Rpb25UaXRsZSc7XG5pbXBvcnQgeyBnZXROYXZpZ2F0aW9uU3ViSXRlbUxlZnRBZG9ybm1lbnQgfSBmcm9tICdAL3VpL25hdmlnYXRpb24vbmF2aWdhdGlvbi1kcmF3ZXIvdXRpbHMvZ2V0TmF2aWdhdGlvblN1Ykl0ZW1MZWZ0QWRvcm5tZW50JztcbmltcG9ydCB7IFNjcm9sbFdyYXBwZXIgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9zY3JvbGwvY29tcG9uZW50cy9TY3JvbGxXcmFwcGVyJztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IG1hdGNoUGF0aCwgcmVzb2x2ZVBhdGgsIHVzZUxvY2F0aW9uIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7XG5pbXBvcnQgeyBnZXRTZXR0aW5nc1BhdGggfSBmcm9tICd+L3V0aWxzL25hdmlnYXRpb24vZ2V0U2V0dGluZ3NQYXRoJztcblxuY29uc3QgU3R5bGVkSW5uZXJDb250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBoZWlnaHQ6IDEwMCU7XG5gO1xuXG5leHBvcnQgY29uc3QgU2V0dGluZ3NOYXZpZ2F0aW9uRHJhd2VySXRlbXMgPSAoKSA9PiB7XG4gIGNvbnN0IHNldHRpbmdzTmF2aWdhdGlvbkl0ZW1zOiBTZXR0aW5nc05hdmlnYXRpb25TZWN0aW9uW10gPVxuICAgIHVzZVNldHRpbmdzTmF2aWdhdGlvbkl0ZW1zKCk7XG5cbiAgY29uc3QgY3VycmVudFBhdGhOYW1lID0gdXNlTG9jYXRpb24oKS5wYXRobmFtZTtcblxuICBjb25zdCBnZXRTZWxlY3RlZEluZGV4Rm9yU3ViSXRlbXMgPSAoc3ViSXRlbXM6IFNldHRpbmdzTmF2aWdhdGlvbkl0ZW1bXSkgPT4ge1xuICAgIHJldHVybiBzdWJJdGVtcy5maW5kSW5kZXgoKHN1Ykl0ZW0pID0+IHtcbiAgICAgIGNvbnN0IGhyZWYgPSBzdWJJdGVtLnBhdGggPyBnZXRTZXR0aW5nc1BhdGgoc3ViSXRlbS5wYXRoKSA6ICcnO1xuICAgICAgY29uc3QgcGF0aE5hbWUgPSByZXNvbHZlUGF0aChocmVmKS5wYXRobmFtZTtcblxuICAgICAgcmV0dXJuIG1hdGNoUGF0aChcbiAgICAgICAge1xuICAgICAgICAgIHBhdGg6IHBhdGhOYW1lLFxuICAgICAgICAgIGVuZDogc3ViSXRlbS5tYXRjaFN1YlBhZ2VzID09PSBmYWxzZSxcbiAgICAgICAgfSxcbiAgICAgICAgY3VycmVudFBhdGhOYW1lLFxuICAgICAgKTtcbiAgICB9KTtcbiAgfTtcblxuICByZXR1cm4gKFxuICAgIDxTY3JvbGxXcmFwcGVyXG4gICAgICBjb250ZXh0UHJvdmlkZXJOYW1lPVwibmF2aWdhdGlvbkRyYXdlclwiXG4gICAgICBjb21wb25lbnRJbnN0YW5jZUlkPXtgc2Nyb2xsLXdyYXBwZXItc2V0dGluZ3MtbmF2aWdhdGlvbi1kcmF3ZXJgfVxuICAgICAgc2Nyb2xsYmFyVmFyaWFudD1cIm5vLXBhZGRpbmdcIlxuICAgICAgaGVpZ2h0TW9kZT1cImZpdC1jb250ZW50XCJcbiAgICAgIGRlZmF1bHRFbmFibGVYU2Nyb2xsPXtmYWxzZX1cbiAgICA+XG4gICAgICA8U3R5bGVkSW5uZXJDb250YWluZXI+XG4gICAgICAgIHtzZXR0aW5nc05hdmlnYXRpb25JdGVtcy5tYXAoKHNlY3Rpb24pID0+IHtcbiAgICAgICAgICBjb25zdCBhbGxJdGVtc0hpZGRlbiA9IHNlY3Rpb24uaXRlbXMuZXZlcnkoKGl0ZW0pID0+IGl0ZW0uaXNIaWRkZW4pO1xuICAgICAgICAgIGlmIChhbGxJdGVtc0hpZGRlbikge1xuICAgICAgICAgICAgcmV0dXJuIG51bGw7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgIDxOYXZpZ2F0aW9uRHJhd2VyU2VjdGlvbiBrZXk9e3NlY3Rpb24ubGFiZWx9PlxuICAgICAgICAgICAgICB7c2VjdGlvbi5pc0FkdmFuY2VkID8gKFxuICAgICAgICAgICAgICAgIDxBZHZhbmNlZFNldHRpbmdzV3JhcHBlciBoaWRlRG90PlxuICAgICAgICAgICAgICAgICAgPE5hdmlnYXRpb25EcmF3ZXJTZWN0aW9uVGl0bGUgbGFiZWw9e3NlY3Rpb24ubGFiZWx9IC8+XG4gICAgICAgICAgICAgICAgPC9BZHZhbmNlZFNldHRpbmdzV3JhcHBlcj5cbiAgICAgICAgICAgICAgKSA6IChcbiAgICAgICAgICAgICAgICA8TmF2aWdhdGlvbkRyYXdlclNlY3Rpb25UaXRsZSBsYWJlbD17c2VjdGlvbi5sYWJlbH0gLz5cbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAge3NlY3Rpb24uaXRlbXMubWFwKChpdGVtLCBpbmRleCkgPT4ge1xuICAgICAgICAgICAgICAgIGNvbnN0IHN1Ykl0ZW1zID0gaXRlbS5zdWJJdGVtcztcbiAgICAgICAgICAgICAgICBpZiAoQXJyYXkuaXNBcnJheShzdWJJdGVtcykgJiYgc3ViSXRlbXMubGVuZ3RoID4gMCkge1xuICAgICAgICAgICAgICAgICAgY29uc3Qgc2VsZWN0ZWRTdWJJdGVtSW5kZXggPVxuICAgICAgICAgICAgICAgICAgICBnZXRTZWxlY3RlZEluZGV4Rm9yU3ViSXRlbXMoc3ViSXRlbXMpO1xuXG4gICAgICAgICAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgICAgICAgICA8TmF2aWdhdGlvbkRyYXdlckl0ZW1Hcm91cFxuICAgICAgICAgICAgICAgICAgICAgIGtleT17aXRlbS5wYXRoIHx8IGBncm91cC0ke2luZGV4fWB9XG4gICAgICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgICAgICA8U2V0dGluZ3NOYXZpZ2F0aW9uRHJhd2VySXRlbVxuICAgICAgICAgICAgICAgICAgICAgICAgaXRlbT17aXRlbX1cbiAgICAgICAgICAgICAgICAgICAgICAgIHN1Ykl0ZW1TdGF0ZT17XG4gICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0uaW5kZW50YXRpb25MZXZlbFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgID8gZ2V0TmF2aWdhdGlvblN1Ykl0ZW1MZWZ0QWRvcm5tZW50KHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYXJyYXlMZW5ndGg6IHNlY3Rpb24uaXRlbXMubGVuZ3RoLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbmRleCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0ZWRJbmRleDogc2VsZWN0ZWRTdWJJdGVtSW5kZXgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDogdW5kZWZpbmVkXG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgICAgICB7c3ViSXRlbXMubWFwKChzdWJJdGVtLCBzdWJJbmRleCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgPFNldHRpbmdzTmF2aWdhdGlvbkRyYXdlckl0ZW1cbiAgICAgICAgICAgICAgICAgICAgICAgICAga2V5PXtzdWJJdGVtLnBhdGggfHwgYHN1Yml0ZW0tJHtzdWJJbmRleH1gfVxuICAgICAgICAgICAgICAgICAgICAgICAgICBpdGVtPXtzdWJJdGVtfVxuICAgICAgICAgICAgICAgICAgICAgICAgICBzdWJJdGVtU3RhdGU9e1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1Ykl0ZW0uaW5kZW50YXRpb25MZXZlbFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPyBnZXROYXZpZ2F0aW9uU3ViSXRlbUxlZnRBZG9ybm1lbnQoe1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFycmF5TGVuZ3RoOiBzdWJJdGVtcy5sZW5ndGgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5kZXg6IHN1YkluZGV4LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlbGVjdGVkSW5kZXg6IHNlbGVjdGVkU3ViSXRlbUluZGV4LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOiB1bmRlZmluZWRcbiAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgICAgICAgPC9OYXZpZ2F0aW9uRHJhd2VySXRlbUdyb3VwPlxuICAgICAgICAgICAgICAgICAgKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgICAgIDxTZXR0aW5nc05hdmlnYXRpb25EcmF3ZXJJdGVtXG4gICAgICAgICAgICAgICAgICAgIGtleT17aXRlbS5wYXRoIHx8IGBpdGVtLSR7aW5kZXh9YH1cbiAgICAgICAgICAgICAgICAgICAgaXRlbT17aXRlbX1cbiAgICAgICAgICAgICAgICAgICAgc3ViSXRlbVN0YXRlPXtcbiAgICAgICAgICAgICAgICAgICAgICBpdGVtLmluZGVudGF0aW9uTGV2ZWxcbiAgICAgICAgICAgICAgICAgICAgICAgID8gZ2V0TmF2aWdhdGlvblN1Ykl0ZW1MZWZ0QWRvcm5tZW50KHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBhcnJheUxlbmd0aDogc2VjdGlvbi5pdGVtcy5sZW5ndGgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5kZXgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0ZWRJbmRleDogaW5kZXgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICAgICAgICAgICAgICA6IHVuZGVmaW5lZFxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICk7XG4gICAgICAgICAgICAgIH0pfVxuICAgICAgICAgICAgPC9OYXZpZ2F0aW9uRHJhd2VyU2VjdGlvbj5cbiAgICAgICAgICApO1xuICAgICAgICB9KX1cbiAgICAgIDwvU3R5bGVkSW5uZXJDb250YWluZXI+XG4gICAgPC9TY3JvbGxXcmFwcGVyPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJBZHZhbmNlZFNldHRpbmdzV3JhcHBlciIsIlNldHRpbmdzTmF2aWdhdGlvbkRyYXdlckl0ZW0iLCJ1c2VTZXR0aW5nc05hdmlnYXRpb25JdGVtcyIsIk5hdmlnYXRpb25EcmF3ZXJJdGVtR3JvdXAiLCJOYXZpZ2F0aW9uRHJhd2VyU2VjdGlvbiIsIk5hdmlnYXRpb25EcmF3ZXJTZWN0aW9uVGl0bGUiLCJnZXROYXZpZ2F0aW9uU3ViSXRlbUxlZnRBZG9ybm1lbnQiLCJTY3JvbGxXcmFwcGVyIiwic3R5bGVkIiwibWF0Y2hQYXRoIiwicmVzb2x2ZVBhdGgiLCJ1c2VMb2NhdGlvbiIsImdldFNldHRpbmdzUGF0aCIsIlN0eWxlZElubmVyQ29udGFpbmVyIiwiZGl2IiwiU2V0dGluZ3NOYXZpZ2F0aW9uRHJhd2VySXRlbXMiLCJzZXR0aW5nc05hdmlnYXRpb25JdGVtcyIsImN1cnJlbnRQYXRoTmFtZSIsInBhdGhuYW1lIiwiZ2V0U2VsZWN0ZWRJbmRleEZvclN1Ykl0ZW1zIiwic3ViSXRlbXMiLCJmaW5kSW5kZXgiLCJzdWJJdGVtIiwiaHJlZiIsInBhdGgiLCJwYXRoTmFtZSIsImVuZCIsIm1hdGNoU3ViUGFnZXMiLCJjb250ZXh0UHJvdmlkZXJOYW1lIiwiY29tcG9uZW50SW5zdGFuY2VJZCIsInNjcm9sbGJhclZhcmlhbnQiLCJoZWlnaHRNb2RlIiwiZGVmYXVsdEVuYWJsZVhTY3JvbGwiLCJtYXAiLCJzZWN0aW9uIiwiYWxsSXRlbXNIaWRkZW4iLCJpdGVtcyIsImV2ZXJ5IiwiaXRlbSIsImlzSGlkZGVuIiwiaXNBZHZhbmNlZCIsImhpZGVEb3QiLCJsYWJlbCIsImluZGV4IiwiQXJyYXkiLCJpc0FycmF5IiwibGVuZ3RoIiwic2VsZWN0ZWRTdWJJdGVtSW5kZXgiLCJzdWJJdGVtU3RhdGUiLCJpbmRlbnRhdGlvbkxldmVsIiwiYXJyYXlMZW5ndGgiLCJzZWxlY3RlZEluZGV4IiwidW5kZWZpbmVkIiwic3ViSW5kZXgiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSx1QkFBdUIsUUFBUSxnREFBZ0Q7QUFDeEYsU0FBU0MsNEJBQTRCLFFBQVEscURBQXFE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

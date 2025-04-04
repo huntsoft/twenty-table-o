@@ -1,0 +1,244 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport3_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useState = __vite__cjsImport3_react["useState"];
+import { useDropzone } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-dropzone.js?v=226f7286";
+import * as XLSX from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/xlsx-ugnis.js?v=226f7286";
+import { useSpreadsheetImportInternal } from "/src/modules/spreadsheet-import/hooks/useSpreadsheetImportInternal.ts";
+import { readFileAsync } from "/src/modules/spreadsheet-import/utils/readFilesAsync.ts";
+import { SnackBarVariant } from "/src/modules/ui/feedback/snack-bar-manager/components/SnackBar.tsx";
+import { useSnackBar } from "/src/modules/ui/feedback/snack-bar-manager/hooks/useSnackBar.ts";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { Trans as Trans_ } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { MainButton } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+const StyledContainer = styled.div`
+  align-items: center;
+  background: ${({ theme })=>`
+    repeating-linear-gradient(
+      0deg,
+      ${theme.font.color.primary},
+      ${theme.font.color.primary} 10px,
+      transparent 10px,
+      transparent 20px,
+      ${theme.font.color.primary} 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      ${theme.font.color.primary},
+      ${theme.font.color.primary} 10px,
+      transparent 10px,
+      transparent 20px,
+      ${theme.font.color.primary} 20px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      ${theme.font.color.primary},
+      ${theme.font.color.primary} 10px,
+      transparent 10px,
+      transparent 20px,
+      ${theme.font.color.primary} 20px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      ${theme.font.color.primary},
+      ${theme.font.color.primary} 10px,
+      transparent 10px,
+      transparent 20px,
+      ${theme.font.color.primary} 20px
+    );
+  `};
+  background-position:
+    0 0,
+    0 0,
+    100% 0,
+    0 100%;
+  background-repeat: no-repeat;
+  background-size:
+    2px 100%,
+    100% 2px,
+    2px 100%,
+    100% 2px;
+  border-radius: ${({ theme })=>theme.border.radius.sm};
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+`;
+_c = StyledContainer;
+const StyledOverlay = styled.div`
+  background: ${({ theme })=>theme.background.transparent.medium};
+  border-radius: ${({ theme })=>theme.border.radius.sm};
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+`;
+_c1 = StyledOverlay;
+const StyledText = styled.span`
+  color: ${({ theme })=>theme.font.color.primary};
+  font-size: ${({ theme })=>theme.font.size.sm};
+  font-weight: ${({ theme })=>theme.font.weight.medium};
+  text-align: center;
+  padding: 16px;
+`;
+_c2 = StyledText;
+export const DropZone = ({ onContinue, isLoading })=>{
+    _s();
+    const { maxFileSize, dateFormat, parseRaw } = useSpreadsheetImportInternal();
+    const [loading, setLoading] = useState(false);
+    const { enqueueSnackBar } = useSnackBar();
+    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+        noClick: true,
+        noKeyboard: true,
+        maxFiles: 1,
+        maxSize: maxFileSize,
+        accept: {
+            'application/vnd.ms-excel': [
+                '.xls'
+            ],
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [
+                '.xlsx'
+            ],
+            'text/csv': [
+                '.csv'
+            ]
+        },
+        onDropRejected: (fileRejections)=>{
+            setLoading(false);
+            fileRejections.forEach((fileRejection)=>{
+                enqueueSnackBar(`${fileRejection.file.name} upload rejected`, {
+                    detailedMessage: fileRejection.errors[0].message,
+                    variant: SnackBarVariant.Error
+                });
+            });
+        },
+        onDropAccepted: async ([file])=>{
+            setLoading(true);
+            const arrayBuffer = await readFileAsync(file);
+            const workbook = XLSX.read(arrayBuffer, {
+                cellDates: true,
+                codepage: 65001,
+                dateNF: dateFormat,
+                raw: parseRaw,
+                dense: true
+            });
+            setLoading(false);
+            onContinue(workbook, file);
+        }
+    });
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        ...getRootProps(),
+        children: [
+            isDragActive && /*#__PURE__*/ _jsxDEV(StyledOverlay, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                lineNumber: 141,
+                columnNumber: 24
+            }, this),
+            /*#__PURE__*/ _jsxDEV("input", {
+                ...getInputProps()
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                lineNumber: 142,
+                columnNumber: 7
+            }, this),
+            isDragActive ? /*#__PURE__*/ _jsxDEV(StyledText, {
+                children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                    message: "Drop file here...",
+                    id: "6D/BnN"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                    lineNumber: 148,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                lineNumber: 147,
+                columnNumber: 9
+            }, this) : loading || isLoading ? /*#__PURE__*/ _jsxDEV(StyledText, {
+                children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                    message: "Processing...",
+                    id: "k1ifdL"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                    lineNumber: 152,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                lineNumber: 151,
+                columnNumber: 9
+            }, this) : /*#__PURE__*/ _jsxDEV(_Fragment, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledText, {
+                        children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                            message: "Upload .xlsx, .xls or .csv file",
+                            id: "7OP1Xi"
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                            lineNumber: 157,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                        lineNumber: 156,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(MainButton, {
+                        onClick: open,
+                        title: $__i18n._({
+                            id: "J6WI1B",
+                            message: "Select file"
+                        })
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+                        lineNumber: 159,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx",
+        lineNumber: 137,
+        columnNumber: 5
+    }, this);
+};
+_s(DropZone, "14LH7x7NnuWkV2mmKaQVIFspYZQ=", false, function() {
+    return [
+        useSpreadsheetImportInternal,
+        useSnackBar,
+        useDropzone
+    ];
+});
+_c3 = DropZone;
+var _c, _c1, _c2, _c3;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledOverlay");
+$RefreshReg$(_c2, "StyledText");
+$RefreshReg$(_c3, "DropZone");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/UploadStep/components/DropZone.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkRyb3Bab25lLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IHVzZURyb3B6b25lIH0gZnJvbSAncmVhY3QtZHJvcHpvbmUnO1xuaW1wb3J0ICogYXMgWExTWCBmcm9tICd4bHN4LXVnbmlzJztcblxuaW1wb3J0IHsgdXNlU3ByZWFkc2hlZXRJbXBvcnRJbnRlcm5hbCB9IGZyb20gJ0Avc3ByZWFkc2hlZXQtaW1wb3J0L2hvb2tzL3VzZVNwcmVhZHNoZWV0SW1wb3J0SW50ZXJuYWwnO1xuaW1wb3J0IHsgcmVhZEZpbGVBc3luYyB9IGZyb20gJ0Avc3ByZWFkc2hlZXQtaW1wb3J0L3V0aWxzL3JlYWRGaWxlc0FzeW5jJztcbmltcG9ydCB7IFNuYWNrQmFyVmFyaWFudCB9IGZyb20gJ0AvdWkvZmVlZGJhY2svc25hY2stYmFyLW1hbmFnZXIvY29tcG9uZW50cy9TbmFja0Jhcic7XG5pbXBvcnQgeyB1c2VTbmFja0JhciB9IGZyb20gJ0AvdWkvZmVlZGJhY2svc25hY2stYmFyLW1hbmFnZXIvaG9va3MvdXNlU25hY2tCYXInO1xuaW1wb3J0IHsgVHJhbnMsIHVzZUxpbmd1aSB9IGZyb20gJ0BsaW5ndWkvcmVhY3QvbWFjcm8nO1xuaW1wb3J0IHsgTWFpbkJ1dHRvbiB9IGZyb20gJ3R3ZW50eS11aSc7XG5cbmNvbnN0IFN0eWxlZENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6ICR7KHsgdGhlbWUgfSkgPT4gYFxuICAgIHJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoXG4gICAgICAwZGVnLFxuICAgICAgJHt0aGVtZS5mb250LmNvbG9yLnByaW1hcnl9LFxuICAgICAgJHt0aGVtZS5mb250LmNvbG9yLnByaW1hcnl9IDEwcHgsXG4gICAgICB0cmFuc3BhcmVudCAxMHB4LFxuICAgICAgdHJhbnNwYXJlbnQgMjBweCxcbiAgICAgICR7dGhlbWUuZm9udC5jb2xvci5wcmltYXJ5fSAyMHB4XG4gICAgKSxcbiAgICByZXBlYXRpbmctbGluZWFyLWdyYWRpZW50KFxuICAgICAgOTBkZWcsXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0sXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0gMTBweCxcbiAgICAgIHRyYW5zcGFyZW50IDEwcHgsXG4gICAgICB0cmFuc3BhcmVudCAyMHB4LFxuICAgICAgJHt0aGVtZS5mb250LmNvbG9yLnByaW1hcnl9IDIwcHhcbiAgICApLFxuICAgIHJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoXG4gICAgICAxODBkZWcsXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0sXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0gMTBweCxcbiAgICAgIHRyYW5zcGFyZW50IDEwcHgsXG4gICAgICB0cmFuc3BhcmVudCAyMHB4LFxuICAgICAgJHt0aGVtZS5mb250LmNvbG9yLnByaW1hcnl9IDIwcHhcbiAgICApLFxuICAgIHJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoXG4gICAgICAyNzBkZWcsXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0sXG4gICAgICAke3RoZW1lLmZvbnQuY29sb3IucHJpbWFyeX0gMTBweCxcbiAgICAgIHRyYW5zcGFyZW50IDEwcHgsXG4gICAgICB0cmFuc3BhcmVudCAyMHB4LFxuICAgICAgJHt0aGVtZS5mb250LmNvbG9yLnByaW1hcnl9IDIwcHhcbiAgICApO1xuICBgfTtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjpcbiAgICAwIDAsXG4gICAgMCAwLFxuICAgIDEwMCUgMCxcbiAgICAwIDEwMCU7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIGJhY2tncm91bmQtc2l6ZTpcbiAgICAycHggMTAwJSxcbiAgICAxMDAlIDJweCxcbiAgICAycHggMTAwJSxcbiAgICAxMDAlIDJweDtcbiAgYm9yZGVyLXJhZGl1czogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIucmFkaXVzLnNtfTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleDogMTtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbmA7XG5cbmNvbnN0IFN0eWxlZE92ZXJsYXkgPSBzdHlsZWQuZGl2YFxuICBiYWNrZ3JvdW5kOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJhY2tncm91bmQudHJhbnNwYXJlbnQubWVkaXVtfTtcbiAgYm9yZGVyLXJhZGl1czogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIucmFkaXVzLnNtfTtcbiAgYm90dG9tOiAwcHg7XG4gIGxlZnQ6IDBweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICByaWdodDogMHB4O1xuICB0b3A6IDBweDtcbmA7XG5cbmNvbnN0IFN0eWxlZFRleHQgPSBzdHlsZWQuc3BhbmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5wcmltYXJ5fTtcbiAgZm9udC1zaXplOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuc2l6ZS5zbX07XG4gIGZvbnQtd2VpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQud2VpZ2h0Lm1lZGl1bX07XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMTZweDtcbmA7XG5cbnR5cGUgRHJvcFpvbmVQcm9wcyA9IHtcbiAgb25Db250aW51ZTogKGRhdGE6IFhMU1guV29ya0Jvb2ssIGZpbGU6IEZpbGUpID0+IHZvaWQ7XG4gIGlzTG9hZGluZzogYm9vbGVhbjtcbn07XG5cbmV4cG9ydCBjb25zdCBEcm9wWm9uZSA9ICh7IG9uQ29udGludWUsIGlzTG9hZGluZyB9OiBEcm9wWm9uZVByb3BzKSA9PiB7XG4gIGNvbnN0IHsgbWF4RmlsZVNpemUsIGRhdGVGb3JtYXQsIHBhcnNlUmF3IH0gPSB1c2VTcHJlYWRzaGVldEltcG9ydEludGVybmFsKCk7XG5cbiAgY29uc3QgW2xvYWRpbmcsIHNldExvYWRpbmddID0gdXNlU3RhdGUoZmFsc2UpO1xuXG4gIGNvbnN0IHsgZW5xdWV1ZVNuYWNrQmFyIH0gPSB1c2VTbmFja0JhcigpO1xuXG4gIGNvbnN0IHsgZ2V0Um9vdFByb3BzLCBnZXRJbnB1dFByb3BzLCBpc0RyYWdBY3RpdmUsIG9wZW4gfSA9IHVzZURyb3B6b25lKHtcbiAgICBub0NsaWNrOiB0cnVlLFxuICAgIG5vS2V5Ym9hcmQ6IHRydWUsXG4gICAgbWF4RmlsZXM6IDEsXG4gICAgbWF4U2l6ZTogbWF4RmlsZVNpemUsXG4gICAgYWNjZXB0OiB7XG4gICAgICAnYXBwbGljYXRpb24vdm5kLm1zLWV4Y2VsJzogWycueGxzJ10sXG4gICAgICAnYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnNwcmVhZHNoZWV0bWwuc2hlZXQnOiBbXG4gICAgICAgICcueGxzeCcsXG4gICAgICBdLFxuICAgICAgJ3RleHQvY3N2JzogWycuY3N2J10sXG4gICAgfSxcbiAgICBvbkRyb3BSZWplY3RlZDogKGZpbGVSZWplY3Rpb25zKSA9PiB7XG4gICAgICBzZXRMb2FkaW5nKGZhbHNlKTtcbiAgICAgIGZpbGVSZWplY3Rpb25zLmZvckVhY2goKGZpbGVSZWplY3Rpb24pID0+IHtcbiAgICAgICAgZW5xdWV1ZVNuYWNrQmFyKGAke2ZpbGVSZWplY3Rpb24uZmlsZS5uYW1lfSB1cGxvYWQgcmVqZWN0ZWRgLCB7XG4gICAgICAgICAgZGV0YWlsZWRNZXNzYWdlOiBmaWxlUmVqZWN0aW9uLmVycm9yc1swXS5tZXNzYWdlLFxuICAgICAgICAgIHZhcmlhbnQ6IFNuYWNrQmFyVmFyaWFudC5FcnJvcixcbiAgICAgICAgfSk7XG4gICAgICB9KTtcbiAgICB9LFxuICAgIG9uRHJvcEFjY2VwdGVkOiBhc3luYyAoW2ZpbGVdKSA9PiB7XG4gICAgICBzZXRMb2FkaW5nKHRydWUpO1xuICAgICAgY29uc3QgYXJyYXlCdWZmZXIgPSBhd2FpdCByZWFkRmlsZUFzeW5jKGZpbGUpO1xuICAgICAgY29uc3Qgd29ya2Jvb2sgPSBYTFNYLnJlYWQoYXJyYXlCdWZmZXIsIHtcbiAgICAgICAgY2VsbERhdGVzOiB0cnVlLFxuICAgICAgICBjb2RlcGFnZTogNjUwMDEsIC8vIFVURi04IGNvZGVwYWdlXG4gICAgICAgIGRhdGVORjogZGF0ZUZvcm1hdCxcbiAgICAgICAgcmF3OiBwYXJzZVJhdyxcbiAgICAgICAgZGVuc2U6IHRydWUsXG4gICAgICB9KTtcbiAgICAgIHNldExvYWRpbmcoZmFsc2UpO1xuICAgICAgb25Db250aW51ZSh3b3JrYm9vaywgZmlsZSk7XG4gICAgfSxcbiAgfSk7XG5cbiAgY29uc3QgeyB0IH0gPSB1c2VMaW5ndWkoKTtcblxuICByZXR1cm4gKFxuICAgIDxTdHlsZWRDb250YWluZXJcbiAgICAgIC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSByZWFjdC9qc3gtcHJvcHMtbm8tc3ByZWFkaW5nXG4gICAgICB7Li4uZ2V0Um9vdFByb3BzKCl9XG4gICAgPlxuICAgICAge2lzRHJhZ0FjdGl2ZSAmJiA8U3R5bGVkT3ZlcmxheSAvPn1cbiAgICAgIDxpbnB1dFxuICAgICAgICAvLyBlc2xpbnQtZGlzYWJsZS1uZXh0LWxpbmUgcmVhY3QvanN4LXByb3BzLW5vLXNwcmVhZGluZ1xuICAgICAgICB7Li4uZ2V0SW5wdXRQcm9wcygpfVxuICAgICAgLz5cbiAgICAgIHtpc0RyYWdBY3RpdmUgPyAoXG4gICAgICAgIDxTdHlsZWRUZXh0PlxuICAgICAgICAgIDxUcmFucz5Ecm9wIGZpbGUgaGVyZS4uLjwvVHJhbnM+XG4gICAgICAgIDwvU3R5bGVkVGV4dD5cbiAgICAgICkgOiBsb2FkaW5nIHx8IGlzTG9hZGluZyA/IChcbiAgICAgICAgPFN0eWxlZFRleHQ+XG4gICAgICAgICAgPFRyYW5zPlByb2Nlc3NpbmcuLi48L1RyYW5zPlxuICAgICAgICA8L1N0eWxlZFRleHQ+XG4gICAgICApIDogKFxuICAgICAgICA8PlxuICAgICAgICAgIDxTdHlsZWRUZXh0PlxuICAgICAgICAgICAgPFRyYW5zPlVwbG9hZCAueGxzeCwgLnhscyBvciAuY3N2IGZpbGU8L1RyYW5zPlxuICAgICAgICAgIDwvU3R5bGVkVGV4dD5cbiAgICAgICAgICA8TWFpbkJ1dHRvbiBvbkNsaWNrPXtvcGVufSB0aXRsZT17dGBTZWxlY3QgZmlsZWB9IC8+XG4gICAgICAgIDwvPlxuICAgICAgKX1cbiAgICA8L1N0eWxlZENvbnRhaW5lcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsic3R5bGVkIiwidXNlU3RhdGUiLCJ1c2VEcm9wem9uZSIsIlhMU1giLCJ1c2VTcHJlYWRzaGVldEltcG9ydEludGVybmFsIiwicmVhZEZpbGVBc3luYyIsIlNuYWNrQmFyVmFyaWFudCIsInVzZVNuYWNrQmFyIiwiTWFpbkJ1dHRvbiIsIlN0eWxlZENvbnRhaW5lciIsImRpdiIsInRoZW1lIiwiZm9udCIsImNvbG9yIiwicHJpbWFyeSIsImJvcmRlciIsInJhZGl1cyIsInNtIiwiU3R5bGVkT3ZlcmxheSIsImJhY2tncm91bmQiLCJ0cmFuc3BhcmVudCIsIm1lZGl1bSIsIlN0eWxlZFRleHQiLCJzcGFuIiwic2l6ZSIsIndlaWdodCIsIkRyb3Bab25lIiwib25Db250aW51ZSIsImlzTG9hZGluZyIsIm1heEZpbGVTaXplIiwiZGF0ZUZvcm1hdCIsInBhcnNlUmF3IiwibG9hZGluZyIsInNldExvYWRpbmciLCJlbnF1ZXVlU25hY2tCYXIiLCJnZXRSb290UHJvcHMiLCJnZXRJbnB1dFByb3BzIiwiaXNEcmFnQWN0aXZlIiwib3BlbiIsIm5vQ2xpY2siLCJub0tleWJvYXJkIiwibWF4RmlsZXMiLCJtYXhTaXplIiwiYWNjZXB0Iiwib25Ecm9wUmVqZWN0ZWQiLCJmaWxlUmVqZWN0aW9ucyIsImZvckVhY2giLCJmaWxlUmVqZWN0aW9uIiwiZmlsZSIsIm5hbWUiLCJkZXRhaWxlZE1lc3NhZ2UiLCJlcnJvcnMiLCJtZXNzYWdlIiwidmFyaWFudCIsIkVycm9yIiwib25Ecm9wQWNjZXB0ZWQiLCJhcnJheUJ1ZmZlciIsIndvcmtib29rIiwicmVhZCIsImNlbGxEYXRlcyIsImNvZGVwYWdlIiwiZGF0ZU5GIiwicmF3IiwiZGVuc2UiLCJ1c2VMaW5ndWkiLCJpbnB1dCIsIm9uQ2xpY2siLCJ0aXRsZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLE9BQU9BLFlBQVksa0JBQWtCO0FBQ3JDLFNBQVNDLFFBQVEsUUFBUSxRQUFRO0FBQ2pDLFNBQVNDLFdBQVcsUUFBUSxpQkFBaUI7QUFDN0MsWUFBWUMsVUFBVSxhQUFhO0FBRW5DLFNBQVNDLDRCQUE0QixRQUFRLDBEQUEwRDtBQUN2RyxTQUFTQyxhQUFhLFFBQVEsNENBQTRDO0FBQzFFLFNBQVNDLGVBQWUsUUFBUSxzREFBc0Q7QUFDdEYsU0FBU0MsV0FBVyxRQUFRLG9EQUFvRDs7O0FBRWhGLFNBQVNDLFVBQVUsUUFBUSxZQUFZO0FBRXZDLE1BQU1DLGtCQUFrQlQsT0FBT1UsR0FBRyxDQUFDOztjQUVyQixFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUssQ0FBQzs7O01BRzFCLEVBQUVBLE1BQU1DLElBQUksQ0FBQ0MsS0FBSyxDQUFDQyxPQUFPLENBQUM7TUFDM0IsRUFBRUgsTUFBTUMsSUFBSSxDQUFDQyxLQUFLLENBQUNDLE9BQU8sQ0FBQzs7O01BRzNCLEVBQUVILE1BQU1DLElBQUksQ0FBQ0MsS0FBSyxDQUFDQyxPQUFPLENBQUM7Ozs7TUFJM0IsRUFBRUgsTUFBTUMsSUFBSSxDQUFDQyxLQUFLLENBQUNDLE9BQU8sQ0FBQztNQUMzQixFQUFFSCxNQUFNQyxJQUFJLENBQUNDLEtBQUssQ0FBQ0MsT0FBTyxDQUFDOzs7TUFHM0IsRUFBRUgsTUFBTUMsSUFBSSxDQUFDQyxLQUFLLENBQUNDLE9BQU8sQ0FBQzs7OztNQUkzQixFQUFFSCxNQUFNQyxJQUFJLENBQUNDLEtBQUssQ0FBQ0MsT0FBTyxD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

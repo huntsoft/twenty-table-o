@@ -4,17 +4,47 @@
   "configurations": [
     {
       "name": "Frontend: Debug",
-      "type": "msedge",
+      "type": "chrome",
       "request": "launch",
       "url": "http://localhost:3001",
       "webRoot": "${workspaceFolder}/packages/twenty-front",
-      "userDataDir": false,
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile",
+      "runtimeExecutable": "stable",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-background-networking",
+        "--disable-background-timer-throttling",
+        "--disable-backgrounding-occluded-windows",
+        "--disable-breakpad",
+        "--disable-client-side-phishing-detection",
+        "--disable-default-apps",
+        "--disable-dev-shm-usage",
+        "--disable-extensions",
+        "--disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees",
+        "--disable-hang-monitor",
+        "--disable-ipc-flooding-protection",
+        "--disable-popup-blocking",
+        "--disable-prompt-on-repost",
+        "--disable-renderer-backgrounding",
+        "--disable-sync",
+        "--force-color-profile=srgb",
+        "--metrics-recording-only",
+        "--no-first-run",
+        "--password-store=basic",
+        "--use-mock-keychain",
+        "--enable-automation",
+        "--no-sandbox"
+      ],
       "env": {
         "REACT_APP_SERVER_BASE_URL": "http://localhost:3000",
         "FRONTEND_URL": "http://localhost:3001"
       },
       "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/src/*"
+        "webpack:///src/*": "${webRoot}/src/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
       },
       "skipFiles": [
         "<node_internals>/**",
@@ -23,10 +53,10 @@
         "**/runtime~main.js",
         "**/vendor~main.js"
       ],
-      "timeout": 30000,
+      "timeout": 60000,
       "smartStep": true,
       "sourceMaps": true,
-      "trace": false,
+      "trace": true,
       "preLaunchTask": "start-frontend",
       "postDebugTask": "stop-frontend"
     },
@@ -35,7 +65,10 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nx",
-      "args": ["serve", "twenty-server"],
+      "args": [
+        "serve",
+        "twenty-server"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "sourceMaps": true,
@@ -50,18 +83,115 @@
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js",
         "${workspaceFolder}/packages/twenty-server/**/*.js"
+      ],
+      "restart": true,
+      "runtimeArgs": [
+        "--inspect-brk"
+      ],
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      },
+      "timeout": 60000
+    },
+    {
+      "type": "chrome",
+      "name": "Launch Chrome",
+      "request": "launch",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}/packages/twenty-front",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Frontend: Attach",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/packages/twenty-front",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**",
+        "**/webpack/**",
+        "**/runtime~main.js",
+        "**/vendor~main.js"
       ]
+    },
+    {
+      "name": "Frontend: Debug (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}/packages/twenty-front",
+      "userDataDir": "${workspaceFolder}/.vscode/edge-debug-profile",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-background-networking",
+        "--disable-extensions"
+      ],
+      "env": {
+        "REACT_APP_SERVER_BASE_URL": "http://localhost:3000",
+        "FRONTEND_URL": "http://localhost:3001"
+      },
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**",
+        "**/webpack/**",
+        "**/runtime~main.js",
+        "**/vendor~main.js"
+      ],
+      "timeout": 60000,
+      "smartStep": true,
+      "sourceMaps": true,
+      "preLaunchTask": "start-frontend",
+      "postDebugTask": "stop-frontend"
     }
   ],
   "compounds": [
     {
       "name": "Full Stack Debug",
-      "configurations": ["Backend: Debug", "Frontend: Debug"],
+      "configurations": [
+        "Backend: Debug",
+        "Frontend: Debug"
+      ],
       "stopAll": true,
       "presentation": {
         "hidden": false,
         "group": "fullstack",
         "order": 1
+      }
+    },
+    {
+      "name": "Full Stack Debug (Attach)",
+      "configurations": [
+        "Backend: Debug",
+        "Frontend: Attach"
+      ],
+      "stopAll": true,
+      "presentation": {
+        "hidden": false,
+        "group": "fullstack",
+        "order": 2
       }
     }
   ]

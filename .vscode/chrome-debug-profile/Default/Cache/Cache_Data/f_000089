@@ -1,0 +1,213 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/views/view-picker/components/ViewPickerDropdown.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { IconChevronDown, IconList, MOBILE_VIEWPORT, useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { Dropdown } from "/src/modules/ui/layout/dropdown/components/Dropdown.tsx";
+import { StyledDropdownButtonContainer } from "/src/modules/ui/layout/dropdown/components/StyledDropdownButtonContainer.tsx";
+import { useDropdown } from "/src/modules/ui/layout/dropdown/hooks/useDropdown.ts";
+import { useGetRecordIndexTotalCount } from "/src/modules/views/hooks/internal/useGetRecordIndexTotalCount.ts";
+import { useGetCurrentViewOnly } from "/src/modules/views/hooks/useGetCurrentViewOnly.ts";
+import { ViewsHotkeyScope } from "/src/modules/views/types/ViewsHotkeyScope.ts";
+import { ViewPickerContentCreateMode } from "/src/modules/views/view-picker/components/ViewPickerContentCreateMode.tsx";
+import { ViewPickerContentEditMode } from "/src/modules/views/view-picker/components/ViewPickerContentEditMode.tsx";
+import { ViewPickerContentEffect } from "/src/modules/views/view-picker/components/ViewPickerContentEffect.tsx";
+import { ViewPickerFavoriteFoldersDropdown } from "/src/modules/views/view-picker/components/ViewPickerFavoriteFoldersDropdown.tsx";
+import { ViewPickerListContent } from "/src/modules/views/view-picker/components/ViewPickerListContent.tsx";
+import { VIEW_PICKER_DROPDOWN_ID } from "/src/modules/views/view-picker/constants/ViewPickerDropdownId.ts";
+import { useUpdateViewFromCurrentState } from "/src/modules/views/view-picker/hooks/useUpdateViewFromCurrentState.ts";
+import { useViewPickerMode } from "/src/modules/views/view-picker/hooks/useViewPickerMode.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledDropdownLabelAdornments = styled.span`
+  align-items: center;
+  color: ${({ theme })=>theme.grayScale.gray35};
+  display: inline-flex;
+  gap: ${({ theme })=>theme.spacing(1)};
+  margin-left: ${({ theme })=>theme.spacing(1)};
+`;
+const StyledViewName = styled.span`
+  margin-left: ${({ theme })=>theme.spacing(1)};
+  display: inline-block;
+  max-width: 130px;
+  @media (max-width: 375px) {
+    max-width: 90px;
+  }
+  @media (min-width: 376px) and (max-width: ${MOBILE_VIEWPORT}px) {
+    max-width: 110px;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+`;
+export const ViewPickerDropdown = ()=>{
+    _s();
+    const theme = useTheme();
+    const { currentView } = useGetCurrentViewOnly();
+    const { updateViewFromCurrentState } = useUpdateViewFromCurrentState();
+    const { totalCount } = useGetRecordIndexTotalCount();
+    const { isDropdownOpen: isViewsListDropdownOpen } = useDropdown(VIEW_PICKER_DROPDOWN_ID);
+    const { viewPickerMode, setViewPickerMode } = useViewPickerMode();
+    const { getIcon } = useIcons();
+    const CurrentViewIcon = getIcon(currentView?.icon);
+    const handleClickOutside = async ()=>{
+        if (isViewsListDropdownOpen && viewPickerMode === 'edit') {
+            await updateViewFromCurrentState();
+        }
+        setViewPickerMode('list');
+    };
+    return /*#__PURE__*/ _jsxDEV(Dropdown, {
+        dropdownId: VIEW_PICKER_DROPDOWN_ID,
+        dropdownHotkeyScope: {
+            scope: ViewsHotkeyScope.ListDropdown
+        },
+        dropdownOffset: {
+            x: 0,
+            y: 8
+        },
+        dropdownPlacement: "bottom-start",
+        dropdownMenuWidth: 200,
+        onClickOutside: handleClickOutside,
+        clickableComponent: /*#__PURE__*/ _jsxDEV(StyledDropdownButtonContainer, {
+            isUnfolded: isViewsListDropdownOpen,
+            children: [
+                currentView && CurrentViewIcon ? /*#__PURE__*/ _jsxDEV(CurrentViewIcon, {
+                    size: theme.icon.size.md
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                    lineNumber: 86,
+                    columnNumber: 13
+                }, void 0) : /*#__PURE__*/ _jsxDEV(IconList, {
+                    size: theme.icon.size.md
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                    lineNumber: 88,
+                    columnNumber: 13
+                }, void 0),
+                /*#__PURE__*/ _jsxDEV(StyledViewName, {
+                    children: currentView?.name ?? 'All'
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                    lineNumber: 90,
+                    columnNumber: 11
+                }, void 0),
+                /*#__PURE__*/ _jsxDEV(StyledDropdownLabelAdornments, {
+                    children: [
+                        isDefined(totalCount) && /*#__PURE__*/ _jsxDEV(_Fragment, {
+                            children: [
+                                "· ",
+                                totalCount,
+                                " "
+                            ]
+                        }, void 0, true),
+                        /*#__PURE__*/ _jsxDEV(IconChevronDown, {
+                            size: theme.icon.size.sm
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                            lineNumber: 93,
+                            columnNumber: 13
+                        }, void 0)
+                    ]
+                }, void 0, true, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                    lineNumber: 91,
+                    columnNumber: 11
+                }, void 0)
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+            lineNumber: 84,
+            columnNumber: 9
+        }, void 0),
+        dropdownComponents: (()=>{
+            switch(viewPickerMode){
+                case 'list':
+                    return /*#__PURE__*/ _jsxDEV(ViewPickerListContent, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                        lineNumber: 100,
+                        columnNumber: 20
+                    }, void 0);
+                case 'favorite-folders-picker':
+                    return /*#__PURE__*/ _jsxDEV(ViewPickerFavoriteFoldersDropdown, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                        lineNumber: 102,
+                        columnNumber: 20
+                    }, void 0);
+                case 'create-empty':
+                case 'create-from-current':
+                    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(ViewPickerContentCreateMode, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                                lineNumber: 107,
+                                columnNumber: 17
+                            }, void 0),
+                            /*#__PURE__*/ _jsxDEV(ViewPickerContentEffect, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                                lineNumber: 108,
+                                columnNumber: 17
+                            }, void 0)
+                        ]
+                    }, void 0, true);
+                case 'edit':
+                    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(ViewPickerContentEditMode, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                                lineNumber: 114,
+                                columnNumber: 17
+                            }, void 0),
+                            /*#__PURE__*/ _jsxDEV(ViewPickerContentEffect, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+                                lineNumber: 115,
+                                columnNumber: 17
+                            }, void 0)
+                        ]
+                    }, void 0, true);
+                default:
+                    return null;
+            }
+        })()
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx",
+        lineNumber: 76,
+        columnNumber: 5
+    }, this);
+};
+_s(ViewPickerDropdown, "gJr8TCif4VVlDIMl7Zn2nIaZBGE=", false, function() {
+    return [
+        useTheme,
+        useGetCurrentViewOnly,
+        useUpdateViewFromCurrentState,
+        useGetRecordIndexTotalCount,
+        useDropdown,
+        useViewPickerMode,
+        useIcons
+    ];
+});
+_c = ViewPickerDropdown;
+var _c;
+$RefreshReg$(_c, "ViewPickerDropdown");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/views/view-picker/components/ViewPickerDropdown.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlZpZXdQaWNrZXJEcm9wZG93bi50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlVGhlbWUgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQge1xuICBJY29uQ2hldnJvbkRvd24sXG4gIEljb25MaXN0LFxuICBNT0JJTEVfVklFV1BPUlQsXG4gIHVzZUljb25zLFxufSBmcm9tICd0d2VudHktdWknO1xuXG5pbXBvcnQgeyBEcm9wZG93biB9IGZyb20gJ0AvdWkvbGF5b3V0L2Ryb3Bkb3duL2NvbXBvbmVudHMvRHJvcGRvd24nO1xuaW1wb3J0IHsgU3R5bGVkRHJvcGRvd25CdXR0b25Db250YWluZXIgfSBmcm9tICdAL3VpL2xheW91dC9kcm9wZG93bi9jb21wb25lbnRzL1N0eWxlZERyb3Bkb3duQnV0dG9uQ29udGFpbmVyJztcbmltcG9ydCB7IHVzZURyb3Bkb3duIH0gZnJvbSAnQC91aS9sYXlvdXQvZHJvcGRvd24vaG9va3MvdXNlRHJvcGRvd24nO1xuaW1wb3J0IHsgdXNlR2V0UmVjb3JkSW5kZXhUb3RhbENvdW50IH0gZnJvbSAnQC92aWV3cy9ob29rcy9pbnRlcm5hbC91c2VHZXRSZWNvcmRJbmRleFRvdGFsQ291bnQnO1xuaW1wb3J0IHsgdXNlR2V0Q3VycmVudFZpZXdPbmx5IH0gZnJvbSAnQC92aWV3cy9ob29rcy91c2VHZXRDdXJyZW50Vmlld09ubHknO1xuaW1wb3J0IHsgVmlld3NIb3RrZXlTY29wZSB9IGZyb20gJ0Avdmlld3MvdHlwZXMvVmlld3NIb3RrZXlTY29wZSc7XG5pbXBvcnQgeyBWaWV3UGlja2VyQ29udGVudENyZWF0ZU1vZGUgfSBmcm9tICdAL3ZpZXdzL3ZpZXctcGlja2VyL2NvbXBvbmVudHMvVmlld1BpY2tlckNvbnRlbnRDcmVhdGVNb2RlJztcbmltcG9ydCB7IFZpZXdQaWNrZXJDb250ZW50RWRpdE1vZGUgfSBmcm9tICdAL3ZpZXdzL3ZpZXctcGlja2VyL2NvbXBvbmVudHMvVmlld1BpY2tlckNvbnRlbnRFZGl0TW9kZSc7XG5pbXBvcnQgeyBWaWV3UGlja2VyQ29udGVudEVmZmVjdCB9IGZyb20gJ0Avdmlld3Mvdmlldy1waWNrZXIvY29tcG9uZW50cy9WaWV3UGlja2VyQ29udGVudEVmZmVjdCc7XG5pbXBvcnQgeyBWaWV3UGlja2VyRmF2b3JpdGVGb2xkZXJzRHJvcGRvd24gfSBmcm9tICdAL3ZpZXdzL3ZpZXctcGlja2VyL2NvbXBvbmVudHMvVmlld1BpY2tlckZhdm9yaXRlRm9sZGVyc0Ryb3Bkb3duJztcbmltcG9ydCB7IFZpZXdQaWNrZXJMaXN0Q29udGVudCB9IGZyb20gJ0Avdmlld3Mvdmlldy1waWNrZXIvY29tcG9uZW50cy9WaWV3UGlja2VyTGlzdENvbnRlbnQnO1xuaW1wb3J0IHsgVklFV19QSUNLRVJfRFJPUERPV05fSUQgfSBmcm9tICdAL3ZpZXdzL3ZpZXctcGlja2VyL2NvbnN0YW50cy9WaWV3UGlja2VyRHJvcGRvd25JZCc7XG5pbXBvcnQgeyB1c2VVcGRhdGVWaWV3RnJvbUN1cnJlbnRTdGF0ZSB9IGZyb20gJ0Avdmlld3Mvdmlldy1waWNrZXIvaG9va3MvdXNlVXBkYXRlVmlld0Zyb21DdXJyZW50U3RhdGUnO1xuaW1wb3J0IHsgdXNlVmlld1BpY2tlck1vZGUgfSBmcm9tICdAL3ZpZXdzL3ZpZXctcGlja2VyL2hvb2tzL3VzZVZpZXdQaWNrZXJNb2RlJztcbmltcG9ydCB7IGlzRGVmaW5lZCB9IGZyb20gJ3R3ZW50eS1zaGFyZWQvdXRpbHMnO1xuXG5jb25zdCBTdHlsZWREcm9wZG93bkxhYmVsQWRvcm5tZW50cyA9IHN0eWxlZC5zcGFuYFxuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ncmF5U2NhbGUuZ3JheTM1fTtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbiAgbWFyZ2luLWxlZnQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygxKX07XG5gO1xuXG5jb25zdCBTdHlsZWRWaWV3TmFtZSA9IHN0eWxlZC5zcGFuYFxuICBtYXJnaW4tbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBtYXgtd2lkdGg6IDEzMHB4O1xuICBAbWVkaWEgKG1heC13aWR0aDogMzc1cHgpIHtcbiAgICBtYXgtd2lkdGg6IDkwcHg7XG4gIH1cbiAgQG1lZGlhIChtaW4td2lkdGg6IDM3NnB4KSBhbmQgKG1heC13aWR0aDogJHtNT0JJTEVfVklFV1BPUlR9cHgpIHtcbiAgICBtYXgtd2lkdGg6IDExMHB4O1xuICB9XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuYDtcblxuZXhwb3J0IGNvbnN0IFZpZXdQaWNrZXJEcm9wZG93biA9ICgpID0+IHtcbiAgY29uc3QgdGhlbWUgPSB1c2VUaGVtZSgpO1xuXG4gIGNvbnN0IHsgY3VycmVudFZpZXcgfSA9IHVzZUdldEN1cnJlbnRWaWV3T25seSgpO1xuXG4gIGNvbnN0IHsgdXBkYXRlVmlld0Zyb21DdXJyZW50U3RhdGUgfSA9IHVzZVVwZGF0ZVZpZXdGcm9tQ3VycmVudFN0YXRlKCk7XG5cbiAgY29uc3QgeyB0b3RhbENvdW50IH0gPSB1c2VHZXRSZWNvcmRJbmRleFRvdGFsQ291bnQoKTtcblxuICBjb25zdCB7IGlzRHJvcGRvd25PcGVuOiBpc1ZpZXdzTGlzdERyb3Bkb3duT3BlbiB9ID0gdXNlRHJvcGRvd24oXG4gICAgVklFV19QSUNLRVJfRFJPUERPV05fSUQsXG4gICk7XG5cbiAgY29uc3QgeyB2aWV3UGlja2VyTW9kZSwgc2V0Vmlld1BpY2tlck1vZGUgfSA9IHVzZVZpZXdQaWNrZXJNb2RlKCk7XG5cbiAgY29uc3QgeyBnZXRJY29uIH0gPSB1c2VJY29ucygpO1xuICBjb25zdCBDdXJyZW50Vmlld0ljb24gPSBnZXRJY29uKGN1cnJlbnRWaWV3Py5pY29uKTtcblxuICBjb25zdCBoYW5kbGVDbGlja091dHNpZGUgPSBhc3luYyAoKSA9PiB7XG4gICAgaWYgKGlzVmlld3NMaXN0RHJvcGRvd25PcGVuICYmIHZpZXdQaWNrZXJNb2RlID09PSAnZWRpdCcpIHtcbiAgICAgIGF3YWl0IHVwZGF0ZVZpZXdGcm9tQ3VycmVudFN0YXRlKCk7XG4gICAgfVxuICAgIHNldFZpZXdQaWNrZXJNb2RlKCdsaXN0Jyk7XG4gIH07XG5cbiAgcmV0dXJuIChcbiAgICA8RHJvcGRvd25cbiAgICAgIGRyb3Bkb3duSWQ9e1ZJRVdfUElDS0VSX0RST1BET1dOX0lEfVxuICAgICAgZHJvcGRvd25Ib3RrZXlTY29wZT17eyBzY29wZTogVmlld3NIb3RrZXlTY29wZS5MaXN0RHJvcGRvd24gfX1cbiAgICAgIGRyb3Bkb3duT2Zmc2V0PXt7IHg6IDAsIHk6IDggfX1cbiAgICAgIGRyb3Bkb3duUGxhY2VtZW50PVwiYm90dG9tLXN0YXJ0XCJcbiAgICAgIGRyb3Bkb3duTWVudVdpZHRoPXsyMDB9XG4gICAgICBvbkNsaWNrT3V0c2lkZT17aGFuZGxlQ2xpY2tPdXRzaWRlfVxuICAgICAgY2xpY2thYmxlQ29tcG9uZW50PXtcbiAgICAgICAgPFN0eWxlZERyb3Bkb3duQnV0dG9uQ29udGFpbmVyIGlzVW5mb2xkZWQ9e2lzVmlld3NMaXN0RHJvcGRvd25PcGVufT5cbiAgICAgICAgICB7Y3VycmVudFZpZXcgJiYgQ3VycmVudFZpZXdJY29uID8gKFxuICAgICAgICAgICAgPEN1cnJlbnRWaWV3SWNvbiBzaXplPXt0aGVtZS5pY29uLnNpemUubWR9IC8+XG4gICAgICAgICAgKSA6IChcbiAgICAgICAgICAgIDxJY29uTGlzdCBzaXplPXt0aGVtZS5pY29uLnNpemUubWR9IC8+XG4gICAgICAgICAgKX1cbiAgICAgICAgICA8U3R5bGVkVmlld05hbWU+e2N1cnJlbnRWaWV3Py5uYW1lID8/ICdBbGwnfTwvU3R5bGVkVmlld05hbWU+XG4gICAgICAgICAgPFN0eWxlZERyb3Bkb3duTGFiZWxBZG9ybm1lbnRzPlxuICAgICAgICAgICAge2lzRGVmaW5lZCh0b3RhbENvdW50KSAmJiA8PsK3IHt0b3RhbENvdW50fSA8Lz59XG4gICAgICAgICAgICA8SWNvbkNoZXZyb25Eb3duIHNpemU9e3RoZW1lLmljb24uc2l6ZS5zbX0gLz5cbiAgICAgICAgICA8L1N0eWxlZERyb3Bkb3duTGFiZWxBZG9ybm1lbnRzPlxuICAgICAgICA8L1N0eWxlZERyb3Bkb3duQnV0dG9uQ29udGFpbmVyPlxuICAgICAgfVxuICAgICAgZHJvcGRvd25Db21wb25lbnRzPXsoKCkgPT4ge1xuICAgICAgICBzd2l0Y2ggKHZpZXdQaWNrZXJNb2RlKSB7XG4gICAgICAgICAgY2FzZSAnbGlzdCc6XG4gICAgICAgICAgICByZXR1cm4gPFZpZXdQaWNrZXJMaXN0Q29udGVudCAvPjtcbiAgICAgICAgICBjYXNlICdmYXZvcml0ZS1mb2xkZXJzLXBpY2tlcic6XG4gICAgICAgICAgICByZXR1cm4gPFZpZXdQaWNrZXJGYXZvcml0ZUZvbGRlcnNEcm9wZG93biAvPjtcbiAgICAgICAgICBjYXNlICdjcmVhdGUtZW1wdHknOlxuICAgICAgICAgIGNhc2UgJ2NyZWF0ZS1mcm9tLWN1cnJlbnQnOlxuICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgPD5cbiAgICAgICAgICAgICAgICA8Vmlld1BpY2tlckNvbnRlbnRDcmVhdGVNb2RlIC8+XG4gICAgICAgICAgICAgICAgPFZpZXdQaWNrZXJDb250ZW50RWZmZWN0IC8+XG4gICAgICAgICAgICAgIDwvPlxuICAgICAgICAgICAgKTtcbiAgICAgICAgICBjYXNlICdlZGl0JzpcbiAgICAgICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICAgIDw+XG4gICAgICAgICAgICAgICAgPFZpZXdQaWNrZXJDb250ZW50RWRpdE1vZGUgLz5cbiAgICAgICAgICAgICAgICA8Vmlld1BpY2tlckNvbnRlbnRFZmZlY3QgLz5cbiAgICAgICAgICAgICAgPC8+XG4gICAgICAgICAgICApO1xuICAgICAgICAgIGRlZmF1bHQ6XG4gICAgICAgICAgICByZXR1cm4gbnVsbDtcbiAgICAgICAgfVxuICAgICAgfSkoKX1cbiAgICAvPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJ1c2VUaGVtZSIsInN0eWxlZCIsIkljb25DaGV2cm9uRG93biIsIkljb25MaXN0IiwiTU9CSUxFX1ZJRVdQT1JUIiwidXNlSWNvbnMiLCJEcm9wZG93biIsIlN0eWxlZERyb3Bkb3duQnV0dG9uQ29udGFpbmVyIiwidXNlRHJvcGRvd24iLCJ1c2VHZXRSZWNvcmRJbmRleFRvdGFsQ291bnQiLCJ1c2VHZXRDdXJyZW50Vmlld09ubHkiLCJWaWV3c0hvdGtleVNjb3BlIiwiVmlld1BpY2tlckNvbnRlbnRDcmVhdGVNb2RlIiwiVmlld1BpY2tlckNvbnRlbnRFZGl0TW9kZSIsIlZpZXdQaWNrZXJDb250ZW50RWZmZWN0IiwiVmlld1BpY2tlckZhdm9yaXRlRm9sZGVyc0Ryb3Bkb3duIiwiVmlld1BpY2tlckxpc3RDb250ZW50IiwiVklFV19QSUNLRVJfRFJPUERPV05fSUQiLCJ1c2VVcGRhdGVWaWV3RnJvbUN1cnJlbnRTdGF0ZSIsInVzZVZpZXdQaWNrZXJNb2RlIiwiaXNEZWZpbmVkIiwiU3R5bGVkRHJvcGRvd25MYWJlbEFkb3JubWVudHMiLCJzcGFuIiwidGhlbWUiLCJncmF5U2NhbGUiLCJncmF5MzUiLCJzcGFjaW5nIiwiU3R5bGVkVmlld05hbWUiLCJWaWV3UGlja2VyRHJvcGRvd24iLCJjdXJyZW50VmlldyIsInVwZGF0ZVZpZXdGcm9tQ3VycmVudFN0YXRlIiwidG90YWxDb3VudCIsImlzRHJvcGRvd25PcGVuIiwiaXNWaWV3c0xpc3REcm9wZG93bk9wZW4iLCJ2aWV3UGlja2VyTW9kZSIsInNldFZpZXdQaWNrZXJNb2RlIiwiZ2V0SWNvbiIsIkN1cnJlbnRWaWV3SWNvbiIsImljb24iLCJoYW5kbGVDbGlja091dHNpZGUiLCJkcm9wZG93bklkIiwiZHJvcGRvd25Ib3RrZXlTY29wZSIsInNjb3BlIiwiTGlzdERyb3Bkb3duIiwiZHJvcGRvd25PZmZzZXQiLCJ4IiwieSIsImRyb3Bkb3duUGxhY2VtZW50IiwiZHJvcGRvd25NZW51V2lkdGgiLCJvbkNsaWNrT3V0c2lkZSIsImNsaWNrYWJsZUNvbXBvbmVudCIsImlzVW5mb2xkZWQiLCJzaXplIiwibWQiLCJuYW1lIiwic20iLCJkcm9wZG93bkNvbXBvbmVudHMiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSxRQUFRLFFBQVEsaUJBQWlCO0FBQzFDLE9BQU9DLFlBQVksa0JBQWtCO0FBQ3JDLFNBQ0VDLGVBQWUsRUFDZkMsUUFBUSxFQUNSQyxlQUFlLEVBQ2ZDLFFBQVEsUUFDSCxZQUFZO0FBRW5CLFNBQVNDLFFBQVEsUUFBUSwyQ0FBMkM7QUFDcEUsU0FBU0MsNkJBQTZCLFFBQVEsZ0VBQWdFO0FBQzlHLFNBQVNDLFdBQVcsUUFBUSx5Q0FBeUM7QUFDckUsU0FBU0MsMkJBQTJCLFFBQVEscURBQXFEO0FBQ2pHLFNBQVNDLHFCQUFxQixRQUFRLHNDQUFzQztBQUM1RSxTQUFTQyxnQkFBZ0IsUUFBUSxpQ0FBaUM7QUFDbEUsU0FBU0MsMkJBQTJCLFFBQVEsNkRBQTZEO0FBQ3pHLFNBQVNDLHlCQUF5QixRQUFRLDJEQUEyRDtBQUNyRyxTQUFTQyx1QkFBdUIsUUFBUSx5REFBeUQ7QUFDakcsU0FBU0MsaUNBQWlDLFFBQVEsbUVBQW1FO0FBQ3JILFNBQVNDLHFCQUFxQixRQUFRLHVEQUF1RDtBQUM3RixTQUFTQyx1QkFBdUIsUUFBUSxxREFBcUQ7QUFDN0YsU0FBU0MsNkJBQTZCLFFBQVEsMERBQTBEO0FBQ3hHLFNBQVNDLGlCQUFpQixRQUFRLDhDQUE4QztBQUNoRixTQUFTQyxTQUFTLFFBQVEsc0JBQXNCO0FBRWhELE1BQU1DLGdDQUFnQ3BCLE9BQU9xQixJQUFJLENBQUM7O1NBRXpDLEVB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

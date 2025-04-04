@@ -1,0 +1,198 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/ui/layout/modal/components/ConfirmationModal.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { AnimatePresence, LayoutGroup } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/framer-motion.js?v=226f7286";
+import __vite__cjsImport4_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useState = __vite__cjsImport4_react["useState"];
+import { Button, H1Title, H1TitleFontColor, Section, SectionAlignment, SectionFontColor } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { useDebouncedCallback } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/use-debounce.js?v=226f7286";
+import { TextInput } from "/src/modules/ui/input/components/TextInput.tsx";
+import { Modal } from "/src/modules/ui/layout/modal/components/Modal.tsx";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+const StyledConfirmationModal = styled(Modal)`
+  border-radius: ${({ theme })=>theme.spacing(1)};
+  width: calc(400px - ${({ theme })=>theme.spacing(32)});
+  height: auto;
+`;
+_c = StyledConfirmationModal;
+export const StyledCenteredButton = styled(Button)`
+  box-sizing: border-box;
+  justify-content: center;
+  margin-top: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledCenteredButton;
+const StyledCenteredTitle = styled.div`
+  text-align: center;
+`;
+_c2 = StyledCenteredTitle;
+const StyledSection = styled(Section)`
+  margin-bottom: ${({ theme })=>theme.spacing(6)};
+`;
+_c3 = StyledSection;
+export const StyledConfirmationButton = styled(StyledCenteredButton)`
+  border-color: ${({ theme })=>theme.border.color.danger};
+  box-shadow: none;
+  color: ${({ theme })=>theme.color.red};
+  font-size: ${({ theme })=>theme.font.size.md};
+  line-height: ${({ theme })=>theme.text.lineHeight.lg};
+  :hover {
+    background-color: ${({ theme })=>theme.color.red10};
+  }
+`;
+export const ConfirmationModal = ({ isOpen = false, title, loading, subtitle, setIsOpen, onConfirmClick, confirmButtonText = 'Confirm', confirmationValue, confirmationPlaceholder, confirmButtonAccent = 'danger', AdditionalButtons, modalVariant = 'primary' })=>{
+    _s();
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const [inputConfirmationValue, setInputConfirmationValue] = useState('');
+    const [isValidValue, setIsValidValue] = useState(!confirmationValue);
+    const handleInputConfimrationValueChange = (value)=>{
+        setInputConfirmationValue(value);
+        isValueMatchingInput(confirmationValue, value);
+    };
+    const isValueMatchingInput = useDebouncedCallback((value, inputValue)=>{
+        setIsValidValue(Boolean(value && inputValue && value === inputValue));
+    }, 250);
+    const handleConfirmClick = ()=>{
+        onConfirmClick();
+        setIsOpen(false);
+    };
+    const handleEnter = ()=>{
+        if (isValidValue) {
+            handleConfirmClick();
+        }
+    };
+    return /*#__PURE__*/ _jsxDEV(AnimatePresence, {
+        mode: "wait",
+        children: /*#__PURE__*/ _jsxDEV(LayoutGroup, {
+            children: isOpen && /*#__PURE__*/ _jsxDEV(StyledConfirmationModal, {
+                onClose: ()=>{
+                    if (isOpen) {
+                        setIsOpen(false);
+                    }
+                },
+                onEnter: handleEnter,
+                isClosable: true,
+                padding: "large",
+                modalVariant: modalVariant,
+                className: "confirmation-modal",
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledCenteredTitle, {
+                        children: /*#__PURE__*/ _jsxDEV(H1Title, {
+                            title: title,
+                            fontColor: H1TitleFontColor.Primary
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                            lineNumber: 126,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                        lineNumber: 125,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledSection, {
+                        alignment: SectionAlignment.Center,
+                        fontColor: SectionFontColor.Primary,
+                        children: subtitle
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                        lineNumber: 128,
+                        columnNumber: 13
+                    }, this),
+                    confirmationValue && /*#__PURE__*/ _jsxDEV(Section, {
+                        children: /*#__PURE__*/ _jsxDEV(TextInput, {
+                            dataTestId: "confirmation-modal-input",
+                            value: inputConfirmationValue,
+                            onChange: handleInputConfimrationValueChange,
+                            placeholder: confirmationPlaceholder,
+                            fullWidth: true,
+                            disableHotkeys: true
+                        }, 'input-' + confirmationValue, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                            lineNumber: 136,
+                            columnNumber: 17
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                        lineNumber: 135,
+                        columnNumber: 15
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledCenteredButton, {
+                        onClick: ()=>{
+                            setIsOpen(false);
+                        },
+                        variant: "secondary",
+                        title: $__i18n._({
+                            id: "dEgA5A",
+                            message: "Cancel"
+                        }),
+                        fullWidth: true
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                        lineNumber: 147,
+                        columnNumber: 13
+                    }, this),
+                    AdditionalButtons,
+                    /*#__PURE__*/ _jsxDEV(StyledCenteredButton, {
+                        onClick: handleConfirmClick,
+                        variant: "secondary",
+                        accent: confirmButtonAccent,
+                        title: confirmButtonText,
+                        disabled: !isValidValue || loading,
+                        fullWidth: true,
+                        dataTestId: "confirmation-modal-confirm-button"
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                        lineNumber: 158,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+                lineNumber: 113,
+                columnNumber: 11
+            }, this)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+            lineNumber: 111,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx",
+        lineNumber: 110,
+        columnNumber: 5
+    }, this);
+};
+_s(ConfirmationModal, "wXvB+jl/jlgzpMbz/u0kSpYHSUQ=", false, function() {
+    return [
+        useDebouncedCallback
+    ];
+});
+_c4 = ConfirmationModal;
+var _c, _c1, _c2, _c3, _c4;
+$RefreshReg$(_c, "StyledConfirmationModal");
+$RefreshReg$(_c1, "StyledCenteredButton");
+$RefreshReg$(_c2, "StyledCenteredTitle");
+$RefreshReg$(_c3, "StyledSection");
+$RefreshReg$(_c4, "ConfirmationModal");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/modal/components/ConfirmationModal.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNvbmZpcm1hdGlvbk1vZGFsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBBbmltYXRlUHJlc2VuY2UsIExheW91dEdyb3VwIH0gZnJvbSAnZnJhbWVyLW1vdGlvbic7XG5pbXBvcnQgeyBSZWFjdE5vZGUsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHtcbiAgQnV0dG9uLFxuICBCdXR0b25BY2NlbnQsXG4gIEgxVGl0bGUsXG4gIEgxVGl0bGVGb250Q29sb3IsXG4gIFNlY3Rpb24sXG4gIFNlY3Rpb25BbGlnbm1lbnQsXG4gIFNlY3Rpb25Gb250Q29sb3IsXG59IGZyb20gJ3R3ZW50eS11aSc7XG5pbXBvcnQgeyB1c2VEZWJvdW5jZWRDYWxsYmFjayB9IGZyb20gJ3VzZS1kZWJvdW5jZSc7XG5cbmltcG9ydCB7IFRleHRJbnB1dCB9IGZyb20gJ0AvdWkvaW5wdXQvY29tcG9uZW50cy9UZXh0SW5wdXQnO1xuXG5pbXBvcnQgeyBNb2RhbCwgTW9kYWxWYXJpYW50cyB9IGZyb20gJ0AvdWkvbGF5b3V0L21vZGFsL2NvbXBvbmVudHMvTW9kYWwnO1xuaW1wb3J0IHsgdXNlTGluZ3VpIH0gZnJvbSAnQGxpbmd1aS9yZWFjdC9tYWNybyc7XG5cbmV4cG9ydCB0eXBlIENvbmZpcm1hdGlvbk1vZGFsUHJvcHMgPSB7XG4gIGlzT3BlbjogYm9vbGVhbjtcbiAgdGl0bGU6IHN0cmluZztcbiAgbG9hZGluZz86IGJvb2xlYW47XG4gIHN1YnRpdGxlOiBSZWFjdE5vZGU7XG4gIHNldElzT3BlbjogKHZhbDogYm9vbGVhbikgPT4gdm9pZDtcbiAgb25Db25maXJtQ2xpY2s6ICgpID0+IHZvaWQ7XG4gIGNvbmZpcm1CdXR0b25UZXh0Pzogc3RyaW5nO1xuICBjb25maXJtYXRpb25QbGFjZWhvbGRlcj86IHN0cmluZztcbiAgY29uZmlybWF0aW9uVmFsdWU/OiBzdHJpbmc7XG4gIGNvbmZpcm1CdXR0b25BY2NlbnQ/OiBCdXR0b25BY2NlbnQ7XG4gIEFkZGl0aW9uYWxCdXR0b25zPzogUmVhY3QuUmVhY3ROb2RlO1xuICBtb2RhbFZhcmlhbnQ/OiBNb2RhbFZhcmlhbnRzO1xufTtcblxuY29uc3QgU3R5bGVkQ29uZmlybWF0aW9uTW9kYWwgPSBzdHlsZWQoTW9kYWwpYFxuICBib3JkZXItcmFkaXVzOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMSl9O1xuICB3aWR0aDogY2FsYyg0MDBweCAtICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygzMil9KTtcbiAgaGVpZ2h0OiBhdXRvO1xuYDtcblxuZXhwb3J0IGNvbnN0IFN0eWxlZENlbnRlcmVkQnV0dG9uID0gc3R5bGVkKEJ1dHRvbilgXG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkQ2VudGVyZWRUaXRsZSA9IHN0eWxlZC5kaXZgXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbmA7XG5cbmNvbnN0IFN0eWxlZFNlY3Rpb24gPSBzdHlsZWQoU2VjdGlvbilgXG4gIG1hcmdpbi1ib3R0b206ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZyg2KX07XG5gO1xuXG5leHBvcnQgY29uc3QgU3R5bGVkQ29uZmlybWF0aW9uQnV0dG9uID0gc3R5bGVkKFN0eWxlZENlbnRlcmVkQnV0dG9uKWBcbiAgYm9yZGVyLWNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5jb2xvci5kYW5nZXJ9O1xuICBib3gtc2hhZG93OiBub25lO1xuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5jb2xvci5yZWR9O1xuICBmb250LXNpemU6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5zaXplLm1kfTtcbiAgbGluZS1oZWlnaHQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUudGV4dC5saW5lSGVpZ2h0LmxnfTtcbiAgOmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmNvbG9yLnJlZDEwfTtcbiAgfVxuYDtcblxuZXhwb3J0IGNvbnN0IENvbmZpcm1hdGlvbk1vZGFsID0gKHtcbiAgaXNPcGVuID0gZmFsc2UsXG4gIHRpdGxlLFxuICBsb2FkaW5nLFxuICBzdWJ0aXRsZSxcbiAgc2V0SXNPcGVuLFxuICBvbkNvbmZpcm1DbGljayxcbiAgY29uZmlybUJ1dHRvblRleHQgPSAnQ29uZmlybScsXG4gIGNvbmZpcm1hdGlvblZhbHVlLFxuICBjb25maXJtYXRpb25QbGFjZWhvbGRlcixcbiAgY29uZmlybUJ1dHRvbkFjY2VudCA9ICdkYW5nZXInLFxuICBBZGRpdGlvbmFsQnV0dG9ucyxcbiAgbW9kYWxWYXJpYW50ID0gJ3ByaW1hcnknLFxufTogQ29uZmlybWF0aW9uTW9kYWxQcm9wcykgPT4ge1xuICBjb25zdCB7IHQgfSA9IHVzZUxpbmd1aSgpO1xuICBjb25zdCBbaW5wdXRDb25maXJtYXRpb25WYWx1ZSwgc2V0SW5wdXRDb25maXJtYXRpb25WYWx1ZV0gPVxuICAgIHVzZVN0YXRlPHN0cmluZz4oJycpO1xuICBjb25zdCBbaXNWYWxpZFZhbHVlLCBzZXRJc1ZhbGlkVmFsdWVdID0gdXNlU3RhdGUoIWNvbmZpcm1hdGlvblZhbHVlKTtcblxuICBjb25zdCBoYW5kbGVJbnB1dENvbmZpbXJhdGlvblZhbHVlQ2hhbmdlID0gKHZhbHVlOiBzdHJpbmcpID0+IHtcbiAgICBzZXRJbnB1dENvbmZpcm1hdGlvblZhbHVlKHZhbHVlKTtcbiAgICBpc1ZhbHVlTWF0Y2hpbmdJbnB1dChjb25maXJtYXRpb25WYWx1ZSwgdmFsdWUpO1xuICB9O1xuXG4gIGNvbnN0IGlzVmFsdWVNYXRjaGluZ0lucHV0ID0gdXNlRGVib3VuY2VkQ2FsbGJhY2soXG4gICAgKHZhbHVlPzogc3RyaW5nLCBpbnB1dFZhbHVlPzogc3RyaW5nKSA9PiB7XG4gICAgICBzZXRJc1ZhbGlkVmFsdWUoQm9vbGVhbih2YWx1ZSAmJiBpbnB1dFZhbHVlICYmIHZhbHVlID09PSBpbnB1dFZhbHVlKSk7XG4gICAgfSxcbiAgICAyNTAsXG4gICk7XG5cbiAgY29uc3QgaGFuZGxlQ29uZmlybUNsaWNrID0gKCkgPT4ge1xuICAgIG9uQ29uZmlybUNsaWNrKCk7XG5cbiAgICBzZXRJc09wZW4oZmFsc2UpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZUVudGVyID0gKCkgPT4ge1xuICAgIGlmIChpc1ZhbGlkVmFsdWUpIHtcbiAgICAgIGhhbmRsZUNvbmZpcm1DbGljaygpO1xuICAgIH1cbiAgfTtcblxuICByZXR1cm4gKFxuICAgIDxBbmltYXRlUHJlc2VuY2UgbW9kZT1cIndhaXRcIj5cbiAgICAgIDxMYXlvdXRHcm91cD5cbiAgICAgICAge2lzT3BlbiAmJiAoXG4gICAgICAgICAgPFN0eWxlZENvbmZpcm1hdGlvbk1vZGFsXG4gICAgICAgICAgICBvbkNsb3NlPXsoKSA9PiB7XG4gICAgICAgICAgICAgIGlmIChpc09wZW4pIHtcbiAgICAgICAgICAgICAgICBzZXRJc09wZW4oZmFsc2UpO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9fVxuICAgICAgICAgICAgb25FbnRlcj17aGFuZGxlRW50ZXJ9XG4gICAgICAgICAgICBpc0Nsb3NhYmxlPXt0cnVlfVxuICAgICAgICAgICAgcGFkZGluZz1cImxhcmdlXCJcbiAgICAgICAgICAgIG1vZGFsVmFyaWFudD17bW9kYWxWYXJpYW50fVxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiY29uZmlybWF0aW9uLW1vZGFsXCJcbiAgICAgICAgICA+XG4gICAgICAgICAgICA8U3R5bGVkQ2VudGVyZWRUaXRsZT5cbiAgICAgICAgICAgICAgPEgxVGl0bGUgdGl0bGU9e3RpdGxlfSBmb250Q29sb3I9e0gxVGl0bGVGb250Q29sb3IuUHJpbWFyeX0gLz5cbiAgICAgICAgICAgIDwvU3R5bGVkQ2VudGVyZWRUaXRsZT5cbiAgICAgICAgICAgIDxTdHlsZWRTZWN0aW9uXG4gICAgICAgICAgICAgIGFsaWdubWVudD17U2VjdGlvbkFsaWdubWVudC5DZW50ZXJ9XG4gICAgICAgICAgICAgIGZvbnRDb2xvcj17U2VjdGlvbkZvbnRDb2xvci5QcmltYXJ5fVxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICB7c3VidGl0bGV9XG4gICAgICAgICAgICA8L1N0eWxlZFNlY3Rpb24+XG4gICAgICAgICAgICB7Y29uZmlybWF0aW9uVmFsdWUgJiYgKFxuICAgICAgICAgICAgICA8U2VjdGlvbj5cbiAgICAgICAgICAgICAgICA8VGV4dElucHV0XG4gICAgICAgICAgICAgICAgICBkYXRhVGVzdElkPVwiY29uZmlybWF0aW9uLW1vZGFsLWlucHV0XCJcbiAgICAgICAgICAgICAgICAgIHZhbHVlPXtpbnB1dENvbmZpcm1hdGlvblZhbHVlfVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUlucHV0Q29uZmltcmF0aW9uVmFsdWVDaGFuZ2V9XG4gICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj17Y29uZmlybWF0aW9uUGxhY2Vob2xkZXJ9XG4gICAgICAgICAgICAgICAgICBmdWxsV2lkdGhcbiAgICAgICAgICAgICAgICAgIGRpc2FibGVIb3RrZXlzXG4gICAgICAgICAgICAgICAgICBrZXk9eydpbnB1dC0nICsgY29uZmlybWF0aW9uVmFsdWV9XG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgPC9TZWN0aW9uPlxuICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIDxTdHlsZWRDZW50ZXJlZEJ1dHRvblxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7XG4gICAgICAgICAgICAgICAgc2V0SXNPcGVuKGZhbHNlKTtcbiAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgdmFyaWFudD1cInNlY29uZGFyeVwiXG4gICAgICAgICAgICAgIHRpdGxlPXt0YENhbmNlbGB9XG4gICAgICAgICAgICAgIGZ1bGxXaWR0aFxuICAgICAgICAgICAgLz5cblxuICAgICAgICAgICAge0FkZGl0aW9uYWxCdXR0b25zfVxuXG4gICAgICAgICAgICA8U3R5bGVkQ2VudGVyZWRCdXR0b25cbiAgICAgICAgICAgICAgb25DbGljaz17aGFuZGxlQ29uZmlybUNsaWNrfVxuICAgICAgICAgICAgICB2YXJpYW50PVwic2Vjb25kYXJ5XCJcbiAgICAgICAgICAgICAgYWNjZW50PXtjb25maXJtQnV0dG9uQWNjZW50fVxuICAgICAgICAgICAgICB0aXRsZT17Y29uZmlybUJ1dHRvblRleHR9XG4gICAgICAgICAgICAgIGRpc2FibGVkPXshaXNWYWxpZFZhbHVlIHx8IGxvYWRpbmd9XG4gICAgICAgICAgICAgIGZ1bGxXaWR0aFxuICAgICAgICAgICAgICBkYXRhVGVzdElkPVwiY29uZmlybWF0aW9uLW1vZGFsLWNvbmZpcm0tYnV0dG9uXCJcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9TdHlsZWRDb25maXJtYXRpb25Nb2RhbD5cbiAgICAgICAgKX1cbiAgICAgIDwvTGF5b3V0R3JvdXA+XG4gICAgPC9BbmltYXRlUHJlc2VuY2U+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbInN0eWxlZCIsIkFuaW1hdGVQcmVzZW5jZSIsIkxheW91dEdyb3VwIiwidXNlU3RhdGUiLCJCdXR0b24iLCJIMVRpdGxlIiwiSDFUaXRsZUZvbnRDb2xvciIsIlNlY3Rpb24iLCJTZWN0aW9uQWxpZ25tZW50IiwiU2VjdGlvbkZvbnRDb2xvciIsInVzZURlYm91bmNlZENhbGxiYWNrIiwiVGV4dElucHV0IiwiTW9kYWwiLCJTdHlsZWRDb25maXJtYXRpb25Nb2RhbCIsInRoZW1lIiwic3BhY2luZyIsIlN0eWxlZENlbnRlcmVkQnV0dG9uIiwiU3R5bGVkQ2VudGVyZWRUaXRsZSIsImRpdiIsIlN0eWxlZFNlY3Rpb24iLCJTdHlsZWRDb25maXJtYXRpb25CdXR0b24iLCJib3JkZXIiLCJjb2xvciIsImRhbmdlciIsInJlZCIsImZvbnQiLCJzaXplIiwibWQiLCJ0ZXh0IiwibGluZUhlaWdodCIsImxnIiwicmVkMTAiLCJDb25maXJtYXRpb25Nb2RhbCIsImlzT3BlbiIsInRpdGxlIiwibG9hZGluZyIsInN1YnRpdGxlIiwic2V0SXNPcGVuIiwib25Db25maXJtQ2xpY2siLCJjb25maXJtQnV0dG9uVGV4dCIsImNvbmZpcm1hdGlvblZhbHVlIiwiY29uZmlybWF0aW9uUGxhY2Vob2xkZXIiLCJjb25maXJtQnV0dG9uQWNjZW50IiwiQWRkaXRpb25hbEJ1dHRvbnMiLCJtb2RhbFZhcmlhbnQiLCJ1c2VMaW5ndWkiLCJpbnB1dENvbmZpcm1hdGlvblZhbHVlIiwic2V0SW5wdXRDb25maXJtYXRpb25WYWx1ZSIsImlzVmFsaWRWYWx1ZSIsInNldElzVmFsaWRWYWx1ZSIsImhhbmRsZUlucHV0Q29uZmltcmF0aW9uVmFsdWVDaGFuZ2UiLCJ2YWx1ZSIsImlzVmFsdWVNYXRjaGluZ0lucHV0IiwiaW5wdXRWYWx1ZSIsIkJvb2xlYW4iLCJoYW5kbGVDb25maXJtQ2xpY2siLCJoYW5kbGVFbnRlciIsIm1vZGUiLCJvbkNsb3NlIiwib25FbnRlciIsImlzQ2xvc2FibGUiLCJwYWRkaW5nIiwiY2xhc3NOYW1lIiwiZm9udENvbG9yIiwiUHJpbWFyeSIsImFsaWdubWVudCIsIkNlbnRlciIsImRhdGFUZXN0SWQiLCJvbkNoYW5nZSIsInBsYWNlaG9sZGVyIiwiZnVsbFdpZHRoIiwiZGlzYWJsZUhvdGtleXMiLCJvbkNsaWNrIiwidmFyaWFudCIsImFjY2VudCIsImRpc2FibGVkIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsT0FBT0EsWUFBWSxrQkFBa0I7QUFDckMsU0FBU0MsZUFBZSxFQUFFQyxXQUFXLFFBQVEsZ0JBQWdCO0FBQzdELFNBQW9CQyxRQUFRLFFBQVEsUUFBUTtBQUM1QyxTQUNFQyxNQUFNLEVBRU5DLE9BQU8sRUFDUEMsZ0JBQWdCLEVBQ2hCQyxPQUFPLEVBQ1BDLGdCQUFnQixF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

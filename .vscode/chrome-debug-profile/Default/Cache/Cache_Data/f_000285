@@ -1,0 +1,297 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+// @ts-expect-error // Todo: remove usage of react-data-grid
+import { useRowSelection } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-data-grid.js?v=226f7286";
+import __vite__cjsImport4_reactDom from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-dom.js?v=226f7286"; const createPortal = __vite__cjsImport4_reactDom["createPortal"];
+import { AppTooltip, Checkbox, CheckboxVariant, Toggle } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { MatchColumnSelect } from "/src/modules/spreadsheet-import/components/MatchColumnSelect.tsx";
+import { TextInput } from "/src/modules/ui/input/components/TextInput.tsx";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledHeaderContainer = styled.div`
+  align-items: center;
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(1)};
+  position: relative;
+`;
+_c = StyledHeaderContainer;
+const StyledHeaderLabel = styled.span`
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+_c1 = StyledHeaderLabel;
+const StyledCheckboxContainer = styled.div`
+  align-items: center;
+  box-sizing: content-box;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  line-height: 0;
+  width: 100%;
+`;
+_c2 = StyledCheckboxContainer;
+const StyledToggleContainer = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+`;
+_c3 = StyledToggleContainer;
+const StyledInputContainer = styled.div`
+  align-items: center;
+  display: flex;
+  min-height: 100%;
+  min-width: 100%;
+  padding-right: ${({ theme })=>theme.spacing(2)};
+`;
+_c4 = StyledInputContainer;
+const StyledDefaultContainer = styled.div`
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+_c5 = StyledDefaultContainer;
+const SELECT_COLUMN_KEY = 'select-row';
+export const generateColumns = (fields)=>[
+        {
+            key: SELECT_COLUMN_KEY,
+            name: '',
+            width: 35,
+            minWidth: 35,
+            maxWidth: 35,
+            resizable: false,
+            sortable: false,
+            frozen: true,
+            formatter: _s((props)=>{
+                _s();
+                // eslint-disable-next-line  react-hooks/rules-of-hooks
+                const [isRowSelected, onRowSelectionChange] = useRowSelection();
+                return /*#__PURE__*/ _jsxDEV(StyledCheckboxContainer, {
+                    children: /*#__PURE__*/ _jsxDEV(Checkbox, {
+                        "aria-label": "Select",
+                        checked: isRowSelected,
+                        variant: CheckboxVariant.Tertiary,
+                        onChange: (event)=>{
+                            onRowSelectionChange({
+                                row: props.row,
+                                checked: event.target.checked,
+                                isShiftClick: event.nativeEvent.shiftKey
+                            });
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                        lineNumber: 83,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                    lineNumber: 82,
+                    columnNumber: 9
+                }, this);
+            }, "k9uFIpP/J3RmXb41UqoaNV0F7SQ=", false, function() {
+                return [
+                    useRowSelection
+                ];
+            })
+        },
+        ...fields.map((column)=>({
+                key: column.key,
+                name: column.label,
+                minWidth: 150,
+                resizable: true,
+                headerRenderer: ()=>/*#__PURE__*/ _jsxDEV(StyledHeaderContainer, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(StyledHeaderLabel, {
+                                id: `${column.key}`,
+                                children: column.label
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 109,
+                                columnNumber: 11
+                            }, this),
+                            column.description && /*#__PURE__*/ createPortal(/*#__PURE__*/ _jsxDEV(AppTooltip, {
+                                anchorSelect: `#${column.key}`,
+                                place: "top",
+                                content: column.description
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 114,
+                                columnNumber: 15
+                            }, this), document.body)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                        lineNumber: 108,
+                        columnNumber: 9
+                    }, this),
+                editable: column.fieldType.type !== 'checkbox',
+                // Todo: remove usage of react-data-grid
+                editor: ({ row, onRowChange, onClose })=>{
+                    const columnKey = column.key;
+                    let component;
+                    switch(column.fieldType.type){
+                        case 'select':
+                            {
+                                const value = column.fieldType.options.find((option)=>option.value === row[columnKey]);
+                                component = /*#__PURE__*/ _jsxDEV(MatchColumnSelect, {
+                                    value: value ? {
+                                        Icon: undefined,
+                                        ...value
+                                    } : value,
+                                    onChange: (value)=>{
+                                        onRowChange({
+                                            ...row,
+                                            [columnKey]: value?.value
+                                        }, true);
+                                    },
+                                    options: column.fieldType.options
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                    lineNumber: 137,
+                                    columnNumber: 15
+                                }, this);
+                                break;
+                            }
+                        default:
+                            component = /*#__PURE__*/ _jsxDEV(TextInput, {
+                                value: row[columnKey],
+                                onChange: (value)=>{
+                                    onRowChange({
+                                        ...row,
+                                        [columnKey]: value
+                                    });
+                                },
+                                autoFocus: true,
+                                onBlur: ()=>onClose(true)
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 156,
+                                columnNumber: 15
+                            }, this);
+                    }
+                    return /*#__PURE__*/ _jsxDEV(StyledInputContainer, {
+                        children: component
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                        lineNumber: 167,
+                        columnNumber: 16
+                    }, this);
+                },
+                editorOptions: {
+                    editOnClick: true
+                },
+                // Todo: remove usage of react-data-grid
+                formatter: ({ row, onRowChange })=>{
+                    const columnKey = column.key;
+                    let component;
+                    switch(column.fieldType.type){
+                        case 'checkbox':
+                            component = /*#__PURE__*/ _jsxDEV(StyledToggleContainer, {
+                                id: `${columnKey}-${row.__index}`,
+                                onClick: (event)=>{
+                                    event.stopPropagation();
+                                },
+                                children: /*#__PURE__*/ _jsxDEV(Toggle, {
+                                    value: row[columnKey],
+                                    onChange: ()=>{
+                                        onRowChange({
+                                            ...row,
+                                            [columnKey]: !row[columnKey]
+                                        });
+                                    }
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                    lineNumber: 187,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 181,
+                                columnNumber: 15
+                            }, this);
+                            break;
+                        case 'select':
+                            component = /*#__PURE__*/ _jsxDEV(StyledDefaultContainer, {
+                                id: `${columnKey}-${row.__index}`,
+                                children: column.fieldType.options.find((option)=>option.value === row[columnKey])?.label || null
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 201,
+                                columnNumber: 15
+                            }, this);
+                            break;
+                        default:
+                            component = /*#__PURE__*/ _jsxDEV(StyledDefaultContainer, {
+                                id: `${columnKey}-${row.__index}`,
+                                children: row[columnKey]
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                lineNumber: 210,
+                                columnNumber: 15
+                            }, this);
+                    }
+                    if (isDefined(row.__errors?.[columnKey])) {
+                        return /*#__PURE__*/ _jsxDEV(_Fragment, {
+                            children: [
+                                component,
+                                /*#__PURE__*/ createPortal(/*#__PURE__*/ _jsxDEV(AppTooltip, {
+                                    anchorSelect: `#${columnKey}-${row.__index}`,
+                                    place: "top",
+                                    content: row.__errors?.[columnKey]?.message
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx",
+                                    lineNumber: 221,
+                                    columnNumber: 17
+                                }, this), document.body)
+                            ]
+                        }, void 0, true);
+                    }
+                    return component;
+                },
+                cellClass: (row)=>{
+                    switch(row.__errors?.[column.key]?.level){
+                        case 'error':
+                            return 'rdg-cell-error';
+                        case 'warning':
+                            return 'rdg-cell-warning';
+                        case 'info':
+                            return 'rdg-cell-info';
+                        default:
+                            return '';
+                    }
+                }
+            }))
+    ];
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "StyledHeaderContainer");
+$RefreshReg$(_c1, "StyledHeaderLabel");
+$RefreshReg$(_c2, "StyledCheckboxContainer");
+$RefreshReg$(_c3, "StyledToggleContainer");
+$RefreshReg$(_c4, "StyledInputContainer");
+$RefreshReg$(_c5, "StyledDefaultContainer");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/ValidationStep/components/columns.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbHVtbnMudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbi8vIEB0cy1leHBlY3QtZXJyb3IgLy8gVG9kbzogcmVtb3ZlIHVzYWdlIG9mIHJlYWN0LWRhdGEtZ3JpZFxuaW1wb3J0IHsgQ29sdW1uLCB1c2VSb3dTZWxlY3Rpb24gfSBmcm9tICdyZWFjdC1kYXRhLWdyaWQnO1xuaW1wb3J0IHsgY3JlYXRlUG9ydGFsIH0gZnJvbSAncmVhY3QtZG9tJztcbmltcG9ydCB7IEFwcFRvb2x0aXAsIENoZWNrYm94LCBDaGVja2JveFZhcmlhbnQsIFRvZ2dsZSB9IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IE1hdGNoQ29sdW1uU2VsZWN0IH0gZnJvbSAnQC9zcHJlYWRzaGVldC1pbXBvcnQvY29tcG9uZW50cy9NYXRjaENvbHVtblNlbGVjdCc7XG5pbXBvcnQge1xuICBJbXBvcnRlZFN0cnVjdHVyZWRSb3csXG4gIFNwcmVhZHNoZWV0SW1wb3J0RmllbGRzLFxufSBmcm9tICdAL3NwcmVhZHNoZWV0LWltcG9ydC90eXBlcyc7XG5pbXBvcnQgeyBUZXh0SW5wdXQgfSBmcm9tICdAL3VpL2lucHV0L2NvbXBvbmVudHMvVGV4dElucHV0JztcblxuaW1wb3J0IHsgaXNEZWZpbmVkIH0gZnJvbSAndHdlbnR5LXNoYXJlZC91dGlscyc7XG5pbXBvcnQgeyBJbXBvcnRlZFN0cnVjdHVyZWRSb3dNZXRhZGF0YSB9IGZyb20gJy4uL3R5cGVzJztcblxuY29uc3QgU3R5bGVkSGVhZGVyQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMSl9O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG5gO1xuXG5jb25zdCBTdHlsZWRIZWFkZXJMYWJlbCA9IHN0eWxlZC5zcGFuYFxuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4OiAxO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbmA7XG5cbmNvbnN0IFN0eWxlZENoZWNrYm94Q29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm94LXNpemluZzogY29udGVudC1ib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXg6IDE7XG4gIGhlaWdodDogMTAwJTtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGxpbmUtaGVpZ2h0OiAwO1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZFRvZ2dsZUNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGhlaWdodDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZElucHV0Q29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgbWluLWhlaWdodDogMTAwJTtcbiAgbWluLXdpZHRoOiAxMDAlO1xuICBwYWRkaW5nLXJpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkRGVmYXVsdENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIG1pbi1oZWlnaHQ6IDEwMCU7XG4gIG1pbi13aWR0aDogMTAwJTtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG5gO1xuXG5jb25zdCBTRUxFQ1RfQ09MVU1OX0tFWSA9ICdzZWxlY3Qtcm93JztcblxuZXhwb3J0IGNvbnN0IGdlbmVyYXRlQ29sdW1ucyA9IDxUIGV4dGVuZHMgc3RyaW5nPihcbiAgZmllbGRzOiBTcHJlYWRzaGVldEltcG9ydEZpZWxkczxUPixcbik6IENvbHVtbjxJbXBvcnRlZFN0cnVjdHVyZWRSb3c8VD4gJiBJbXBvcnRlZFN0cnVjdHVyZWRSb3dNZXRhZGF0YT5bXSA9PiBbXG4gIHtcbiAgICBrZXk6IFNFTEVDVF9DT0xVTU5fS0VZLFxuICAgIG5hbWU6ICcnLFxuICAgIHdpZHRoOiAzNSxcbiAgICBtaW5XaWR0aDogMzUsXG4gICAgbWF4V2lkdGg6IDM1LFxuICAgIHJlc2l6YWJsZTogZmFsc2UsXG4gICAgc29ydGFibGU6IGZhbHNlLFxuICAgIGZyb3plbjogdHJ1ZSxcbiAgICBmb3JtYXR0ZXI6IChwcm9wczogYW55KSA9PiB7XG4gICAgICAvLyBlc2xpbnQtZGlzYWJsZS1uZXh0LWxpbmUgIHJlYWN0LWhvb2tzL3J1bGVzLW9mLWhvb2tzXG4gICAgICBjb25zdCBbaXNSb3dTZWxlY3RlZCwgb25Sb3dTZWxlY3Rpb25DaGFuZ2VdID0gdXNlUm93U2VsZWN0aW9uKCk7XG5cbiAgICAgIHJldHVybiAoXG4gICAgICAgIDxTdHlsZWRDaGVja2JveENvbnRhaW5lcj5cbiAgICAgICAgICA8Q2hlY2tib3hcbiAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJTZWxlY3RcIlxuICAgICAgICAgICAgY2hlY2tlZD17aXNSb3dTZWxlY3RlZH1cbiAgICAgICAgICAgIHZhcmlhbnQ9e0NoZWNrYm94VmFyaWFudC5UZXJ0aWFyeX1cbiAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHtcbiAgICAgICAgICAgICAgb25Sb3dTZWxlY3Rpb25DaGFuZ2Uoe1xuICAgICAgICAgICAgICAgIHJvdzogcHJvcHMucm93LFxuICAgICAgICAgICAgICAgIGNoZWNrZWQ6IGV2ZW50LnRhcmdldC5jaGVja2VkLFxuICAgICAgICAgICAgICAgIGlzU2hpZnRDbGljazogKGV2ZW50Lm5hdGl2ZUV2ZW50IGFzIE1vdXNlRXZlbnQpLnNoaWZ0S2V5LFxuICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIH19XG4gICAgICAgICAgLz5cbiAgICAgICAgPC9TdHlsZWRDaGVja2JveENvbnRhaW5lcj5cbiAgICAgICk7XG4gICAgfSxcbiAgfSxcbiAgLi4uZmllbGRzLm1hcChcbiAgICAoXG4gICAgICBjb2x1bW4sXG4gICAgKTogQ29sdW1uPEltcG9ydGVkU3RydWN0dXJlZFJvdzxUPiAmIEltcG9ydGVkU3RydWN0dXJlZFJvd01ldGFkYXRhPiA9PiAoe1xuICAgICAga2V5OiBjb2x1bW4ua2V5LFxuICAgICAgbmFtZTogY29sdW1uLmxhYmVsLFxuICAgICAgbWluV2lkdGg6IDE1MCxcbiAgICAgIHJlc2l6YWJsZTogdHJ1ZSxcbiAgICAgIGhlYWRlclJlbmRlcmVyOiAoKSA9PiAoXG4gICAgICAgIDxTdHlsZWRIZWFkZXJDb250YWluZXI+XG4gICAgICAgICAgPFN0eWxlZEhlYWRlckxhYmVsIGlkPXtgJHtjb2x1bW4ua2V5fWB9PlxuICAgICAgICAgICAge2NvbHVtbi5sYWJlbH1cbiAgICAgICAgICA8L1N0eWxlZEhlYWRlckxhYmVsPlxuICAgICAgICAgIHtjb2x1bW4uZGVzY3JpcHRpb24gJiZcbiAgICAgICAgICAgIGNyZWF0ZVBvcnRhbChcbiAgICAgICAgICAgICAgPEFwcFRvb2x0aXBcbiAgICAgICAgICAgICAgICBhbmNob3JTZWxlY3Q9e2AjJHtjb2x1bW4ua2V5fWB9XG4gICAgICAgICAgICAgICAgcGxhY2U9XCJ0b3BcIlxuICAgICAgICAgICAgICAgIGNvbnRlbnQ9e2NvbHVtbi5kZXNjcmlwdGlvbn1cbiAgICAgICAgICAgICAgLz4sXG4gICAgICAgICAgICAgIGRvY3VtZW50LmJvZHksXG4gICAgICAgICAgICApfVxuICAgICAgICA8L1N0eWxlZEhlYWRlckNvbnRhaW5lcj5cbiAgICAgICksXG4gICAgICBlZGl0YWJsZTogY29sdW1uLmZpZWxkVHlwZS50eXBlICE9PSAnY2hlY2tib3gnLFxuICAgICAgLy8gVG9kbzogcmVtb3ZlIHVzYWdlIG9mIHJlYWN0LWRhdGEtZ3JpZFxuICAgICAgZWRpdG9yOiAoeyByb3csIG9uUm93Q2hhbmdlLCBvbkNsb3NlIH06IGFueSkgPT4ge1xuICAgICAgICBjb25zdCBjb2x1bW5LZXkgPSBjb2x1bW4ua2V5IGFzIGtleW9mIChJbXBvcnRlZFN0cnVjdHVyZWRSb3c8VD4gJlxuICAgICAgICAgIEltcG9ydGVkU3RydWN0dXJlZFJvd01ldGFkYXRhKTtcbiAgICAgICAgbGV0IGNvbXBvbmVudDtcblxuICAgICAgICBzd2l0Y2ggKGNvbHVtbi5maWVsZFR5cGUudHlwZSkge1xuICAgICAgICAgIGNhc2UgJ3NlbGVjdCc6IHtcbiAgICAgICAgICAgIGNvbnN0IHZhbHVlID0gY29sdW1uLmZpZWxkVHlwZS5vcHRpb25zLmZpbmQoXG4gICAgICAgICAgICAgIChvcHRpb24pID0+IG9wdGlvbi52YWx1ZSA9PT0gKHJvd1tjb2x1bW5LZXldIGFzIHN0cmluZyksXG4gICAgICAgICAgICApO1xuXG4gICAgICAgICAgICBjb21wb25lbnQgPSAoXG4gICAgICAgICAgICAgIDxNYXRjaENvbHVtblNlbGVjdFxuICAgICAgICAgICAgICAgIHZhbHVlPXtcbiAgICAgICAgICAgICAgICAgIHZhbHVlXG4gICAgICAgICAgICAgICAgICAgID8gKHtcbiAgICAgICAgICAgICAgICAgICAgICAgIEljb246IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgICAgICAgICAgIC4uLnZhbHVlLFxuICAgICAgICAgICAgICAgICAgICAgIH0gYXMgY29uc3QpXG4gICAgICAgICAgICAgICAgICAgIDogdmFsdWVcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9eyh2YWx1ZSkgPT4ge1xuICAgICAgICAgICAgICAgICAgb25Sb3dDaGFuZ2UoeyAuLi5yb3csIFtjb2x1bW5LZXldOiB2YWx1ZT8udmFsdWUgfSwgdHJ1ZSk7XG4gICAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgICBvcHRpb25zPXtjb2x1bW4uZmllbGRUeXBlLm9wdGlvbnN9XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICApO1xuICAgICAgICAgICAgYnJlYWs7XG4gICAgICAgICAgfVxuICAgICAgICAgIGRlZmF1bHQ6XG4gICAgICAgICAgICBjb21wb25lbnQgPSAoXG4gICAgICAgICAgICAgIDxUZXh0SW5wdXRcbiAgICAgICAgICAgICAgICB2YWx1ZT17cm93W2NvbHVtbktleV0gYXMgc3RyaW5nfVxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsodmFsdWU6IHN0cmluZykgPT4ge1xuICAgICAgICAgICAgICAgICAgb25Sb3dDaGFuZ2UoeyAuLi5yb3csIFtjb2x1bW5LZXldOiB2YWx1ZSB9KTtcbiAgICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgICAgIGF1dG9Gb2N1cz17dHJ1ZX1cbiAgICAgICAgICAgICAgICBvbkJsdXI9eygpID0+IG9uQ2xvc2UodHJ1ZSl9XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICApO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIDxTdHlsZWRJbnB1dENvbnRhaW5lcj57Y29tcG9uZW50fTwvU3R5bGVkSW5wdXRDb250YWluZXI+O1xuICAgICAgfSxcbiAgICAgIGVkaXRvck9wdGlvbnM6IHtcbiAgICAgICAgZWRpdE9uQ2xpY2s6IHRydWUsXG4gICAgICB9LFxuICAgICAgLy8gVG9kbzogcmVtb3ZlIHVzYWdlIG9mIHJlYWN0LWRhdGEtZ3JpZFxuICAgICAgZm9ybWF0dGVyOiAoeyByb3csIG9uUm93Q2hhbmdlIH06IHsgcm93OiBhbnk7IG9uUm93Q2hhbmdlOiBhbnkgfSkgPT4ge1xuICAgICAgICBjb25zdCBjb2x1bW5LZXkgPSBjb2x1bW4ua2V5IGFzIGtleW9mIChJbXBvcnRlZFN0cnVjdHVyZWRSb3c8VD4gJlxuICAgICAgICAgIEltcG9ydGVkU3RydWN0dXJlZFJvd01ldGFkYXRhKTtcbiAgICAgICAgbGV0IGNvbXBvbmVudDtcblxuICAgICAgICBzd2l0Y2ggKGNvbHVtbi5maWVsZFR5cGUudHlwZSkge1xuICAgICAgICAgIGNhc2UgJ2NoZWNrYm94JzpcbiAgICAgICAgICAgIGNvbXBvbmVudCA9IChcbiAgICAgICAgICAgICAgPFN0eWxlZFRvZ2dsZUNvbnRhaW5lclxuICAgICAgICAgICAgICAgIGlkPXtgJHtjb2x1bW5LZXl9LSR7cm93Ll9faW5kZXh9YH1cbiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoZXZlbnQpID0+IHtcbiAgICAgICAgICAgICAgICAgIGV2ZW50LnN0b3BQcm9wYWdhdGlvbigpO1xuICAgICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICA8VG9nZ2xlXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17cm93W2NvbHVtbktleV0gYXMgYm9vbGVhbn1cbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoKSA9PiB7XG4gICAgICAgICAgICAgICAgICAgIG9uUm93Q2hhbmdlKHtcbiAgICAgICAgICAgICAgICAgICAgICAuLi5yb3csXG4gICAgICAgICAgICAgICAgICAgICAgW2NvbHVtbktleV06ICFyb3dbY29sdW1uS2V5XSxcbiAgICAgICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDwvU3R5bGVkVG9nZ2xlQ29udGFpbmVyPlxuICAgICAgICAgICAgKTtcbiAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgIGNhc2UgJ3NlbGVjdCc6XG4gICAgICAgICAgICBjb21wb25lbnQgPSAoXG4gICAgICAgICAgICAgIDxTdHlsZWREZWZhdWx0Q29udGFpbmVyIGlkPXtgJHtjb2x1bW5LZXl9LSR7cm93Ll9faW5kZXh9YH0+XG4gICAgICAgICAgICAgICAge2NvbHVtbi5maWVsZFR5cGUub3B0aW9ucy5maW5kKFxuICAgICAgICAgICAgICAgICAgKG9wdGlvbikgPT4gb3B0aW9uLnZhbHVlID09PSByb3dbY29sdW1uS2V5IGFzIFRdLFxuICAgICAgICAgICAgICAgICk/LmxhYmVsIHx8IG51bGx9XG4gICAgICAgICAgICAgIDwvU3R5bGVkRGVmYXVsdENvbnRhaW5lcj5cbiAgICAgICAgICAgICk7XG4gICAgICAgICAgICBicmVhaztcbiAgICAgICAgICBkZWZhdWx0OlxuICAgICAgICAgICAgY29tcG9uZW50ID0gKFxuICAgICAgICAgICAgICA8U3R5bGVkRGVmYXVsdENvbnRhaW5lciBpZD17YCR7Y29sdW1uS2V5fS0ke3Jvdy5fX2luZGV4fWB9PlxuICAgICAgICAgICAgICAgIHtyb3dbY29sdW1uS2V5XX1cbiAgICAgICAgICAgICAgPC9TdHlsZWREZWZhdWx0Q29udGFpbmVyPlxuICAgICAgICAgICAgKTtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChpc0RlZmluZWQocm93Ll9fZXJyb3JzPy5bY29sdW1uS2V5XSkpIHtcbiAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPD5cbiAgICAgICAgICAgICAge2NvbXBvbmVudH1cbiAgICAgICAgICAgICAge2NyZWF0ZVBvcnRhbChcbiAgICAgICAgICAgICAgICA8QXBwVG9vbHRpcFxuICAgICAgICAgICAgICAgICAgYW5jaG9yU2VsZWN0PXtgIyR7Y29sdW1uS2V5fS0ke3Jvdy5fX2luZGV4fWB9XG4gICAgICAgICAgICAgICAgICBwbGFjZT1cInRvcFwiXG4gICAgICAgICAgICAgICAgICBjb250ZW50PXtyb3cuX19lcnJvcnM/Lltjb2x1bW5LZXldPy5tZXNzYWdlfVxuICAgICAgICAgICAgICAgIC8+LFxuICAgICAgICAgICAgICAgIGRvY3VtZW50LmJvZHksXG4gICAgICAgICAgICAgICl9XG4gICAgICAgICAgICA8Lz5cbiAgICAgICAgICApO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIGNvbXBvbmVudDtcbiAgICAgIH0sXG4gICAgICBjZWxsQ2xhc3M6IChyb3c6IEltcG9ydGVkU3RydWN0dXJlZFJvd01ldGFkYXRhKSA9PiB7XG4gICAgICAgIHN3aXRjaCAocm93Ll9fZXJyb3JzPy5bY29sdW1uLmtleV0/LmxldmVsKSB7XG4gICAgICAgICAgY2FzZSAnZXJyb3InOlxuICAgICAgICAgICAgcmV0dXJuICdyZGctY2VsbC1lcnJvcic7XG4gICAgICAgICAgY2FzZSAnd2FybmluZyc6XG4gICAgICAgICAgICByZXR1cm4gJ3JkZy1jZWxsLXdhcm5pbmcnO1xuICAgICAgICAgIGNhc2UgJ2luZm8nOlxuICAgICAgICAgICAgcmV0dXJuICdyZGctY2VsbC1pbmZvJztcbiAgICAgICAgICBkZWZhdWx0OlxuICAgICAgICAgICAgcmV0dXJuICcnO1xuICAgICAgICB9XG4gICAgICB9LFxuICAgIH0pLFxuICApLFxuXTtcbiJdLCJuYW1lcyI6WyJzdHlsZWQiLCJ1c2VSb3dTZWxlY3Rpb24iLCJjcmVhdGVQb3J0YWwiLCJBcHBUb29sdGlwIiwiQ2hlY2tib3giLCJDaGVja2JveFZhcmlhbnQiLCJUb2dnbGUiLCJNYXRjaENvbHVtblNlbGVjdCIsIlRleHRJbnB1dCIsImlzRGVmaW5lZCIsIlN0eWxlZEhlYWRlckNvbnRhaW5lciIsImRpdiIsInRoZW1lIiwic3BhY2luZyIsIlN0eWxlZEhlYWRlckxhYmVsIiwic3BhbiIsIlN0eWxlZENoZWNrYm94Q29udGFpbmVyIiwiU3R5bGVkVG9nZ2xlQ29udGFpbmVyIiwiU3R5bGVkSW5wdXRDb250YWluZXIiLCJTdHlsZWREZWZhdWx0Q29udGFpbmVyIiwiU0VMRUNUX0NPTFVNTl9LRVkiLCJnZW5lcmF0ZUNvbHVtbnMiLCJmaWVsZHMiLCJrZXkiLCJuYW1lIiwid2lkdGgiLCJtaW5XaWR0aCIsIm1heFdpZHRoIiwicmVzaXphYmxlIiwic29ydGFibGUiLCJmcm96ZW4iLCJmb3JtYXR0ZXIiLCJwcm9wcyIsImlzUm93U2VsZWN0ZWQiLCJvblJvd1NlbGVjdGlvbkNoYW5nZSIsImFyaWEtbGFiZWwiLCJjaGVja2VkIiwidmFyaWFudCIsIlRlcnRpYXJ5Iiwib25DaGFuZ2UiLCJldmVudCIsInJvdyIsInRhcmdldCIsImlzU2hpZnRDbGljayIsIm5hdGl2ZUV2ZW50Iiwic2hpZnRLZXkiLCJtYXAiLCJjb2x1bW4iLCJsYWJlbCIsImhlYWRlclJlbmRlcmVyIiwiaWQiLCJkZXNjcmlwdGlvbiIsImFuY2hvclNlbGVjdCIsInBsYWNlIiwiY29udGVudCIsImRvY3VtZW50IiwiYm9keSIsImVkaXRhYmxlIiwiZmllbGRUeXBlIiwidHlwZSIsImVkaXRvciIsIm9uUm93Q2hhbmdlIiwib25DbG9zZSIsImNvbHVtbktleSIsImNvbXBvbmVudCIsInZhbHVlIiwib3B0aW9ucyIsImZpbmQiLCJvcHRpb24iLCJJY29uIiwidW5kZWZpbmVkIiwiYXV0b0ZvY3VzIiwib25CbHVyIiwiZWRpdG9yT3B0aW9ucyIsImVkaXRPbkNsaWNrIiwiX19pbmRleCIsIm9uQ2xpY2siLCJzdG9wUHJvcGFnYXRpb24iLCJfX2Vycm9ycyIsIm1lc3NhZ2UiLCJjZWxsQ2xhc3MiLCJsZXZlbCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLE9BQU9BLFlBQVksa0JBQWtCO0FBQ3JDLDREQUE0RDtBQUM1RCxTQUFpQkMsZUFBZSxRQUFRLGtCQUFrQjtBQUMxRCxTQUFTQyxZQUFZLFFBQVEsWUFBWTtBQUN6QyxTQUFTQyxVQUFVLEVBQUVDLFFBQVEsRUFBRUMsZUFBZSxFQUFFQyxNQUFNLFFBQVEsWUFBWTtBQUUxRSxTQUFTQyxpQkFBaUIsUUFBUSxvREFBb0Q7QUFLdEYsU0FBU0MsU0FBUyxRQUFRLGtDQUFrQztBQUU1RCxTQUFTQyxTQUFTLFFBQVEsc0JBQXNCO0FBR2hELE1BQU1DLHdCQUF3QlYsT0FBT1csR0FBRyxDQUFDOzs7T0FHbEMsRUFBRSxDQUFDLEVBQUVDLEtBQUssRUFBRSxHQUFLQSxNQUFNQyxPQUFPLENBQUMsR0FBRzs7QUFFekMsQ0FBQztLQUxLSDtBQU9OLE1BQU1JLG9CQUFvQmQsT0FBT2UsSUFBSSxDQUFDOzs7OztBQUt0QyxDQUFDO01BTEtEO0FBT04sTUFBTUUsMEJBQTBCaEIsT0FBT1csR0FBRyxDQUFDOzs7Ozs7Ozs7QUFTM0MsQ0FBQztNQVRLSztBQVdOLE1BQU1DLHdCQUF3QmpCLE9BQU9XLEdBQUcsQ0FBQzs7OztBQUl6QyxDQUFDO01BSktN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

@@ -1,0 +1,255 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$(), _s1 = $RefreshSig$();
+import { AnimatedButton, AppTooltip, getOsControlSymbol, TooltipDelay, TooltipPosition, useIsMobile } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { useCommandMenu } from "/src/modules/command-menu/hooks/useCommandMenu.ts";
+import { isCommandMenuOpenedState } from "/src/modules/command-menu/states/isCommandMenuOpenedState.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { i18n } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_core.js?v=226f7286";
+import { i18n as $_i18n } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_core.js?v=226f7286";
+import { motion } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/framer-motion.js?v=226f7286";
+import { useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+const StyledButtonWrapper = styled.div`
+  z-index: 30;
+`;
+_c = StyledButtonWrapper;
+const StyledTooltipWrapper = styled.div`
+  font-size: ${({ theme })=>theme.font.size.md};
+`;
+_c1 = StyledTooltipWrapper;
+const xPaths = {
+    topLeft: `M12 12 L6 6`,
+    topRight: `M12 12 L18 6`,
+    bottomLeft: `M12 12 L6 18`,
+    bottomRight: `M12 12 L18 18`
+};
+const AnimatedIcon = ({ isCommandMenuOpened })=>{
+    _s();
+    const theme = useTheme();
+    return /*#__PURE__*/ _jsxDEV("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: theme.icon.size.sm,
+        height: theme.icon.size.sm,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: theme.icon.stroke.md,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        children: [
+            /*#__PURE__*/ _jsxDEV("path", {
+                stroke: "none",
+                d: "M0 0h24v24H0z",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 52,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(motion.circle, {
+                cx: 12,
+                cy: 12,
+                r: "1",
+                initial: {
+                    opacity: 0
+                },
+                animate: {
+                    scale: isCommandMenuOpened ? 0 : 1,
+                    opacity: isCommandMenuOpened ? 0 : 1
+                },
+                transition: {
+                    duration: theme.animation.duration.fast
+                }
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 54,
+                columnNumber: 7
+            }, this),
+            Object.values(xPaths).map((path, index)=>/*#__PURE__*/ _jsxDEV(motion.path, {
+                    d: path,
+                    initial: {
+                        pathLength: 0,
+                        opacity: 0
+                    },
+                    animate: {
+                        pathLength: isCommandMenuOpened ? 1 : 0,
+                        opacity: isCommandMenuOpened ? 1 : 0
+                    },
+                    transition: {
+                        duration: theme.animation.duration.fast,
+                        ease: 'easeInOut',
+                        delay: isCommandMenuOpened ? 0.1 : 0
+                    }
+                }, index, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                    lineNumber: 68,
+                    columnNumber: 9
+                }, this)),
+            /*#__PURE__*/ _jsxDEV(motion.circle, {
+                cx: "12",
+                cy: "5",
+                r: "1",
+                initial: {
+                    opacity: 0
+                },
+                animate: {
+                    scale: isCommandMenuOpened ? 0 : 1,
+                    opacity: isCommandMenuOpened ? 0 : 1
+                },
+                transition: {
+                    duration: theme.animation.duration.fast
+                }
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 85,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(motion.circle, {
+                cx: "12",
+                cy: "19",
+                r: "1",
+                initial: {
+                    opacity: 0
+                },
+                animate: {
+                    scale: isCommandMenuOpened ? 0 : 1,
+                    opacity: isCommandMenuOpened ? 0 : 1
+                },
+                transition: {
+                    duration: theme.animation.duration.fast
+                }
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 98,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+        lineNumber: 41,
+        columnNumber: 5
+    }, this);
+};
+_s(AnimatedIcon, "VrMvFCCB9Haniz3VCRPNUiCauHs=", false, function() {
+    return [
+        useTheme
+    ];
+});
+_c2 = AnimatedIcon;
+export const PageHeaderToggleCommandMenuButton = ()=>{
+    _s1();
+    const { toggleCommandMenu } = useCommandMenu();
+    const isCommandMenuOpened = useRecoilValue(isCommandMenuOpenedState);
+    const isMobile = useIsMobile();
+    const ariaLabel = isCommandMenuOpened ? $_i18n._({
+        id: "qYsAlX",
+        message: "Close command menu"
+    }) : $_i18n._({
+        id: "69b7aE",
+        message: "Open command menu"
+    });
+    const theme = useTheme();
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(StyledButtonWrapper, {
+                children: /*#__PURE__*/ _jsxDEV("div", {
+                    id: "toggle-command-menu-button",
+                    children: /*#__PURE__*/ _jsxDEV(AnimatedButton, {
+                        animatedSvg: /*#__PURE__*/ _jsxDEV(AnimatedIcon, {
+                            isCommandMenuOpened: isCommandMenuOpened
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                            lineNumber: 131,
+                            columnNumber: 15
+                        }, void 0),
+                        className: "page-header-command-menu-button",
+                        dataTestId: "page-header-command-menu-button",
+                        size: isMobile ? 'medium' : 'small',
+                        variant: "secondary",
+                        accent: "default",
+                        hotkeys: [
+                            getOsControlSymbol(),
+                            'K'
+                        ],
+                        ariaLabel: ariaLabel,
+                        onClick: toggleCommandMenu,
+                        animate: {
+                            rotate: isCommandMenuOpened ? 90 : 0
+                        },
+                        transition: {
+                            duration: theme.animation.duration.normal,
+                            ease: 'easeInOut'
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                        lineNumber: 129,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                    lineNumber: 128,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 127,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledTooltipWrapper, {
+                children: /*#__PURE__*/ _jsxDEV(AppTooltip, {
+                    anchorSelect: "#toggle-command-menu-button",
+                    content: i18n._(ariaLabel),
+                    delay: TooltipDelay.longDelay,
+                    place: TooltipPosition.Bottom,
+                    offset: 5,
+                    noArrow: true
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                    lineNumber: 152,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx",
+                lineNumber: 151,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s1(PageHeaderToggleCommandMenuButton, "oXUKxaSRMOntg9WL6bPRd35WJiM=", false, function() {
+    return [
+        useCommandMenu,
+        useRecoilValue,
+        useIsMobile,
+        useTheme
+    ];
+});
+_c3 = PageHeaderToggleCommandMenuButton;
+var _c, _c1, _c2, _c3;
+$RefreshReg$(_c, "StyledButtonWrapper");
+$RefreshReg$(_c1, "StyledTooltipWrapper");
+$RefreshReg$(_c2, "AnimatedIcon");
+$RefreshReg$(_c3, "PageHeaderToggleCommandMenuButton");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/page-header/components/PageHeaderToggleCommandMenuButton.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlBhZ2VIZWFkZXJUb2dnbGVDb21tYW5kTWVudUJ1dHRvbi50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtcbiAgQW5pbWF0ZWRCdXR0b24sXG4gIEFwcFRvb2x0aXAsXG4gIGdldE9zQ29udHJvbFN5bWJvbCxcbiAgVG9vbHRpcERlbGF5LFxuICBUb29sdGlwUG9zaXRpb24sXG4gIHVzZUlzTW9iaWxlLFxufSBmcm9tICd0d2VudHktdWknO1xuXG5pbXBvcnQgeyB1c2VDb21tYW5kTWVudSB9IGZyb20gJ0AvY29tbWFuZC1tZW51L2hvb2tzL3VzZUNvbW1hbmRNZW51JztcbmltcG9ydCB7IGlzQ29tbWFuZE1lbnVPcGVuZWRTdGF0ZSB9IGZyb20gJ0AvY29tbWFuZC1tZW51L3N0YXRlcy9pc0NvbW1hbmRNZW51T3BlbmVkU3RhdGUnO1xuaW1wb3J0IHsgdXNlVGhlbWUgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBpMThuIH0gZnJvbSAnQGxpbmd1aS9jb3JlJztcbmltcG9ydCB7IHQgfSBmcm9tICdAbGluZ3VpL2NvcmUvbWFjcm8nO1xuaW1wb3J0IHsgbW90aW9uIH0gZnJvbSAnZnJhbWVyLW1vdGlvbic7XG5pbXBvcnQgeyB1c2VSZWNvaWxWYWx1ZSB9IGZyb20gJ3JlY29pbCc7XG5cbmNvbnN0IFN0eWxlZEJ1dHRvbldyYXBwZXIgPSBzdHlsZWQuZGl2YFxuICB6LWluZGV4OiAzMDtcbmA7XG5cbmNvbnN0IFN0eWxlZFRvb2x0aXBXcmFwcGVyID0gc3R5bGVkLmRpdmBcbiAgZm9udC1zaXplOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuc2l6ZS5tZH07XG5gO1xuXG5jb25zdCB4UGF0aHMgPSB7XG4gIHRvcExlZnQ6IGBNMTIgMTIgTDYgNmAsXG4gIHRvcFJpZ2h0OiBgTTEyIDEyIEwxOCA2YCxcbiAgYm90dG9tTGVmdDogYE0xMiAxMiBMNiAxOGAsXG4gIGJvdHRvbVJpZ2h0OiBgTTEyIDEyIEwxOCAxOGAsXG59O1xuXG5jb25zdCBBbmltYXRlZEljb24gPSAoe1xuICBpc0NvbW1hbmRNZW51T3BlbmVkLFxufToge1xuICBpc0NvbW1hbmRNZW51T3BlbmVkOiBib29sZWFuO1xufSkgPT4ge1xuICBjb25zdCB0aGVtZSA9IHVzZVRoZW1lKCk7XG4gIHJldHVybiAoXG4gICAgPHN2Z1xuICAgICAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gICAgICB3aWR0aD17dGhlbWUuaWNvbi5zaXplLnNtfVxuICAgICAgaGVpZ2h0PXt0aGVtZS5pY29uLnNpemUuc219XG4gICAgICB2aWV3Qm94PVwiMCAwIDI0IDI0XCJcbiAgICAgIGZpbGw9XCJub25lXCJcbiAgICAgIHN0cm9rZT1cImN1cnJlbnRDb2xvclwiXG4gICAgICBzdHJva2VXaWR0aD17dGhlbWUuaWNvbi5zdHJva2UubWR9XG4gICAgICBzdHJva2VMaW5lY2FwPVwicm91bmRcIlxuICAgICAgc3Ryb2tlTGluZWpvaW49XCJyb3VuZFwiXG4gICAgPlxuICAgICAgPHBhdGggc3Ryb2tlPVwibm9uZVwiIGQ9XCJNMCAwaDI0djI0SDB6XCIgZmlsbD1cIm5vbmVcIiAvPlxuICAgICAgey8qIENlbnRlciBkb3QgKi99XG4gICAgICA8bW90aW9uLmNpcmNsZVxuICAgICAgICBjeD17MTJ9XG4gICAgICAgIGN5PXsxMn1cbiAgICAgICAgcj1cIjFcIlxuICAgICAgICBpbml0aWFsPXt7IG9wYWNpdHk6IDAgfX1cbiAgICAgICAgYW5pbWF0ZT17e1xuICAgICAgICAgIHNjYWxlOiBpc0NvbW1hbmRNZW51T3BlbmVkID8gMCA6IDEsXG4gICAgICAgICAgb3BhY2l0eTogaXNDb21tYW5kTWVudU9wZW5lZCA/IDAgOiAxLFxuICAgICAgICB9fVxuICAgICAgICB0cmFuc2l0aW9uPXt7IGR1cmF0aW9uOiB0aGVtZS5hbmltYXRpb24uZHVyYXRpb24uZmFzdCB9fVxuICAgICAgLz5cblxuICAgICAgey8qIFggbGluZXMgZXhwYW5kaW5nIGZyb20gY2VudGVyICovfVxuICAgICAge09iamVjdC52YWx1ZXMoeFBhdGhzKS5tYXAoKHBhdGgsIGluZGV4KSA9PiAoXG4gICAgICAgIDxtb3Rpb24ucGF0aFxuICAgICAgICAgIGtleT17aW5kZXh9XG4gICAgICAgICAgZD17cGF0aH1cbiAgICAgICAgICBpbml0aWFsPXt7IHBhdGhMZW5ndGg6IDAsIG9wYWNpdHk6IDAgfX1cbiAgICAgICAgICBhbmltYXRlPXt7XG4gICAgICAgICAgICBwYXRoTGVuZ3RoOiBpc0NvbW1hbmRNZW51T3BlbmVkID8gMSA6IDAsXG4gICAgICAgICAgICBvcGFjaXR5OiBpc0NvbW1hbmRNZW51T3BlbmVkID8gMSA6IDAsXG4gICAgICAgICAgfX1cbiAgICAgICAgICB0cmFuc2l0aW9uPXt7XG4gICAgICAgICAgICBkdXJhdGlvbjogdGhlbWUuYW5pbWF0aW9uLmR1cmF0aW9uLmZhc3QsXG4gICAgICAgICAgICBlYXNlOiAnZWFzZUluT3V0JyxcbiAgICAgICAgICAgIGRlbGF5OiBpc0NvbW1hbmRNZW51T3BlbmVkID8gMC4xIDogMCxcbiAgICAgICAgICB9fVxuICAgICAgICAvPlxuICAgICAgKSl9XG5cbiAgICAgIHsvKiBUb3AgZG90ICovfVxuICAgICAgPG1vdGlvbi5jaXJjbGVcbiAgICAgICAgY3g9XCIxMlwiXG4gICAgICAgIGN5PVwiNVwiXG4gICAgICAgIHI9XCIxXCJcbiAgICAgICAgaW5pdGlhbD17eyBvcGFjaXR5OiAwIH19XG4gICAgICAgIGFuaW1hdGU9e3tcbiAgICAgICAgICBzY2FsZTogaXNDb21tYW5kTWVudU9wZW5lZCA/IDAgOiAxLFxuICAgICAgICAgIG9wYWNpdHk6IGlzQ29tbWFuZE1lbnVPcGVuZWQgPyAwIDogMSxcbiAgICAgICAgfX1cbiAgICAgICAgdHJhbnNpdGlvbj17eyBkdXJhdGlvbjogdGhlbWUuYW5pbWF0aW9uLmR1cmF0aW9uLmZhc3QgfX1cbiAgICAgIC8+XG5cbiAgICAgIHsvKiBCb3R0b20gZG90ICovfVxuICAgICAgPG1vdGlvbi5jaXJjbGVcbiAgICAgICAgY3g9XCIxMlwiXG4gICAgICAgIGN5PVwiMTlcIlxuICAgICAgICByPVwiMVwiXG4gICAgICAgIGluaXRpYWw9e3sgb3BhY2l0eTogMCB9fVxuICAgICAgICBhbmltYXRlPXt7XG4gICAgICAgICAgc2NhbGU6IGlzQ29tbWFuZE1lbnVPcGVuZWQgPyAwIDogMSxcbiAgICAgICAgICBvcGFjaXR5OiBpc0NvbW1hbmRNZW51T3BlbmVkID8gMCA6IDEsXG4gICAgICAgIH19XG4gICAgICAgIHRyYW5zaXRpb249e3sgZHVyYXRpb246IHRoZW1lLmFuaW1hdGlvbi5kdXJhdGlvbi5mYXN0IH19XG4gICAgICAvPlxuICAgIDwvc3ZnPlxuICApO1xufTtcblxuZXhwb3J0IGNvbnN0IFBhZ2VIZWFkZXJUb2dnbGVDb21tYW5kTWVudUJ1dHRvbiA9ICgpID0+IHtcbiAgY29uc3QgeyB0b2dnbGVDb21tYW5kTWVudSB9ID0gdXNlQ29tbWFuZE1lbnUoKTtcbiAgY29uc3QgaXNDb21tYW5kTWVudU9wZW5lZCA9IHVzZVJlY29pbFZhbHVlKGlzQ29tbWFuZE1lbnVPcGVuZWRTdGF0ZSk7XG5cbiAgY29uc3QgaXNNb2JpbGUgPSB1c2VJc01vYmlsZSgpO1xuXG4gIGNvbnN0IGFyaWFMYWJlbCA9IGlzQ29tbWFuZE1lbnVPcGVuZWRcbiAgICA/IHRgQ2xvc2UgY29tbWFuZCBtZW51YFxuICAgIDogdGBPcGVuIGNvbW1hbmQgbWVudWA7XG5cbiAgY29uc3QgdGhlbWUgPSB1c2VUaGVtZSgpO1xuXG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxTdHlsZWRCdXR0b25XcmFwcGVyPlxuICAgICAgICA8ZGl2IGlkPVwidG9nZ2xlLWNvbW1hbmQtbWVudS1idXR0b25cIj5cbiAgICAgICAgICA8QW5pbWF0ZWRCdXR0b25cbiAgICAgICAgICAgIGFuaW1hdGVkU3ZnPXtcbiAgICAgICAgICAgICAgPEFuaW1hdGVkSWNvbiBpc0NvbW1hbmRNZW51T3BlbmVkPXtpc0NvbW1hbmRNZW51T3BlbmVkfSAvPlxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgY2xhc3NOYW1lPVwicGFnZS1oZWFkZXItY29tbWFuZC1tZW51LWJ1dHRvblwiXG4gICAgICAgICAgICBkYXRhVGVzdElkPVwicGFnZS1oZWFkZXItY29tbWFuZC1tZW51LWJ1dHRvblwiXG4gICAgICAgICAgICBzaXplPXtpc01vYmlsZSA/ICdtZWRpdW0nIDogJ3NtYWxsJ31cbiAgICAgICAgICAgIHZhcmlhbnQ9XCJzZWNvbmRhcnlcIlxuICAgICAgICAgICAgYWNjZW50PVwiZGVmYXVsdFwiXG4gICAgICAgICAgICBob3RrZXlzPXtbZ2V0T3NDb250cm9sU3ltYm9sKCksICdLJ119XG4gICAgICAgICAgICBhcmlhTGFiZWw9e2FyaWFMYWJlbH1cbiAgICAgICAgICAgIG9uQ2xpY2s9e3RvZ2dsZUNvbW1hbmRNZW51fVxuICAgICAgICAgICAgYW5pbWF0ZT17e1xuICAgICAgICAgICAgICByb3RhdGU6IGlzQ29tbWFuZE1lbnVPcGVuZWQgPyA5MCA6IDAsXG4gICAgICAgICAgICB9fVxuICAgICAgICAgICAgdHJhbnNpdGlvbj17e1xuICAgICAgICAgICAgICBkdXJhdGlvbjogdGhlbWUuYW5pbWF0aW9uLmR1cmF0aW9uLm5vcm1hbCxcbiAgICAgICAgICAgICAgZWFzZTogJ2Vhc2VJbk91dCcsXG4gICAgICAgICAgICB9fVxuICAgICAgICAgIC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9TdHlsZWRCdXR0b25XcmFwcGVyPlxuICAgICAgPFN0eWxlZFRvb2x0aXBXcmFwcGVyPlxuICAgICAgICA8QXBwVG9vbHRpcFxuICAgICAgICAgIGFuY2hvclNlbGVjdD1cIiN0b2dnbGUtY29tbWFuZC1tZW51LWJ1dHRvblwiXG4gICAgICAgICAgY29udGVudD17aTE4bi5fKGFyaWFMYWJlbCl9XG4gICAgICAgICAgZGVsYXk9e1Rvb2x0aXBEZWxheS5sb25nRGVsYXl9XG4gICAgICAgICAgcGxhY2U9e1Rvb2x0aXBQb3NpdGlvbi5Cb3R0b219XG4gICAgICAgICAgb2Zmc2V0PXs1fVxuICAgICAgICAgIG5vQXJyb3dcbiAgICAgICAgLz5cbiAgICAgIDwvU3R5bGVkVG9vbHRpcFdyYXBwZXI+XG4gICAgPC8+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbIkFuaW1hdGVkQnV0dG9uIiwiQXBwVG9vbHRpcCIsImdldE9zQ29udHJvbFN5bWJvbCIsIlRvb2x0aXBEZWxheSIsIlRvb2x0aXBQb3NpdGlvbiIsInVzZUlzTW9iaWxlIiwidXNlQ29tbWFuZE1lbnUiLCJpc0NvbW1hbmRNZW51T3BlbmVkU3RhdGUiLCJ1c2VUaGVtZSIsInN0eWxlZCIsImkxOG4iLCJtb3Rpb24iLCJ1c2VSZWNvaWxWYWx1ZSIsIlN0eWxlZEJ1dHRvbldyYXBwZXIiLCJkaXYiLCJTdHlsZWRUb29sdGlwV3JhcHBlciIsInRoZW1lIiwiZm9udCIsInNpemUiLCJtZCIsInhQYXRocyIsInRvcExlZnQiLCJ0b3BSaWdodCIsImJvdHRvbUxlZnQiLCJib3R0b21SaWdodCIsIkFuaW1hdGVkSWNvbiIsImlzQ29tbWFuZE1lbnVPcGVuZWQiLCJzdmciLCJ4bWxucyIsIndpZHRoIiwiaWNvbiIsInNtIiwiaGVpZ2h0Iiwidmlld0JveCIsImZpbGwiLCJzdHJva2UiLCJzdHJva2VXaWR0aCIsInN0cm9rZUxpbmVjYXAiLCJzdHJva2VMaW5lam9pbiIsInBhdGgiLCJkIiwiY2lyY2xlIiwiY3giLCJjeSIsInIiLCJpbml0aWFsIiwib3BhY2l0eSIsImFuaW1hdGUiLCJzY2FsZSIsInRyYW5zaXRpb24iLCJkdXJhdGlvbiIsImFuaW1hdGlvbiIsImZhc3QiLCJPYmplY3QiLCJ2YWx1ZXMiLCJtYXAiLCJpbmRleCIsInBhdGhMZW5ndGgiLCJlYXNlIiwiZGVsYXkiLCJQYWdlSGVhZGVyVG9nZ2xlQ29tbWFuZE1lbnVCdXR0b24iLCJ0b2dnbGVDb21tYW5kTWVudSIsImlzTW9iaWxlIiwiYXJpYUxhYmVsIiwiaWQiLCJhbmltYXRlZFN2ZyIsImNsYXNzTmFtZSIsImRhdGFUZXN0SWQiLCJ2YXJpYW50IiwiYWNjZW50IiwiaG90a2V5cyIsIm9uQ2xpY2siLCJyb3RhdGUiLCJub3JtYWwiLCJhbmNob3JTZWxlY3QiLCJjb250ZW50IiwiXyIsImxvbmdEZWxheSIsInBsYWNlIiwiQm90dG9tIiwib2Zmc2V0Iiwibm9BcnJvdyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLFNBQ0VBLGNBQWMsRUFDZEMsVUFBVSxFQUNWQyxrQkFBa0IsRUFDbEJDLFlBQVksRUFDWkMsZUFBZSxFQUNmQyxXQUFXLFFBQ04sWUFBWTtBQUVuQixTQUFTQyxjQUFjLFFBQVEsc0NBQXNDO0FBQ3JFLFNBQVNDLHdCQUF3QixRQUFRLGlEQUFpRDtBQUMxRixTQUFTQyxRQUFRLFFBQVEsaUJBQWlCO0FBQzFDLE9BQU9DLFlBQVksa0JBQWtCO0FBQ3JDLFNBQVNDLElBQUksUUFBUSxlQUFlOztBQUVwQyxTQUFTQyxNQUFNLFFBQVEsZ0JBQWdCO0FBQ3ZDLFNBQVNDLGNBQWMsUUFBUSxTQUFTO0FBRXhDLE1BQU1DLHNCQUFzQkosT0FBT0ssR0FBRyxDQUFDOztBQUV2QyxDQUFDO0tBRktEO0FBSU4sTUFBTUUsdUJBQXVCTixPQUFPSyxHQUFHLENBQUM7YUFDM0IsRUFBRSxDQUFDLEVBQUVFLEtBQUssRUFBRSxHQUFLQSxNQUFNQyxJQUFJLENBQUNDLElBQUksQ0FBQ0MsRUFBRSxDQUFDO0FBQ2pELENBQUM7TUFGS0o7QUFJTixNQUFNSyxTQUFTO0lBQ2JDLFNBQVMsQ0FBQyxXQUFXLENBQUM7SUFDdEJDLFVBQVUsQ0FBQyxZQUFZLENBQUM7SUFDeEJDLFlBQVksQ0FBQyxZQUFZLENBQUM7SUFDMUJDLGFBQWEsQ0FBQyxhQUFhLENBQUM7QUFDOUI7QUFFQSxNQUFNQyxlQUFlLENBQUMsRUFDcEJDLG1CQUFtQixFQUdwQjs7SUFDQyxNQUFNVixRQUFRUjtJQUNkLHFCQUNFLFFBQUNtQjtRQUNDQyxPQUFNO1FBQ05DLE9BQU9iLE1BQU1jLElBQUksQ0FBQ1os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

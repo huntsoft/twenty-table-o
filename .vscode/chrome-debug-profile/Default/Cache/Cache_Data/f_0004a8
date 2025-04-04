@@ -1,0 +1,201 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isLabelIdentifierField } from "/src/modules/object-metadata/utils/isLabelIdentifierField.ts";
+import { FieldDisplay } from "/src/modules/object-record/record-field/components/FieldDisplay.tsx";
+import { FieldContext } from "/src/modules/object-record/record-field/contexts/FieldContext.ts";
+import { BooleanFieldInput } from "/src/modules/object-record/record-field/meta-types/input/components/BooleanFieldInput.tsx";
+import { RatingFieldInput } from "/src/modules/object-record/record-field/meta-types/input/components/RatingFieldInput.tsx";
+import { RecordFieldComponentInstanceContext } from "/src/modules/object-record/record-field/states/contexts/RecordFieldComponentInstanceContext.ts";
+import { SettingsDataModelSetFieldValueEffect } from "/src/modules/settings/data-model/fields/preview/components/SettingsDataModelSetFieldValueEffect.tsx";
+import { SettingsDataModelSetPreviewRecordEffect } from "/src/modules/settings/data-model/fields/preview/components/SettingsDataModelSetRecordEffect.tsx";
+import { useFieldPreviewValue } from "/src/modules/settings/data-model/fields/preview/hooks/useFieldPreviewValue.ts";
+import { usePreviewRecord } from "/src/modules/settings/data-model/fields/preview/hooks/usePreviewRecord.ts";
+import { FieldMetadataType } from "/src/generated-metadata/graphql.ts";
+const StyledFieldPreview = styled.div`
+  align-items: flex-start;
+  background-color: ${({ theme })=>theme.background.primary};
+  border: 1px solid ${({ theme })=>theme.border.color.medium};
+  border-radius: ${({ theme })=>theme.border.radius.sm};
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(2)};
+  height: fit-content;
+  line-height: 24px;
+  overflow: hidden;
+  padding: 0
+    ${({ shrink, theme })=>shrink ? theme.spacing(1) : theme.spacing(2)};
+  white-space: nowrap;
+  margin-top: ${({ theme })=>theme.spacing(2)};
+  padding-top: ${({ theme })=>theme.spacing(2)};
+  padding-bottom: ${({ theme })=>theme.spacing(2)};
+`;
+_c = StyledFieldPreview;
+const StyledFieldLabel = styled.div`
+  align-items: center;
+  color: ${({ theme })=>theme.font.color.tertiary};
+  display: flex;
+  gap: ${({ theme })=>theme.spacing(1)};
+`;
+_c1 = StyledFieldLabel;
+export const SettingsDataModelFieldPreview = ({ fieldMetadataItem, objectMetadataItem, relationObjectMetadataItem, shrink, withFieldLabel = true })=>{
+    _s();
+    const theme = useTheme();
+    const { getIcon } = useIcons();
+    const FieldIcon = getIcon(fieldMetadataItem.icon);
+    // id and name are undefined in create mode (field does not exist yet)
+    // and defined in edit mode.
+    const isLabelIdentifier = !!fieldMetadataItem.id && !!fieldMetadataItem.name && isLabelIdentifierField({
+        fieldMetadataItem: {
+            id: fieldMetadataItem.id,
+            name: fieldMetadataItem.name
+        },
+        objectMetadataItem
+    });
+    const previewRecord = usePreviewRecord({
+        objectMetadataItem,
+        skip: !isLabelIdentifier
+    });
+    const fieldPreviewValue = useFieldPreviewValue({
+        fieldMetadataItem,
+        relationObjectMetadataItem,
+        skip: isLabelIdentifier
+    });
+    const fieldName = fieldMetadataItem.name || `${fieldMetadataItem.type}-new-field`;
+    const recordId = previewRecord?.id ?? `${objectMetadataItem.nameSingular}-${fieldName}-preview`;
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: /*#__PURE__*/ _jsxDEV(RecordFieldComponentInstanceContext.Provider, {
+            value: {
+                instanceId: 'record-field-component-instance-id'
+            },
+            children: [
+                previewRecord ? /*#__PURE__*/ _jsxDEV(SettingsDataModelSetPreviewRecordEffect, {
+                    fieldName: fieldName,
+                    record: previewRecord
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                    lineNumber: 108,
+                    columnNumber: 11
+                }, this) : /*#__PURE__*/ _jsxDEV(SettingsDataModelSetFieldValueEffect, {
+                    recordId: recordId,
+                    fieldName: fieldName,
+                    value: fieldPreviewValue
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                    lineNumber: 113,
+                    columnNumber: 11
+                }, this),
+                /*#__PURE__*/ _jsxDEV(StyledFieldPreview, {
+                    shrink: shrink,
+                    children: [
+                        !!withFieldLabel && /*#__PURE__*/ _jsxDEV(StyledFieldLabel, {
+                            children: [
+                                /*#__PURE__*/ _jsxDEV(FieldIcon, {
+                                    size: theme.icon.size.md,
+                                    stroke: theme.icon.stroke.sm
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                                    lineNumber: 122,
+                                    columnNumber: 15
+                                }, this),
+                                fieldMetadataItem.label,
+                                ":"
+                            ]
+                        }, void 0, true, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                            lineNumber: 121,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ _jsxDEV(FieldContext.Provider, {
+                            value: {
+                                recordId,
+                                isLabelIdentifier,
+                                fieldDefinition: {
+                                    type: fieldMetadataItem.type,
+                                    iconName: 'FieldIcon',
+                                    fieldMetadataId: fieldMetadataItem.id || '',
+                                    label: fieldMetadataItem.label,
+                                    metadata: {
+                                        fieldName,
+                                        objectMetadataNameSingular: objectMetadataItem.nameSingular,
+                                        relationObjectMetadataNameSingular: relationObjectMetadataItem?.nameSingular,
+                                        options: fieldMetadataItem.options ?? [],
+                                        settings: fieldMetadataItem.settings
+                                    },
+                                    defaultValue: fieldMetadataItem.defaultValue
+                                },
+                                hotkeyScope: 'field-preview'
+                            },
+                            children: fieldMetadataItem.type === FieldMetadataType.BOOLEAN ? /*#__PURE__*/ _jsxDEV(BooleanFieldInput, {
+                                readonly: true
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                                lineNumber: 152,
+                                columnNumber: 15
+                            }, this) : fieldMetadataItem.type === FieldMetadataType.RATING ? /*#__PURE__*/ _jsxDEV(RatingFieldInput, {
+                                readonly: true
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                                lineNumber: 154,
+                                columnNumber: 15
+                            }, this) : /*#__PURE__*/ _jsxDEV(FieldDisplay, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                                lineNumber: 156,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                            lineNumber: 129,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+                    lineNumber: 119,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx",
+            lineNumber: 102,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
+};
+_s(SettingsDataModelFieldPreview, "jb+qsW7N8OlDMTUMgqaZIsLQz4w=", false, function() {
+    return [
+        useTheme,
+        useIcons,
+        usePreviewRecord,
+        useFieldPreviewValue
+    ];
+});
+_c2 = SettingsDataModelFieldPreview;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledFieldPreview");
+$RefreshReg$(_c1, "StyledFieldLabel");
+$RefreshReg$(_c2, "SettingsDataModelFieldPreview");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/fields/preview/components/SettingsDataModelFieldPreview.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNldHRpbmdzRGF0YU1vZGVsRmllbGRQcmV2aWV3LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VUaGVtZSB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IHVzZUljb25zIH0gZnJvbSAndHdlbnR5LXVpJztcblxuaW1wb3J0IHsgRmllbGRNZXRhZGF0YUl0ZW0gfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS90eXBlcy9GaWVsZE1ldGFkYXRhSXRlbSc7XG5pbXBvcnQgeyBPYmplY3RNZXRhZGF0YUl0ZW0gfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS90eXBlcy9PYmplY3RNZXRhZGF0YUl0ZW0nO1xuaW1wb3J0IHsgaXNMYWJlbElkZW50aWZpZXJGaWVsZCB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL3V0aWxzL2lzTGFiZWxJZGVudGlmaWVyRmllbGQnO1xuaW1wb3J0IHsgRmllbGREaXNwbGF5IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1maWVsZC9jb21wb25lbnRzL0ZpZWxkRGlzcGxheSc7XG5pbXBvcnQgeyBGaWVsZENvbnRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL2NvbnRleHRzL0ZpZWxkQ29udGV4dCc7XG5pbXBvcnQgeyBCb29sZWFuRmllbGRJbnB1dCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZmllbGQvbWV0YS10eXBlcy9pbnB1dC9jb21wb25lbnRzL0Jvb2xlYW5GaWVsZElucHV0JztcbmltcG9ydCB7IFJhdGluZ0ZpZWxkSW5wdXQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL21ldGEtdHlwZXMvaW5wdXQvY29tcG9uZW50cy9SYXRpbmdGaWVsZElucHV0JztcbmltcG9ydCB7IFJlY29yZEZpZWxkQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1maWVsZC9zdGF0ZXMvY29udGV4dHMvUmVjb3JkRmllbGRDb21wb25lbnRJbnN0YW5jZUNvbnRleHQnO1xuaW1wb3J0IHsgU2V0dGluZ3NEYXRhTW9kZWxTZXRGaWVsZFZhbHVlRWZmZWN0IH0gZnJvbSAnQC9zZXR0aW5ncy9kYXRhLW1vZGVsL2ZpZWxkcy9wcmV2aWV3L2NvbXBvbmVudHMvU2V0dGluZ3NEYXRhTW9kZWxTZXRGaWVsZFZhbHVlRWZmZWN0JztcbmltcG9ydCB7IFNldHRpbmdzRGF0YU1vZGVsU2V0UHJldmlld1JlY29yZEVmZmVjdCB9IGZyb20gJ0Avc2V0dGluZ3MvZGF0YS1tb2RlbC9maWVsZHMvcHJldmlldy9jb21wb25lbnRzL1NldHRpbmdzRGF0YU1vZGVsU2V0UmVjb3JkRWZmZWN0JztcbmltcG9ydCB7IHVzZUZpZWxkUHJldmlld1ZhbHVlIH0gZnJvbSAnQC9zZXR0aW5ncy9kYXRhLW1vZGVsL2ZpZWxkcy9wcmV2aWV3L2hvb2tzL3VzZUZpZWxkUHJldmlld1ZhbHVlJztcbmltcG9ydCB7IHVzZVByZXZpZXdSZWNvcmQgfSBmcm9tICdAL3NldHRpbmdzL2RhdGEtbW9kZWwvZmllbGRzL3ByZXZpZXcvaG9va3MvdXNlUHJldmlld1JlY29yZCc7XG5pbXBvcnQgeyBGaWVsZE1ldGFkYXRhVHlwZSB9IGZyb20gJ34vZ2VuZXJhdGVkLW1ldGFkYXRhL2dyYXBocWwnO1xuXG5leHBvcnQgdHlwZSBTZXR0aW5nc0RhdGFNb2RlbEZpZWxkUHJldmlld1Byb3BzID0ge1xuICBmaWVsZE1ldGFkYXRhSXRlbTogUGljazxcbiAgICBGaWVsZE1ldGFkYXRhSXRlbSxcbiAgICAnaWNvbicgfCAnbGFiZWwnIHwgJ3R5cGUnIHwgJ2RlZmF1bHRWYWx1ZScgfCAnb3B0aW9ucycgfCAnc2V0dGluZ3MnXG4gID4gJiB7XG4gICAgaWQ/OiBzdHJpbmc7XG4gICAgbmFtZT86IHN0cmluZztcbiAgfTtcbiAgb2JqZWN0TWV0YWRhdGFJdGVtOiBPYmplY3RNZXRhZGF0YUl0ZW07XG4gIHJlbGF0aW9uT2JqZWN0TWV0YWRhdGFJdGVtPzogT2JqZWN0TWV0YWRhdGFJdGVtO1xuICBzaHJpbms/OiBib29sZWFuO1xuICB3aXRoRmllbGRMYWJlbD86IGJvb2xlYW47XG59O1xuXG5jb25zdCBTdHlsZWRGaWVsZFByZXZpZXcgPSBzdHlsZWQuZGl2PHsgc2hyaW5rPzogYm9vbGVhbiB9PmBcbiAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gIGJhY2tncm91bmQtY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYmFja2dyb3VuZC5wcmltYXJ5fTtcbiAgYm9yZGVyOiAxcHggc29saWQgJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIuY29sb3IubWVkaXVtfTtcbiAgYm9yZGVyLXJhZGl1czogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIucmFkaXVzLnNtfTtcbiAgZGlzcGxheTogZmxleDtcbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuICBoZWlnaHQ6IGZpdC1jb250ZW50O1xuICBsaW5lLWhlaWdodDogMjRweDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMFxuICAgICR7KHsgc2hyaW5rLCB0aGVtZSB9KSA9PiAoc2hyaW5rID8gdGhlbWUuc3BhY2luZygxKSA6IHRoZW1lLnNwYWNpbmcoMikpfTtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgbWFyZ2luLXRvcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbiAgcGFkZGluZy10b3A6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygyKX07XG4gIHBhZGRpbmctYm90dG9tOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkRmllbGRMYWJlbCA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IudGVydGlhcnl9O1xuICBkaXNwbGF5OiBmbGV4O1xuICBnYXA6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZygxKX07XG5gO1xuXG5leHBvcnQgY29uc3QgU2V0dGluZ3NEYXRhTW9kZWxGaWVsZFByZXZpZXcgPSAoe1xuICBmaWVsZE1ldGFkYXRhSXRlbSxcbiAgb2JqZWN0TWV0YWRhdGFJdGVtLFxuICByZWxhdGlvbk9iamVjdE1ldGFkYXRhSXRlbSxcbiAgc2hyaW5rLFxuICB3aXRoRmllbGRMYWJlbCA9IHRydWUsXG59OiBTZXR0aW5nc0RhdGFNb2RlbEZpZWxkUHJldmlld1Byb3BzKSA9PiB7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcblxuICBjb25zdCB7IGdldEljb24gfSA9IHVzZUljb25zKCk7XG4gIGNvbnN0IEZpZWxkSWNvbiA9IGdldEljb24oZmllbGRNZXRhZGF0YUl0ZW0uaWNvbik7XG5cbiAgLy8gaWQgYW5kIG5hbWUgYXJlIHVuZGVmaW5lZCBpbiBjcmVhdGUgbW9kZSAoZmllbGQgZG9lcyBub3QgZXhpc3QgeWV0KVxuICAvLyBhbmQgZGVmaW5lZCBpbiBlZGl0IG1vZGUuXG4gIGNvbnN0IGlzTGFiZWxJZGVudGlmaWVyID1cbiAgICAhIWZpZWxkTWV0YWRhdGFJdGVtLmlkICYmXG4gICAgISFmaWVsZE1ldGFkYXRhSXRlbS5uYW1lICYmXG4gICAgaXNMYWJlbElkZW50aWZpZXJGaWVsZCh7XG4gICAgICBmaWVsZE1ldGFkYXRhSXRlbToge1xuICAgICAgICBpZDogZmllbGRNZXRhZGF0YUl0ZW0uaWQsXG4gICAgICAgIG5hbWU6IGZpZWxkTWV0YWRhdGFJdGVtLm5hbWUsXG4gICAgICB9LFxuICAgICAgb2JqZWN0TWV0YWRhdGFJdGVtLFxuICAgIH0pO1xuXG4gIGNvbnN0IHByZXZpZXdSZWNvcmQgPSB1c2VQcmV2aWV3UmVjb3JkKHtcbiAgICBvYmplY3RNZXRhZGF0YUl0ZW0sXG4gICAgc2tpcDogIWlzTGFiZWxJZGVudGlmaWVyLFxuICB9KTtcblxuICBjb25zdCBmaWVsZFByZXZpZXdWYWx1ZSA9IHVzZUZpZWxkUHJldmlld1ZhbHVlKHtcbiAgICBmaWVsZE1ldGFkYXRhSXRlbSxcbiAgICByZWxhdGlvbk9iamVjdE1ldGFkYXRhSXRlbSxcbiAgICBza2lwOiBpc0xhYmVsSWRlbnRpZmllcixcbiAgfSk7XG5cbiAgY29uc3QgZmllbGROYW1lID1cbiAgICBmaWVsZE1ldGFkYXRhSXRlbS5uYW1lIHx8IGAke2ZpZWxkTWV0YWRhdGFJdGVtLnR5cGV9LW5ldy1maWVsZGA7XG4gIGNvbnN0IHJlY29yZElkID1cbiAgICBwcmV2aWV3UmVjb3JkPy5pZCA/P1xuICAgIGAke29iamVjdE1ldGFkYXRhSXRlbS5uYW1lU2luZ3VsYXJ9LSR7ZmllbGROYW1lfS1wcmV2aWV3YDtcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8UmVjb3JkRmllbGRDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXJcbiAgICAgICAgdmFsdWU9e3tcbiAgICAgICAgICBpbnN0YW5jZUlkOiAncmVjb3JkLWZpZWxkLWNvbXBvbmVudC1pbnN0YW5jZS1pZCcsXG4gICAgICAgIH19XG4gICAgICA+XG4gICAgICAgIHtwcmV2aWV3UmVjb3JkID8gKFxuICAgICAgICAgIDxTZXR0aW5nc0RhdGFNb2RlbFNldFByZXZpZXdSZWNvcmRFZmZlY3RcbiAgICAgICAgICAgIGZpZWxkTmFtZT17ZmllbGROYW1lfVxuICAgICAgICAgICAgcmVjb3JkPXtwcmV2aWV3UmVjb3JkfVxuICAgICAgICAgIC8+XG4gICAgICAgICkgOiAoXG4gICAgICAgICAgPFNldHRpbmdzRGF0YU1vZGVsU2V0RmllbGRWYWx1ZUVmZmVjdFxuICAgICAgICAgICAgcmVjb3JkSWQ9e3JlY29yZElkfVxuICAgICAgICAgICAgZmllbGROYW1lPXtmaWVsZE5hbWV9XG4gICAgICAgICAgICB2YWx1ZT17ZmllbGRQcmV2aWV3VmFsdWV9XG4gICAgICAgICAgLz5cbiAgICAgICAgKX1cbiAgICAgICAgPFN0eWxlZEZpZWxkUHJldmlldyBzaHJpbms9e3Nocmlua30+XG4gICAgICAgICAgeyEhd2l0aEZpZWxkTGFiZWwgJiYgKFxuICAgICAgICAgICAgPFN0eWxlZEZpZWxkTGFiZWw+XG4gICAgICAgICAgICAgIDxGaWVsZEljb25cbiAgICAgICAgICAgICAgICBzaXplPXt0aGVtZS5pY29uLnNpemUubWR9XG4gICAgICAgICAgICAgICAgc3Ryb2tlPXt0aGVtZS5pY29uLnN0cm9rZS5zbX1cbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAge2ZpZWxkTWV0YWRhdGFJdGVtLmxhYmVsfTpcbiAgICAgICAgICAgIDwvU3R5bGVkRmllbGRMYWJlbD5cbiAgICAgICAgICApfVxuICAgICAgICAgIDxGaWVsZENvbnRleHQuUHJvdmlkZXJcbiAgICAgICAgICAgIHZhbHVlPXt7XG4gICAgICAgICAgICAgIHJlY29yZElkLFxuICAgICAgICAgICAgICBpc0xhYmVsSWRlbnRpZmllcixcbiAgICAgICAgICAgICAgZmllbGREZWZpbml0aW9uOiB7XG4gICAgICAgICAgICAgICAgdHlwZTogZmllbGRNZXRhZGF0YUl0ZW0udHlwZSxcbiAgICAgICAgICAgICAgICBpY29uTmFtZTogJ0ZpZWxkSWNvbicsXG4gICAgICAgICAgICAgICAgZmllbGRNZXRhZGF0YUlkOiBmaWVsZE1ldGFkYXRhSXRlbS5pZCB8fCAnJyxcbiAgICAgICAgICAgICAgICBsYWJlbDogZmllbGRNZXRhZGF0YUl0ZW0ubGFiZWwsXG4gICAgICAgICAgICAgICAgbWV0YWRhdGE6IHtcbiAgICAgICAgICAgICAgICAgIGZpZWxkTmFtZSxcbiAgICAgICAgICAgICAgICAgIG9iamVjdE1ldGFkYXRhTmFtZVNpbmd1bGFyOiBvYmplY3RNZXRhZGF0YUl0ZW0ubmFtZVNpbmd1bGFyLFxuICAgICAgICAgICAgICAgICAgcmVsYXRpb25PYmplY3RNZXRhZGF0YU5hbWVTaW5ndWxhcjpcbiAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25PYmplY3RNZXRhZGF0YUl0ZW0/Lm5hbWVTaW5ndWxhcixcbiAgICAgICAgICAgICAgICAgIG9wdGlvbnM6IGZpZWxkTWV0YWRhdGFJdGVtLm9wdGlvbnMgPz8gW10sXG4gICAgICAgICAgICAgICAgICBzZXR0aW5nczogZmllbGRNZXRhZGF0YUl0ZW0uc2V0dGluZ3MsXG4gICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICBkZWZhdWx0VmFsdWU6IGZpZWxkTWV0YWRhdGFJdGVtLmRlZmF1bHRWYWx1ZSxcbiAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgaG90a2V5U2NvcGU6ICdmaWVsZC1wcmV2aWV3JyxcbiAgICAgICAgICAgIH19XG4gICAgICAgICAgPlxuICAgICAgICAgICAge2ZpZWxkTWV0YWRhdGFJdGVtLnR5cGUgPT09IEZpZWxkTWV0YWRhdGFUeXBlLkJPT0xFQU4gPyAoXG4gICAgICAgICAgICAgIDxCb29sZWFuRmllbGRJbnB1dCByZWFkb25seSAvPlxuICAgICAgICAgICAgKSA6IGZpZWxkTWV0YWRhdGFJdGVtLnR5cGUgPT09IEZpZWxkTWV0YWRhdGFUeXBlLlJBVElORyA/IChcbiAgICAgICAgICAgICAgPFJhdGluZ0ZpZWxkSW5wdXQgcmVhZG9ubHkgLz5cbiAgICAgICAgICAgICkgOiAoXG4gICAgICAgICAgICAgIDxGaWVsZERpc3BsYXkgLz5cbiAgICAgICAgICAgICl9XG4gICAgICAgICAgPC9GaWVsZENvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgIDwvU3R5bGVkRmllbGRQcmV2aWV3PlxuICAgICAgPC9SZWNvcmRGaWVsZENvbXBvbmVudEluc3RhbmNlQ29udGV4dC5Qcm92aWRlcj5cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlVGhlbWUiLCJzdHlsZWQiLCJ1c2VJY29ucyIsImlzTGFiZWxJZGVudGlmaWVyRmllbGQiLCJGaWVsZERpc3BsYXkiLCJGaWVsZENvbnRleHQiLCJCb29sZWFuRmllbGRJbnB1dCIsIlJhdGluZ0ZpZWxkSW5wdXQiLCJSZWNvcmRGaWVsZENvbXBvbmVudEluc3RhbmNlQ29udGV4dCIsIlNldHRpbmdzRGF0YU1vZGVsU2V0RmllbGRWYWx1ZUVmZmVjdCIsIlNldHRpbmdzRGF0YU1vZGVsU2V0UHJldmlld1JlY29yZEVmZmVjdCIsInVzZUZpZWxkUHJldmlld1ZhbHVlIiwidXNlUHJldmlld1JlY29yZCIsIkZpZWxkTWV0YWRhdGFUeXBlIiwiU3R5bGVkRmllbGRQcmV2aWV3IiwiZGl2IiwidGhlbWUiLCJiYWNrZ3JvdW5kIiwicHJpbWFyeSIsImJvcmRlciIsImNvbG9yIiwibWVkaXVtIiwicmFkaXVzIiwic20iLCJzcGFjaW5nIiwic2hyaW5rIiwiU3R5bGVkRmllbGRMYWJlbCIsImZvbnQiLCJ0ZXJ0aWFyeSIsIlNldHRpbmdzRGF0YU1vZGVsRmllbGRQcmV2aWV3IiwiZmllbGRNZXRhZGF0YUl0ZW0iLCJvYmplY3RNZXRhZGF0YUl0ZW0iLCJyZWxhdGlvbk9iamVjdE1ldGFkYXRhSXRlbSIsIndpdGhGaWVsZExhYmVsIiwiZ2V0SWNvbiIsIkZpZWxkSWNvbiIsImljb24iLCJpc0xhYmVsSWRlbnRpZmllciIsImlkIiwibmFtZSIsInByZXZpZXdSZWNvcmQiLCJza2lwIiwiZmllbGRQcmV2aWV3VmFsdWUiLCJmaWVsZE5hbWUiLCJ0eXBlIiwicmVjb3JkSWQiLCJuYW1lU2luZ3VsYXIiLCJQcm92aWRlciIsInZhbHVlIiwiaW5zdGFuY2VJZCIsInJlY29yZCIsInNpemUiLCJtZCIsInN0cm9rZSIsImxhYmVsIiwiZmllbGREZWZpbml0aW9uIiwiaWNvbk5hbWUiLCJmaWVsZE1ldGFkYXRhSWQiLCJtZXRhZGF0YSIsIm9iamVjdE1ldGFkYXRhTmFtZVNpbmd1bGFyIiwicmVsYXRpb25PYmplY3RNZXRhZGF0YU5hbWVTaW5ndWxhciIsIm9wdGlvbnMiLCJzZXR0aW5ncyIsImRlZmF1bHRWYWx1ZSIsImhvdGtleVNjb3BlIiwiQk9PTEVBTiIsInJlYWRvbmx5IiwiUkFUSU5HIl0sIm1hcHBpbmdz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

@@ -1,0 +1,215 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/settings/data-model/SettingsObjectIndexTable.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { settingsObjectIndexesFamilyState } from "/src/modules/settings/data-model/object-details/states/settingsObjectIndexesFamilyState.ts";
+import { TextInput } from "/src/modules/ui/input/components/TextInput.tsx";
+import { SortableTableHeader } from "/src/modules/ui/layout/table/components/SortableTableHeader.tsx";
+import { Table } from "/src/modules/ui/layout/table/components/Table.tsx";
+import { TableCell } from "/src/modules/ui/layout/table/components/TableCell.tsx";
+import { TableHeader } from "/src/modules/ui/layout/table/components/TableHeader.tsx";
+import { TableRow } from "/src/modules/ui/layout/table/components/TableRow.tsx";
+import { useSortedArray } from "/src/modules/ui/layout/table/hooks/useSortedArray.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import __vite__cjsImport12__sniptt_guards from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@sniptt_guards.js?v=226f7286"; const isNonEmptyArray = __vite__cjsImport12__sniptt_guards["isNonEmptyArray"];
+import __vite__cjsImport13_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useEffect = __vite__cjsImport13_react["useEffect"]; const useMemo = __vite__cjsImport13_react["useMemo"]; const useState = __vite__cjsImport13_react["useState"];
+import { useRecoilState } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { IconSearch, IconSquareKey } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+export const StyledObjectIndexTableRow = styled(TableRow)`
+  grid-template-columns: 350px 70px 80px;
+`;
+_c = StyledObjectIndexTableRow;
+const StyledSearchInput = styled(TextInput)`
+  padding-bottom: ${({ theme })=>theme.spacing(2)};
+  width: 100%;
+`;
+_c1 = StyledSearchInput;
+export const SettingsObjectIndexTable = ({ objectMetadataItem })=>{
+    _s();
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const [searchTerm, setSearchTerm] = useState('');
+    const tableMetadata = {
+        tableId: 'settingsObjectIndexs',
+        fields: [
+            {
+                fieldLabel: {
+                    id: "vF68cg",
+                    message: "Fields"
+                },
+                fieldName: 'indexFields',
+                fieldType: 'string',
+                align: 'left'
+            },
+            {
+                fieldLabel: {
+                    id: "wSXm5S",
+                    message: "Unique"
+                },
+                FieldIcon: IconSquareKey,
+                fieldName: 'isUnique',
+                fieldType: 'string',
+                align: 'left'
+            },
+            {
+                fieldLabel: {
+                    id: "+zy2Nq",
+                    message: "Type"
+                },
+                fieldName: 'indexType',
+                fieldType: 'string',
+                align: 'right'
+            }
+        ],
+        initialSort: {
+            fieldName: 'name',
+            orderBy: 'AscNullsLast'
+        }
+    };
+    const [settingsObjectIndexes, setSettingsObjectIndexes] = useRecoilState(settingsObjectIndexesFamilyState({
+        objectMetadataItemId: objectMetadataItem.id
+    }));
+    useEffect(()=>{
+        setSettingsObjectIndexes(objectMetadataItem.indexMetadatas);
+    }, [
+        objectMetadataItem,
+        setSettingsObjectIndexes
+    ]);
+    const objectSettingsDetailItems = useMemo(()=>{
+        return settingsObjectIndexes?.map((indexMetadataItem)=>{
+            return {
+                name: indexMetadataItem.name,
+                isUnique: indexMetadataItem.isUnique,
+                indexType: indexMetadataItem.indexType,
+                indexFields: indexMetadataItem.indexFieldMetadatas?.map((indexField)=>{
+                    const fieldMetadataItem = objectMetadataItem.fields.find((field)=>field.id === indexField.fieldMetadataId);
+                    return fieldMetadataItem?.label;
+                }).join(', ')
+            };
+        }) ?? [];
+    }, [
+        settingsObjectIndexes,
+        objectMetadataItem
+    ]);
+    const sortedActiveObjectSettingsDetailItems = useSortedArray(objectSettingsDetailItems, tableMetadata);
+    const filteredActiveItems = useMemo(()=>sortedActiveObjectSettingsDetailItems.filter((item)=>item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.indexType.toLowerCase().includes(searchTerm.toLowerCase())), [
+        sortedActiveObjectSettingsDetailItems,
+        searchTerm
+    ]);
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(StyledSearchInput, {
+                LeftIcon: IconSearch,
+                placeholder: $__i18n._({
+                    id: "k7kp5/",
+                    message: "Search an index..."
+                }),
+                value: searchTerm,
+                onChange: setSearchTerm
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                lineNumber: 115,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(Table, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledObjectIndexTableRow, {
+                        children: [
+                            tableMetadata.fields.map((item)=>/*#__PURE__*/ _jsxDEV(SortableTableHeader, {
+                                    fieldName: item.fieldName,
+                                    label: $__i18n._(item.fieldLabel),
+                                    Icon: item.FieldIcon,
+                                    tableId: tableMetadata.tableId,
+                                    initialSort: tableMetadata.initialSort
+                                }, item.fieldName, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                    lineNumber: 124,
+                                    columnNumber: 13
+                                }, this)),
+                            /*#__PURE__*/ _jsxDEV(TableHeader, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                lineNumber: 133,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                        lineNumber: 122,
+                        columnNumber: 9
+                    }, this),
+                    isNonEmptyArray(filteredActiveItems) && filteredActiveItems.map((objectSettingsIndex)=>/*#__PURE__*/ _jsxDEV(StyledObjectIndexTableRow, {
+                            children: [
+                                /*#__PURE__*/ _jsxDEV(TableCell, {
+                                    children: objectSettingsIndex.indexFields
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                    lineNumber: 138,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ _jsxDEV(TableCell, {
+                                    children: objectSettingsIndex.isUnique ? /*#__PURE__*/ _jsxDEV(IconSquareKey, {
+                                        size: 14
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                        lineNumber: 141,
+                                        columnNumber: 19
+                                    }, this) : ''
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                    lineNumber: 139,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ _jsxDEV(TableCell, {
+                                    children: objectSettingsIndex.indexType
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                                    lineNumber: 146,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, objectSettingsIndex.name, true, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                            lineNumber: 137,
+                            columnNumber: 13
+                        }, this))
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx",
+                lineNumber: 121,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(SettingsObjectIndexTable, "wBiSDVqOE8JWBlx6HFCGLgziuYE=", false, function() {
+    return [
+        useRecoilState,
+        useSortedArray
+    ];
+});
+_c2 = SettingsObjectIndexTable;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledObjectIndexTableRow");
+$RefreshReg$(_c1, "StyledSearchInput");
+$RefreshReg$(_c2, "SettingsObjectIndexTable");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/pages/settings/data-model/SettingsObjectIndexTable.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNldHRpbmdzT2JqZWN0SW5kZXhUYWJsZS50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgT2JqZWN0TWV0YWRhdGFJdGVtIH0gZnJvbSAnQC9vYmplY3QtbWV0YWRhdGEvdHlwZXMvT2JqZWN0TWV0YWRhdGFJdGVtJztcbmltcG9ydCB7IHNldHRpbmdzT2JqZWN0SW5kZXhlc0ZhbWlseVN0YXRlIH0gZnJvbSAnQC9zZXR0aW5ncy9kYXRhLW1vZGVsL29iamVjdC1kZXRhaWxzL3N0YXRlcy9zZXR0aW5nc09iamVjdEluZGV4ZXNGYW1pbHlTdGF0ZSc7XG5pbXBvcnQgeyBUZXh0SW5wdXQgfSBmcm9tICdAL3VpL2lucHV0L2NvbXBvbmVudHMvVGV4dElucHV0JztcbmltcG9ydCB7IFNvcnRhYmxlVGFibGVIZWFkZXIgfSBmcm9tICdAL3VpL2xheW91dC90YWJsZS9jb21wb25lbnRzL1NvcnRhYmxlVGFibGVIZWFkZXInO1xuaW1wb3J0IHsgVGFibGUgfSBmcm9tICdAL3VpL2xheW91dC90YWJsZS9jb21wb25lbnRzL1RhYmxlJztcbmltcG9ydCB7IFRhYmxlQ2VsbCB9IGZyb20gJ0AvdWkvbGF5b3V0L3RhYmxlL2NvbXBvbmVudHMvVGFibGVDZWxsJztcbmltcG9ydCB7IFRhYmxlSGVhZGVyIH0gZnJvbSAnQC91aS9sYXlvdXQvdGFibGUvY29tcG9uZW50cy9UYWJsZUhlYWRlcic7XG5pbXBvcnQgeyBUYWJsZVJvdyB9IGZyb20gJ0AvdWkvbGF5b3V0L3RhYmxlL2NvbXBvbmVudHMvVGFibGVSb3cnO1xuaW1wb3J0IHsgdXNlU29ydGVkQXJyYXkgfSBmcm9tICdAL3VpL2xheW91dC90YWJsZS9ob29rcy91c2VTb3J0ZWRBcnJheSc7XG5pbXBvcnQgeyBUYWJsZU1ldGFkYXRhIH0gZnJvbSAnQC91aS9sYXlvdXQvdGFibGUvdHlwZXMvVGFibGVNZXRhZGF0YSc7XG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBtc2cgfSBmcm9tICdAbGluZ3VpL2NvcmUvbWFjcm8nO1xuaW1wb3J0IHsgdXNlTGluZ3VpIH0gZnJvbSAnQGxpbmd1aS9yZWFjdC9tYWNybyc7XG5pbXBvcnQgeyBpc05vbkVtcHR5QXJyYXkgfSBmcm9tICdAc25pcHR0L2d1YXJkcyc7XG5pbXBvcnQgeyB1c2VFZmZlY3QsIHVzZU1lbW8sIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgdXNlUmVjb2lsU3RhdGUgfSBmcm9tICdyZWNvaWwnO1xuaW1wb3J0IHsgSWNvblNlYXJjaCwgSWNvblNxdWFyZUtleSB9IGZyb20gJ3R3ZW50eS11aSc7XG5pbXBvcnQgeyBTZXR0aW5nc09iamVjdEluZGV4ZXNUYWJsZUl0ZW0gfSBmcm9tICd+L3BhZ2VzL3NldHRpbmdzL2RhdGEtbW9kZWwvdHlwZXMvU2V0dGluZ3NPYmplY3RJbmRleGVzVGFibGVJdGVtJztcblxuZXhwb3J0IGNvbnN0IFN0eWxlZE9iamVjdEluZGV4VGFibGVSb3cgPSBzdHlsZWQoVGFibGVSb3cpYFxuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDM1MHB4IDcwcHggODBweDtcbmA7XG5cbmNvbnN0IFN0eWxlZFNlYXJjaElucHV0ID0gc3R5bGVkKFRleHRJbnB1dClgXG4gIHBhZGRpbmctYm90dG9tOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmV4cG9ydCB0eXBlIFNldHRpbmdzT2JqZWN0SW5kZXhUYWJsZVByb3BzID0ge1xuICBvYmplY3RNZXRhZGF0YUl0ZW06IE9iamVjdE1ldGFkYXRhSXRlbTtcbn07XG5cbmV4cG9ydCBjb25zdCBTZXR0aW5nc09iamVjdEluZGV4VGFibGUgPSAoe1xuICBvYmplY3RNZXRhZGF0YUl0ZW0sXG59OiBTZXR0aW5nc09iamVjdEluZGV4VGFibGVQcm9wcykgPT4ge1xuICBjb25zdCB7IHQgfSA9IHVzZUxpbmd1aSgpO1xuICBjb25zdCBbc2VhcmNoVGVybSwgc2V0U2VhcmNoVGVybV0gPSB1c2VTdGF0ZSgnJyk7XG5cbiAgY29uc3QgdGFibGVNZXRhZGF0YTogVGFibGVNZXRhZGF0YTxTZXR0aW5nc09iamVjdEluZGV4ZXNUYWJsZUl0ZW0+ID0ge1xuICAgIHRhYmxlSWQ6ICdzZXR0aW5nc09iamVjdEluZGV4cycsXG4gICAgZmllbGRzOiBbXG4gICAgICB7XG4gICAgICAgIGZpZWxkTGFiZWw6IG1zZ2BGaWVsZHNgLFxuICAgICAgICBmaWVsZE5hbWU6ICdpbmRleEZpZWxkcycsXG4gICAgICAgIGZpZWxkVHlwZTogJ3N0cmluZycsXG4gICAgICAgIGFsaWduOiAnbGVmdCcsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBmaWVsZExhYmVsOiBtc2dgVW5pcXVlYCxcbiAgICAgICAgRmllbGRJY29uOiBJY29uU3F1YXJlS2V5LFxuICAgICAgICBmaWVsZE5hbWU6ICdpc1VuaXF1ZScsXG4gICAgICAgIGZpZWxkVHlwZTogJ3N0cmluZycsXG4gICAgICAgIGFsaWduOiAnbGVmdCcsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBmaWVsZExhYmVsOiBtc2dgVHlwZWAsXG4gICAgICAgIGZpZWxkTmFtZTogJ2luZGV4VHlwZScsXG4gICAgICAgIGZpZWxkVHlwZTogJ3N0cmluZycsXG4gICAgICAgIGFsaWduOiAncmlnaHQnLFxuICAgICAgfSxcbiAgICBdLFxuICAgIGluaXRpYWxTb3J0OiB7XG4gICAgICBmaWVsZE5hbWU6ICduYW1lJyxcbiAgICAgIG9yZGVyQnk6ICdBc2NOdWxsc0xhc3QnLFxuICAgIH0sXG4gIH07XG5cbiAgY29uc3QgW3NldHRpbmdzT2JqZWN0SW5kZXhlcywgc2V0U2V0dGluZ3NPYmplY3RJbmRleGVzXSA9IHVzZVJlY29pbFN0YXRlKFxuICAgIHNldHRpbmdzT2JqZWN0SW5kZXhlc0ZhbWlseVN0YXRlKHtcbiAgICAgIG9iamVjdE1ldGFkYXRhSXRlbUlkOiBvYmplY3RNZXRhZGF0YUl0ZW0uaWQsXG4gICAgfSksXG4gICk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBzZXRTZXR0aW5nc09iamVjdEluZGV4ZXMob2JqZWN0TWV0YWRhdGFJdGVtLmluZGV4TWV0YWRhdGFzKTtcbiAgfSwgW29iamVjdE1ldGFkYXRhSXRlbSwgc2V0U2V0dGluZ3NPYmplY3RJbmRleGVzXSk7XG5cbiAgY29uc3Qgb2JqZWN0U2V0dGluZ3NEZXRhaWxJdGVtcyA9IHVzZU1lbW8oKCkgPT4ge1xuICAgIHJldHVybiAoXG4gICAgICBzZXR0aW5nc09iamVjdEluZGV4ZXM/Lm1hcCgoaW5kZXhNZXRhZGF0YUl0ZW0pID0+IHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICBuYW1lOiBpbmRleE1ldGFkYXRhSXRlbS5uYW1lLFxuICAgICAgICAgIGlzVW5pcXVlOiBpbmRleE1ldGFkYXRhSXRlbS5pc1VuaXF1ZSxcbiAgICAgICAgICBpbmRleFR5cGU6IGluZGV4TWV0YWRhdGFJdGVtLmluZGV4VHlwZSxcbiAgICAgICAgICBpbmRleEZpZWxkczogaW5kZXhNZXRhZGF0YUl0ZW0uaW5kZXhGaWVsZE1ldGFkYXRhc1xuICAgICAgICAgICAgPy5tYXAoKGluZGV4RmllbGQpID0+IHtcbiAgICAgICAgICAgICAgY29uc3QgZmllbGRNZXRhZGF0YUl0ZW0gPSBvYmplY3RNZXRhZGF0YUl0ZW0uZmllbGRzLmZpbmQoXG4gICAgICAgICAgICAgICAgKGZpZWxkKSA9PiBmaWVsZC5pZCA9PT0gaW5kZXhGaWVsZC5maWVsZE1ldGFkYXRhSWQsXG4gICAgICAgICAgICAgICk7XG4gICAgICAgICAgICAgIHJldHVybiBmaWVsZE1ldGFkYXRhSXRlbT8ubGFiZWw7XG4gICAgICAgICAgICB9KVxuICAgICAgICAgICAgLmpvaW4oJywgJyksXG4gICAgICAgIH07XG4gICAgICB9KSA/PyBbXVxuICAgICk7XG4gIH0sIFtzZXR0aW5nc09iamVjdEluZGV4ZXMsIG9iamVjdE1ldGFkYXRhSXRlbV0pO1xuXG4gIGNvbnN0IHNvcnRlZEFjdGl2ZU9iamVjdFNldHRpbmdzRGV0YWlsSXRlbXMgPSB1c2VTb3J0ZWRBcnJheShcbiAgICBvYmplY3RTZXR0aW5nc0RldGFpbEl0ZW1zLFxuICAgIHRhYmxlTWV0YWRhdGEsXG4gICk7XG5cbiAgY29uc3QgZmlsdGVyZWRBY3RpdmVJdGVtcyA9IHVzZU1lbW8oXG4gICAgKCkgPT5cbiAgICAgIHNvcnRlZEFjdGl2ZU9iamVjdFNldHRpbmdzRGV0YWlsSXRlbXMuZmlsdGVyKFxuICAgICAgICAoaXRlbSkgPT5cbiAgICAgICAgICBpdGVtLm5hbWUudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkpIHx8XG4gICAgICAgICAgaXRlbS5pbmRleFR5cGUudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkpLFxuICAgICAgKSxcbiAgICBbc29ydGVkQWN0aXZlT2JqZWN0U2V0dGluZ3NEZXRhaWxJdGVtcywgc2VhcmNoVGVybV0sXG4gICk7XG5cbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPFN0eWxlZFNlYXJjaElucHV0XG4gICAgICAgIExlZnRJY29uPXtJY29uU2VhcmNofVxuICAgICAgICBwbGFjZWhvbGRlcj17dGBTZWFyY2ggYW4gaW5kZXguLi5gfVxuICAgICAgICB2YWx1ZT17c2VhcmNoVGVybX1cbiAgICAgICAgb25DaGFuZ2U9e3NldFNlYXJjaFRlcm19XG4gICAgICAvPlxuICAgICAgPFRhYmxlPlxuICAgICAgICA8U3R5bGVkT2JqZWN0SW5kZXhUYWJsZVJvdz5cbiAgICAgICAgICB7dGFibGVNZXRhZGF0YS5maWVsZHMubWFwKChpdGVtKSA9PiAoXG4gICAgICAgICAgICA8U29ydGFibGVUYWJsZUhlYWRlclxuICAgICAgICAgICAgICBrZXk9e2l0ZW0uZmllbGROYW1lfVxuICAgICAgICAgICAgICBmaWVsZE5hbWU9e2l0ZW0uZmllbGROYW1lfVxuICAgICAgICAgICAgICBsYWJlbD17dChpdGVtLmZpZWxkTGFiZWwpfVxuICAgICAgICAgICAgICBJY29uPXtpdGVtLkZpZWxkSWNvbn1cbiAgICAgICAgICAgICAgdGFibGVJZD17dGFibGVNZXRhZGF0YS50YWJsZUlkfVxuICAgICAgICAgICAgICBpbml0aWFsU29ydD17dGFibGVNZXRhZGF0YS5pbml0aWFsU29ydH1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgKSl9XG4gICAgICAgICAgPFRhYmxlSGVhZGVyPjwvVGFibGVIZWFkZXI+XG4gICAgICAgIDwvU3R5bGVkT2JqZWN0SW5kZXhUYWJsZVJvdz5cbiAgICAgICAge2lzTm9uRW1wdHlBcnJheShmaWx0ZXJlZEFjdGl2ZUl0ZW1zKSAmJlxuICAgICAgICAgIGZpbHRlcmVkQWN0aXZlSXRlbXMubWFwKChvYmplY3RTZXR0aW5nc0luZGV4KSA9PiAoXG4gICAgICAgICAgICA8U3R5bGVkT2JqZWN0SW5kZXhUYWJsZVJvdyBrZXk9e29iamVjdFNldHRpbmdzSW5kZXgubmFtZX0+XG4gICAgICAgICAgICAgIDxUYWJsZUNlbGw+e29iamVjdFNldHRpbmdzSW5kZXguaW5kZXhGaWVsZHN9PC9UYWJsZUNlbGw+XG4gICAgICAgICAgICAgIDxUYWJsZUNlbGw+XG4gICAgICAgICAgICAgICAge29iamVjdFNldHRpbmdzSW5kZXguaXNVbmlxdWUgPyAoXG4gICAgICAgICAgICAgICAgICA8SWNvblNxdWFyZUtleSBzaXplPXsxNH0gLz5cbiAgICAgICAgICAgICAgICApIDogKFxuICAgICAgICAgICAgICAgICAgJydcbiAgICAgICAgICAgICAgICApfVxuICAgICAgICAgICAgICA8L1RhYmxlQ2VsbD5cbiAgICAgICAgICAgICAgPFRhYmxlQ2VsbD57b2JqZWN0U2V0dGluZ3NJbmRleC5pbmRleFR5cGV9PC9UYWJsZUNlbGw+XG4gICAgICAgICAgICA8L1N0eWxlZE9iamVjdEluZGV4VGFibGVSb3c+XG4gICAgICAgICAgKSl9XG4gICAgICA8L1RhYmxlPlxuICAgIDwvPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJzZXR0aW5nc09iamVjdEluZGV4ZXNGYW1pbHlTdGF0ZSIsIlRleHRJbnB1dCIsIlNvcnRhYmxlVGFibGVIZWFkZXIiLCJUYWJsZSIsIlRhYmxlQ2VsbCIsIlRhYmxlSGVhZGVyIiwiVGFibGVSb3ciLCJ1c2VTb3J0ZWRBcnJheSIsInN0eWxlZCIsImlzTm9uRW1wdHlBcnJheSIsInVzZUVmZmVjdCIsInVzZU1lbW8iLCJ1c2VTdGF0ZSIsInVzZVJlY29pbFN0YXRlIiwiSWNvblNlYXJjaCIsIkljb25TcXVhcmVLZXkiLCJTdHlsZWRPYmplY3RJbmRleFRhYmxlUm93IiwiU3R5bGVkU2VhcmNoSW5wdXQiLCJ0aGVtZSIsInNwYWNpbmciLCJTZXR0aW5nc09iamVjdEluZGV4VGFibGUiLCJvYmplY3RNZXRhZGF0YUl0ZW0iLCJ1c2VMaW5ndWkiLCJzZWFyY2hUZXJtIiwic2V0U2VhcmNoVGVybSIsInRhYmxlTWV0YWRhdGEiLCJ0YWJsZUlkIiwiZmllbGRzIiwiZmllbGRMYWJlbCIsImZpZWxkTmFtZSIsImZpZWxkVHlwZSIsImFsaWduIiwiRmllbGRJY29uIiwiaW5pdGlhbFNvcnQiLCJvcmRlckJ5Iiwic2V0dGluZ3NPYmplY3RJbmRleGVzIiwic2V0U2V0dGluZ3NPYmplY3RJbmRleGVzIiwib2JqZWN0TWV0YWRhdGFJdGVtSWQiLCJpZCIsImluZGV4TWV0YWRhdGFzIiwib2JqZWN0U2V0dGluZ3NEZXRhaWxJdGVtcyIsIm1hcCIsImluZGV4TWV0YWRhdGFJdGVtIiwibmFtZSIsImlzVW5pcXVlIiwiaW5kZXhUeXBlIiwiaW5kZXhGaWVsZHMiLCJpbmRleEZpZWxkTWV0YWRhdGFzIiwiaW5kZXhGaWVsZCIsImZpZWxkTWV0YWRhdGFJdGVtIiwiZmluZCIsImZpZWxkIiwiZmllbGRNZXRhZGF0YUlkIiwibGFiZWwiLCJqb2luIiwic29ydGVkQWN0aXZlT2JqZWN0U2V0dGluZ3NEZXRhaWxJdGVtcyIsImZpbHRlcmVkQWN0aXZlSXRlbXMiLCJmaWx0ZXIiLCJpdGVtIiwidG9Mb3dlckNhc2UiLCJpbmNsdWRlcyIsIkxlZnRJY29uIiwicGxhY2Vob2xkZXIiLCJ2YWx1ZSIsIm9uQ2hhbmdlIiwiSWNvbiIsIm9iamVjdFNldHRpbmdzSW5kZXgiLCJzaXplIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQ0EsU0FBU0EsZ0NBQWdDLFFBQVEsK0VBQStFO0FBQ2hJLFNBQVNDLFNBQVMsUUFBUSxrQ0FBa0M7QUFDNUQsU0FBU0MsbUJBQW1CLFFBQVEsbURBQW1EO0FBQ3ZGLFNBQVNDLEtBQUssUUFBUSxxQ0FBcUM7QUFDM0QsU0FBU0MsU0FBUyxRQUFRLHlDQUF5QztBQUNuRSxTQUFTQyxXQUFXLFFBQVEsMkNBQTJDO0FBQ3ZFLFNBQVNDLFFBQVEsUUFBUSx3Q0FBd0M7QUFDakUsU0FBU0MsY0FBYyxRQUFRLHlDQUF5QztBQUV4RSxPQUFPQyxZQUFZLGtCQUFrQjs7QUFHckMsU0FBU0MsZUFBZSxRQUFRLGlCQUFpQjtBQUNqRCxTQUFTQyxTQUFTLEVBQUVDLE9BQU8sRUFBRUMsUUFBUSxRQUFRLFFBQVE7QUFDckQsU0FBU0MsY0FBYyxRQUFRLFNBQVM7QUFDeEMsU0FBU0MsVUFBVSxFQUFFQyxhQUFhLFFBQVEsWUFBWTtBQUd0RCxPQUFPLE1BQU1DLDRCQUE0QlIsT0FBT0YsU0FBUyxDQUFDOztBQUUxRCxDQUFDLENBQUM7S0FGV1U7QUFJYixNQUFNQyxvQkFBb0JULE9BQU9QLFVBQVUsQ0FBQztrQkFDMUIsRUFBRSxDQUFDLEVBQUVpQixLQUFLLEVBQUUsR0FBS0EsTUFBTUMsT0FBTyxDQUFDLEdBQUc7O0FBRXBELENBQUM7TUFIS0Y7QUFTTixPQUFPLE1BQU1HLDJCQUEyQixDQUFDLEVBQ3ZDQyxrQkFBa0IsRUFDWTs7SUFDOUIsTUFBTSw0QkFBUUM7SUFDZCxNQUFNLENBQUNDLFlBQVlDLGNBQWMsR0FBR1osU0FBUztJQUU3QyxNQUFNYSxnQkFBK0Q7UUFDbkVDLFNBQVM7UUFDVEMsUUFBUTtZQUNOO2dCQUNFQyxVQUFVOzs7O2dCQUNWQyxXQUFXO2dCQUNYQyxXQUFXO2dCQUNYQyxPQUFPO1lBQ1Q7WUFDQTtnQkFDRUgsVUFBVTs7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

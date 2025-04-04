@@ -1,0 +1,331 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/activities/files/components/AttachmentList.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport3_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const lazy = __vite__cjsImport3_react["lazy"]; const Suspense = __vite__cjsImport3_react["Suspense"]; const useState = __vite__cjsImport3_react["useState"];
+import { IconButton, IconDownload, IconX } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { DropZone } from "/src/modules/activities/files/components/DropZone.tsx";
+import { useUploadAttachmentFile } from "/src/modules/activities/files/hooks/useUploadAttachmentFile.tsx";
+import { downloadFile } from "/src/modules/activities/files/utils/downloadFile.ts";
+import { isAttachmentPreviewEnabledState } from "/src/modules/client-config/states/isAttachmentPreviewEnabledState.ts";
+import { Modal } from "/src/modules/ui/layout/modal/components/Modal.tsx";
+import { useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { ActivityList } from "/src/modules/activities/components/ActivityList.tsx";
+import { ScrollWrapper } from "/src/modules/ui/utilities/scroll/components/ScrollWrapper.tsx";
+import { AttachmentRow } from "/src/modules/activities/files/components/AttachmentRow.tsx";
+const DocumentViewer = /*#__PURE__*/ lazy(()=>import("/src/modules/activities/files/components/DocumentViewer.tsx").then((module)=>({
+            default: module.DocumentViewer
+        })));
+_c = DocumentViewer;
+const StyledContainer = styled.div`
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: ${({ theme })=>theme.spacing(2, 6, 6)};
+  width: calc(100% - ${({ theme })=>theme.spacing(12)});
+  height: 100%;
+`;
+_c1 = StyledContainer;
+const StyledTitleBar = styled.h3`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: ${({ theme })=>theme.spacing(4)};
+  margin-top: ${({ theme })=>theme.spacing(4)};
+  place-items: center;
+  width: 100%;
+`;
+_c2 = StyledTitleBar;
+const StyledTitle = styled.span`
+  color: ${({ theme })=>theme.font.color.primary};
+  font-weight: ${({ theme })=>theme.font.weight.semiBold};
+`;
+_c3 = StyledTitle;
+const StyledCount = styled.span`
+  color: ${({ theme })=>theme.font.color.light};
+  margin-left: ${({ theme })=>theme.spacing(2)};
+`;
+_c4 = StyledCount;
+const StyledDropZoneContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+`;
+_c5 = StyledDropZoneContainer;
+const StyledLoadingContainer = styled.div`
+  align-items: center;
+  background: ${({ theme })=>theme.background.primary};
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  width: 100%;
+`;
+const StyledLoadingText = styled.div`
+  color: ${({ theme })=>theme.font.color.secondary};
+  font-size: ${({ theme })=>theme.font.size.lg};
+  font-weight: ${({ theme })=>theme.font.weight.medium};
+`;
+const StyledHeader = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 40px;
+`;
+_c6 = StyledHeader;
+const StyledModalTitle = styled.span`
+  color: ${({ theme })=>theme.font.color.primary};
+`;
+_c7 = StyledModalTitle;
+const StyledModalHeader = styled(Modal.Header)`
+  height: auto;
+  padding: 0;
+`;
+_c8 = StyledModalHeader;
+const StyledModalContent = styled(Modal.Content)`
+  padding: 0;
+`;
+_c9 = StyledModalContent;
+const StyledModal = styled(Modal)`
+  gap: ${({ theme })=>theme.spacing(2)};
+  padding: ${({ theme })=>theme.spacing(3)};
+`;
+_c10 = StyledModal;
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: ${({ theme })=>theme.spacing(1)};
+`;
+_c11 = StyledButtonContainer;
+export const AttachmentList = ({ targetableObject, title, attachments, button })=>{
+    _s();
+    const { uploadAttachmentFile } = useUploadAttachmentFile();
+    const [isDraggingFile, setIsDraggingFile] = useState(false);
+    const [previewedAttachment, setPreviewedAttachment] = useState(null);
+    const isAttachmentPreviewEnabled = useRecoilValue(isAttachmentPreviewEnabledState);
+    const onUploadFile = async (file)=>{
+        await uploadAttachmentFile(file, targetableObject);
+    };
+    const handlePreview = (attachment)=>{
+        if (!isAttachmentPreviewEnabled) return;
+        setPreviewedAttachment(attachment);
+    };
+    const handleClosePreview = ()=>{
+        setPreviewedAttachment(null);
+    };
+    const handleDownload = ()=>{
+        if (!previewedAttachment) return;
+        downloadFile(previewedAttachment.fullPath, previewedAttachment.name);
+    };
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            attachments && attachments.length > 0 && /*#__PURE__*/ _jsxDEV(StyledContainer, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledTitleBar, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(StyledTitle, {
+                                children: [
+                                    title,
+                                    " ",
+                                    /*#__PURE__*/ _jsxDEV(StyledCount, {
+                                        children: attachments.length
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                        lineNumber: 152,
+                                        columnNumber: 23
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                lineNumber: 151,
+                                columnNumber: 13
+                            }, this),
+                            button
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                        lineNumber: 150,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledDropZoneContainer, {
+                        onDragEnter: ()=>setIsDraggingFile(true),
+                        children: isDraggingFile ? /*#__PURE__*/ _jsxDEV(DropZone, {
+                            setIsDraggingFile: setIsDraggingFile,
+                            onUploadFile: onUploadFile
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                            lineNumber: 158,
+                            columnNumber: 15
+                        }, this) : /*#__PURE__*/ _jsxDEV(ActivityList, {
+                            children: attachments.map((attachment)=>/*#__PURE__*/ _jsxDEV(AttachmentRow, {
+                                    attachment: attachment,
+                                    onPreview: isAttachmentPreviewEnabled ? handlePreview : undefined
+                                }, attachment.id, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                    lineNumber: 165,
+                                    columnNumber: 19
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                            lineNumber: 163,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                        lineNumber: 156,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                lineNumber: 149,
+                columnNumber: 9
+            }, this),
+            previewedAttachment && isAttachmentPreviewEnabled && /*#__PURE__*/ _jsxDEV(StyledModal, {
+                size: "large",
+                isClosable: true,
+                onClose: handleClosePreview,
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledModalHeader, {
+                        children: /*#__PURE__*/ _jsxDEV(StyledHeader, {
+                            children: [
+                                /*#__PURE__*/ _jsxDEV(StyledModalTitle, {
+                                    children: previewedAttachment.name
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                    lineNumber: 182,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ _jsxDEV(StyledButtonContainer, {
+                                    children: [
+                                        /*#__PURE__*/ _jsxDEV(IconButton, {
+                                            Icon: IconDownload,
+                                            onClick: handleDownload,
+                                            size: "small"
+                                        }, void 0, false, {
+                                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                            lineNumber: 184,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ _jsxDEV(IconButton, {
+                                            Icon: IconX,
+                                            onClick: handleClosePreview,
+                                            size: "small"
+                                        }, void 0, false, {
+                                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                            lineNumber: 189,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                    lineNumber: 183,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                            lineNumber: 181,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                        lineNumber: 180,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(ScrollWrapper, {
+                        contextProviderName: "modalContent",
+                        componentInstanceId: `preview-modal-${previewedAttachment.id}`,
+                        scrollbarVariant: "no-padding",
+                        heightMode: "fit-content",
+                        children: /*#__PURE__*/ _jsxDEV(StyledModalContent, {
+                            children: /*#__PURE__*/ _jsxDEV(Suspense, {
+                                fallback: /*#__PURE__*/ _jsxDEV(StyledLoadingContainer, {
+                                    children: /*#__PURE__*/ _jsxDEV(StyledLoadingText, {
+                                        children: "Loading document viewer..."
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                        lineNumber: 207,
+                                        columnNumber: 21
+                                    }, void 0)
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                    lineNumber: 206,
+                                    columnNumber: 19
+                                }, void 0),
+                                children: /*#__PURE__*/ _jsxDEV(DocumentViewer, {
+                                    documentName: previewedAttachment.name,
+                                    documentUrl: previewedAttachment.fullPath
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                    lineNumber: 213,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                                lineNumber: 204,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                            lineNumber: 203,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                        lineNumber: 197,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx",
+                lineNumber: 179,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(AttachmentList, "uZt6dVhKDMP6Bme4sGvFEcXFuLM=", false, function() {
+    return [
+        useUploadAttachmentFile,
+        useRecoilValue
+    ];
+});
+_c12 = AttachmentList;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12;
+$RefreshReg$(_c, "DocumentViewer");
+$RefreshReg$(_c1, "StyledContainer");
+$RefreshReg$(_c2, "StyledTitleBar");
+$RefreshReg$(_c3, "StyledTitle");
+$RefreshReg$(_c4, "StyledCount");
+$RefreshReg$(_c5, "StyledDropZoneContainer");
+$RefreshReg$(_c6, "StyledHeader");
+$RefreshReg$(_c7, "StyledModalTitle");
+$RefreshReg$(_c8, "StyledModalHeader");
+$RefreshReg$(_c9, "StyledModalContent");
+$RefreshReg$(_c10, "StyledModal");
+$RefreshReg$(_c11, "StyledButtonContainer");
+$RefreshReg$(_c12, "AttachmentList");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/activities/files/components/AttachmentList.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkF0dGFjaG1lbnRMaXN0LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBsYXp5LCBSZWFjdEVsZW1lbnQsIFN1c3BlbnNlLCB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IEljb25CdXR0b24sIEljb25Eb3dubG9hZCwgSWNvblggfSBmcm9tICd0d2VudHktdWknO1xuXG5pbXBvcnQgeyBEcm9wWm9uZSB9IGZyb20gJ0AvYWN0aXZpdGllcy9maWxlcy9jb21wb25lbnRzL0Ryb3Bab25lJztcbmltcG9ydCB7IHVzZVVwbG9hZEF0dGFjaG1lbnRGaWxlIH0gZnJvbSAnQC9hY3Rpdml0aWVzL2ZpbGVzL2hvb2tzL3VzZVVwbG9hZEF0dGFjaG1lbnRGaWxlJztcbmltcG9ydCB7IEF0dGFjaG1lbnQgfSBmcm9tICdAL2FjdGl2aXRpZXMvZmlsZXMvdHlwZXMvQXR0YWNobWVudCc7XG5pbXBvcnQgeyBkb3dubG9hZEZpbGUgfSBmcm9tICdAL2FjdGl2aXRpZXMvZmlsZXMvdXRpbHMvZG93bmxvYWRGaWxlJztcbmltcG9ydCB7IEFjdGl2aXR5VGFyZ2V0YWJsZU9iamVjdCB9IGZyb20gJ0AvYWN0aXZpdGllcy90eXBlcy9BY3Rpdml0eVRhcmdldGFibGVFbnRpdHknO1xuaW1wb3J0IHsgaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWRTdGF0ZSB9IGZyb20gJ0AvY2xpZW50LWNvbmZpZy9zdGF0ZXMvaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWRTdGF0ZSc7XG5pbXBvcnQgeyBNb2RhbCB9IGZyb20gJ0AvdWkvbGF5b3V0L21vZGFsL2NvbXBvbmVudHMvTW9kYWwnO1xuaW1wb3J0IHsgdXNlUmVjb2lsVmFsdWUgfSBmcm9tICdyZWNvaWwnO1xuXG5pbXBvcnQgeyBBY3Rpdml0eUxpc3QgfSBmcm9tICdAL2FjdGl2aXRpZXMvY29tcG9uZW50cy9BY3Rpdml0eUxpc3QnO1xuaW1wb3J0IHsgU2Nyb2xsV3JhcHBlciB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3Njcm9sbC9jb21wb25lbnRzL1Njcm9sbFdyYXBwZXInO1xuaW1wb3J0IHsgQXR0YWNobWVudFJvdyB9IGZyb20gJy4vQXR0YWNobWVudFJvdyc7XG5cbmNvbnN0IERvY3VtZW50Vmlld2VyID0gbGF6eSgoKSA9PlxuICBpbXBvcnQoJ0AvYWN0aXZpdGllcy9maWxlcy9jb21wb25lbnRzL0RvY3VtZW50Vmlld2VyJykudGhlbigobW9kdWxlKSA9PiAoe1xuICAgIGRlZmF1bHQ6IG1vZHVsZS5Eb2N1bWVudFZpZXdlcixcbiAgfSkpLFxuKTtcblxudHlwZSBBdHRhY2htZW50TGlzdFByb3BzID0ge1xuICB0YXJnZXRhYmxlT2JqZWN0OiBBY3Rpdml0eVRhcmdldGFibGVPYmplY3Q7XG4gIHRpdGxlOiBzdHJpbmc7XG4gIGF0dGFjaG1lbnRzOiBBdHRhY2htZW50W107XG4gIGJ1dHRvbj86IFJlYWN0RWxlbWVudCB8IGZhbHNlO1xufTtcblxuY29uc3QgU3R5bGVkQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLXNlbGY6IHN0cmV0Y2g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBwYWRkaW5nOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMiwgNiwgNil9O1xuICB3aWR0aDogY2FsYygxMDAlIC0gJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEyKX0pO1xuICBoZWlnaHQ6IDEwMCU7XG5gO1xuXG5jb25zdCBTdHlsZWRUaXRsZUJhciA9IHN0eWxlZC5oM2BcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBtYXJnaW4tYm90dG9tOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNCl9O1xuICBtYXJnaW4tdG9wOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNCl9O1xuICBwbGFjZS1pdGVtczogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZFRpdGxlID0gc3R5bGVkLnNwYW5gXG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IucHJpbWFyeX07XG4gIGZvbnQtd2VpZ2h0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQud2VpZ2h0LnNlbWlCb2xkfTtcbmA7XG5cbmNvbnN0IFN0eWxlZENvdW50ID0gc3R5bGVkLnNwYW5gXG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IubGlnaHR9O1xuICBtYXJnaW4tbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZERyb3Bab25lQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgaGVpZ2h0OiAxMDAlO1xuICB3aWR0aDogMTAwJTtcbiAgb3ZlcmZsb3c6IGF1dG87XG5gO1xuXG5jb25zdCBTdHlsZWRMb2FkaW5nQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5iYWNrZ3JvdW5kLnByaW1hcnl9O1xuICBkaXNwbGF5OiBmbGV4O1xuICBoZWlnaHQ6IDgwdmg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZExvYWRpbmdUZXh0ID0gc3R5bGVkLmRpdmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5zZWNvbmRhcnl9O1xuICBmb250LXNpemU6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5zaXplLmxnfTtcbiAgZm9udC13ZWlnaHQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC53ZWlnaHQubWVkaXVtfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEhlYWRlciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgd2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDQwcHg7XG5gO1xuXG5jb25zdCBTdHlsZWRNb2RhbFRpdGxlID0gc3R5bGVkLnNwYW5gXG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IucHJpbWFyeX07XG5gO1xuXG5jb25zdCBTdHlsZWRNb2RhbEhlYWRlciA9IHN0eWxlZChNb2RhbC5IZWFkZXIpYFxuICBoZWlnaHQ6IGF1dG87XG4gIHBhZGRpbmc6IDA7XG5gO1xuXG5jb25zdCBTdHlsZWRNb2RhbENvbnRlbnQgPSBzdHlsZWQoTW9kYWwuQ29udGVudClgXG4gIHBhZGRpbmc6IDA7XG5gO1xuXG5jb25zdCBTdHlsZWRNb2RhbCA9IHN0eWxlZChNb2RhbClgXG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbiAgcGFkZGluZzogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDMpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEJ1dHRvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbmA7XG5cbmV4cG9ydCBjb25zdCBBdHRhY2htZW50TGlzdCA9ICh7XG4gIHRhcmdldGFibGVPYmplY3QsXG4gIHRpdGxlLFxuICBhdHRhY2htZW50cyxcbiAgYnV0dG9uLFxufTogQXR0YWNobWVudExpc3RQcm9wcykgPT4ge1xuICBjb25zdCB7IHVwbG9hZEF0dGFjaG1lbnRGaWxlIH0gPSB1c2VVcGxvYWRBdHRhY2htZW50RmlsZSgpO1xuICBjb25zdCBbaXNEcmFnZ2luZ0ZpbGUsIHNldElzRHJhZ2dpbmdGaWxlXSA9IHVzZVN0YXRlKGZhbHNlKTtcbiAgY29uc3QgW3ByZXZpZXdlZEF0dGFjaG1lbnQsIHNldFByZXZpZXdlZEF0dGFjaG1lbnRdID1cbiAgICB1c2VTdGF0ZTxBdHRhY2htZW50IHwgbnVsbD4obnVsbCk7XG4gIGNvbnN0IGlzQXR0YWNobWVudFByZXZpZXdFbmFibGVkID0gdXNlUmVjb2lsVmFsdWUoXG4gICAgaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWRTdGF0ZSxcbiAgKTtcblxuICBjb25zdCBvblVwbG9hZEZpbGUgPSBhc3luYyAoZmlsZTogRmlsZSkgPT4ge1xuICAgIGF3YWl0IHVwbG9hZEF0dGFjaG1lbnRGaWxlKGZpbGUsIHRhcmdldGFibGVPYmplY3QpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZVByZXZpZXcgPSAoYXR0YWNobWVudDogQXR0YWNobWVudCkgPT4ge1xuICAgIGlmICghaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWQpIHJldHVybjtcbiAgICBzZXRQcmV2aWV3ZWRBdHRhY2htZW50KGF0dGFjaG1lbnQpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZUNsb3NlUHJldmlldyA9ICgpID0+IHtcbiAgICBzZXRQcmV2aWV3ZWRBdHRhY2htZW50KG51bGwpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZURvd25sb2FkID0gKCkgPT4ge1xuICAgIGlmICghcHJldmlld2VkQXR0YWNobWVudCkgcmV0dXJuO1xuICAgIGRvd25sb2FkRmlsZShwcmV2aWV3ZWRBdHRhY2htZW50LmZ1bGxQYXRoLCBwcmV2aWV3ZWRBdHRhY2htZW50Lm5hbWUpO1xuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIHthdHRhY2htZW50cyAmJiBhdHRhY2htZW50cy5sZW5ndGggPiAwICYmIChcbiAgICAgICAgPFN0eWxlZENvbnRhaW5lcj5cbiAgICAgICAgICA8U3R5bGVkVGl0bGVCYXI+XG4gICAgICAgICAgICA8U3R5bGVkVGl0bGU+XG4gICAgICAgICAgICAgIHt0aXRsZX0gPFN0eWxlZENvdW50PnthdHRhY2htZW50cy5sZW5ndGh9PC9TdHlsZWRDb3VudD5cbiAgICAgICAgICAgIDwvU3R5bGVkVGl0bGU+XG4gICAgICAgICAgICB7YnV0dG9ufVxuICAgICAgICAgIDwvU3R5bGVkVGl0bGVCYXI+XG4gICAgICAgICAgPFN0eWxlZERyb3Bab25lQ29udGFpbmVyIG9uRHJhZ0VudGVyPXsoKSA9PiBzZXRJc0RyYWdnaW5nRmlsZSh0cnVlKX0+XG4gICAgICAgICAgICB7aXNEcmFnZ2luZ0ZpbGUgPyAoXG4gICAgICAgICAgICAgIDxEcm9wWm9uZVxuICAgICAgICAgICAgICAgIHNldElzRHJhZ2dpbmdGaWxlPXtzZXRJc0RyYWdnaW5nRmlsZX1cbiAgICAgICAgICAgICAgICBvblVwbG9hZEZpbGU9e29uVXBsb2FkRmlsZX1cbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICkgOiAoXG4gICAgICAgICAgICAgIDxBY3Rpdml0eUxpc3Q+XG4gICAgICAgICAgICAgICAge2F0dGFjaG1lbnRzLm1hcCgoYXR0YWNobWVudCkgPT4gKFxuICAgICAgICAgICAgICAgICAgPEF0dGFjaG1lbnRSb3dcbiAgICAgICAgICAgICAgICAgICAga2V5PXthdHRhY2htZW50LmlkfVxuICAgICAgICAgICAgICAgICAgICBhdHRhY2htZW50PXthdHRhY2htZW50fVxuICAgICAgICAgICAgICAgICAgICBvblByZXZpZXc9e1xuICAgICAgICAgICAgICAgICAgICAgIGlzQXR0YWNobWVudFByZXZpZXdFbmFibGVkID8gaGFuZGxlUHJldmlldyA6IHVuZGVmaW5lZFxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgICA8L0FjdGl2aXR5TGlzdD5cbiAgICAgICAgICAgICl9XG4gICAgICAgICAgPC9TdHlsZWREcm9wWm9uZUNvbnRhaW5lcj5cbiAgICAgICAgPC9TdHlsZWRDb250YWluZXI+XG4gICAgICApfVxuICAgICAge3ByZXZpZXdlZEF0dGFjaG1lbnQgJiYgaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWQgJiYgKFxuICAgICAgICA8U3R5bGVkTW9kYWwgc2l6ZT1cImxhcmdlXCIgaXNDbG9zYWJsZSBvbkNsb3NlPXtoYW5kbGVDbG9zZVByZXZpZXd9PlxuICAgICAgICAgIDxTdHlsZWRNb2RhbEhlYWRlcj5cbiAgICAgICAgICAgIDxTdHlsZWRIZWFkZXI+XG4gICAgICAgICAgICAgIDxTdHlsZWRNb2RhbFRpdGxlPntwcmV2aWV3ZWRBdHRhY2htZW50Lm5hbWV9PC9TdHlsZWRNb2RhbFRpdGxlPlxuICAgICAgICAgICAgICA8U3R5bGVkQnV0dG9uQ29udGFpbmVyPlxuICAgICAgICAgICAgICAgIDxJY29uQnV0dG9uXG4gICAgICAgICAgICAgICAgICBJY29uPXtJY29uRG93bmxvYWR9XG4gICAgICAgICAgICAgICAgICBvbkNsaWNrPXtoYW5kbGVEb3dubG9hZH1cbiAgICAgICAgICAgICAgICAgIHNpemU9XCJzbWFsbFwiXG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8SWNvbkJ1dHRvblxuICAgICAgICAgICAgICAgICAgSWNvbj17SWNvblh9XG4gICAgICAgICAgICAgICAgICBvbkNsaWNrPXtoYW5kbGVDbG9zZVByZXZpZXd9XG4gICAgICAgICAgICAgICAgICBzaXplPVwic21hbGxcIlxuICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDwvU3R5bGVkQnV0dG9uQ29udGFpbmVyPlxuICAgICAgICAgICAgPC9TdHlsZWRIZWFkZXI+XG4gICAgICAgICAgPC9TdHlsZWRNb2RhbEhlYWRlcj5cbiAgICAgICAgICA8U2Nyb2xsV3JhcHBlclxuICAgICAgICAgICAgY29udGV4dFByb3ZpZGVyTmFtZT1cIm1vZGFsQ29udGVudFwiXG4gICAgICAgICAgICBjb21wb25lbnRJbnN0YW5jZUlkPXtgcHJldmlldy1tb2RhbC0ke3ByZXZpZXdlZEF0dGFjaG1lbnQuaWR9YH1cbiAgICAgICAgICAgIHNjcm9sbGJhclZhcmlhbnQ9XCJuby1wYWRkaW5nXCJcbiAgICAgICAgICAgIGhlaWdodE1vZGU9XCJmaXQtY29udGVudFwiXG4gICAgICAgICAgPlxuICAgICAgICAgICAgPFN0eWxlZE1vZGFsQ29udGVudD5cbiAgICAgICAgICAgICAgPFN1c3BlbnNlXG4gICAgICAgICAgICAgICAgZmFsbGJhY2s9e1xuICAgICAgICAgICAgICAgICAgPFN0eWxlZExvYWRpbmdDb250YWluZXI+XG4gICAgICAgICAgICAgICAgICAgIDxTdHlsZWRMb2FkaW5nVGV4dD5cbiAgICAgICAgICAgICAgICAgICAgICBMb2FkaW5nIGRvY3VtZW50IHZpZXdlci4uLlxuICAgICAgICAgICAgICAgICAgICA8L1N0eWxlZExvYWRpbmdUZXh0PlxuICAgICAgICAgICAgICAgICAgPC9TdHlsZWRMb2FkaW5nQ29udGFpbmVyPlxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxEb2N1bWVudFZpZXdlclxuICAgICAgICAgICAgICAgICAgZG9jdW1lbnROYW1lPXtwcmV2aWV3ZWRBdHRhY2htZW50Lm5hbWV9XG4gICAgICAgICAgICAgICAgICBkb2N1bWVudFVybD17cHJldmlld2VkQXR0YWNobWVudC5mdWxsUGF0aH1cbiAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICA8L1N1c3BlbnNlPlxuICAgICAgICAgICAgPC9TdHlsZWRNb2RhbENvbnRlbnQ+XG4gICAgICAgICAgPC9TY3JvbGxXcmFwcGVyPlxuICAgICAgICA8L1N0eWxlZE1vZGFsPlxuICAgICAgKX1cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsic3R5bGVkIiwibGF6eSIsIlN1c3BlbnNlIiwidXNlU3RhdGUiLCJJY29uQnV0dG9uIiwiSWNvbkRvd25sb2FkIiwiSWNvblgiLCJEcm9wWm9uZSIsInVzZVVwbG9hZEF0dGFjaG1lbnRGaWxlIiwiZG93bmxvYWRGaWxlIiwiaXNBdHRhY2htZW50UHJldmlld0VuYWJsZWRTdGF0ZSIsIk1vZGFsIiwidXNlUmVjb2lsVmFsdWUiLCJBY3Rpdml0eUxpc3QiLCJTY3JvbGxXcmFwcGVyIiwiQXR0YWNobWVudFJvdyIsIkRvY3VtZW50Vmlld2VyIiwidGhlbiIsIm1vZHVsZSIsImRlZmF1bHQiLCJTdHlsZWRDb250YWluZXIiLCJkaXYiLCJ0aGVtZSIsInNwYWNpbmciLCJTdHlsZWRUaXRsZUJhciIsImgzIiwiU3R5bGVkVGl0bGUiLCJzcGFuIiwiZm9udCIsImNvbG9yIiwicHJpbWFyeSIsIndlaWdodCIsInNlbWlCb2xkIiwiU3R5bGVkQ291bnQiLCJsaWdodCIsIlN0eWxlZERyb3Bab25lQ29udGFpbmVyIiwiU3R5bGVkTG9hZGluZ0NvbnRhaW5lciIsImJhY2tncm91bmQiLCJTdHlsZWRMb2FkaW5nVGV4dCIsInNlY29uZGFyeSIsInNpemUiLCJsZyIsIm1lZGl1bSIsIlN0eWxlZEhlYWRlciIsIlN0eWxlZE1vZGFsVGl0bGUiLCJTdHlsZWRNb2RhbEhlYWRlciIsIkhlYWRlciIsIlN0eWxlZE1vZGFsQ29udGVudCIsIkNvbnRlbnQiLCJTdHlsZWRNb2RhbCIsIlN0eWxlZEJ1dHRvbkNvbnRhaW5lciIsIkF0dGFjaG1lbnRMaXN0IiwidGFyZ2V0YWJsZU9iamVjdCIsInRpdGxlIiwiYXR0YWNobWVudHMiLCJidXR0b24iLCJ1cGxvYWRBdHRhY2htZW50RmlsZSIsImlzRHJhZ2dpbmdGaWxlIiwic2V0SXNEcmFnZ2luZ0ZpbGUiLCJwcmV2aWV3ZWRBdHRhY2htZW50Iiwic2V0UHJldmlld2VkQXR0YWNobWVudCIsImlzQXR0YWNobWVudFByZXZpZXdFbmFibGVkIiwib25VcGxvYWRGaWxlIiwiZmlsZSIsImhhbmRsZVByZXZpZXciLCJhdHRhY2htZW50IiwiaGFuZGxlQ2xvc2VQcmV2aWV3IiwiaGFuZGxlRG93bmxvYWQiLCJmdWxsUGF0aCIsIm5hbWUiLCJsZW5ndGgiLCJvbkRyYWdFbnRlciIsIm1hcCIsIm9uUHJldmlldyIsInVuZGVmaW5lZCIsImlkIiwiaXNDbG9zYWJsZSIsIm9uQ2xvc2UiLCJJY29uIiwib25DbGljayIsImNvbnRleHRQcm92aWRlck5hbWUiLCJjb21wb25lbnRJbnN0YW5jZUlkIiwic2Nyb2xsYmFyVmFyaWFudCIsImhlaWdodE1vZGUiLCJmYWxsYmFjayIsImRvY3VtZW50TmFtZSIsImRvY3VtZW50VXJsIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsT0FBT0EsWUFBWSxrQkFBa0I7QUFDckMsU0FBU0MsSUFBSSxFQUFnQkMsUUFBUSxFQUFFQyxRQUFRLFFBQVEsUUFBUTtBQUMvRCxTQUFTQyxVQUFVLEVBQUVDLFlBQVksRUFBRUMsS0FBSyxRQUFRLFlBQVk7QUFFNUQsU0FBU0MsUUFBUSxRQUFRLHlDQUF5QztBQUNsRSxTQUFTQyx1QkFBdUIsUUFBUSxtREFBbUQ7QUFFM0YsU0FBU0MsWUFBWSxRQUFRLHdDQUF3QztBQUVyRSxTQUFTQywrQkFBK0IsUUFBUSx5REFBeUQ7QUFDekcsU0FBU0MsS0FBSyxRQUFRLHFDQUFxQztBQUMzRCxTQUFTQyxjQUFjLFFBQVEsU0FBUztBQUV4QyxTQUFTQyxZQUFZLFFBQVEsdUNBQXVDO0FBQ3BFLFNBQVNDLGFBQWEsUUFBUSxpREFBaUQ7QUFDL0UsU0FBU0MsYUFBYSxRQUFRLGtCQUFrQjtBQUVoRCxNQUFNQywrQkFBaUJmLEtBQUssSUFDMUIsTUFBTSxDQUFDLGdEQUFnRGdCLElBQUksQ0FBQyxDQUFDQyxTQUFZLENBQUE7WUFDdkVDLFNBQVNELE9BQU9GLGNBQWM7UUFDaEMsQ0FBQTtLQUhJQTtBQWFOLE1BQU1JLGtCQUFrQnBCLE9BQU9xQixHQUFHLENBQUM7Ozs7OztXQU14QixFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLE9BQU8sQ0FBQyxHQUFHLEdBQUcsR0FBRztxQkFDOUIsRUFBRSxDQUFDLEVBQUVELEtBQUssRUFBRSxHQUFLQSxNQUFNQyxPQUFPLENB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

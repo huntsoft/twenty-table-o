@@ -1,0 +1,201 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport4_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useCallback = __vite__cjsImport4_react["useCallback"];
+import { RecordBoardColumnHeaderAggregateDropdown } from "/src/modules/object-record/record-board/record-board-column/components/RecordBoardColumnHeaderAggregateDropdown.tsx";
+import { useCurrentRecordGroupId } from "/src/modules/object-record/record-group/hooks/useCurrentRecordGroupId.ts";
+import { recordGroupDefinitionFamilyState } from "/src/modules/object-record/record-group/states/recordGroupDefinitionFamilyState.ts";
+import { RecordGroupDefinitionType } from "/src/modules/object-record/record-group/types/RecordGroupDefinition.ts";
+import { useRecordTableContextOrThrow } from "/src/modules/object-record/record-table/contexts/RecordTableContext.ts";
+import { RecordTableTd } from "/src/modules/object-record/record-table/record-table-cell/components/RecordTableTd.tsx";
+import { RecordTableRecordGroupStickyEffect } from "/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupStickyEffect.tsx";
+import { useAggregateRecordsForRecordTableSection } from "/src/modules/object-record/record-table/record-table-section/hooks/useAggregateRecordsForRecordTableSection.tsx";
+import { isRecordGroupTableSectionToggledComponentState } from "/src/modules/object-record/record-table/record-table-section/states/isRecordGroupTableSectionToggledComponentState.ts";
+import { visibleTableColumnsComponentSelector } from "/src/modules/object-record/record-table/states/selectors/visibleTableColumnsComponentSelector.ts";
+import { useRecoilComponentFamilyStateV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentFamilyStateV2.ts";
+import { useRecoilComponentValueV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentValueV2.ts";
+import { useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { AnimatedLightIconButton, IconChevronDown, Tag } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledTrContainer = styled.tr`
+  cursor: pointer;
+`;
+_c = StyledTrContainer;
+const StyledChevronContainer = styled(RecordTableTd)`
+  border-right: none;
+  color: ${({ theme })=>theme.font.color.secondary};
+  text-align: center;
+  vertical-align: middle;
+`;
+_c1 = StyledChevronContainer;
+const StyledAnimatedLightIconButton = styled(AnimatedLightIconButton)`
+  display: block;
+  margin: auto;
+`;
+_c2 = StyledAnimatedLightIconButton;
+const StyledRecordGroupSection = styled(RecordTableTd)`
+  border-right: none;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: ${({ theme })=>theme.spacing(1)};
+`;
+_c3 = StyledRecordGroupSection;
+const StyledEmptyTd = styled.td`
+  border-bottom: 1px solid ${({ theme })=>theme.border.color.light};
+`;
+_c4 = StyledEmptyTd;
+const StyledTag = styled(Tag)`
+  flex-shrink: 0;
+`;
+_c5 = StyledTag;
+export const RecordTableRecordGroupSection = ()=>{
+    _s();
+    const theme = useTheme();
+    const currentRecordGroupId = useCurrentRecordGroupId();
+    const visibleColumns = useRecoilComponentValueV2(visibleTableColumnsComponentSelector);
+    const { objectMetadataItem } = useRecordTableContextOrThrow();
+    const { aggregateValue, aggregateLabel } = useAggregateRecordsForRecordTableSection();
+    const [isRecordGroupTableSectionToggled, setIsRecordGroupTableSectionToggled] = useRecoilComponentFamilyStateV2(isRecordGroupTableSectionToggledComponentState, currentRecordGroupId);
+    const recordGroup = useRecoilValue(recordGroupDefinitionFamilyState(currentRecordGroupId));
+    const handleDropdownToggle = useCallback(()=>{
+        setIsRecordGroupTableSectionToggled((prevState)=>!prevState);
+    }, [
+        setIsRecordGroupTableSectionToggled
+    ]);
+    if (!isDefined(recordGroup)) {
+        return null;
+    }
+    return /*#__PURE__*/ _jsxDEV(StyledTrContainer, {
+        onClick: handleDropdownToggle,
+        children: [
+            /*#__PURE__*/ _jsxDEV("td", {
+                "aria-hidden": true
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 89,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledChevronContainer, {
+                children: /*#__PURE__*/ _jsxDEV(StyledAnimatedLightIconButton, {
+                    Icon: IconChevronDown,
+                    size: "small",
+                    accent: "secondary",
+                    animate: {
+                        rotate: !isRecordGroupTableSectionToggled ? -90 : 0
+                    },
+                    transition: {
+                        duration: theme.animation.duration.normal
+                    }
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                    lineNumber: 91,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 90,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledRecordGroupSection, {
+                className: "disable-shadow",
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledTag, {
+                        variant: recordGroup.type !== RecordGroupDefinitionType.NoValue ? 'solid' : 'outline',
+                        color: recordGroup.type !== RecordGroupDefinitionType.NoValue ? recordGroup.color : 'transparent',
+                        text: recordGroup.title,
+                        weight: "medium"
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                        lineNumber: 100,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(RecordBoardColumnHeaderAggregateDropdown, {
+                        aggregateValue: aggregateValue,
+                        dropdownId: `record-group-section-aggregate-dropdown-${currentRecordGroupId}`,
+                        objectMetadataItem: objectMetadataItem,
+                        aggregateLabel: aggregateLabel
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                        lineNumber: 114,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(RecordTableRecordGroupStickyEffect, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                        lineNumber: 120,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 99,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledEmptyTd, {
+                colSpan: visibleColumns.length - 1
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 122,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledEmptyTd, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 123,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledEmptyTd, {}, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+                lineNumber: 124,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx",
+        lineNumber: 88,
+        columnNumber: 5
+    }, this);
+};
+_s(RecordTableRecordGroupSection, "QZaRmf7W4NMwLWGVLoHfmKd0VnQ=", false, function() {
+    return [
+        useTheme,
+        useCurrentRecordGroupId,
+        useRecoilComponentValueV2,
+        useRecordTableContextOrThrow,
+        useAggregateRecordsForRecordTableSection,
+        useRecoilComponentFamilyStateV2,
+        useRecoilValue
+    ];
+});
+_c6 = RecordTableRecordGroupSection;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6;
+$RefreshReg$(_c, "StyledTrContainer");
+$RefreshReg$(_c1, "StyledChevronContainer");
+$RefreshReg$(_c2, "StyledAnimatedLightIconButton");
+$RefreshReg$(_c3, "StyledRecordGroupSection");
+$RefreshReg$(_c4, "StyledEmptyTd");
+$RefreshReg$(_c5, "StyledTag");
+$RefreshReg$(_c6, "RecordTableRecordGroupSection");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSection.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlJlY29yZFRhYmxlUmVjb3JkR3JvdXBTZWN0aW9uLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VUaGVtZSB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IHVzZUNhbGxiYWNrIH0gZnJvbSAncmVhY3QnO1xuXG5pbXBvcnQgeyBSZWNvcmRCb2FyZENvbHVtbkhlYWRlckFnZ3JlZ2F0ZURyb3Bkb3duIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9yZWNvcmQtYm9hcmQtY29sdW1uL2NvbXBvbmVudHMvUmVjb3JkQm9hcmRDb2x1bW5IZWFkZXJBZ2dyZWdhdGVEcm9wZG93bic7XG5pbXBvcnQgeyB1c2VDdXJyZW50UmVjb3JkR3JvdXBJZCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZ3JvdXAvaG9va3MvdXNlQ3VycmVudFJlY29yZEdyb3VwSWQnO1xuaW1wb3J0IHsgcmVjb3JkR3JvdXBEZWZpbml0aW9uRmFtaWx5U3RhdGUgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWdyb3VwL3N0YXRlcy9yZWNvcmRHcm91cERlZmluaXRpb25GYW1pbHlTdGF0ZSc7XG5pbXBvcnQgeyBSZWNvcmRHcm91cERlZmluaXRpb25UeXBlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ncm91cC90eXBlcy9SZWNvcmRHcm91cERlZmluaXRpb24nO1xuaW1wb3J0IHsgdXNlUmVjb3JkVGFibGVDb250ZXh0T3JUaHJvdyB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtdGFibGUvY29udGV4dHMvUmVjb3JkVGFibGVDb250ZXh0JztcbmltcG9ydCB7IFJlY29yZFRhYmxlVGQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXRhYmxlL3JlY29yZC10YWJsZS1jZWxsL2NvbXBvbmVudHMvUmVjb3JkVGFibGVUZCc7XG5pbXBvcnQgeyBSZWNvcmRUYWJsZVJlY29yZEdyb3VwU3RpY2t5RWZmZWN0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC10YWJsZS9yZWNvcmQtdGFibGUtc2VjdGlvbi9jb21wb25lbnRzL1JlY29yZFRhYmxlUmVjb3JkR3JvdXBTdGlja3lFZmZlY3QnO1xuaW1wb3J0IHsgdXNlQWdncmVnYXRlUmVjb3Jkc0ZvclJlY29yZFRhYmxlU2VjdGlvbiB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtdGFibGUvcmVjb3JkLXRhYmxlLXNlY3Rpb24vaG9va3MvdXNlQWdncmVnYXRlUmVjb3Jkc0ZvclJlY29yZFRhYmxlU2VjdGlvbic7XG5pbXBvcnQgeyBpc1JlY29yZEdyb3VwVGFibGVTZWN0aW9uVG9nZ2xlZENvbXBvbmVudFN0YXRlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC10YWJsZS9yZWNvcmQtdGFibGUtc2VjdGlvbi9zdGF0ZXMvaXNSZWNvcmRHcm91cFRhYmxlU2VjdGlvblRvZ2dsZWRDb21wb25lbnRTdGF0ZSc7XG5pbXBvcnQgeyB2aXNpYmxlVGFibGVDb2x1bW5zQ29tcG9uZW50U2VsZWN0b3IgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXRhYmxlL3N0YXRlcy9zZWxlY3RvcnMvdmlzaWJsZVRhYmxlQ29sdW1uc0NvbXBvbmVudFNlbGVjdG9yJztcbmltcG9ydCB7IHVzZVJlY29pbENvbXBvbmVudEZhbWlseVN0YXRlVjIgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9zdGF0ZS9jb21wb25lbnQtc3RhdGUvaG9va3MvdXNlUmVjb2lsQ29tcG9uZW50RmFtaWx5U3RhdGVWMic7XG5pbXBvcnQgeyB1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyIH0gZnJvbSAnQC91aS91dGlsaXRpZXMvc3RhdGUvY29tcG9uZW50LXN0YXRlL2hvb2tzL3VzZVJlY29pbENvbXBvbmVudFZhbHVlVjInO1xuaW1wb3J0IHsgdXNlUmVjb2lsVmFsdWUgfSBmcm9tICdyZWNvaWwnO1xuaW1wb3J0IHsgQW5pbWF0ZWRMaWdodEljb25CdXR0b24sIEljb25DaGV2cm9uRG93biwgVGFnIH0gZnJvbSAndHdlbnR5LXVpJztcbmltcG9ydCB7IGlzRGVmaW5lZCB9IGZyb20gJ3R3ZW50eS1zaGFyZWQvdXRpbHMnO1xuXG5jb25zdCBTdHlsZWRUckNvbnRhaW5lciA9IHN0eWxlZC50cmBcbiAgY3Vyc29yOiBwb2ludGVyO1xuYDtcblxuY29uc3QgU3R5bGVkQ2hldnJvbkNvbnRhaW5lciA9IHN0eWxlZChSZWNvcmRUYWJsZVRkKWBcbiAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLnNlY29uZGFyeX07XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbmA7XG5cbmNvbnN0IFN0eWxlZEFuaW1hdGVkTGlnaHRJY29uQnV0dG9uID0gc3R5bGVkKEFuaW1hdGVkTGlnaHRJY29uQnV0dG9uKWBcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogYXV0bztcbmA7XG5cbmNvbnN0IFN0eWxlZFJlY29yZEdyb3VwU2VjdGlvbiA9IHN0eWxlZChSZWNvcmRUYWJsZVRkKWBcbiAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICBoZWlnaHQ6IDMycHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEVtcHR5VGQgPSBzdHlsZWQudGRgXG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJvcmRlci5jb2xvci5saWdodH07XG5gO1xuXG5jb25zdCBTdHlsZWRUYWcgPSBzdHlsZWQoVGFnKWBcbiAgZmxleC1zaHJpbms6IDA7XG5gO1xuXG5leHBvcnQgY29uc3QgUmVjb3JkVGFibGVSZWNvcmRHcm91cFNlY3Rpb24gPSAoKSA9PiB7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcblxuICBjb25zdCBjdXJyZW50UmVjb3JkR3JvdXBJZCA9IHVzZUN1cnJlbnRSZWNvcmRHcm91cElkKCk7XG5cbiAgY29uc3QgdmlzaWJsZUNvbHVtbnMgPSB1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyKFxuICAgIHZpc2libGVUYWJsZUNvbHVtbnNDb21wb25lbnRTZWxlY3RvcixcbiAgKTtcblxuICBjb25zdCB7IG9iamVjdE1ldGFkYXRhSXRlbSB9ID0gdXNlUmVjb3JkVGFibGVDb250ZXh0T3JUaHJvdygpO1xuXG4gIGNvbnN0IHsgYWdncmVnYXRlVmFsdWUsIGFnZ3JlZ2F0ZUxhYmVsIH0gPVxuICAgIHVzZUFnZ3JlZ2F0ZVJlY29yZHNGb3JSZWNvcmRUYWJsZVNlY3Rpb24oKTtcblxuICBjb25zdCBbXG4gICAgaXNSZWNvcmRHcm91cFRhYmxlU2VjdGlvblRvZ2dsZWQsXG4gICAgc2V0SXNSZWNvcmRHcm91cFRhYmxlU2VjdGlvblRvZ2dsZWQsXG4gIF0gPSB1c2VSZWNvaWxDb21wb25lbnRGYW1pbHlTdGF0ZVYyKFxuICAgIGlzUmVjb3JkR3JvdXBUYWJsZVNlY3Rpb25Ub2dnbGVkQ29tcG9uZW50U3RhdGUsXG4gICAgY3VycmVudFJlY29yZEdyb3VwSWQsXG4gICk7XG5cbiAgY29uc3QgcmVjb3JkR3JvdXAgPSB1c2VSZWNvaWxWYWx1ZShcbiAgICByZWNvcmRHcm91cERlZmluaXRpb25GYW1pbHlTdGF0ZShjdXJyZW50UmVjb3JkR3JvdXBJZCksXG4gICk7XG5cbiAgY29uc3QgaGFuZGxlRHJvcGRvd25Ub2dnbGUgPSB1c2VDYWxsYmFjaygoKSA9PiB7XG4gICAgc2V0SXNSZWNvcmRHcm91cFRhYmxlU2VjdGlvblRvZ2dsZWQoKHByZXZTdGF0ZSkgPT4gIXByZXZTdGF0ZSk7XG4gIH0sIFtzZXRJc1JlY29yZEdyb3VwVGFibGVTZWN0aW9uVG9nZ2xlZF0pO1xuXG4gIGlmICghaXNEZWZpbmVkKHJlY29yZEdyb3VwKSkge1xuICAgIHJldHVybiBudWxsO1xuICB9XG5cbiAgcmV0dXJuIChcbiAgICA8U3R5bGVkVHJDb250YWluZXIgb25DbGljaz17aGFuZGxlRHJvcGRvd25Ub2dnbGV9PlxuICAgICAgPHRkIGFyaWEtaGlkZGVuIC8+XG4gICAgICA8U3R5bGVkQ2hldnJvbkNvbnRhaW5lcj5cbiAgICAgICAgPFN0eWxlZEFuaW1hdGVkTGlnaHRJY29uQnV0dG9uXG4gICAgICAgICAgSWNvbj17SWNvbkNoZXZyb25Eb3dufVxuICAgICAgICAgIHNpemU9XCJzbWFsbFwiXG4gICAgICAgICAgYWNjZW50PVwic2Vjb25kYXJ5XCJcbiAgICAgICAgICBhbmltYXRlPXt7IHJvdGF0ZTogIWlzUmVjb3JkR3JvdXBUYWJsZVNlY3Rpb25Ub2dnbGVkID8gLTkwIDogMCB9fVxuICAgICAgICAgIHRyYW5zaXRpb249e3sgZHVyYXRpb246IHRoZW1lLmFuaW1hdGlvbi5kdXJhdGlvbi5ub3JtYWwgfX1cbiAgICAgICAgLz5cbiAgICAgIDwvU3R5bGVkQ2hldnJvbkNvbnRhaW5lcj5cbiAgICAgIDxTdHlsZWRSZWNvcmRHcm91cFNlY3Rpb24gY2xhc3NOYW1lPVwiZGlzYWJsZS1zaGFkb3dcIj5cbiAgICAgICAgPFN0eWxlZFRhZ1xuICAgICAgICAgIHZhcmlhbnQ9e1xuICAgICAgICAgICAgcmVjb3JkR3JvdXAudHlwZSAhPT0gUmVjb3JkR3JvdXBEZWZpbml0aW9uVHlwZS5Ob1ZhbHVlXG4gICAgICAgICAgICAgID8gJ3NvbGlkJ1xuICAgICAgICAgICAgICA6ICdvdXRsaW5lJ1xuICAgICAgICAgIH1cbiAgICAgICAgICBjb2xvcj17XG4gICAgICAgICAgICByZWNvcmRHcm91cC50eXBlICE9PSBSZWNvcmRHcm91cERlZmluaXRpb25UeXBlLk5vVmFsdWVcbiAgICAgICAgICAgICAgPyByZWNvcmRHcm91cC5jb2xvclxuICAgICAgICAgICAgICA6ICd0cmFuc3BhcmVudCdcbiAgICAgICAgICB9XG4gICAgICAgICAgdGV4dD17cmVjb3JkR3JvdXAudGl0bGV9XG4gICAgICAgICAgd2VpZ2h0PVwibWVkaXVtXCJcbiAgICAgICAgLz5cbiAgICAgICAgPFJlY29yZEJvYXJkQ29sdW1uSGVhZGVyQWdncmVnYXRlRHJvcGRvd25cbiAgICAgICAgICBhZ2dyZWdhdGVWYWx1ZT17YWdncmVnYXRlVmFsdWV9XG4gICAgICAgICAgZHJvcGRvd25JZD17YHJlY29yZC1ncm91cC1zZWN0aW9uLWFnZ3JlZ2F0ZS1kcm9wZG93bi0ke2N1cnJlbnRSZWNvcmRHcm91cElkfWB9XG4gICAgICAgICAgb2JqZWN0TWV0YWRhdGFJdGVtPXtvYmplY3RNZXRhZGF0YUl0ZW19XG4gICAgICAgICAgYWdncmVnYXRlTGFiZWw9e2FnZ3JlZ2F0ZUxhYmVsfVxuICAgICAgICAvPlxuICAgICAgICA8UmVjb3JkVGFibGVSZWNvcmRHcm91cFN0aWNreUVmZmVjdCAvPlxuICAgICAgPC9TdHlsZWRSZWNvcmRHcm91cFNlY3Rpb24+XG4gICAgICA8U3R5bGVkRW1wdHlUZCBjb2xTcGFuPXt2aXNpYmxlQ29sdW1ucy5sZW5ndGggLSAxfSAvPlxuICAgICAgPFN0eWxlZEVtcHR5VGQgLz5cbiAgICAgIDxTdHlsZWRFbXB0eVRkIC8+XG4gICAgPC9TdHlsZWRUckNvbnRhaW5lcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlVGhlbWUiLCJzdHlsZWQiLCJ1c2VDYWxsYmFjayIsIlJlY29yZEJvYXJkQ29sdW1uSGVhZGVyQWdncmVnYXRlRHJvcGRvd24iLCJ1c2VDdXJyZW50UmVjb3JkR3JvdXBJZCIsInJlY29yZEdyb3VwRGVmaW5pdGlvbkZhbWlseVN0YXRlIiwiUmVjb3JkR3JvdXBEZWZpbml0aW9uVHlwZSIsInVzZVJlY29yZFRhYmxlQ29udGV4dE9yVGhyb3ciLCJSZWNvcmRUYWJsZVRkIiwiUmVjb3JkVGFibGVSZWNvcmRHcm91cFN0aWNreUVmZmVjdCIsInVzZUFnZ3JlZ2F0ZVJlY29yZHNGb3JSZWNvcmRUYWJsZVNlY3Rpb24iLCJpc1JlY29yZEdyb3VwVGFibGVTZWN0aW9uVG9nZ2xlZENvbXBvbmVudFN0YXRlIiwidmlzaWJsZVRhYmxlQ29sdW1uc0NvbXBvbmVudFNlbGVjdG9yIiwidXNlUmVjb2lsQ29tcG9uZW50RmFtaWx5U3RhdGVWMiIsInVzZVJlY29pbENvbXBvbmVudFZhbHVlVjIiLCJ1c2VSZWNvaWxWYWx1ZSIsIkFuaW1hdGVkTGlnaHRJY29uQnV0dG9uIiwiSWNvbkNoZXZyb25Eb3duIiwiVGFnIiwiaXNEZWZpbmVkIiwiU3R5bGVkVHJDb250YWluZXIiLCJ0ciIsIlN0eWxlZENoZXZyb25Db250YWluZXIiLCJ0aGVtZSIsImZvbnQiLCJjb2xvciIsInNlY29uZGFyeSIsIlN0eWxlZEFuaW1hdGVkTGlnaHRJY29uQnV0dG9uIiwiU3R5bGVkUmVjb3JkR3JvdXBTZWN0aW9uIiwic3BhY2luZyIsIlN0eWxlZEVtcHR5VGQiLCJ0ZCIsImJvcmRlciIsImxpZ2h0IiwiU3R5bGVkVGFnIiwiUmVjb3JkVGFibGVSZWNvcmRHcm91cFNlY3Rpb24iLCJjdXJyZW50UmVjb3JkR3JvdXBJZCIsInZpc2libGVDb2x1bW5zIiwib2JqZWN0TWV0YWRhdGFJdGVtIiwiYWdncmVnYXRlVmFsdWUiLCJhZ2dyZWdhdGVMYWJlbCIsImlzUmVjb3JkR3JvdXBUYWJsZVNlY3Rpb25Ub2dnbGVkIiwic2V0SXNSZWNvcmRHcm91cFRhYmxlU2VjdGlvblRvZ2dsZWQiLCJyZWNvcmRHcm91cCIsImhhbmRsZURyb3Bkb3duVG9nZ2xlIiwicHJldlN0YXRlIiwib25DbGljayIsImFyaWEtaGlkZGVuIiwiSWNvbiIsInNpemUiLCJhY2NlbnQiLCJhbmltYXRlIiwicm90YXRlIiwidHJhbnNpdGlvbiIsImR1cmF0aW9uIiwiYW5pbWF0aW9uIiwibm9ybWFsIiwiY2xhc3NOYW1lIiwidmFyaWFudCIsInR5cGUiLCJOb1ZhbHVlIiwidGV4dCIsInRpdGxlIiwid2VpZ2h0IiwiZHJvcGRvd25JZCIsImNvbFNwYW4iLCJsZW5ndGgiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7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

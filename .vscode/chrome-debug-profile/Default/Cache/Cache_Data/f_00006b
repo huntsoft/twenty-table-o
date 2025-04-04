@@ -1,0 +1,156 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { TabList } from "/src/modules/ui/layout/tab/components/TabList.tsx";
+import { activeTabIdComponentState } from "/src/modules/ui/layout/tab/states/activeTabIdComponentState.ts";
+import { useRecoilComponentValueV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentValueV2.ts";
+import { useFlowOrThrow } from "/src/modules/workflow/hooks/useFlowOrThrow.ts";
+import { useWorkflowRun } from "/src/modules/workflow/hooks/useWorkflowRun.ts";
+import { useWorkflowRunIdOrThrow } from "/src/modules/workflow/hooks/useWorkflowRunIdOrThrow.ts";
+import { WorkflowStepContextProvider } from "/src/modules/workflow/states/context/WorkflowStepContext.ts";
+import { useWorkflowSelectedNodeOrThrow } from "/src/modules/workflow/workflow-diagram/hooks/useWorkflowSelectedNodeOrThrow.ts";
+import { WorkflowRunStepInputDetail } from "/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx";
+import { WorkflowRunStepNodeDetail } from "/src/modules/workflow/workflow-steps/components/WorkflowRunStepNodeDetail.tsx";
+import { WorkflowRunStepOutputDetail } from "/src/modules/workflow/workflow-steps/components/WorkflowRunStepOutputDetail.tsx";
+import { WORKFLOW_RUN_STEP_SIDE_PANEL_TAB_LIST_COMPONENT_ID } from "/src/modules/workflow/workflow-steps/constants/WorkflowRunStepSidePanelTabListComponentId.ts";
+import { WorkflowRunTabId } from "/src/modules/workflow/workflow-steps/types/WorkflowRunTabId.tsx";
+import { getWorkflowRunStepExecutionStatus } from "/src/modules/workflow/workflow-steps/utils/getWorkflowRunStepExecutionStatus.ts";
+import { TRIGGER_STEP_ID } from "/src/modules/workflow/workflow-trigger/constants/TriggerStepId.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { IconLogin2, IconLogout, IconStepInto } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+_c = StyledContainer;
+const StyledTabList = styled(TabList)`
+  background-color: ${({ theme })=>theme.background.secondary};
+  padding-left: ${({ theme })=>theme.spacing(2)};
+`;
+_c1 = StyledTabList;
+export const CommandMenuWorkflowRunViewStep = ()=>{
+    _s();
+    const flow = useFlowOrThrow();
+    const workflowSelectedNode = useWorkflowSelectedNodeOrThrow();
+    const workflowRunId = useWorkflowRunIdOrThrow();
+    const workflowRun = useWorkflowRun({
+        workflowRunId
+    });
+    const activeTabId = useRecoilComponentValueV2(activeTabIdComponentState, WORKFLOW_RUN_STEP_SIDE_PANEL_TAB_LIST_COMPONENT_ID);
+    const stepExecutionStatus = isDefined(workflowRun) ? getWorkflowRunStepExecutionStatus({
+        workflowRunOutput: workflowRun.output,
+        stepId: workflowSelectedNode
+    }) : undefined;
+    const areInputAndOutputTabsDisabled = workflowSelectedNode === TRIGGER_STEP_ID || stepExecutionStatus === 'running' || stepExecutionStatus === 'not-executed';
+    const tabs = [
+        {
+            id: WorkflowRunTabId.NODE,
+            title: 'Node',
+            Icon: IconStepInto
+        },
+        {
+            id: WorkflowRunTabId.INPUT,
+            title: 'Input',
+            Icon: IconLogin2,
+            disabled: areInputAndOutputTabsDisabled
+        },
+        {
+            id: WorkflowRunTabId.OUTPUT,
+            title: 'Output',
+            Icon: IconLogout,
+            disabled: areInputAndOutputTabsDisabled
+        }
+    ];
+    if (!isDefined(workflowRun)) {
+        return null;
+    }
+    return /*#__PURE__*/ _jsxDEV(WorkflowStepContextProvider, {
+        value: {
+            workflowVersionId: workflowRun.workflowVersionId,
+            workflowRunId: workflowRun.id
+        },
+        children: /*#__PURE__*/ _jsxDEV(StyledContainer, {
+            children: [
+                /*#__PURE__*/ _jsxDEV(StyledTabList, {
+                    tabs: tabs,
+                    behaveAsLinks: false,
+                    componentInstanceId: WORKFLOW_RUN_STEP_SIDE_PANEL_TAB_LIST_COMPONENT_ID
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+                    lineNumber: 88,
+                    columnNumber: 9
+                }, this),
+                activeTabId === WorkflowRunTabId.NODE ? /*#__PURE__*/ _jsxDEV(WorkflowRunStepNodeDetail, {
+                    stepId: workflowSelectedNode,
+                    trigger: flow.trigger,
+                    steps: flow.steps,
+                    stepExecutionStatus: stepExecutionStatus
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+                    lineNumber: 97,
+                    columnNumber: 11
+                }, this) : null,
+                activeTabId === WorkflowRunTabId.INPUT ? /*#__PURE__*/ _jsxDEV(WorkflowRunStepInputDetail, {
+                    stepId: workflowSelectedNode
+                }, workflowSelectedNode, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+                    lineNumber: 106,
+                    columnNumber: 11
+                }, this) : null,
+                activeTabId === WorkflowRunTabId.OUTPUT ? /*#__PURE__*/ _jsxDEV(WorkflowRunStepOutputDetail, {
+                    stepId: workflowSelectedNode
+                }, workflowSelectedNode, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+                    lineNumber: 113,
+                    columnNumber: 11
+                }, this) : null
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+            lineNumber: 87,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx",
+        lineNumber: 81,
+        columnNumber: 5
+    }, this);
+};
+_s(CommandMenuWorkflowRunViewStep, "5e2gClWmUXSFXMEPEBZNjBhswv4=", false, function() {
+    return [
+        useFlowOrThrow,
+        useWorkflowSelectedNodeOrThrow,
+        useWorkflowRunIdOrThrow,
+        useWorkflowRun,
+        useRecoilComponentValueV2
+    ];
+});
+_c2 = CommandMenuWorkflowRunViewStep;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledTabList");
+$RefreshReg$(_c2, "CommandMenuWorkflowRunViewStep");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/command-menu/pages/workflow/step/view-run/components/CommandMenuWorkflowRunViewStep.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNvbW1hbmRNZW51V29ya2Zsb3dSdW5WaWV3U3RlcC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgU2luZ2xlVGFiUHJvcHMsIFRhYkxpc3QgfSBmcm9tICdAL3VpL2xheW91dC90YWIvY29tcG9uZW50cy9UYWJMaXN0JztcbmltcG9ydCB7IGFjdGl2ZVRhYklkQ29tcG9uZW50U3RhdGUgfSBmcm9tICdAL3VpL2xheW91dC90YWIvc3RhdGVzL2FjdGl2ZVRhYklkQ29tcG9uZW50U3RhdGUnO1xuaW1wb3J0IHsgdXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMiB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3N0YXRlL2NvbXBvbmVudC1zdGF0ZS9ob29rcy91c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyJztcbmltcG9ydCB7IHVzZUZsb3dPclRocm93IH0gZnJvbSAnQC93b3JrZmxvdy9ob29rcy91c2VGbG93T3JUaHJvdyc7XG5pbXBvcnQgeyB1c2VXb3JrZmxvd1J1biB9IGZyb20gJ0Avd29ya2Zsb3cvaG9va3MvdXNlV29ya2Zsb3dSdW4nO1xuaW1wb3J0IHsgdXNlV29ya2Zsb3dSdW5JZE9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L2hvb2tzL3VzZVdvcmtmbG93UnVuSWRPclRocm93JztcbmltcG9ydCB7IFdvcmtmbG93U3RlcENvbnRleHRQcm92aWRlciB9IGZyb20gJ0Avd29ya2Zsb3cvc3RhdGVzL2NvbnRleHQvV29ya2Zsb3dTdGVwQ29udGV4dCc7XG5pbXBvcnQgeyB1c2VXb3JrZmxvd1NlbGVjdGVkTm9kZU9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LWRpYWdyYW0vaG9va3MvdXNlV29ya2Zsb3dTZWxlY3RlZE5vZGVPclRocm93JztcbmltcG9ydCB7IFdvcmtmbG93UnVuU3RlcElucHV0RGV0YWlsIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93UnVuU3RlcElucHV0RGV0YWlsJztcbmltcG9ydCB7IFdvcmtmbG93UnVuU3RlcE5vZGVEZXRhaWwgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL2NvbXBvbmVudHMvV29ya2Zsb3dSdW5TdGVwTm9kZURldGFpbCc7XG5pbXBvcnQgeyBXb3JrZmxvd1J1blN0ZXBPdXRwdXREZXRhaWwgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL2NvbXBvbmVudHMvV29ya2Zsb3dSdW5TdGVwT3V0cHV0RGV0YWlsJztcbmltcG9ydCB7IFdPUktGTE9XX1JVTl9TVEVQX1NJREVfUEFORUxfVEFCX0xJU1RfQ09NUE9ORU5UX0lEIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb25zdGFudHMvV29ya2Zsb3dSdW5TdGVwU2lkZVBhbmVsVGFiTGlzdENvbXBvbmVudElkJztcbmltcG9ydCB7XG4gIFdvcmtmbG93UnVuVGFiSWQsXG4gIFdvcmtmbG93UnVuVGFiSWRUeXBlLFxufSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3R5cGVzL1dvcmtmbG93UnVuVGFiSWQnO1xuaW1wb3J0IHsgZ2V0V29ya2Zsb3dSdW5TdGVwRXhlY3V0aW9uU3RhdHVzIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy91dGlscy9nZXRXb3JrZmxvd1J1blN0ZXBFeGVjdXRpb25TdGF0dXMnO1xuaW1wb3J0IHsgVFJJR0dFUl9TVEVQX0lEIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy10cmlnZ2VyL2NvbnN0YW50cy9UcmlnZ2VyU3RlcElkJztcbmltcG9ydCBzdHlsZWQgZnJvbSAnQGVtb3Rpb24vc3R5bGVkJztcbmltcG9ydCB7IEljb25Mb2dpbjIsIEljb25Mb2dvdXQsIEljb25TdGVwSW50byB9IGZyb20gJ3R3ZW50eS11aSc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxuY29uc3QgU3R5bGVkQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgaGVpZ2h0OiAxMDAlO1xuYDtcblxuY29uc3QgU3R5bGVkVGFiTGlzdCA9IHN0eWxlZChUYWJMaXN0KWBcbiAgYmFja2dyb3VuZC1jb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5iYWNrZ3JvdW5kLnNlY29uZGFyeX07XG4gIHBhZGRpbmctbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbmA7XG5cbnR5cGUgVGFiSWQgPSBXb3JrZmxvd1J1blRhYklkVHlwZTtcblxuZXhwb3J0IGNvbnN0IENvbW1hbmRNZW51V29ya2Zsb3dSdW5WaWV3U3RlcCA9ICgpID0+IHtcbiAgY29uc3QgZmxvdyA9IHVzZUZsb3dPclRocm93KCk7XG4gIGNvbnN0IHdvcmtmbG93U2VsZWN0ZWROb2RlID0gdXNlV29ya2Zsb3dTZWxlY3RlZE5vZGVPclRocm93KCk7XG4gIGNvbnN0IHdvcmtmbG93UnVuSWQgPSB1c2VXb3JrZmxvd1J1bklkT3JUaHJvdygpO1xuXG4gIGNvbnN0IHdvcmtmbG93UnVuID0gdXNlV29ya2Zsb3dSdW4oeyB3b3JrZmxvd1J1bklkIH0pO1xuXG4gIGNvbnN0IGFjdGl2ZVRhYklkID0gdXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMihcbiAgICBhY3RpdmVUYWJJZENvbXBvbmVudFN0YXRlLFxuICAgIFdPUktGTE9XX1JVTl9TVEVQX1NJREVfUEFORUxfVEFCX0xJU1RfQ09NUE9ORU5UX0lELFxuICApO1xuXG4gIGNvbnN0IHN0ZXBFeGVjdXRpb25TdGF0dXMgPSBpc0RlZmluZWQod29ya2Zsb3dSdW4pXG4gICAgPyBnZXRXb3JrZmxvd1J1blN0ZXBFeGVjdXRpb25TdGF0dXMoe1xuICAgICAgICB3b3JrZmxvd1J1bk91dHB1dDogd29ya2Zsb3dSdW4ub3V0cHV0LFxuICAgICAgICBzdGVwSWQ6IHdvcmtmbG93U2VsZWN0ZWROb2RlLFxuICAgICAgfSlcbiAgICA6IHVuZGVmaW5lZDtcblxuICBjb25zdCBhcmVJbnB1dEFuZE91dHB1dFRhYnNEaXNhYmxlZCA9XG4gICAgd29ya2Zsb3dTZWxlY3RlZE5vZGUgPT09IFRSSUdHRVJfU1RFUF9JRCB8fFxuICAgIHN0ZXBFeGVjdXRpb25TdGF0dXMgPT09ICdydW5uaW5nJyB8fFxuICAgIHN0ZXBFeGVjdXRpb25TdGF0dXMgPT09ICdub3QtZXhlY3V0ZWQnO1xuXG4gIGNvbnN0IHRhYnM6IFNpbmdsZVRhYlByb3BzPFRhYklkPltdID0gW1xuICAgIHsgaWQ6IFdvcmtmbG93UnVuVGFiSWQuTk9ERSwgdGl0bGU6ICdOb2RlJywgSWNvbjogSWNvblN0ZXBJbnRvIH0sXG4gICAge1xuICAgICAgaWQ6IFdvcmtmbG93UnVuVGFiSWQuSU5QVVQsXG4gICAgICB0aXRsZTogJ0lucHV0JyxcbiAgICAgIEljb246IEljb25Mb2dpbjIsXG4gICAgICBkaXNhYmxlZDogYXJlSW5wdXRBbmRPdXRwdXRUYWJzRGlzYWJsZWQsXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogV29ya2Zsb3dSdW5UYWJJZC5PVVRQVVQsXG4gICAgICB0aXRsZTogJ091dHB1dCcsXG4gICAgICBJY29uOiBJY29uTG9nb3V0LFxuICAgICAgZGlzYWJsZWQ6IGFyZUlucHV0QW5kT3V0cHV0VGFic0Rpc2FibGVkLFxuICAgIH0sXG4gIF07XG5cbiAgaWYgKCFpc0RlZmluZWQod29ya2Zsb3dSdW4pKSB7XG4gICAgcmV0dXJuIG51bGw7XG4gIH1cblxuICByZXR1cm4gKFxuICAgIDxXb3JrZmxvd1N0ZXBDb250ZXh0UHJvdmlkZXJcbiAgICAgIHZhbHVlPXt7XG4gICAgICAgIHdvcmtmbG93VmVyc2lvbklkOiB3b3JrZmxvd1J1bi53b3JrZmxvd1ZlcnNpb25JZCxcbiAgICAgICAgd29ya2Zsb3dSdW5JZDogd29ya2Zsb3dSdW4uaWQsXG4gICAgICB9fVxuICAgID5cbiAgICAgIDxTdHlsZWRDb250YWluZXI+XG4gICAgICAgIDxTdHlsZWRUYWJMaXN0XG4gICAgICAgICAgdGFicz17dGFic31cbiAgICAgICAgICBiZWhhdmVBc0xpbmtzPXtmYWxzZX1cbiAgICAgICAgICBjb21wb25lbnRJbnN0YW5jZUlkPXtcbiAgICAgICAgICAgIFdPUktGTE9XX1JVTl9TVEVQX1NJREVfUEFORUxfVEFCX0xJU1RfQ09NUE9ORU5UX0lEXG4gICAgICAgICAgfVxuICAgICAgICAvPlxuXG4gICAgICAgIHthY3RpdmVUYWJJZCA9PT0gV29ya2Zsb3dSdW5UYWJJZC5OT0RFID8gKFxuICAgICAgICAgIDxXb3JrZmxvd1J1blN0ZXBOb2RlRGV0YWlsXG4gICAgICAgICAgICBzdGVwSWQ9e3dvcmtmbG93U2VsZWN0ZWROb2RlfVxuICAgICAgICAgICAgdHJpZ2dlcj17Zmxvdy50cmlnZ2VyfVxuICAgICAgICAgICAgc3RlcHM9e2Zsb3cuc3RlcHN9XG4gICAgICAgICAgICBzdGVwRXhlY3V0aW9uU3RhdHVzPXtzdGVwRXhlY3V0aW9uU3RhdHVzfVxuICAgICAgICAgIC8+XG4gICAgICAgICkgOiBudWxsfVxuXG4gICAgICAgIHthY3RpdmVUYWJJZCA9PT0gV29ya2Zsb3dSdW5UYWJJZC5JTlBVVCA/IChcbiAgICAgICAgICA8V29ya2Zsb3dSdW5TdGVwSW5wdXREZXRhaWxcbiAgICAgICAgICAgIGtleT17d29ya2Zsb3dTZWxlY3RlZE5vZGV9XG4gICAgICAgICAgICBzdGVwSWQ9e3dvcmtmbG93U2VsZWN0ZWROb2RlfVxuICAgICAgICAgIC8+XG4gICAgICAgICkgOiBudWxsfVxuXG4gICAgICAgIHthY3RpdmVUYWJJZCA9PT0gV29ya2Zsb3dSdW5UYWJJZC5PVVRQVVQgPyAoXG4gICAgICAgICAgPFdvcmtmbG93UnVuU3RlcE91dHB1dERldGFpbFxuICAgICAgICAgICAga2V5PXt3b3JrZmxvd1NlbGVjdGVkTm9kZX1cbiAgICAgICAgICAgIHN0ZXBJZD17d29ya2Zsb3dTZWxlY3RlZE5vZGV9XG4gICAgICAgICAgLz5cbiAgICAgICAgKSA6IG51bGx9XG4gICAgICA8L1N0eWxlZENvbnRhaW5lcj5cbiAgICA8L1dvcmtmbG93U3RlcENvbnRleHRQcm92aWRlcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsiVGFiTGlzdCIsImFjdGl2ZVRhYklkQ29tcG9uZW50U3RhdGUiLCJ1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyIiwidXNlRmxvd09yVGhyb3ciLCJ1c2VXb3JrZmxvd1J1biIsInVzZVdvcmtmbG93UnVuSWRPclRocm93IiwiV29ya2Zsb3dTdGVwQ29udGV4dFByb3ZpZGVyIiwidXNlV29ya2Zsb3dTZWxlY3RlZE5vZGVPclRocm93IiwiV29ya2Zsb3dSdW5TdGVwSW5wdXREZXRhaWwiLCJXb3JrZmxvd1J1blN0ZXBOb2RlRGV0YWlsIiwiV29ya2Zsb3dSdW5TdGVwT3V0cHV0RGV0YWlsIiwiV09SS0ZMT1dfUlVOX1NURVBfU0lERV9QQU5FTF9UQUJfTElTVF9DT01QT05FTlRfSUQiLCJXb3JrZmxvd1J1blRhYklkIiwiZ2V0V29ya2Zsb3dSdW5TdGVwRXhlY3V0aW9uU3RhdHVzIiwiVFJJR0dFUl9TVEVQX0lEIiwic3R5bGVkIiwiSWNvbkxvZ2luMiIsIkljb25Mb2dvdXQiLCJJY29uU3RlcEludG8iLCJpc0RlZmluZWQiLCJTdHlsZWRDb250YWluZXIiLCJkaXYiLCJTdHlsZWRUYWJMaXN0IiwidGhlbWUiLCJiYWNrZ3JvdW5kIiwic2Vjb25kYXJ5Iiwic3BhY2luZyIsIkNvbW1hbmRNZW51V29ya2Zsb3dSdW5WaWV3U3RlcCIsImZsb3ciLCJ3b3JrZmxvd1NlbGVjdGVkTm9kZSIsIndvcmtmbG93UnVuSWQiLCJ3b3JrZmxvd1J1biIsImFjdGl2ZVRhYklkIiwic3RlcEV4ZWN1dGlvblN0YXR1cyIsIndvcmtmbG93UnVuT3V0cHV0Iiwib3V0cHV0Iiwic3RlcElkIiwidW5kZWZpbmVkIiwiYXJlSW5wdXRBbmRPdXRwdXRUYWJzRGlzYWJsZWQiLCJ0YWJzIiwiaWQiLCJOT0RFIiwidGl0bGUiLCJJY29uIiwiSU5QVVQiLCJkaXNhYmxlZCIsIk9VVFBVVCIsInZhbHVlIiwid29ya2Zsb3dWZXJzaW9uSWQiLCJiZWhhdmVBc0xpbmtzIiwiY29tcG9uZW50SW5zdGFuY2VJZCIsInRyaWdnZXIiLCJzdGVwcyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLFNBQXlCQSxPQUFPLFFBQVEscUNBQXFDO0FBQzdFLFNBQVNDLHlCQUF5QixRQUFRLG1EQUFtRDtBQUM3RixTQUFTQyx5QkFBeUIsUUFBUSx1RUFBdUU7QUFDakgsU0FBU0MsY0FBYyxRQUFRLGtDQUFrQztBQUNqRSxTQUFTQyxjQUFjLFFBQVEsa0NBQWtDO0FBQ2pFLFNBQVNDLHVCQUF1QixRQUFRLDJDQUEyQztBQUNuRixTQUFTQywyQkFBMkIsUUFBUSxnREFBZ0Q7QUFDNUYsU0FBU0MsOEJBQThCLFFBQVEsbUVBQW1FO0FBQ2xILFNBQVNDLDBCQUEwQixRQUFRLGtFQUFrRTtBQUM3RyxTQUFTQyx5QkFBeUIsUUFBUSxpRUFBaUU7QUFDM0csU0FBU0MsMkJBQTJCLFFBQVEsbUVBQW1FO0FBQy9HLFNBQVNDLGtEQUFrRCxRQUFRLGlGQUFpRjtBQUNwSixTQUNFQyxnQkFBZ0IsUUFFWCxtREFBbUQ7QUFDMUQsU0FBU0MsaUNBQWlDLFFBQVEsb0VBQW9FO0FBQ3RILFNBQVNDLGVBQWUsUUFBUSxzREFBc0Q7QUFDdEYsT0FBT0MsWUFBWSxrQkFBa0I7QUFDckMsU0FBU0MsVUFBVSxFQUFFQyxVQUFVLEVBQUVDLFlBQVksUUFBUSxZQUFZO0FBQ2pFLFNBQVNDLFNBQVMsUUFBUSxzQkFBc0I7QUFFaEQsTUFBTUMsa0JBQWtCTCxPQUFPTSxHQUFHLENBQUM7Ozs7QUFJbkMsQ0FBQztLQUpLRDtBQU1OLE1BQU1FLGdCQUFnQlAsT0FBT2YsUUFBUSxDQUFDO29CQUNsQixFQUFFLENBQUMsRUFBRXVCLEtBQUssRUFBRSxHQUFLQSxNQUFNQyxVQUFVLENBQUNDLFNBQVMsQ0FBQztnQkFDaEQsRUFBRSxDQUFDLEVBQUVGLEtBQUssRUFBRSxHQUFLQSxNQUFNRyxPQUFPLENBQUMsR0FBRztBQUNsRCxDQUFDO01BSEtKO0FBT04sT0FBTyxNQUFNSyxpQ0FBaUM7O0lBQzVDLE1BQU1DLE9BQU96QjtJQUNiLE1BQU0wQix1QkFBdUJ0QjtJQUM3QixNQUFNdUIsZ0JBQWdCekI7SUFFdEIsTUFBTTBCLGNBQWMzQixlQUFlO1FBQUUwQjtJQUFjO0lBRW5ELE1BQU1FLGNBQWM5QiwwQkFDbEJELDJCQUNBVTtJQUdGLE1BQU1zQixzQkFBc0JkLFVBQVVZLGVBQ2xDbEIsa0NBQWtDO1FBQ2hDcUIsbUJBQW1CSCxZQUFZSSxNQUFNO1FBQ3JDQyxRQUFRUDtJQUNWLEtBQ0FRO0lBRUosTUFBTUMsZ0NBQ0pULHlCQUF5QmYsbUJBQ3pCbUIsd0JBQXdCLGFBQ3hCQSx3QkFBd0I7SUFFMUIsTUFBTU0sT0FBZ0M7UUFDcEM7WUFBRUMsSUFBSTVCLGlCQUFpQjZCLElBQUk7WUFBRUMsT0FBTztZQUFRQyxNQUFNekI7UUFBYTtRQUMvRDtZQUNFc0IsSUFBSTVCLGlCQUFpQmdDLEtBQUs7WUFDMUJGLE9BQU87WUFDUEMsTUFBTTNCO1lBQ042QixVQUFVUDtRQUNaO1FBQ0E7WUFDRUUsSUFBSTVCLGlCQUFpQmtDLE1BQU07WUFDM0JKLE9BQU87WUFDUEMsTUFBTTFCO1lBQ040QixVQUFVUDtRQUNaO0tBQ0Q7SUFFRCxJQUFJLENBQUNuQixVQUFVWSxjQUFjO1FBQzNCLE9BQU87SUFDVDtJQUVBLHFCQUNFLFFBQUN6QjtRQUNDeUMsT0FBTztZQUNMQyxtQkFBbUJqQixZQUFZaUIsaUJBQWlCO1lBQ2hEbEIsZUFBZUMsWUFBWVMsRUFBRTtRQUMvQjtrQkFFQSxjQUFBLFFBQUNwQjs7OEJBQ0MsUUFBQ0U7b0JBQ0NpQixNQUFNQTtvQkFDTlUsZUFBZTtvQkFDZkMscUJBQ0V2Qzs7Ozs7O2dCQUlIcUIsZ0JBQWdCcEIsaUJBQWlCNkIsSUFBSSxpQkFDcEMsUUFBQ2hDO29CQUNDMkIsUUFBUVA7b0JBQ1JzQixTQUFTdkIsS0FBS3VCLE9BQU87b0JBQ3JCQyxPQUFPeEIsS0FBS3dCLEtBQUs7b0JBQ2pCbkIscUJBQXFCQTs7Ozs7MkJBRXJCO2dCQUVIRCxnQkFBZ0JwQixpQkFBaUJnQyxLQUFLLGlCQUNyQyxRQUFDcEM7b0JBRUM0QixRQUFRUDttQkFESEE7Ozs7MkJBR0w7Z0JBRUhHLGdCQUFnQnBCLGlCQUFpQmtDLE1BQU0saUJBQ3RDLFFBQUNwQztvQkFFQzBCLFFBQVFQO21CQURIQTs7OzsyQkFHTDs7Ozs7Ozs7Ozs7O0FBSVosRUFBRTtHQXJGV0Y7O1FBQ0V4QjtRQUNnQkk7UUFDUEY7UUFFRkQ7UUFFQUY7OztNQVBUeUIifQ==

@@ -1,0 +1,262 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/ui/input/components/ImageInput.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { Trans as Trans_ } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import __vite__cjsImport6__sniptt_guards from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@sniptt_guards.js?v=226f7286"; const isNonEmptyString = __vite__cjsImport6__sniptt_guards["isNonEmptyString"];
+import __vite__cjsImport7_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const React = __vite__cjsImport7_react.__esModule ? __vite__cjsImport7_react.default : __vite__cjsImport7_react;
+import { Button, IconPhotoUp, IconTrash, IconUpload, IconX } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { REACT_APP_SERVER_BASE_URL } from "/src/config/index.ts";
+import { getImageAbsoluteURI, isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+_c = StyledContainer;
+const StyledPicture = styled.button`
+  align-items: center;
+  background: ${({ theme, disabled })=>disabled ? theme.background.secondary : theme.background.transparent.light};
+  border: 1px solid ${({ theme })=>theme.border.color.medium};
+  border-radius: ${({ theme })=>theme.border.radius.sm};
+  color: ${({ theme })=>theme.font.color.light};
+  cursor: ${({ disabled })=>disabled ? 'not-allowed' : 'pointer'};
+  display: flex;
+  height: 66px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  transition: background 0.1s ease;
+
+  width: 66px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &:hover svg {
+    color: ${({ theme })=>theme.font.color.tertiary};
+  }
+
+  ${({ theme, withPicture, disabled })=>{
+    if ((withPicture || disabled) === true) {
+        return '';
+    }
+    return `
+      &:hover {
+        background: ${theme.background.transparent.medium};
+      }
+    `;
+}};
+`;
+_c1 = StyledPicture;
+const StyledContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: ${({ theme })=>theme.spacing(4)};
+
+  gap: ${({ theme })=>theme.spacing(3)};
+`;
+_c2 = StyledContent;
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: ${({ theme })=>theme.spacing(2)};
+`;
+_c3 = StyledButtonContainer;
+const StyledText = styled.span`
+  color: ${({ theme })=>theme.font.color.light};
+  font-size: ${({ theme })=>theme.font.size.xs};
+`;
+_c4 = StyledText;
+const StyledErrorText = styled.span`
+  color: ${({ theme })=>theme.font.color.danger};
+  font-size: ${({ theme })=>theme.font.size.xs};
+  margin-top: ${({ theme })=>theme.spacing(1)};
+`;
+_c5 = StyledErrorText;
+const StyledHiddenFileInput = styled.input`
+  display: none;
+`;
+_c6 = StyledHiddenFileInput;
+export const ImageInput = ({ picture, onUpload, onRemove, onAbort, isUploading = false, errorMessage, disabled = false, className })=>{
+    _s();
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const theme = useTheme();
+    const hiddenFileInput = React.useRef(null);
+    const onUploadButtonClick = ()=>{
+        hiddenFileInput.current?.click();
+    };
+    const pictureURI = isNonEmptyString(picture) ? getImageAbsoluteURI({
+        imageUrl: picture,
+        baseUrl: REACT_APP_SERVER_BASE_URL
+    }) : null;
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        className: className,
+        children: [
+            /*#__PURE__*/ _jsxDEV(StyledPicture, {
+                withPicture: !!pictureURI,
+                disabled: disabled,
+                onClick: onUploadButtonClick,
+                children: pictureURI ? /*#__PURE__*/ _jsxDEV("img", {
+                    src: pictureURI || '/images/default-profile-picture.png',
+                    alt: "profile"
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                    lineNumber: 131,
+                    columnNumber: 11
+                }, this) : /*#__PURE__*/ _jsxDEV(IconPhotoUp, {
+                    size: theme.icon.size.lg
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                    lineNumber: 136,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                lineNumber: 125,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledContent, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledButtonContainer, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(StyledHiddenFileInput, {
+                                type: "file",
+                                ref: hiddenFileInput,
+                                accept: "image/jpeg, image/png, image/gif" // to desired specification
+                                ,
+                                onChange: (event)=>{
+                                    if (isDefined(onUpload) && isDefined(event.target.files)) {
+                                        onUpload(event.target.files[0]);
+                                    }
+                                }
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                                lineNumber: 141,
+                                columnNumber: 11
+                            }, this),
+                            isUploading && onAbort ? /*#__PURE__*/ _jsxDEV(Button, {
+                                Icon: IconX,
+                                onClick: onAbort,
+                                variant: "secondary",
+                                title: $__i18n._({
+                                    id: "ssjjFt",
+                                    message: "Abort"
+                                }),
+                                disabled: !pictureURI || disabled
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                                lineNumber: 152,
+                                columnNumber: 13
+                            }, this) : /*#__PURE__*/ _jsxDEV(Button, {
+                                Icon: IconUpload,
+                                onClick: onUploadButtonClick,
+                                variant: "secondary",
+                                title: $__i18n._({
+                                    id: "ONWvwQ",
+                                    message: "Upload"
+                                }),
+                                disabled: disabled
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                                lineNumber: 160,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(Button, {
+                                Icon: IconTrash,
+                                onClick: onRemove,
+                                variant: "secondary",
+                                title: $__i18n._({
+                                    id: "t/YqKh",
+                                    message: "Remove"
+                                }),
+                                disabled: !pictureURI || disabled
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                                lineNumber: 168,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                        lineNumber: 140,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(StyledText, {
+                        children: /*#__PURE__*/ _jsxDEV(Trans_, {
+                            message: "We support your square PNGs, JPEGs and GIFs under 10MB",
+                            id: "id6ein"
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                            lineNumber: 177,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                        lineNumber: 176,
+                        columnNumber: 9
+                    }, this),
+                    errorMessage && /*#__PURE__*/ _jsxDEV(StyledErrorText, {
+                        children: errorMessage
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                        lineNumber: 179,
+                        columnNumber: 26
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+                lineNumber: 139,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx",
+        lineNumber: 124,
+        columnNumber: 5
+    }, this);
+};
+_s(ImageInput, "CIenXwhni+6/NWqfk2f1EVNMhVQ=", false, function() {
+    return [
+        useTheme
+    ];
+});
+_c7 = ImageInput;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "StyledPicture");
+$RefreshReg$(_c2, "StyledContent");
+$RefreshReg$(_c3, "StyledButtonContainer");
+$RefreshReg$(_c4, "StyledText");
+$RefreshReg$(_c5, "StyledErrorText");
+$RefreshReg$(_c6, "StyledHiddenFileInput");
+$RefreshReg$(_c7, "ImageInput");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/ui/input/components/ImageInput.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkltYWdlSW5wdXQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZVRoZW1lIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuaW1wb3J0IHsgVHJhbnMsIHVzZUxpbmd1aSB9IGZyb20gJ0BsaW5ndWkvcmVhY3QvbWFjcm8nO1xuXG5pbXBvcnQgeyBpc05vbkVtcHR5U3RyaW5nIH0gZnJvbSAnQHNuaXB0dC9ndWFyZHMnO1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IEJ1dHRvbiwgSWNvblBob3RvVXAsIEljb25UcmFzaCwgSWNvblVwbG9hZCwgSWNvblggfSBmcm9tICd0d2VudHktdWknO1xuaW1wb3J0IHsgUkVBQ1RfQVBQX1NFUlZFUl9CQVNFX1VSTCB9IGZyb20gJ34vY29uZmlnJztcbmltcG9ydCB7IGdldEltYWdlQWJzb2x1dGVVUkksIGlzRGVmaW5lZCB9IGZyb20gJ3R3ZW50eS1zaGFyZWQvdXRpbHMnO1xuXG5jb25zdCBTdHlsZWRDb250YWluZXIgPSBzdHlsZWQuZGl2YFxuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuYDtcblxuY29uc3QgU3R5bGVkUGljdHVyZSA9IHN0eWxlZC5idXR0b248eyB3aXRoUGljdHVyZTogYm9vbGVhbiB9PmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogJHsoeyB0aGVtZSwgZGlzYWJsZWQgfSkgPT5cbiAgICBkaXNhYmxlZCA/IHRoZW1lLmJhY2tncm91bmQuc2Vjb25kYXJ5IDogdGhlbWUuYmFja2dyb3VuZC50cmFuc3BhcmVudC5saWdodH07XG4gIGJvcmRlcjogMXB4IHNvbGlkICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYm9yZGVyLmNvbG9yLm1lZGl1bX07XG4gIGJvcmRlci1yYWRpdXM6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYm9yZGVyLnJhZGl1cy5zbX07XG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IubGlnaHR9O1xuICBjdXJzb3I6ICR7KHsgZGlzYWJsZWQgfSkgPT4gKGRpc2FibGVkID8gJ25vdC1hbGxvd2VkJyA6ICdwb2ludGVyJyl9O1xuICBkaXNwbGF5OiBmbGV4O1xuICBoZWlnaHQ6IDY2cHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBwYWRkaW5nOiAwO1xuICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kIDAuMXMgZWFzZTtcblxuICB3aWR0aDogNjZweDtcblxuICBpbWcge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcbiAgICB3aWR0aDogMTAwJTtcbiAgfVxuXG4gICY6aG92ZXIgc3ZnIHtcbiAgICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLnRlcnRpYXJ5fTtcbiAgfVxuXG4gICR7KHsgdGhlbWUsIHdpdGhQaWN0dXJlLCBkaXNhYmxlZCB9KSA9PiB7XG4gICAgaWYgKCh3aXRoUGljdHVyZSB8fCBkaXNhYmxlZCkgPT09IHRydWUpIHtcbiAgICAgIHJldHVybiAnJztcbiAgICB9XG5cbiAgICByZXR1cm4gYFxuICAgICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICR7dGhlbWUuYmFja2dyb3VuZC50cmFuc3BhcmVudC5tZWRpdW19O1xuICAgICAgfVxuICAgIGA7XG4gIH19O1xuYDtcblxuY29uc3QgU3R5bGVkQ29udGVudCA9IHN0eWxlZC5kaXZgXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXg6IDE7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogc3RhcnQ7XG4gIG1hcmdpbi1sZWZ0OiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNCl9O1xuXG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDMpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEJ1dHRvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG5cbiAgZ2FwOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoMil9O1xuYDtcblxuY29uc3QgU3R5bGVkVGV4dCA9IHN0eWxlZC5zcGFuYFxuICBjb2xvcjogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5mb250LmNvbG9yLmxpZ2h0fTtcbiAgZm9udC1zaXplOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuc2l6ZS54c307XG5gO1xuXG5jb25zdCBTdHlsZWRFcnJvclRleHQgPSBzdHlsZWQuc3BhbmBcbiAgY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5jb2xvci5kYW5nZXJ9O1xuICBmb250LXNpemU6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5zaXplLnhzfTtcbiAgbWFyZ2luLXRvcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEhpZGRlbkZpbGVJbnB1dCA9IHN0eWxlZC5pbnB1dGBcbiAgZGlzcGxheTogbm9uZTtcbmA7XG5cbnR5cGUgSW1hZ2VJbnB1dFByb3BzID0gT21pdDxSZWFjdC5Db21wb25lbnRQcm9wczwnZGl2Jz4sICdjaGlsZHJlbic+ICYge1xuICBwaWN0dXJlOiBzdHJpbmcgfCBudWxsIHwgdW5kZWZpbmVkO1xuICBvblVwbG9hZD86IChmaWxlOiBGaWxlKSA9PiB2b2lkO1xuICBvblJlbW92ZT86ICgpID0+IHZvaWQ7XG4gIG9uQWJvcnQ/OiAoKSA9PiB2b2lkO1xuICBpc1VwbG9hZGluZz86IGJvb2xlYW47XG4gIGVycm9yTWVzc2FnZT86IHN0cmluZyB8IG51bGw7XG4gIGRpc2FibGVkPzogYm9vbGVhbjtcbiAgY2xhc3NOYW1lPzogc3RyaW5nO1xufTtcblxuZXhwb3J0IGNvbnN0IEltYWdlSW5wdXQgPSAoe1xuICBwaWN0dXJlLFxuICBvblVwbG9hZCxcbiAgb25SZW1vdmUsXG4gIG9uQWJvcnQsXG4gIGlzVXBsb2FkaW5nID0gZmFsc2UsXG4gIGVycm9yTWVzc2FnZSxcbiAgZGlzYWJsZWQgPSBmYWxzZSxcbiAgY2xhc3NOYW1lLFxufTogSW1hZ2VJbnB1dFByb3BzKSA9PiB7XG4gIGNvbnN0IHsgdCB9ID0gdXNlTGluZ3VpKCk7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcbiAgY29uc3QgaGlkZGVuRmlsZUlucHV0ID0gUmVhY3QudXNlUmVmPEhUTUxJbnB1dEVsZW1lbnQ+KG51bGwpO1xuICBjb25zdCBvblVwbG9hZEJ1dHRvbkNsaWNrID0gKCkgPT4ge1xuICAgIGhpZGRlbkZpbGVJbnB1dC5jdXJyZW50Py5jbGljaygpO1xuICB9O1xuXG4gIGNvbnN0IHBpY3R1cmVVUkkgPSBpc05vbkVtcHR5U3RyaW5nKHBpY3R1cmUpXG4gICAgPyBnZXRJbWFnZUFic29sdXRlVVJJKHtcbiAgICAgICAgaW1hZ2VVcmw6IHBpY3R1cmUsXG4gICAgICAgIGJhc2VVcmw6IFJFQUNUX0FQUF9TRVJWRVJfQkFTRV9VUkwsXG4gICAgICB9KVxuICAgIDogbnVsbDtcblxuICByZXR1cm4gKFxuICAgIDxTdHlsZWRDb250YWluZXIgY2xhc3NOYW1lPXtjbGFzc05hbWV9PlxuICAgICAgPFN0eWxlZFBpY3R1cmVcbiAgICAgICAgd2l0aFBpY3R1cmU9eyEhcGljdHVyZVVSSX1cbiAgICAgICAgZGlzYWJsZWQ9e2Rpc2FibGVkfVxuICAgICAgICBvbkNsaWNrPXtvblVwbG9hZEJ1dHRvbkNsaWNrfVxuICAgICAgPlxuICAgICAgICB7cGljdHVyZVVSSSA/IChcbiAgICAgICAgICA8aW1nXG4gICAgICAgICAgICBzcmM9e3BpY3R1cmVVUkkgfHwgJy9pbWFnZXMvZGVmYXVsdC1wcm9maWxlLXBpY3R1cmUucG5nJ31cbiAgICAgICAgICAgIGFsdD1cInByb2ZpbGVcIlxuICAgICAgICAgIC8+XG4gICAgICAgICkgOiAoXG4gICAgICAgICAgPEljb25QaG90b1VwIHNpemU9e3RoZW1lLmljb24uc2l6ZS5sZ30gLz5cbiAgICAgICAgKX1cbiAgICAgIDwvU3R5bGVkUGljdHVyZT5cbiAgICAgIDxTdHlsZWRDb250ZW50PlxuICAgICAgICA8U3R5bGVkQnV0dG9uQ29udGFpbmVyPlxuICAgICAgICAgIDxTdHlsZWRIaWRkZW5GaWxlSW5wdXRcbiAgICAgICAgICAgIHR5cGU9XCJmaWxlXCJcbiAgICAgICAgICAgIHJlZj17aGlkZGVuRmlsZUlucHV0fVxuICAgICAgICAgICAgYWNjZXB0PVwiaW1hZ2UvanBlZywgaW1hZ2UvcG5nLCBpbWFnZS9naWZcIiAvLyB0byBkZXNpcmVkIHNwZWNpZmljYXRpb25cbiAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHtcbiAgICAgICAgICAgICAgaWYgKGlzRGVmaW5lZChvblVwbG9hZCkgJiYgaXNEZWZpbmVkKGV2ZW50LnRhcmdldC5maWxlcykpIHtcbiAgICAgICAgICAgICAgICBvblVwbG9hZChldmVudC50YXJnZXQuZmlsZXNbMF0pO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9fVxuICAgICAgICAgIC8+XG4gICAgICAgICAge2lzVXBsb2FkaW5nICYmIG9uQWJvcnQgPyAoXG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIEljb249e0ljb25YfVxuICAgICAgICAgICAgICBvbkNsaWNrPXtvbkFib3J0fVxuICAgICAgICAgICAgICB2YXJpYW50PVwic2Vjb25kYXJ5XCJcbiAgICAgICAgICAgICAgdGl0bGU9e3RgQWJvcnRgfVxuICAgICAgICAgICAgICBkaXNhYmxlZD17IXBpY3R1cmVVUkkgfHwgZGlzYWJsZWR9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgICkgOiAoXG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIEljb249e0ljb25VcGxvYWR9XG4gICAgICAgICAgICAgIG9uQ2xpY2s9e29uVXBsb2FkQnV0dG9uQ2xpY2t9XG4gICAgICAgICAgICAgIHZhcmlhbnQ9XCJzZWNvbmRhcnlcIlxuICAgICAgICAgICAgICB0aXRsZT17dGBVcGxvYWRgfVxuICAgICAgICAgICAgICBkaXNhYmxlZD17ZGlzYWJsZWR9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgICl9XG4gICAgICAgICAgPEJ1dHRvblxuICAgICAgICAgICAgSWNvbj17SWNvblRyYXNofVxuICAgICAgICAgICAgb25DbGljaz17b25SZW1vdmV9XG4gICAgICAgICAgICB2YXJpYW50PVwic2Vjb25kYXJ5XCJcbiAgICAgICAgICAgIHRpdGxlPXt0YFJlbW92ZWB9XG4gICAgICAgICAgICBkaXNhYmxlZD17IXBpY3R1cmVVUkkgfHwgZGlzYWJsZWR9XG4gICAgICAgICAgLz5cbiAgICAgICAgPC9TdHlsZWRCdXR0b25Db250YWluZXI+XG4gICAgICAgIDxTdHlsZWRUZXh0PlxuICAgICAgICAgIDxUcmFucz5XZSBzdXBwb3J0IHlvdXIgc3F1YXJlIFBOR3MsIEpQRUdzIGFuZCBHSUZzIHVuZGVyIDEwTUI8L1RyYW5zPlxuICAgICAgICA8L1N0eWxlZFRleHQ+XG4gICAgICAgIHtlcnJvck1lc3NhZ2UgJiYgPFN0eWxlZEVycm9yVGV4dD57ZXJyb3JNZXNzYWdlfTwvU3R5bGVkRXJyb3JUZXh0Pn1cbiAgICAgIDwvU3R5bGVkQ29udGVudD5cbiAgICA8L1N0eWxlZENvbnRhaW5lcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlVGhlbWUiLCJzdHlsZWQiLCJpc05vbkVtcHR5U3RyaW5nIiwiUmVhY3QiLCJCdXR0b24iLCJJY29uUGhvdG9VcCIsIkljb25UcmFzaCIsIkljb25VcGxvYWQiLCJJY29uWCIsIlJFQUNUX0FQUF9TRVJWRVJfQkFTRV9VUkwiLCJnZXRJbWFnZUFic29sdXRlVVJJIiwiaXNEZWZpbmVkIiwiU3R5bGVkQ29udGFpbmVyIiwiZGl2IiwiU3R5bGVkUGljdHVyZSIsImJ1dHRvbiIsInRoZW1lIiwiZGlzYWJsZWQiLCJiYWNrZ3JvdW5kIiwic2Vjb25kYXJ5IiwidHJhbnNwYXJlbnQiLCJsaWdodCIsImJvcmRlciIsImNvbG9yIiwibWVkaXVtIiwicmFkaXVzIiwic20iLCJmb250IiwidGVydGlhcnkiLCJ3aXRoUGljdHVyZSIsIlN0eWxlZENvbnRlbnQiLCJzcGFjaW5nIiwiU3R5bGVkQnV0dG9uQ29udGFpbmVyIiwiU3R5bGVkVGV4dCIsInNwYW4iLCJzaXplIiwieHMiLCJTdHlsZWRFcnJvclRleHQiLCJkYW5nZXIiLCJTdHlsZWRIaWRkZW5GaWxlSW5wdXQiLCJpbnB1dCIsIkltYWdlSW5wdXQiLCJwaWN0dXJlIiwib25VcGxvYWQiLCJvblJlbW92ZSIsIm9uQWJvcnQiLCJpc1VwbG9hZGluZyIsImVycm9yTWVzc2FnZSIsImNsYXNzTmFtZSIsInVzZUxpbmd1aSIsImhpZGRlbkZpbGVJbnB1dCIsInVzZVJlZiIsIm9uVXBsb2FkQnV0dG9uQ2xpY2siLCJjdXJyZW50IiwiY2xpY2siLCJwaWN0dXJlVVJJIiwiaW1hZ2VVcmwiLCJiYXNlVXJsIiwib25DbGljayIsImltZyIsInNyYyIsImFsdCIsImljb24iLCJsZyIsInR5cGUiLCJyZWYiLCJhY2NlcHQiLCJvbkNoYW5nZSIsImV2ZW50IiwidGFyZ2V0IiwiZmlsZXMiLCJJY29uIiwidmFyaWFudCIsInRpdGxlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0EsUUFBUSxRQUFRLGlCQUFpQjtBQUMxQyxPQUFPQyxZQUFZLGtCQUFrQjs7O0FBR3JDLFNBQVNDLGdCQUFnQixRQUFRLGlCQUFpQjtBQUNsRCxPQUFPQyxXQUFXLFFBQVE7QUFDMUIsU0FBU0MsTUFBTSxFQUFFQyxXQUFXLEVBQUVDLFNBQVMsRUFBRUMsVUFBVSxFQUFFQyxLQUFLLFFBQVEsWUFBWTtBQUM5RSxTQUFTQyx5QkFBeUIsUUFBUSxXQUFXO0FBQ3JELFNBQVNDLG1CQUFtQixFQUFFQyxTQUFTLFFBQVEsc0JBQXNCO0FBRXJFLE1BQU1DLGtCQUFrQlgsT0FBT1ksR0FBRyxDQUFDOzs7QUFH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

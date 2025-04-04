@@ -1,0 +1,180 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useFilteredObjectMetadataItems } from "/src/modules/object-metadata/hooks/useFilteredObjectMetadataItems.ts";
+import { Select } from "/src/modules/ui/input/components/Select.tsx";
+import { WorkflowStepHeader } from "/src/modules/workflow/workflow-steps/components/WorkflowStepHeader.tsx";
+import { WorkflowSingleRecordPicker } from "/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowSingleRecordPicker.tsx";
+import __vite__cjsImport6_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useEffect = __vite__cjsImport6_react["useEffect"]; const useState = __vite__cjsImport6_react["useState"];
+import { WorkflowStepBody } from "/src/modules/workflow/workflow-steps/components/WorkflowStepBody.tsx";
+import { useActionHeaderTypeOrThrow } from "/src/modules/workflow/workflow-steps/workflow-actions/hooks/useActionHeaderTypeOrThrow.ts";
+import { useActionIconColorOrThrow } from "/src/modules/workflow/workflow-steps/workflow-actions/hooks/useActionIconColorOrThrow.ts";
+import { getActionIcon } from "/src/modules/workflow/workflow-steps/workflow-actions/utils/getActionIcon.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+import { HorizontalSeparator, useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { useDebouncedCallback } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/use-debounce.js?v=226f7286";
+export const WorkflowEditActionDeleteRecord = ({ action, actionOptions })=>{
+    _s();
+    const { getIcon } = useIcons();
+    const { activeObjectMetadataItems } = useFilteredObjectMetadataItems();
+    const availableMetadata = activeObjectMetadataItems.map((item)=>({
+            Icon: getIcon(item.icon),
+            label: item.labelPlural,
+            value: item.nameSingular
+        }));
+    const [formData, setFormData] = useState({
+        objectName: action.settings.input.objectName,
+        objectRecordId: action.settings.input.objectRecordId
+    });
+    const isFormDisabled = actionOptions.readonly;
+    const handleFieldChange = (fieldName, updatedValue)=>{
+        const newFormData = {
+            ...formData,
+            [fieldName]: updatedValue
+        };
+        setFormData(newFormData);
+        saveAction(newFormData);
+    };
+    const selectedObjectMetadataItemNameSingular = formData.objectName;
+    const selectedObjectMetadataItem = activeObjectMetadataItems.find((item)=>item.nameSingular === selectedObjectMetadataItemNameSingular);
+    if (!isDefined(selectedObjectMetadataItem)) {
+        throw new Error('Should have found the metadata item');
+    }
+    const saveAction = useDebouncedCallback(async (formData)=>{
+        if (actionOptions.readonly === true) {
+            return;
+        }
+        const { objectName: updatedObjectName, objectRecordId: updatedObjectRecordId } = formData;
+        actionOptions.onActionUpdate({
+            ...action,
+            settings: {
+                ...action.settings,
+                input: {
+                    objectName: updatedObjectName,
+                    objectRecordId: updatedObjectRecordId ?? ''
+                }
+            }
+        });
+    }, 1000);
+    useEffect(()=>{
+        return ()=>{
+            saveAction.flush();
+        };
+    }, [
+        saveAction
+    ]);
+    const headerTitle = isDefined(action.name) ? action.name : `Delete Record`;
+    const headerIcon = getActionIcon(action.type);
+    const headerIconColor = useActionIconColorOrThrow(action.type);
+    const headerType = useActionHeaderTypeOrThrow(action.type);
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(WorkflowStepHeader, {
+                onTitleChange: (newName)=>{
+                    if (actionOptions.readonly === true) {
+                        return;
+                    }
+                    actionOptions.onActionUpdate({
+                        ...action,
+                        name: newName
+                    });
+                },
+                Icon: getIcon(headerIcon),
+                iconColor: headerIconColor,
+                initialTitle: headerTitle,
+                headerType: headerType,
+                disabled: isFormDisabled
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx",
+                lineNumber: 116,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(WorkflowStepBody, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(Select, {
+                        dropdownId: "workflow-edit-action-record-delete-object-name",
+                        label: "Object",
+                        fullWidth: true,
+                        disabled: isFormDisabled,
+                        value: formData.objectName,
+                        emptyOption: {
+                            label: 'Select an option',
+                            value: ''
+                        },
+                        options: availableMetadata,
+                        onChange: (objectName)=>{
+                            const newFormData = {
+                                objectName,
+                                objectRecordId: ''
+                            };
+                            setFormData(newFormData);
+                            saveAction(newFormData);
+                        },
+                        withSearchInput: true
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx",
+                        lineNumber: 134,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(HorizontalSeparator, {
+                        noMargin: true
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx",
+                        lineNumber: 155,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(WorkflowSingleRecordPicker, {
+                        label: "Record",
+                        onChange: (objectRecordId)=>handleFieldChange('objectRecordId', objectRecordId),
+                        objectNameSingular: formData.objectName,
+                        defaultValue: formData.objectRecordId,
+                        testId: "workflow-edit-action-record-delete-object-record-id",
+                        disabled: isFormDisabled
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx",
+                        lineNumber: 157,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx",
+                lineNumber: 133,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(WorkflowEditActionDeleteRecord, "fVTFK00MWVwabVwlYOrKWjV9UcA=", false, function() {
+    return [
+        useIcons,
+        useFilteredObjectMetadataItems,
+        useDebouncedCallback,
+        useActionIconColorOrThrow,
+        useActionHeaderTypeOrThrow
+    ];
+});
+_c = WorkflowEditActionDeleteRecord;
+var _c;
+$RefreshReg$(_c, "WorkflowEditActionDeleteRecord");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldvcmtmbG93RWRpdEFjdGlvbkRlbGV0ZVJlY29yZC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zIH0gZnJvbSAnQC9vYmplY3QtbWV0YWRhdGEvaG9va3MvdXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zJztcbmltcG9ydCB7IFNlbGVjdCB9IGZyb20gJ0AvdWkvaW5wdXQvY29tcG9uZW50cy9TZWxlY3QnO1xuaW1wb3J0IHsgV29ya2Zsb3dEZWxldGVSZWNvcmRBY3Rpb24gfSBmcm9tICdAL3dvcmtmbG93L3R5cGVzL1dvcmtmbG93JztcbmltcG9ydCB7IFdvcmtmbG93U3RlcEhlYWRlciB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctc3RlcHMvY29tcG9uZW50cy9Xb3JrZmxvd1N0ZXBIZWFkZXInO1xuaW1wb3J0IHsgV29ya2Zsb3dTaW5nbGVSZWNvcmRQaWNrZXIgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3dvcmtmbG93LWFjdGlvbnMvY29tcG9uZW50cy9Xb3JrZmxvd1NpbmdsZVJlY29yZFBpY2tlcic7XG5pbXBvcnQgeyB1c2VFZmZlY3QsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuXG5pbXBvcnQgeyBXb3JrZmxvd1N0ZXBCb2R5IH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93U3RlcEJvZHknO1xuaW1wb3J0IHsgdXNlQWN0aW9uSGVhZGVyVHlwZU9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3dvcmtmbG93LWFjdGlvbnMvaG9va3MvdXNlQWN0aW9uSGVhZGVyVHlwZU9yVGhyb3cnO1xuaW1wb3J0IHsgdXNlQWN0aW9uSWNvbkNvbG9yT3JUaHJvdyB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctc3RlcHMvd29ya2Zsb3ctYWN0aW9ucy9ob29rcy91c2VBY3Rpb25JY29uQ29sb3JPclRocm93JztcbmltcG9ydCB7IGdldEFjdGlvbkljb24gfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3dvcmtmbG93LWFjdGlvbnMvdXRpbHMvZ2V0QWN0aW9uSWNvbic7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcbmltcG9ydCB7IEhvcml6b250YWxTZXBhcmF0b3IsIFNlbGVjdE9wdGlvbiwgdXNlSWNvbnMgfSBmcm9tICd0d2VudHktdWknO1xuaW1wb3J0IHsgSnNvblZhbHVlIH0gZnJvbSAndHlwZS1mZXN0JztcbmltcG9ydCB7IHVzZURlYm91bmNlZENhbGxiYWNrIH0gZnJvbSAndXNlLWRlYm91bmNlJztcblxudHlwZSBXb3JrZmxvd0VkaXRBY3Rpb25EZWxldGVSZWNvcmRQcm9wcyA9IHtcbiAgYWN0aW9uOiBXb3JrZmxvd0RlbGV0ZVJlY29yZEFjdGlvbjtcbiAgYWN0aW9uT3B0aW9uczpcbiAgICB8IHtcbiAgICAgICAgcmVhZG9ubHk6IHRydWU7XG4gICAgICB9XG4gICAgfCB7XG4gICAgICAgIHJlYWRvbmx5PzogZmFsc2U7XG4gICAgICAgIG9uQWN0aW9uVXBkYXRlOiAoYWN0aW9uOiBXb3JrZmxvd0RlbGV0ZVJlY29yZEFjdGlvbikgPT4gdm9pZDtcbiAgICAgIH07XG59O1xuXG50eXBlIERlbGV0ZVJlY29yZEZvcm1EYXRhID0ge1xuICBvYmplY3ROYW1lOiBzdHJpbmc7XG4gIG9iamVjdFJlY29yZElkOiBzdHJpbmc7XG59O1xuXG5leHBvcnQgY29uc3QgV29ya2Zsb3dFZGl0QWN0aW9uRGVsZXRlUmVjb3JkID0gKHtcbiAgYWN0aW9uLFxuICBhY3Rpb25PcHRpb25zLFxufTogV29ya2Zsb3dFZGl0QWN0aW9uRGVsZXRlUmVjb3JkUHJvcHMpID0+IHtcbiAgY29uc3QgeyBnZXRJY29uIH0gPSB1c2VJY29ucygpO1xuXG4gIGNvbnN0IHsgYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcyB9ID0gdXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zKCk7XG5cbiAgY29uc3QgYXZhaWxhYmxlTWV0YWRhdGE6IEFycmF5PFNlbGVjdE9wdGlvbjxzdHJpbmc+PiA9XG4gICAgYWN0aXZlT2JqZWN0TWV0YWRhdGFJdGVtcy5tYXAoKGl0ZW0pID0+ICh7XG4gICAgICBJY29uOiBnZXRJY29uKGl0ZW0uaWNvbiksXG4gICAgICBsYWJlbDogaXRlbS5sYWJlbFBsdXJhbCxcbiAgICAgIHZhbHVlOiBpdGVtLm5hbWVTaW5ndWxhcixcbiAgICB9KSk7XG5cbiAgY29uc3QgW2Zvcm1EYXRhLCBzZXRGb3JtRGF0YV0gPSB1c2VTdGF0ZTxEZWxldGVSZWNvcmRGb3JtRGF0YT4oe1xuICAgIG9iamVjdE5hbWU6IGFjdGlvbi5zZXR0aW5ncy5pbnB1dC5vYmplY3ROYW1lLFxuICAgIG9iamVjdFJlY29yZElkOiBhY3Rpb24uc2V0dGluZ3MuaW5wdXQub2JqZWN0UmVjb3JkSWQsXG4gIH0pO1xuICBjb25zdCBpc0Zvcm1EaXNhYmxlZCA9IGFjdGlvbk9wdGlvbnMucmVhZG9ubHk7XG5cbiAgY29uc3QgaGFuZGxlRmllbGRDaGFuZ2UgPSAoXG4gICAgZmllbGROYW1lOiBrZXlvZiBEZWxldGVSZWNvcmRGb3JtRGF0YSxcbiAgICB1cGRhdGVkVmFsdWU6IEpzb25WYWx1ZSxcbiAgKSA9PiB7XG4gICAgY29uc3QgbmV3Rm9ybURhdGE6IERlbGV0ZVJlY29yZEZvcm1EYXRhID0ge1xuICAgICAgLi4uZm9ybURhdGEsXG4gICAgICBbZmllbGROYW1lXTogdXBkYXRlZFZhbHVlLFxuICAgIH07XG5cbiAgICBzZXRGb3JtRGF0YShuZXdGb3JtRGF0YSk7XG5cbiAgICBzYXZlQWN0aW9uKG5ld0Zvcm1EYXRhKTtcbiAgfTtcblxuICBjb25zdCBzZWxlY3RlZE9iamVjdE1ldGFkYXRhSXRlbU5hbWVTaW5ndWxhciA9IGZvcm1EYXRhLm9iamVjdE5hbWU7XG5cbiAgY29uc3Qgc2VsZWN0ZWRPYmplY3RNZXRhZGF0YUl0ZW0gPSBhY3RpdmVPYmplY3RNZXRhZGF0YUl0ZW1zLmZpbmQoXG4gICAgKGl0ZW0pID0+IGl0ZW0ubmFtZVNpbmd1bGFyID09PSBzZWxlY3RlZE9iamVjdE1ldGFkYXRhSXRlbU5hbWVTaW5ndWxhcixcbiAgKTtcbiAgaWYgKCFpc0RlZmluZWQoc2VsZWN0ZWRPYmplY3RNZXRhZGF0YUl0ZW0pKSB7XG4gICAgdGhyb3cgbmV3IEVycm9yKCdTaG91bGQgaGF2ZSBmb3VuZCB0aGUgbWV0YWRhdGEgaXRlbScpO1xuICB9XG5cbiAgY29uc3Qgc2F2ZUFjdGlvbiA9IHVzZURlYm91bmNlZENhbGxiYWNrKFxuICAgIGFzeW5jIChmb3JtRGF0YTogRGVsZXRlUmVjb3JkRm9ybURhdGEpID0+IHtcbiAgICAgIGlmIChhY3Rpb25PcHRpb25zLnJlYWRvbmx5ID09PSB0cnVlKSB7XG4gICAgICAgIHJldHVybjtcbiAgICAgIH1cblxuICAgICAgY29uc3Qge1xuICAgICAgICBvYmplY3ROYW1lOiB1cGRhdGVkT2JqZWN0TmFtZSxcbiAgICAgICAgb2JqZWN0UmVjb3JkSWQ6IHVwZGF0ZWRPYmplY3RSZWNvcmRJZCxcbiAgICAgIH0gPSBmb3JtRGF0YTtcblxuICAgICAgYWN0aW9uT3B0aW9ucy5vbkFjdGlvblVwZGF0ZSh7XG4gICAgICAgIC4uLmFjdGlvbixcbiAgICAgICAgc2V0dGluZ3M6IHtcbiAgICAgICAgICAuLi5hY3Rpb24uc2V0dGluZ3MsXG4gICAgICAgICAgaW5wdXQ6IHtcbiAgICAgICAgICAgIG9iamVjdE5hbWU6IHVwZGF0ZWRPYmplY3ROYW1lLFxuICAgICAgICAgICAgb2JqZWN0UmVjb3JkSWQ6IHVwZGF0ZWRPYmplY3RSZWNvcmRJZCA/PyAnJyxcbiAgICAgICAgICB9LFxuICAgICAgICB9LFxuICAgICAgfSk7XG4gICAgfSxcbiAgICAxXzAwMCxcbiAgKTtcblxuICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgIHJldHVybiAoKSA9PiB7XG4gICAgICBzYXZlQWN0aW9uLmZsdXNoKCk7XG4gICAgfTtcbiAgfSwgW3NhdmVBY3Rpb25dKTtcblxuICBjb25zdCBoZWFkZXJUaXRsZSA9IGlzRGVmaW5lZChhY3Rpb24ubmFtZSkgPyBhY3Rpb24ubmFtZSA6IGBEZWxldGUgUmVjb3JkYDtcbiAgY29uc3QgaGVhZGVySWNvbiA9IGdldEFjdGlvbkljb24oYWN0aW9uLnR5cGUpO1xuICBjb25zdCBoZWFkZXJJY29uQ29sb3IgPSB1c2VBY3Rpb25JY29uQ29sb3JPclRocm93KGFjdGlvbi50eXBlKTtcbiAgY29uc3QgaGVhZGVyVHlwZSA9IHVzZUFjdGlvbkhlYWRlclR5cGVPclRocm93KGFjdGlvbi50eXBlKTtcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8V29ya2Zsb3dTdGVwSGVhZGVyXG4gICAgICAgIG9uVGl0bGVDaGFuZ2U9eyhuZXdOYW1lOiBzdHJpbmcpID0+IHtcbiAgICAgICAgICBpZiAoYWN0aW9uT3B0aW9ucy5yZWFkb25seSA9PT0gdHJ1ZSkge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgIH1cblxuICAgICAgICAgIGFjdGlvbk9wdGlvbnMub25BY3Rpb25VcGRhdGUoe1xuICAgICAgICAgICAgLi4uYWN0aW9uLFxuICAgICAgICAgICAgbmFtZTogbmV3TmFtZSxcbiAgICAgICAgICB9KTtcbiAgICAgICAgfX1cbiAgICAgICAgSWNvbj17Z2V0SWNvbihoZWFkZXJJY29uKX1cbiAgICAgICAgaWNvbkNvbG9yPXtoZWFkZXJJY29uQ29sb3J9XG4gICAgICAgIGluaXRpYWxUaXRsZT17aGVhZGVyVGl0bGV9XG4gICAgICAgIGhlYWRlclR5cGU9e2hlYWRlclR5cGV9XG4gICAgICAgIGRpc2FibGVkPXtpc0Zvcm1EaXNhYmxlZH1cbiAgICAgIC8+XG4gICAgICA8V29ya2Zsb3dTdGVwQm9keT5cbiAgICAgICAgPFNlbGVjdFxuICAgICAgICAgIGRyb3Bkb3duSWQ9XCJ3b3JrZmxvdy1lZGl0LWFjdGlvbi1yZWNvcmQtZGVsZXRlLW9iamVjdC1uYW1lXCJcbiAgICAgICAgICBsYWJlbD1cIk9iamVjdFwiXG4gICAgICAgICAgZnVsbFdpZHRoXG4gICAgICAgICAgZGlzYWJsZWQ9e2lzRm9ybURpc2FibGVkfVxuICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5vYmplY3ROYW1lfVxuICAgICAgICAgIGVtcHR5T3B0aW9uPXt7IGxhYmVsOiAnU2VsZWN0IGFuIG9wdGlvbicsIHZhbHVlOiAnJyB9fVxuICAgICAgICAgIG9wdGlvbnM9e2F2YWlsYWJsZU1ldGFkYXRhfVxuICAgICAgICAgIG9uQ2hhbmdlPXsob2JqZWN0TmFtZSkgPT4ge1xuICAgICAgICAgICAgY29uc3QgbmV3Rm9ybURhdGE6IERlbGV0ZVJlY29yZEZvcm1EYXRhID0ge1xuICAgICAgICAgICAgICBvYmplY3ROYW1lLFxuICAgICAgICAgICAgICBvYmplY3RSZWNvcmRJZDogJycsXG4gICAgICAgICAgICB9O1xuXG4gICAgICAgICAgICBzZXRGb3JtRGF0YShuZXdGb3JtRGF0YSk7XG5cbiAgICAgICAgICAgIHNhdmVBY3Rpb24obmV3Rm9ybURhdGEpO1xuICAgICAgICAgIH19XG4gICAgICAgICAgd2l0aFNlYXJjaElucHV0XG4gICAgICAgIC8+XG5cbiAgICAgICAgPEhvcml6b250YWxTZXBhcmF0b3Igbm9NYXJnaW4gLz5cblxuICAgICAgICA8V29ya2Zsb3dTaW5nbGVSZWNvcmRQaWNrZXJcbiAgICAgICAgICBsYWJlbD1cIlJlY29yZFwiXG4gICAgICAgICAgb25DaGFuZ2U9eyhvYmplY3RSZWNvcmRJZCkgPT5cbiAgICAgICAgICAgIGhhbmRsZUZpZWxkQ2hhbmdlKCdvYmplY3RSZWNvcmRJZCcsIG9iamVjdFJlY29yZElkKVxuICAgICAgICAgIH1cbiAgICAgICAgICBvYmplY3ROYW1lU2luZ3VsYXI9e2Zvcm1EYXRhLm9iamVjdE5hbWV9XG4gICAgICAgICAgZGVmYXVsdFZhbHVlPXtmb3JtRGF0YS5vYmplY3RSZWNvcmRJZH1cbiAgICAgICAgICB0ZXN0SWQ9XCJ3b3JrZmxvdy1lZGl0LWFjdGlvbi1yZWNvcmQtZGVsZXRlLW9iamVjdC1yZWNvcmQtaWRcIlxuICAgICAgICAgIGRpc2FibGVkPXtpc0Zvcm1EaXNhYmxlZH1cbiAgICAgICAgLz5cbiAgICAgIDwvV29ya2Zsb3dTdGVwQm9keT5cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsidXNlRmlsdGVyZWRPYmplY3RNZXRhZGF0YUl0ZW1zIiwiU2VsZWN0IiwiV29ya2Zsb3dTdGVwSGVhZGVyIiwiV29ya2Zsb3dTaW5nbGVSZWNvcmRQaWNrZXIiLCJ1c2VFZmZlY3QiLCJ1c2VTdGF0ZSIsIldvcmtmbG93U3RlcEJvZHkiLCJ1c2VBY3Rpb25IZWFkZXJUeXBlT3JUaHJvdyIsInVzZUFjdGlvbkljb25Db2xvck9yVGhyb3ciLCJnZXRBY3Rpb25JY29uIiwiaXNEZWZpbmVkIiwiSG9yaXpvbnRhbFNlcGFyYXRvciIsInVzZUljb25zIiwidXNlRGVib3VuY2VkQ2FsbGJhY2siLCJXb3JrZmxvd0VkaXRBY3Rpb25EZWxldGVSZWNvcmQiLCJhY3Rpb24iLCJhY3Rpb25PcHRpb25zIiwiZ2V0SWNvbiIsImFjdGl2ZU9iamVjdE1ldGFkYXRhSXRlbXMiLCJhdmFpbGFibGVNZXRhZGF0YSIsIm1hcCIsIml0ZW0iLCJJY29uIiwiaWNvbiIsImxhYmVsIiwibGFiZWxQbHVyYWwiLCJ2YWx1ZSIsIm5hbWVTaW5ndWxhciIsImZvcm1EYXRhIiwic2V0Rm9ybURhdGEiLCJvYmplY3ROYW1lIiwic2V0dGluZ3MiLCJpbnB1dCIsIm9iamVjdFJlY29yZElkIiwiaXNGb3JtRGlzYWJsZWQiLCJyZWFkb25seSIsImhhbmRsZUZpZWxkQ2hhbmdlIiwiZmllbGROYW1lIiwidXBkYXRlZFZhbHVlIiwibmV3Rm9ybURhdGEiLCJzYXZlQWN0aW9uIiwic2VsZWN0ZWRPYmplY3RNZXRhZGF0YUl0ZW1OYW1lU2luZ3VsYXIiLCJzZWxlY3RlZE9iamVjdE1ldGFkYXRhSXRlbSIsImZpbmQiLCJFcnJvciIsInVwZGF0ZWRPYmplY3ROYW1lIiwidXBkYXRlZE9iamVjdFJlY29yZElkIiwib25BY3Rpb25VcGRhdGUiLCJmbHVzaCIsImhlYWRlclRpdGxlIiwibmFtZSIsImhlYWRlckljb24iLCJ0eXBlIiwiaGVhZGVySWNvbkNvbG9yIiwiaGVhZGVyVHlwZSIsIm9uVGl0bGVDaGFuZ2UiLCJuZXdOYW1lIiwiaWNvbkNvbG9yIiwiaW5pdGlhbFRpdGxlIiwiZGlzYWJsZWQiLCJkcm9wZG93bklkIiwiZnVsbFdpZHRoIiwiZW1wdHlPcHRpb24iLCJvcHRpb25zIiwib25DaGFuZ2UiLCJ3aXRoU2VhcmNoSW5wdXQiLCJub01hcmdpbiIsIm9iamVjdE5hbWVTaW5ndWxhciIsImRlZmF1bHRWYWx1ZSIsInRlc3RJZCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLFNBQVNBLDhCQUE4QixRQUFRLHlEQUF5RDtBQUN4RyxTQUFTQyxNQUFNLFFBQVEsK0JBQStCO0FBRXRELFNBQVNDLGtCQUFrQixRQUFRLDBEQUEwRDtBQUM3RixTQUFTQywwQkFBMEIsUUFBUSxtRkFBbUY7QUFDOUgsU0FBU0MsU0FBUyxFQUFFQyxRQUFRLFFBQVEsUUFBUTtBQUU1QyxTQUFTQyxnQkFBZ0IsUUFBUSx3REFBd0Q7QUFDekYsU0FBU0MsMEJBQTBCLFFBQVEsOEVBQThFO0FBQ3pILFNBQVNDLHlCQUF5QixRQUFRLDZFQUE2RTtBQUN2SCxTQUFTQyxhQUFhLFFBQVEsaUVBQWlFO0FBQy9GLFNBQVNDLFNBQVMsUUFBUSxzQkFBc0I7QUFDaEQsU0FBU0MsbUJBQW1CLEVBQWdCQyxRQUFRLFFBQVEsWUFBWTtBQUV4RSxTQUFTQyxvQkFBb0IsUUFBUSxlQUFlO0FBbUJwRCxPQUFPLE1BQU1DLGlDQUFpQyxDQUFDLEVBQzdDQyxNQUFNLEVBQ05DLGFBQWEsRUFDdUI7O0lBQ3BDLE1BQU0sRUFBRUMsT0FBTyxFQUFFLEdBQUdMO0lBRXBCLE1BQU0sRUFBRU0seUJBQXlCLEVBQUUsR0FBR2xCO0lBRXRDLE1BQU1tQixvQkFDSkQsMEJBQTBCRSxHQUFHLENBQUMsQ0FBQ0MsT0FBVSxDQUFBO1lBQ3ZDQyxNQUFNTCxRQUFR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

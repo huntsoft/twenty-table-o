@@ -91,6 +91,7 @@ export default defineConfig(({ command, mode }) => {
           '**/@blocknote/core/src/fonts/**',
         ],
       },
+      sourcemapIgnoreList: false,
     },
 
     plugins: [
@@ -144,7 +145,7 @@ export default defineConfig(({ command, mode }) => {
 
     build: {
       outDir: 'build',
-      sourcemap: VITE_BUILD_SOURCEMAP === 'true',
+      sourcemap: VITE_BUILD_SOURCEMAP === 'true' || mode === 'development',
       rollupOptions: {
         output: {
           manualChunks: (id: string) => {

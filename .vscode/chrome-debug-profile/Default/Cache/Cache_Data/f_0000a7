@@ -1,0 +1,421 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { FormNumberFieldInput } from "/src/modules/object-record/record-field/form-types/components/FormNumberFieldInput.tsx";
+import { FormTextFieldInput } from "/src/modules/object-record/record-field/form-types/components/FormTextFieldInput.tsx";
+import { Select } from "/src/modules/ui/input/components/Select.tsx";
+import { WorkflowStepBody } from "/src/modules/workflow/workflow-steps/components/WorkflowStepBody.tsx";
+import { WorkflowStepHeader } from "/src/modules/workflow/workflow-steps/components/WorkflowStepHeader.tsx";
+import { CRON_TRIGGER_INTERVAL_OPTIONS } from "/src/modules/workflow/workflow-trigger/constants/CronTriggerIntervalOptions.ts";
+import { getCronTriggerDefaultSettings } from "/src/modules/workflow/workflow-trigger/utils/getCronTriggerDefaultSettings.ts";
+import { getTriggerIcon } from "/src/modules/workflow/workflow-trigger/utils/getTriggerIcon.ts";
+import { getTriggerDefaultLabel } from "/src/modules/workflow/workflow-trigger/utils/getTriggerLabel.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import __vite__cjsImport12__sniptt_guards from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@sniptt_guards.js?v=226f7286"; const isNumber = __vite__cjsImport12__sniptt_guards["isNumber"];
+import __vite__cjsImport13_cronValidate from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/cron-validate.js?v=226f7286"; const cron = __vite__cjsImport13_cronValidate.__esModule ? __vite__cjsImport13_cronValidate.default : __vite__cjsImport13_cronValidate;
+import __vite__cjsImport14_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useState = __vite__cjsImport14_react["useState"];
+import { useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+export const WorkflowEditTriggerCronForm = ({ trigger, triggerOptions })=>{
+    _s();
+    const theme = useTheme();
+    const [errorMessages, setErrorMessages] = useState({});
+    const [errorMessagesVisible, setErrorMessagesVisible] = useState(false);
+    const { getIcon } = useIcons();
+    const headerIcon = getTriggerIcon({
+        type: 'CRON'
+    });
+    const defaultLabel = getTriggerDefaultLabel({
+        type: 'CRON'
+    }) ?? '';
+    const headerTitle = isDefined(trigger.name) ? trigger.name : defaultLabel;
+    const headerType = 'Trigger';
+    const onBlur = ()=>{
+        setErrorMessagesVisible(true);
+    };
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(WorkflowStepHeader, {
+                onTitleChange: (newName)=>{
+                    if (triggerOptions.readonly === true) {
+                        return;
+                    }
+                    triggerOptions.onTriggerUpdate({
+                        ...trigger,
+                        name: newName
+                    });
+                },
+                Icon: getIcon(headerIcon),
+                iconColor: theme.font.color.tertiary,
+                initialTitle: headerTitle,
+                headerType: headerType,
+                disabled: triggerOptions.readonly
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                lineNumber: 70,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(WorkflowStepBody, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(Select, {
+                        dropdownId: "workflow-edit-cron-trigger-interval",
+                        label: "Trigger interval",
+                        fullWidth: true,
+                        disabled: triggerOptions.readonly,
+                        value: trigger.settings.type,
+                        options: CRON_TRIGGER_INTERVAL_OPTIONS,
+                        onChange: (newTriggerType)=>{
+                            if (triggerOptions.readonly === true) {
+                                return;
+                            }
+                            setErrorMessages({});
+                            setErrorMessagesVisible(false);
+                            triggerOptions.onTriggerUpdate({
+                                ...trigger,
+                                settings: getCronTriggerDefaultSettings(newTriggerType)
+                            });
+                        },
+                        withSearchInput: true
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                        lineNumber: 88,
+                        columnNumber: 9
+                    }, this),
+                    trigger.settings.type === 'CUSTOM' && /*#__PURE__*/ _jsxDEV(FormTextFieldInput, {
+                        label: "Expression",
+                        placeholder: "0 */1 * * *",
+                        error: errorMessagesVisible ? errorMessages.CUSTOM : undefined,
+                        onBlur: onBlur,
+                        hint: "Format: [Minute] [Hour] [Day of Month] [Month] [Day of Week]",
+                        readonly: triggerOptions.readonly,
+                        defaultValue: trigger.settings.pattern,
+                        onChange: (newPattern)=>{
+                            if (triggerOptions.readonly === true) {
+                                return;
+                            }
+                            const cronValidator = cron(newPattern);
+                            if (cronValidator.isError() === true) {
+                                setErrorMessages({
+                                    CUSTOM: `Invalid cron pattern, ${cronValidator.getError()[0].replace(/\. \(Input cron:.*$/, '')}`
+                                });
+                                return;
+                            }
+                            setErrorMessages((prev)=>({
+                                    ...prev,
+                                    CUSTOM: undefined
+                                }));
+                            triggerOptions.onTriggerUpdate({
+                                ...trigger,
+                                settings: {
+                                    ...trigger.settings,
+                                    type: 'CUSTOM',
+                                    pattern: newPattern
+                                }
+                            });
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                        lineNumber: 112,
+                        columnNumber: 11
+                    }, this),
+                    trigger.settings.type === 'DAYS' && /*#__PURE__*/ _jsxDEV(_Fragment, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                                label: "Days Between Triggers",
+                                error: errorMessagesVisible ? errorMessages.DAYS_day : undefined,
+                                onBlur: onBlur,
+                                defaultValue: trigger.settings.schedule.day,
+                                onChange: (newDay)=>{
+                                    if (triggerOptions.readonly === true) {
+                                        return;
+                                    }
+                                    if (!isDefined(newDay)) {
+                                        return;
+                                    }
+                                    if (!isNumber(newDay) || newDay <= 0) {
+                                        setErrorMessages((prev)=>({
+                                                ...prev,
+                                                DAYS_day: `Invalid day value '${newDay}'. Should be integer greater than 1`
+                                            }));
+                                        return;
+                                    }
+                                    setErrorMessages((prev)=>({
+                                            ...prev,
+                                            DAYS_day: undefined
+                                        }));
+                                    triggerOptions.onTriggerUpdate({
+                                        ...trigger,
+                                        settings: {
+                                            ...trigger.settings,
+                                            type: 'DAYS',
+                                            schedule: {
+                                                day: newDay,
+                                                hour: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.hour : 0,
+                                                minute: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.minute : 0
+                                            }
+                                        }
+                                    });
+                                },
+                                placeholder: "Enter number greater than 1",
+                                readonly: triggerOptions.readonly
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                                lineNumber: 154,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                                label: "Trigger at Hour",
+                                error: errorMessagesVisible ? errorMessages.DAYS_hour : undefined,
+                                onBlur: onBlur,
+                                defaultValue: trigger.settings.schedule.hour,
+                                onChange: (newHour)=>{
+                                    if (triggerOptions.readonly === true) {
+                                        return;
+                                    }
+                                    if (!isDefined(newHour)) {
+                                        return;
+                                    }
+                                    if (!isNumber(newHour) || newHour < 0 || newHour > 23) {
+                                        setErrorMessages((prev)=>({
+                                                ...prev,
+                                                DAYS_hour: `Invalid hour value '${newHour}'. Should be integer between 0 and 23`
+                                            }));
+                                        return;
+                                    }
+                                    setErrorMessages((prev)=>({
+                                            ...prev,
+                                            DAYS_hour: undefined
+                                        }));
+                                    triggerOptions.onTriggerUpdate({
+                                        ...trigger,
+                                        settings: {
+                                            ...trigger.settings,
+                                            type: 'DAYS',
+                                            schedule: {
+                                                day: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.day : 1,
+                                                hour: newHour,
+                                                minute: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.minute : 0
+                                            }
+                                        }
+                                    });
+                                },
+                                placeholder: "Enter number between 0 and 23",
+                                readonly: triggerOptions.readonly
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                                lineNumber: 203,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                                label: "Trigger at Minute",
+                                error: errorMessagesVisible ? errorMessages.DAYS_minute : undefined,
+                                onBlur: onBlur,
+                                defaultValue: trigger.settings.schedule.minute,
+                                onChange: (newMinute)=>{
+                                    if (triggerOptions.readonly === true) {
+                                        return;
+                                    }
+                                    if (!isDefined(newMinute)) {
+                                        return;
+                                    }
+                                    if (!isNumber(newMinute) || newMinute < 0 || newMinute > 59) {
+                                        setErrorMessages((prev)=>({
+                                                ...prev,
+                                                DAYS_minute: `Invalid minute value '${newMinute}'. Should be integer between 0 and 59`
+                                            }));
+                                        return;
+                                    }
+                                    setErrorMessages((prev)=>({
+                                            ...prev,
+                                            DAYS_minute: undefined
+                                        }));
+                                    triggerOptions.onTriggerUpdate({
+                                        ...trigger,
+                                        settings: {
+                                            ...trigger.settings,
+                                            type: 'DAYS',
+                                            schedule: {
+                                                day: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.day : 1,
+                                                hour: trigger.settings.type === 'DAYS' ? trigger.settings.schedule.hour : 0,
+                                                minute: newMinute
+                                            }
+                                        }
+                                    });
+                                },
+                                placeholder: "Enter number between 0 and 59",
+                                readonly: triggerOptions.readonly
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                                lineNumber: 252,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true),
+                    trigger.settings.type === 'HOURS' && /*#__PURE__*/ _jsxDEV(_Fragment, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                                label: "Hours Between Triggers",
+                                error: errorMessagesVisible ? errorMessages.HOURS_hour : undefined,
+                                onBlur: onBlur,
+                                defaultValue: trigger.settings.schedule.hour,
+                                onChange: (newHour)=>{
+                                    if (triggerOptions.readonly === true) {
+                                        return;
+                                    }
+                                    if (!isDefined(newHour)) {
+                                        return;
+                                    }
+                                    if (!isNumber(newHour) || newHour <= 0) {
+                                        setErrorMessages((prev)=>({
+                                                ...prev,
+                                                HOURS_hour: `Invalid hour value '${newHour}'. Should be integer greater than 1`
+                                            }));
+                                        return;
+                                    }
+                                    setErrorMessages((prev)=>({
+                                            ...prev,
+                                            HOURS_hour: undefined
+                                        }));
+                                    triggerOptions.onTriggerUpdate({
+                                        ...trigger,
+                                        settings: {
+                                            ...trigger.settings,
+                                            type: 'HOURS',
+                                            schedule: {
+                                                hour: newHour,
+                                                minute: trigger.settings.type === 'HOURS' ? trigger.settings.schedule.minute : 0
+                                            }
+                                        }
+                                    });
+                                },
+                                placeholder: "Enter number greater than 1",
+                                readonly: triggerOptions.readonly
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                                lineNumber: 307,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                                label: "Trigger at Minute",
+                                error: errorMessagesVisible ? errorMessages.HOURS_minute : undefined,
+                                onBlur: onBlur,
+                                defaultValue: trigger.settings.schedule.minute,
+                                onChange: (newMinute)=>{
+                                    if (triggerOptions.readonly === true) {
+                                        return;
+                                    }
+                                    if (!isDefined(newMinute)) {
+                                        return;
+                                    }
+                                    if (!isNumber(newMinute) || newMinute < 0 || newMinute > 59) {
+                                        setErrorMessages((prev)=>({
+                                                ...prev,
+                                                HOURS_minute: `Invalid minute value '${newMinute}'. Should be integer between 0 and 59`
+                                            }));
+                                        return;
+                                    }
+                                    setErrorMessages((prev)=>({
+                                            ...prev,
+                                            HOURS_minute: undefined
+                                        }));
+                                    triggerOptions.onTriggerUpdate({
+                                        ...trigger,
+                                        settings: {
+                                            ...trigger.settings,
+                                            type: 'HOURS',
+                                            schedule: {
+                                                hour: trigger.settings.type === 'HOURS' ? trigger.settings.schedule.hour : 1,
+                                                minute: newMinute
+                                            }
+                                        }
+                                    });
+                                },
+                                placeholder: "Enter number between 0 and 59",
+                                readonly: triggerOptions.readonly
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                                lineNumber: 354,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true),
+                    trigger.settings.type === 'MINUTES' && /*#__PURE__*/ _jsxDEV(FormNumberFieldInput, {
+                        label: "Minutes Between Triggers",
+                        error: errorMessagesVisible ? errorMessages.MINUTES : undefined,
+                        onBlur: onBlur,
+                        defaultValue: trigger.settings.schedule.minute,
+                        onChange: (newMinute)=>{
+                            if (triggerOptions.readonly === true) {
+                                return;
+                            }
+                            if (!isDefined(newMinute)) {
+                                return;
+                            }
+                            if (!isNumber(newMinute) || newMinute <= 0) {
+                                setErrorMessages({
+                                    MINUTES: `Invalid minute value '${newMinute}'. Should be integer greater than 1`
+                                });
+                                return;
+                            }
+                            setErrorMessages((prev)=>({
+                                    ...prev,
+                                    MINUTES: undefined
+                                }));
+                            triggerOptions.onTriggerUpdate({
+                                ...trigger,
+                                settings: {
+                                    ...trigger.settings,
+                                    type: 'MINUTES',
+                                    schedule: {
+                                        minute: newMinute
+                                    }
+                                }
+                            });
+                        },
+                        placeholder: "Enter number greater than 1",
+                        readonly: triggerOptions.readonly
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                        lineNumber: 404,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx",
+                lineNumber: 87,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(WorkflowEditTriggerCronForm, "MhvbB11BpnGh1R3I1f73fTZH8d4=", false, function() {
+    return [
+        useTheme,
+        useIcons
+    ];
+});
+_c = WorkflowEditTriggerCronForm;
+var _c;
+$RefreshReg$(_c, "WorkflowEditTriggerCronForm");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldvcmtmbG93RWRpdFRyaWdnZXJDcm9uRm9ybS50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRm9ybU51bWJlckZpZWxkSW5wdXQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL2Zvcm0tdHlwZXMvY29tcG9uZW50cy9Gb3JtTnVtYmVyRmllbGRJbnB1dCc7XG5pbXBvcnQgeyBGb3JtVGV4dEZpZWxkSW5wdXQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpZWxkL2Zvcm0tdHlwZXMvY29tcG9uZW50cy9Gb3JtVGV4dEZpZWxkSW5wdXQnO1xuaW1wb3J0IHsgU2VsZWN0IH0gZnJvbSAnQC91aS9pbnB1dC9jb21wb25lbnRzL1NlbGVjdCc7XG5pbXBvcnQgeyBXb3JrZmxvd0Nyb25UcmlnZ2VyIH0gZnJvbSAnQC93b3JrZmxvdy90eXBlcy9Xb3JrZmxvdyc7XG5pbXBvcnQgeyBXb3JrZmxvd1N0ZXBCb2R5IH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93U3RlcEJvZHknO1xuaW1wb3J0IHsgV29ya2Zsb3dTdGVwSGVhZGVyIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy9jb21wb25lbnRzL1dvcmtmbG93U3RlcEhlYWRlcic7XG5pbXBvcnQgeyBDUk9OX1RSSUdHRVJfSU5URVJWQUxfT1BUSU9OUyB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctdHJpZ2dlci9jb25zdGFudHMvQ3JvblRyaWdnZXJJbnRlcnZhbE9wdGlvbnMnO1xuaW1wb3J0IHsgZ2V0Q3JvblRyaWdnZXJEZWZhdWx0U2V0dGluZ3MgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXRyaWdnZXIvdXRpbHMvZ2V0Q3JvblRyaWdnZXJEZWZhdWx0U2V0dGluZ3MnO1xuaW1wb3J0IHsgZ2V0VHJpZ2dlckljb24gfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXRyaWdnZXIvdXRpbHMvZ2V0VHJpZ2dlckljb24nO1xuaW1wb3J0IHsgZ2V0VHJpZ2dlckRlZmF1bHRMYWJlbCB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctdHJpZ2dlci91dGlscy9nZXRUcmlnZ2VyTGFiZWwnO1xuaW1wb3J0IHsgdXNlVGhlbWUgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgeyBpc051bWJlciB9IGZyb20gJ0BzbmlwdHQvZ3VhcmRzJztcbmltcG9ydCBjcm9uIGZyb20gJ2Nyb24tdmFsaWRhdGUnO1xuaW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyB1c2VJY29ucyB9IGZyb20gJ3R3ZW50eS11aSc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxudHlwZSBXb3JrZmxvd0VkaXRUcmlnZ2VyQ3JvbkZvcm1Qcm9wcyA9IHtcbiAgdHJpZ2dlcjogV29ya2Zsb3dDcm9uVHJpZ2dlcjtcbiAgdHJpZ2dlck9wdGlvbnM6XG4gICAgfCB7XG4gICAgICAgIHJlYWRvbmx5OiB0cnVlO1xuICAgICAgICBvblRyaWdnZXJVcGRhdGU/OiB1bmRlZmluZWQ7XG4gICAgICB9XG4gICAgfCB7XG4gICAgICAgIHJlYWRvbmx5PzogZmFsc2U7XG4gICAgICAgIG9uVHJpZ2dlclVwZGF0ZTogKHRyaWdnZXI6IFdvcmtmbG93Q3JvblRyaWdnZXIpID0+IHZvaWQ7XG4gICAgICB9O1xufTtcblxudHlwZSBGb3JtRXJyb3JNZXNzYWdlcyA9IHtcbiAgQ1VTVE9NPzogc3RyaW5nIHwgdW5kZWZpbmVkO1xuICBEQVlTX2RheT86IHN0cmluZyB8IHVuZGVmaW5lZDtcbiAgREFZU19ob3VyPzogc3RyaW5nIHwgdW5kZWZpbmVkO1xuICBEQVlTX21pbnV0ZT86IHN0cmluZyB8IHVuZGVmaW5lZDtcbiAgSE9VUlNfaG91cj86IHN0cmluZyB8IHVuZGVmaW5lZDtcbiAgSE9VUlNfbWludXRlPzogc3RyaW5nIHwgdW5kZWZpbmVkO1xuICBNSU5VVEVTPzogc3RyaW5nIHwgdW5kZWZpbmVkO1xufTtcblxuZXhwb3J0IGNvbnN0IFdvcmtmbG93RWRpdFRyaWdnZXJDcm9uRm9ybSA9ICh7XG4gIHRyaWdnZXIsXG4gIHRyaWdnZXJPcHRpb25zLFxufTogV29ya2Zsb3dFZGl0VHJpZ2dlckNyb25Gb3JtUHJvcHMpID0+IHtcbiAgY29uc3QgdGhlbWUgPSB1c2VUaGVtZSgpO1xuICBjb25zdCBbZXJyb3JNZXNzYWdlcywgc2V0RXJyb3JNZXNzYWdlc10gPSB1c2VTdGF0ZTxGb3JtRXJyb3JNZXNzYWdlcz4oe30pO1xuICBjb25zdCBbZXJyb3JNZXNzYWdlc1Zpc2libGUsIHNldEVycm9yTWVzc2FnZXNWaXNpYmxlXSA9IHVzZVN0YXRlKGZhbHNlKTtcblxuICBjb25zdCB7IGdldEljb24gfSA9IHVzZUljb25zKCk7XG5cbiAgY29uc3QgaGVhZGVySWNvbiA9IGdldFRyaWdnZXJJY29uKHtcbiAgICB0eXBlOiAnQ1JPTicsXG4gIH0pO1xuXG4gIGNvbnN0IGRlZmF1bHRMYWJlbCA9XG4gICAgZ2V0VHJpZ2dlckRlZmF1bHRMYWJlbCh7XG4gICAgICB0eXBlOiAnQ1JPTicsXG4gICAgfSkgPz8gJyc7XG5cbiAgY29uc3QgaGVhZGVyVGl0bGUgPSBpc0RlZmluZWQodHJpZ2dlci5uYW1lKSA/IHRyaWdnZXIubmFtZSA6IGRlZmF1bHRMYWJlbDtcblxuICBjb25zdCBoZWFkZXJUeXBlID0gJ1RyaWdnZXInO1xuXG4gIGNvbnN0IG9uQmx1ciA9ICgpID0+IHtcbiAgICBzZXRFcnJvck1lc3NhZ2VzVmlzaWJsZSh0cnVlKTtcbiAgfTtcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8V29ya2Zsb3dTdGVwSGVhZGVyXG4gICAgICAgIG9uVGl0bGVDaGFuZ2U9eyhuZXdOYW1lOiBzdHJpbmcpID0+IHtcbiAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICB9XG5cbiAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgIG5hbWU6IG5ld05hbWUsXG4gICAgICAgICAgfSk7XG4gICAgICAgIH19XG4gICAgICAgIEljb249e2dldEljb24oaGVhZGVySWNvbil9XG4gICAgICAgIGljb25Db2xvcj17dGhlbWUuZm9udC5jb2xvci50ZXJ0aWFyeX1cbiAgICAgICAgaW5pdGlhbFRpdGxlPXtoZWFkZXJUaXRsZX1cbiAgICAgICAgaGVhZGVyVHlwZT17aGVhZGVyVHlwZX1cbiAgICAgICAgZGlzYWJsZWQ9e3RyaWdnZXJPcHRpb25zLnJlYWRvbmx5fVxuICAgICAgLz5cbiAgICAgIDxXb3JrZmxvd1N0ZXBCb2R5PlxuICAgICAgICA8U2VsZWN0XG4gICAgICAgICAgZHJvcGRvd25JZD1cIndvcmtmbG93LWVkaXQtY3Jvbi10cmlnZ2VyLWludGVydmFsXCJcbiAgICAgICAgICBsYWJlbD1cIlRyaWdnZXIgaW50ZXJ2YWxcIlxuICAgICAgICAgIGZ1bGxXaWR0aFxuICAgICAgICAgIGRpc2FibGVkPXt0cmlnZ2VyT3B0aW9ucy5yZWFkb25seX1cbiAgICAgICAgICB2YWx1ZT17dHJpZ2dlci5zZXR0aW5ncy50eXBlfVxuICAgICAgICAgIG9wdGlvbnM9e0NST05fVFJJR0dFUl9JTlRFUlZBTF9PUFRJT05TfVxuICAgICAgICAgIG9uQ2hhbmdlPXsobmV3VHJpZ2dlclR5cGUpID0+IHtcbiAgICAgICAgICAgIGlmICh0cmlnZ2VyT3B0aW9ucy5yZWFkb25seSA9PT0gdHJ1ZSkge1xuICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoe30pO1xuXG4gICAgICAgICAgICBzZXRFcnJvck1lc3NhZ2VzVmlzaWJsZShmYWxzZSk7XG5cbiAgICAgICAgICAgIHRyaWdnZXJPcHRpb25zLm9uVHJpZ2dlclVwZGF0ZSh7XG4gICAgICAgICAgICAgIC4uLnRyaWdnZXIsXG4gICAgICAgICAgICAgIHNldHRpbmdzOiBnZXRDcm9uVHJpZ2dlckRlZmF1bHRTZXR0aW5ncyhuZXdUcmlnZ2VyVHlwZSksXG4gICAgICAgICAgICB9KTtcbiAgICAgICAgICB9fVxuICAgICAgICAgIHdpdGhTZWFyY2hJbnB1dFxuICAgICAgICAvPlxuICAgICAgICB7dHJpZ2dlci5zZXR0aW5ncy50eXBlID09PSAnQ1VTVE9NJyAmJiAoXG4gICAgICAgICAgPEZvcm1UZXh0RmllbGRJbnB1dFxuICAgICAgICAgICAgbGFiZWw9XCJFeHByZXNzaW9uXCJcbiAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiMCAqLzEgKiAqICpcIlxuICAgICAgICAgICAgZXJyb3I9e2Vycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5DVVNUT00gOiB1bmRlZmluZWR9XG4gICAgICAgICAgICBvbkJsdXI9e29uQmx1cn1cbiAgICAgICAgICAgIGhpbnQ9XCJGb3JtYXQ6IFtNaW51dGVdIFtIb3VyXSBbRGF5IG9mIE1vbnRoXSBbTW9udGhdIFtEYXkgb2YgV2Vla11cIlxuICAgICAgICAgICAgcmVhZG9ubHk9e3RyaWdnZXJPcHRpb25zLnJlYWRvbmx5fVxuICAgICAgICAgICAgZGVmYXVsdFZhbHVlPXt0cmlnZ2VyLnNldHRpbmdzLnBhdHRlcm59XG4gICAgICAgICAgICBvbkNoYW5nZT17KG5ld1BhdHRlcm46IHN0cmluZykgPT4ge1xuICAgICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICBjb25zdCBjcm9uVmFsaWRhdG9yID0gY3JvbihuZXdQYXR0ZXJuKTtcblxuICAgICAgICAgICAgICBpZiAoY3JvblZhbGlkYXRvci5pc0Vycm9yKCkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICBzZXRFcnJvck1lc3NhZ2VzKHtcbiAgICAgICAgICAgICAgICAgIENVU1RPTTogYEludmFsaWQgY3JvbiBwYXR0ZXJuLCAke2Nyb25WYWxpZGF0b3JcbiAgICAgICAgICAgICAgICAgICAgLmdldEVycm9yKClbMF1cbiAgICAgICAgICAgICAgICAgICAgLnJlcGxhY2UoL1xcLiBcXChJbnB1dCBjcm9uOi4qJC8sICcnKX1gLFxuICAgICAgICAgICAgICAgIH0pO1xuICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgLi4ucHJldixcbiAgICAgICAgICAgICAgICBDVVNUT006IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgfSkpO1xuXG4gICAgICAgICAgICAgIHRyaWdnZXJPcHRpb25zLm9uVHJpZ2dlclVwZGF0ZSh7XG4gICAgICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgICAgICBzZXR0aW5nczoge1xuICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlci5zZXR0aW5ncyxcbiAgICAgICAgICAgICAgICAgIHR5cGU6ICdDVVNUT00nLFxuICAgICAgICAgICAgICAgICAgcGF0dGVybjogbmV3UGF0dGVybixcbiAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIH19XG4gICAgICAgICAgLz5cbiAgICAgICAgKX1cbiAgICAgICAge3RyaWdnZXIuc2V0dGluZ3MudHlwZSA9PT0gJ0RBWVMnICYmIChcbiAgICAgICAgICA8PlxuICAgICAgICAgICAgPEZvcm1OdW1iZXJGaWVsZElucHV0XG4gICAgICAgICAgICAgIGxhYmVsPVwiRGF5cyBCZXR3ZWVuIFRyaWdnZXJzXCJcbiAgICAgICAgICAgICAgZXJyb3I9e2Vycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5EQVlTX2RheSA6IHVuZGVmaW5lZH1cbiAgICAgICAgICAgICAgb25CbHVyPXtvbkJsdXJ9XG4gICAgICAgICAgICAgIGRlZmF1bHRWYWx1ZT17dHJpZ2dlci5zZXR0aW5ncy5zY2hlZHVsZS5kYXl9XG4gICAgICAgICAgICAgIG9uQ2hhbmdlPXsobmV3RGF5KSA9PiB7XG4gICAgICAgICAgICAgICAgaWYgKHRyaWdnZXJPcHRpb25zLnJlYWRvbmx5ID09PSB0cnVlKSB7XG4gICAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgaWYgKCFpc0RlZmluZWQobmV3RGF5KSkge1xuICAgICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIGlmICghaXNOdW1iZXIobmV3RGF5KSB8fCBuZXdEYXkgPD0gMCkge1xuICAgICAgICAgICAgICAgICAgc2V0RXJyb3JNZXNzYWdlcygocHJldikgPT4gKHtcbiAgICAgICAgICAgICAgICAgICAgLi4ucHJldixcbiAgICAgICAgICAgICAgICAgICAgREFZU19kYXk6IGBJbnZhbGlkIGRheSB2YWx1ZSAnJHtuZXdEYXl9Jy4gU2hvdWxkIGJlIGludGVnZXIgZ3JlYXRlciB0aGFuIDFgLFxuICAgICAgICAgICAgICAgICAgfSkpO1xuICAgICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgICAuLi5wcmV2LFxuICAgICAgICAgICAgICAgICAgREFZU19kYXk6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgICB9KSk7XG5cbiAgICAgICAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgICAgICAgIHNldHRpbmdzOiB7XG4gICAgICAgICAgICAgICAgICAgIC4uLnRyaWdnZXIuc2V0dGluZ3MsXG4gICAgICAgICAgICAgICAgICAgIHR5cGU6ICdEQVlTJyxcbiAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6IHtcbiAgICAgICAgICAgICAgICAgICAgICBkYXk6IG5ld0RheSxcbiAgICAgICAgICAgICAgICAgICAgICBob3VyOlxuICAgICAgICAgICAgICAgICAgICAgICAgdHJpZ2dlci5zZXR0aW5ncy50eXBlID09PSAnREFZUydcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPyB0cmlnZ2VyLnNldHRpbmdzLnNjaGVkdWxlLmhvdXJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgOiAwLFxuICAgICAgICAgICAgICAgICAgICAgIG1pbnV0ZTpcbiAgICAgICAgICAgICAgICAgICAgICAgIHRyaWdnZXIuc2V0dGluZ3MudHlwZSA9PT0gJ0RBWVMnXG4gICAgICAgICAgICAgICAgICAgICAgICAgID8gdHJpZ2dlci5zZXR0aW5ncy5zY2hlZHVsZS5taW51dGVcbiAgICAgICAgICAgICAgICAgICAgICAgICAgOiAwLFxuICAgICAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBudW1iZXIgZ3JlYXRlciB0aGFuIDFcIlxuICAgICAgICAgICAgICByZWFkb25seT17dHJpZ2dlck9wdGlvbnMucmVhZG9ubHl9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgICAgPEZvcm1OdW1iZXJGaWVsZElucHV0XG4gICAgICAgICAgICAgIGxhYmVsPVwiVHJpZ2dlciBhdCBIb3VyXCJcbiAgICAgICAgICAgICAgZXJyb3I9e2Vycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5EQVlTX2hvdXIgOiB1bmRlZmluZWR9XG4gICAgICAgICAgICAgIG9uQmx1cj17b25CbHVyfVxuICAgICAgICAgICAgICBkZWZhdWx0VmFsdWU9e3RyaWdnZXIuc2V0dGluZ3Muc2NoZWR1bGUuaG91cn1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhuZXdIb3VyKSA9PiB7XG4gICAgICAgICAgICAgICAgaWYgKHRyaWdnZXJPcHRpb25zLnJlYWRvbmx5ID09PSB0cnVlKSB7XG4gICAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgaWYgKCFpc0RlZmluZWQobmV3SG91cikpIHtcbiAgICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBpZiAoIWlzTnVtYmVyKG5ld0hvdXIpIHx8IG5ld0hvdXIgPCAwIHx8IG5ld0hvdXIgPiAyMykge1xuICAgICAgICAgICAgICAgICAgc2V0RXJyb3JNZXNzYWdlcygocHJldikgPT4gKHtcbiAgICAgICAgICAgICAgICAgICAgLi4ucHJldixcbiAgICAgICAgICAgICAgICAgICAgREFZU19ob3VyOiBgSW52YWxpZCBob3VyIHZhbHVlICcke25ld0hvdXJ9Jy4gU2hvdWxkIGJlIGludGVnZXIgYmV0d2VlbiAwIGFuZCAyM2AsXG4gICAgICAgICAgICAgICAgICB9KSk7XG4gICAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgc2V0RXJyb3JNZXNzYWdlcygocHJldikgPT4gKHtcbiAgICAgICAgICAgICAgICAgIC4uLnByZXYsXG4gICAgICAgICAgICAgICAgICBEQVlTX2hvdXI6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgICB9KSk7XG5cbiAgICAgICAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgICAgICAgIHNldHRpbmdzOiB7XG4gICAgICAgICAgICAgICAgICAgIC4uLnRyaWdnZXIuc2V0dGluZ3MsXG4gICAgICAgICAgICAgICAgICAgIHR5cGU6ICdEQVlTJyxcbiAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6IHtcbiAgICAgICAgICAgICAgICAgICAgICBkYXk6XG4gICAgICAgICAgICAgICAgICAgICAgICB0cmlnZ2VyLnNldHRpbmdzLnR5cGUgPT09ICdEQVlTJ1xuICAgICAgICAgICAgICAgICAgICAgICAgICA/IHRyaWdnZXIuc2V0dGluZ3Muc2NoZWR1bGUuZGF5XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogMSxcbiAgICAgICAgICAgICAgICAgICAgICBob3VyOiBuZXdIb3VyLFxuICAgICAgICAgICAgICAgICAgICAgIG1pbnV0ZTpcbiAgICAgICAgICAgICAgICAgICAgICAgIHRyaWdnZXIuc2V0dGluZ3MudHlwZSA9PT0gJ0RBWVMnXG4gICAgICAgICAgICAgICAgICAgICAgICAgID8gdHJpZ2dlci5zZXR0aW5ncy5zY2hlZHVsZS5taW51dGVcbiAgICAgICAgICAgICAgICAgICAgICAgICAgOiAwLFxuICAgICAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBudW1iZXIgYmV0d2VlbiAwIGFuZCAyM1wiXG4gICAgICAgICAgICAgIHJlYWRvbmx5PXt0cmlnZ2VyT3B0aW9ucy5yZWFkb25seX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8Rm9ybU51bWJlckZpZWxkSW5wdXRcbiAgICAgICAgICAgICAgbGFiZWw9XCJUcmlnZ2VyIGF0IE1pbnV0ZVwiXG4gICAgICAgICAgICAgIGVycm9yPXtcbiAgICAgICAgICAgICAgICBlcnJvck1lc3NhZ2VzVmlzaWJsZSA/IGVycm9yTWVzc2FnZXMuREFZU19taW51dGUgOiB1bmRlZmluZWRcbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICBvbkJsdXI9e29uQmx1cn1cbiAgICAgICAgICAgICAgZGVmYXVsdFZhbHVlPXt0cmlnZ2VyLnNldHRpbmdzLnNjaGVkdWxlLm1pbnV0ZX1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhuZXdNaW51dGUpID0+IHtcbiAgICAgICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBpZiAoIWlzRGVmaW5lZChuZXdNaW51dGUpKSB7XG4gICAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgaWYgKCFpc051bWJlcihuZXdNaW51dGUpIHx8IG5ld01pbnV0ZSA8IDAgfHwgbmV3TWludXRlID4gNTkpIHtcbiAgICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgICAgIC4uLnByZXYsXG4gICAgICAgICAgICAgICAgICAgIERBWVNfbWludXRlOiBgSW52YWxpZCBtaW51dGUgdmFsdWUgJyR7bmV3TWludXRlfScuIFNob3VsZCBiZSBpbnRlZ2VyIGJldHdlZW4gMCBhbmQgNTlgLFxuICAgICAgICAgICAgICAgICAgfSkpO1xuICAgICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgICAuLi5wcmV2LFxuICAgICAgICAgICAgICAgICAgREFZU19taW51dGU6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgICB9KSk7XG5cbiAgICAgICAgICAgICAgICB0cmlnZ2VyT3B0aW9ucy5vblRyaWdnZXJVcGRhdGUoe1xuICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgICAgICAgIHNldHRpbmdzOiB7XG4gICAgICAgICAgICAgICAgICAgIC4uLnRyaWdnZXIuc2V0dGluZ3MsXG4gICAgICAgICAgICAgICAgICAgIHR5cGU6ICdEQVlTJyxcbiAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6IHtcbiAgICAgICAgICAgICAgICAgICAgICBkYXk6XG4gICAgICAgICAgICAgICAgICAgICAgICB0cmlnZ2VyLnNldHRpbmdzLnR5cGUgPT09ICdEQVlTJ1xuICAgICAgICAgICAgICAgICAgICAgICAgICA/IHRyaWdnZXIuc2V0dGluZ3Muc2NoZWR1bGUuZGF5XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogMSxcbiAgICAgICAgICAgICAgICAgICAgICBob3VyOlxuICAgICAgICAgICAgICAgICAgICAgICAgdHJpZ2dlci5zZXR0aW5ncy50eXBlID09PSAnREFZUydcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPyB0cmlnZ2VyLnNldHRpbmdzLnNjaGVkdWxlLmhvdXJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgOiAwLFxuICAgICAgICAgICAgICAgICAgICAgIG1pbnV0ZTogbmV3TWludXRlLFxuICAgICAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBudW1iZXIgYmV0d2VlbiAwIGFuZCA1OVwiXG4gICAgICAgICAgICAgIHJlYWRvbmx5PXt0cmlnZ2VyT3B0aW9ucy5yZWFkb25seX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC8+XG4gICAgICAgICl9XG4gICAgICAgIHt0cmlnZ2VyLnNldHRpbmdzLnR5cGUgPT09ICdIT1VSUycgJiYgKFxuICAgICAgICAgIDw+XG4gICAgICAgICAgICA8Rm9ybU51bWJlckZpZWxkSW5wdXRcbiAgICAgICAgICAgICAgbGFiZWw9XCJIb3VycyBCZXR3ZWVuIFRyaWdnZXJzXCJcbiAgICAgICAgICAgICAgZXJyb3I9e1xuICAgICAgICAgICAgICAgIGVycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5IT1VSU19ob3VyIDogdW5kZWZpbmVkXG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgb25CbHVyPXtvbkJsdXJ9XG4gICAgICAgICAgICAgIGRlZmF1bHRWYWx1ZT17dHJpZ2dlci5zZXR0aW5ncy5zY2hlZHVsZS5ob3VyfVxuICAgICAgICAgICAgICBvbkNoYW5nZT17KG5ld0hvdXIpID0+IHtcbiAgICAgICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBpZiAoIWlzRGVmaW5lZChuZXdIb3VyKSkge1xuICAgICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIGlmICghaXNOdW1iZXIobmV3SG91cikgfHwgbmV3SG91ciA8PSAwKSB7XG4gICAgICAgICAgICAgICAgICBzZXRFcnJvck1lc3NhZ2VzKChwcmV2KSA9PiAoe1xuICAgICAgICAgICAgICAgICAgICAuLi5wcmV2LFxuICAgICAgICAgICAgICAgICAgICBIT1VSU19ob3VyOiBgSW52YWxpZCBob3VyIHZhbHVlICcke25ld0hvdXJ9Jy4gU2hvdWxkIGJlIGludGVnZXIgZ3JlYXRlciB0aGFuIDFgLFxuICAgICAgICAgICAgICAgICAgfSkpO1xuICAgICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgICAuLi5wcmV2LFxuICAgICAgICAgICAgICAgICAgSE9VUlNfaG91cjogdW5kZWZpbmVkLFxuICAgICAgICAgICAgICAgIH0pKTtcblxuICAgICAgICAgICAgICAgIHRyaWdnZXJPcHRpb25zLm9uVHJpZ2dlclVwZGF0ZSh7XG4gICAgICAgICAgICAgICAgICAuLi50cmlnZ2VyLFxuICAgICAgICAgICAgICAgICAgc2V0dGluZ3M6IHtcbiAgICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlci5zZXR0aW5ncyxcbiAgICAgICAgICAgICAgICAgICAgdHlwZTogJ0hPVVJTJyxcbiAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6IHtcbiAgICAgICAgICAgICAgICAgICAgICBob3VyOiBuZXdIb3VyLFxuICAgICAgICAgICAgICAgICAgICAgIG1pbnV0ZTpcbiAgICAgICAgICAgICAgICAgICAgICAgIHRyaWdnZXIuc2V0dGluZ3MudHlwZSA9PT0gJ0hPVVJTJ1xuICAgICAgICAgICAgICAgICAgICAgICAgICA/IHRyaWdnZXIuc2V0dGluZ3Muc2NoZWR1bGUubWludXRlXG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogMCxcbiAgICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgbnVtYmVyIGdyZWF0ZXIgdGhhbiAxXCJcbiAgICAgICAgICAgICAgcmVhZG9ubHk9e3RyaWdnZXJPcHRpb25zLnJlYWRvbmx5fVxuICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDxGb3JtTnVtYmVyRmllbGRJbnB1dFxuICAgICAgICAgICAgICBsYWJlbD1cIlRyaWdnZXIgYXQgTWludXRlXCJcbiAgICAgICAgICAgICAgZXJyb3I9e1xuICAgICAgICAgICAgICAgIGVycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5IT1VSU19taW51dGUgOiB1bmRlZmluZWRcbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICBvbkJsdXI9e29uQmx1cn1cbiAgICAgICAgICAgICAgZGVmYXVsdFZhbHVlPXt0cmlnZ2VyLnNldHRpbmdzLnNjaGVkdWxlLm1pbnV0ZX1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhuZXdNaW51dGUpID0+IHtcbiAgICAgICAgICAgICAgICBpZiAodHJpZ2dlck9wdGlvbnMucmVhZG9ubHkgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBpZiAoIWlzRGVmaW5lZChuZXdNaW51dGUpKSB7XG4gICAgICAgICAgICAgICAgICByZXR1cm47XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgaWYgKCFpc051bWJlcihuZXdNaW51dGUpIHx8IG5ld01pbnV0ZSA8IDAgfHwgbmV3TWludXRlID4gNTkpIHtcbiAgICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoKHByZXYpID0+ICh7XG4gICAgICAgICAgICAgICAgICAgIC4uLnByZXYsXG4gICAgICAgICAgICAgICAgICAgIEhPVVJTX21pbnV0ZTogYEludmFsaWQgbWludXRlIHZhbHVlICcke25ld01pbnV0ZX0nLiBTaG91bGQgYmUgaW50ZWdlciBiZXR3ZWVuIDAgYW5kIDU5YCxcbiAgICAgICAgICAgICAgICAgIH0pKTtcbiAgICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBzZXRFcnJvck1lc3NhZ2VzKChwcmV2KSA9PiAoe1xuICAgICAgICAgICAgICAgICAgLi4ucHJldixcbiAgICAgICAgICAgICAgICAgIEhPVVJTX21pbnV0ZTogdW5kZWZpbmVkLFxuICAgICAgICAgICAgICAgIH0pKTtcblxuICAgICAgICAgICAgICAgIHRyaWdnZXJPcHRpb25zLm9uVHJpZ2dlclVwZGF0ZSh7XG4gICAgICAgICAgICAgICAgICAuLi50cmlnZ2VyLFxuICAgICAgICAgICAgICAgICAgc2V0dGluZ3M6IHtcbiAgICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlci5zZXR0aW5ncyxcbiAgICAgICAgICAgICAgICAgICAgdHlwZTogJ0hPVVJTJyxcbiAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6IHtcbiAgICAgICAgICAgICAgICAgICAgICBob3VyOlxuICAgICAgICAgICAgICAgICAgICAgICAgdHJpZ2dlci5zZXR0aW5ncy50eXBlID09PSAnSE9VUlMnXG4gICAgICAgICAgICAgICAgICAgICAgICAgID8gdHJpZ2dlci5zZXR0aW5ncy5zY2hlZHVsZS5ob3VyXG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogMSxcbiAgICAgICAgICAgICAgICAgICAgICBtaW51dGU6IG5ld01pbnV0ZSxcbiAgICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgbnVtYmVyIGJldHdlZW4gMCBhbmQgNTlcIlxuICAgICAgICAgICAgICByZWFkb25seT17dHJpZ2dlck9wdGlvbnMucmVhZG9ubHl9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvPlxuICAgICAgICApfVxuICAgICAgICB7dHJpZ2dlci5zZXR0aW5ncy50eXBlID09PSAnTUlOVVRFUycgJiYgKFxuICAgICAgICAgIDxGb3JtTnVtYmVyRmllbGRJbnB1dFxuICAgICAgICAgICAgbGFiZWw9XCJNaW51dGVzIEJldHdlZW4gVHJpZ2dlcnNcIlxuICAgICAgICAgICAgZXJyb3I9e2Vycm9yTWVzc2FnZXNWaXNpYmxlID8gZXJyb3JNZXNzYWdlcy5NSU5VVEVTIDogdW5kZWZpbmVkfVxuICAgICAgICAgICAgb25CbHVyPXtvbkJsdXJ9XG4gICAgICAgICAgICBkZWZhdWx0VmFsdWU9e3RyaWdnZXIuc2V0dGluZ3Muc2NoZWR1bGUubWludXRlfVxuICAgICAgICAgICAgb25DaGFuZ2U9eyhuZXdNaW51dGUpID0+IHtcbiAgICAgICAgICAgICAgaWYgKHRyaWdnZXJPcHRpb25zLnJlYWRvbmx5ID09PSB0cnVlKSB7XG4gICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgaWYgKCFpc0RlZmluZWQobmV3TWludXRlKSkge1xuICAgICAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgIGlmICghaXNOdW1iZXIobmV3TWludXRlKSB8fCBuZXdNaW51dGUgPD0gMCkge1xuICAgICAgICAgICAgICAgIHNldEVycm9yTWVzc2FnZXMoe1xuICAgICAgICAgICAgICAgICAgTUlOVVRFUzogYEludmFsaWQgbWludXRlIHZhbHVlICcke25ld01pbnV0ZX0nLiBTaG91bGQgYmUgaW50ZWdlciBncmVhdGVyIHRoYW4gMWAsXG4gICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgc2V0RXJyb3JNZXNzYWdlcygocHJldikgPT4gKHtcbiAgICAgICAgICAgICAgICAuLi5wcmV2LFxuICAgICAgICAgICAgICAgIE1JTlVURVM6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgfSkpO1xuXG4gICAgICAgICAgICAgIHRyaWdnZXJPcHRpb25zLm9uVHJpZ2dlclVwZGF0ZSh7XG4gICAgICAgICAgICAgICAgLi4udHJpZ2dlcixcbiAgICAgICAgICAgICAgICBzZXR0aW5nczoge1xuICAgICAgICAgICAgICAgICAgLi4udHJpZ2dlci5zZXR0aW5ncyxcbiAgICAgICAgICAgICAgICAgIHR5cGU6ICdNSU5VVEVTJyxcbiAgICAgICAgICAgICAgICAgIHNjaGVkdWxlOiB7XG4gICAgICAgICAgICAgICAgICAgIG1pbnV0ZTogbmV3TWludXRlLFxuICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIH19XG4gICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkVudGVyIG51bWJlciBncmVhdGVyIHRoYW4gMVwiXG4gICAgICAgICAgICByZWFkb25seT17dHJpZ2dlck9wdGlvbnMucmVhZG9ubHl9XG4gICAgICAgICAgLz5cbiAgICAgICAgKX1cbiAgICAgIDwvV29ya2Zsb3dTdGVwQm9keT5cbiAgICA8Lz5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsiRm9ybU51bWJlckZpZWxkSW5wdXQiLCJGb3JtVGV4dEZpZWxkSW5wdXQiLCJTZWxlY3QiLCJXb3JrZmxvd1N0ZXBCb2R5IiwiV29ya2Zsb3dTdGVwSGVhZGVyIiwiQ1JPTl9UUklHR0VSX0lOVEVSVkFMX09QVElPTlMiLCJnZXRDcm9uVHJpZ2dlckRlZmF1bHRTZXR0aW5ncyIsImdldFRyaWdnZXJJY29uIiwiZ2V0VHJpZ2dlckRlZmF1bHRMYWJlbCIsInVzZVRoZW1lIiwiaXNOdW1iZXIiLCJjcm9uIiwidXNlU3RhdGUiLCJ1c2VJY29ucyIsImlzRGVmaW5lZCIsIldvcmtmbG93RWRpdFRyaWdnZXJDcm9uRm9ybSIsInRyaWdnZXIiLCJ0cmlnZ2VyT3B0aW9ucyIsInRoZW1lIiwiZXJyb3JNZXNzYWdlcyIsInNldEVycm9yTWVzc2FnZXMiLCJlcnJvck1lc3NhZ2VzVmlzaWJsZSIsInNldEVycm9yTWVzc2FnZXNWaXNpYmxlIiwiZ2V0SWNvbiIsImhlYWRlckljb24iLCJ0eXBlIiwiZGVmYXVsdExhYmVsIiwiaGVhZGVyVGl0bGUiLCJuYW1lIiwiaGVhZGVyVHlwZSIsIm9uQmx1ciIsIm9uVGl0bGVDaGFuZ2UiLCJuZXdOYW1lIiwicmVhZG9ubHkiLCJvblRyaWdnZXJVcGRhdGUiLCJJY29uIiwiaWNvbkNvbG9yIiwiZm9udCIsImNvbG9yIiwidGVydGlhcnkiLCJpbml0aWFsVGl0bGUiLCJkaXNhYmxlZCIsImRyb3Bkb3duSWQiLCJsYWJlbCIsImZ1bGxXaWR0aCIsInZhbHVlIiwic2V0dGluZ3MiLCJvcHRpb25zIiwib25DaGFuZ2UiLCJuZXdUcmlnZ2VyVHlwZSIsIndpdGhTZWFyY2hJbnB1dCIsInBsYWNlaG9sZGVyIiwiZXJyb3IiLCJDVVNUT00iLCJ1bmRlZmluZWQiLCJoaW50IiwiZGVmYXVsdFZhbHVlIiwicGF0dGVybiIsIm5ld1BhdHRlcm4iLCJjcm9uVmFsaWRhdG9yIiwiaXNFcnJvciIsImdldEVycm9yIiwicmVwbGFjZSIsInByZXYiLCJEQVlTX2RheSIsInNjaGVkdWxlIiwiZGF5IiwibmV3RGF5IiwiaG91ciIsIm1pbnV0ZSIsIkRBWVNfaG91ciIsIm5ld0hvdXIiLCJEQVlTX21pbnV0ZSIsIm5ld01pbnV0ZSIsIkhPVVJTX2hvdXIiLCJIT1VSU19taW51dGUiLCJNSU5VVEVTIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0Esb0JBQW9CLFFBQVEsMEVBQTBFO0FBQy9HLFNBQVNDLGtCQUFrQixRQUFRLHdFQUF3RTtBQUMzRyxTQUFTQyxNQUFNLFFBQVEsK0JBQStCO0FBRXRELFNBQVNDLGdCQUFnQixRQUFRLHdEQUF3RDtBQUN6RixTQUFTQyxrQkFBa0IsUUFBUSwwREFBMEQ7QUFDN0YsU0FBU0MsNkJBQTZCLFFBQVEsbUVBQW1FO0FBQ2pILFNBQVNDLDZCQUE2QixRQUFRLGtFQUFrRTtBQUNoSCxTQUFTQyxjQUFjLFFBQVEsbURBQW1EO0FBQ2xGLFNBQVNDLHNCQUFzQixRQUFRLG9EQUFvRDtBQUMzRixTQUFTQyxRQUFRLFFBQVEsaUJBQWlCO0FBQzFDLFNBQVNDLFFBQVEsUUFBUSxpQkFBaUI7QUFDMUMsT0FBT0MsVUFBVSxnQkFBZ0I7QUFDakMsU0FBU0MsUUFBUSxRQUFRLFFBQVE7QUFDakMsU0FBU0MsUUFBUSxRQUFRLFlBQVk7QUFDckMsU0FBU0MsU0FBUyxRQUFRLHNCQUFzQjtBQXlCaEQsT0FBTyxNQUFNQyw4QkFBOEIsQ0FBQyxFQUMxQ0MsT0FBTyxFQUNQQyxjQUFjLEVBQ21COztJQUNqQyxNQUFNQyxRQUFRVDtJQUNkLE1BQU0sQ0FBQ1UsZUFBZUMsaUJBQWlCLEdBQUdSLFNBQTRCLENBQUM7SUFD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

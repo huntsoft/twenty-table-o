@@ -1,0 +1,203 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { RecordShowRightDrawerActionMenu } from "/src/modules/action-menu/components/RecordShowRightDrawerActionMenu.tsx";
+import { RecordShowRightDrawerOpenRecordButton } from "/src/modules/action-menu/components/RecordShowRightDrawerOpenRecordButton.tsx";
+import { CommandMenuPageComponentInstanceContext } from "/src/modules/command-menu/states/contexts/CommandMenuPageComponentInstanceContext.tsx";
+import { CardComponents } from "/src/modules/object-record/record-show/components/CardComponents.tsx";
+import { FieldsCard } from "/src/modules/object-record/record-show/components/FieldsCard.tsx";
+import { SummaryCard } from "/src/modules/object-record/record-show/components/SummaryCard.tsx";
+import { RightDrawerFooter } from "/src/modules/ui/layout/right-drawer/components/RightDrawerFooter.tsx";
+import { ShowPageLeftContainer } from "/src/modules/ui/layout/show-page/components/ShowPageLeftContainer.tsx";
+import { getShowPageTabListComponentId } from "/src/modules/ui/layout/show-page/utils/getShowPageTabListComponentId.ts";
+import { TabList } from "/src/modules/ui/layout/tab/components/TabList.tsx";
+import { activeTabIdComponentState } from "/src/modules/ui/layout/tab/states/activeTabIdComponentState.ts";
+import { TabListComponentInstanceContext } from "/src/modules/ui/layout/tab/states/contexts/TabListComponentInstanceContext.ts";
+import { useIsMobile } from "/src/modules/ui/utilities/responsive/hooks/useIsMobile.ts";
+import { useComponentInstanceStateContext } from "/src/modules/ui/utilities/state/component-state/hooks/useComponentInstanceStateContext.ts";
+import { useRecoilComponentValueV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentValueV2.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+const StyledShowPageRightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: start;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+`;
+_c = StyledShowPageRightContainer;
+const StyledTabListContainer = styled.div`
+  display: ${({ shouldDisplay })=>shouldDisplay ? 'flex' : 'none'};
+`;
+_c1 = StyledTabListContainer;
+const StyledTabList = styled(TabList)`
+  padding-left: ${({ theme })=>theme.spacing(2)};
+`;
+_c2 = StyledTabList;
+const StyledContentContainer = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  background: ${({ theme })=>theme.background.primary};
+  padding-bottom: ${({ theme, isInRightDrawer })=>isInRightDrawer ? theme.spacing(16) : 0};
+`;
+_c3 = StyledContentContainer;
+export const ShowPageSubContainer = ({ tabs, layout, targetableObject, loading, isInRightDrawer = false })=>{
+    _s();
+    const commandMenuPageComponentInstance = useComponentInstanceStateContext(CommandMenuPageComponentInstanceContext);
+    const tabListComponentId = getShowPageTabListComponentId({
+        pageId: commandMenuPageComponentInstance?.instanceId,
+        targetObjectId: targetableObject.id
+    });
+    const activeTabId = useRecoilComponentValueV2(activeTabIdComponentState, tabListComponentId);
+    const isMobile = useIsMobile();
+    const summaryCard = /*#__PURE__*/ _jsxDEV(SummaryCard, {
+        objectNameSingular: targetableObject.targetObjectNameSingular,
+        objectRecordId: targetableObject.id,
+        isInRightDrawer: isInRightDrawer
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+        lineNumber: 80,
+        columnNumber: 5
+    }, this);
+    const fieldsCard = /*#__PURE__*/ _jsxDEV(FieldsCard, {
+        objectNameSingular: targetableObject.targetObjectNameSingular,
+        objectRecordId: targetableObject.id
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+        lineNumber: 88,
+        columnNumber: 5
+    }, this);
+    const renderActiveTabContent = ()=>{
+        const activeTab = tabs.find((tab)=>tab.id === activeTabId);
+        if (!activeTab?.cards?.length) return null;
+        return activeTab.cards.map((card, index)=>{
+            const CardComponent = CardComponents[card.type];
+            return CardComponent ? /*#__PURE__*/ _jsxDEV(CardComponent, {
+                targetableObject: targetableObject,
+                isInRightDrawer: isInRightDrawer
+            }, `${activeTab.id}-card-${index}`, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                lineNumber: 101,
+                columnNumber: 9
+            }, this) : null;
+        });
+    };
+    const visibleTabs = tabs.filter((tab)=>!tab.hide);
+    const displaySummaryAndFields = layout && !layout.hideSummaryAndFields && !isMobile && !isInRightDrawer;
+    return /*#__PURE__*/ _jsxDEV(TabListComponentInstanceContext.Provider, {
+        value: {
+            instanceId: tabListComponentId
+        },
+        children: [
+            displaySummaryAndFields && /*#__PURE__*/ _jsxDEV(ShowPageLeftContainer, {
+                forceMobile: isMobile,
+                children: [
+                    summaryCard,
+                    fieldsCard
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                lineNumber: 120,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledShowPageRightContainer, {
+                isMobile: isMobile,
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledTabListContainer, {
+                        shouldDisplay: visibleTabs.length > 1,
+                        children: /*#__PURE__*/ _jsxDEV(StyledTabList, {
+                            behaveAsLinks: !isInRightDrawer,
+                            loading: loading,
+                            tabs: tabs,
+                            isInRightDrawer: isInRightDrawer,
+                            componentInstanceId: tabListComponentId
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                            lineNumber: 127,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                        lineNumber: 126,
+                        columnNumber: 9
+                    }, this),
+                    (isMobile || isInRightDrawer) && summaryCard,
+                    /*#__PURE__*/ _jsxDEV(StyledContentContainer, {
+                        isInRightDrawer: isInRightDrawer,
+                        children: renderActiveTabContent()
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                        lineNumber: 136,
+                        columnNumber: 9
+                    }, this),
+                    isInRightDrawer && /*#__PURE__*/ _jsxDEV(RightDrawerFooter, {
+                        actions: [
+                            /*#__PURE__*/ _jsxDEV(RecordShowRightDrawerActionMenu, {}, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                                lineNumber: 142,
+                                columnNumber: 15
+                            }, void 0),
+                            /*#__PURE__*/ _jsxDEV(RecordShowRightDrawerOpenRecordButton, {
+                                objectNameSingular: targetableObject.targetObjectNameSingular,
+                                recordId: targetableObject.id
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                                lineNumber: 143,
+                                columnNumber: 15
+                            }, void 0)
+                        ]
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                        lineNumber: 140,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+                lineNumber: 125,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx",
+        lineNumber: 116,
+        columnNumber: 5
+    }, this);
+};
+_s(ShowPageSubContainer, "XCbX+PE6j/C2m3lab8YVV3dKvdg=", false, function() {
+    return [
+        useComponentInstanceStateContext,
+        useRecoilComponentValueV2,
+        useIsMobile
+    ];
+});
+_c4 = ShowPageSubContainer;
+var _c, _c1, _c2, _c3, _c4;
+$RefreshReg$(_c, "StyledShowPageRightContainer");
+$RefreshReg$(_c1, "StyledTabListContainer");
+$RefreshReg$(_c2, "StyledTabList");
+$RefreshReg$(_c3, "StyledContentContainer");
+$RefreshReg$(_c4, "ShowPageSubContainer");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/ui/layout/show-page/components/ShowPageSubContainer.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNob3dQYWdlU3ViQ29udGFpbmVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSZWNvcmRTaG93UmlnaHREcmF3ZXJBY3Rpb25NZW51IH0gZnJvbSAnQC9hY3Rpb24tbWVudS9jb21wb25lbnRzL1JlY29yZFNob3dSaWdodERyYXdlckFjdGlvbk1lbnUnO1xuaW1wb3J0IHsgUmVjb3JkU2hvd1JpZ2h0RHJhd2VyT3BlblJlY29yZEJ1dHRvbiB9IGZyb20gJ0AvYWN0aW9uLW1lbnUvY29tcG9uZW50cy9SZWNvcmRTaG93UmlnaHREcmF3ZXJPcGVuUmVjb3JkQnV0dG9uJztcbmltcG9ydCB7IEFjdGl2aXR5VGFyZ2V0YWJsZU9iamVjdCB9IGZyb20gJ0AvYWN0aXZpdGllcy90eXBlcy9BY3Rpdml0eVRhcmdldGFibGVFbnRpdHknO1xuaW1wb3J0IHsgQ29tbWFuZE1lbnVQYWdlQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0IH0gZnJvbSAnQC9jb21tYW5kLW1lbnUvc3RhdGVzL2NvbnRleHRzL0NvbW1hbmRNZW51UGFnZUNvbXBvbmVudEluc3RhbmNlQ29udGV4dCc7XG5pbXBvcnQgeyBDYXJkQ29tcG9uZW50cyB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtc2hvdy9jb21wb25lbnRzL0NhcmRDb21wb25lbnRzJztcbmltcG9ydCB7IEZpZWxkc0NhcmQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXNob3cvY29tcG9uZW50cy9GaWVsZHNDYXJkJztcbmltcG9ydCB7IFN1bW1hcnlDYXJkIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1zaG93L2NvbXBvbmVudHMvU3VtbWFyeUNhcmQnO1xuaW1wb3J0IHsgUmVjb3JkTGF5b3V0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1zaG93L3R5cGVzL1JlY29yZExheW91dCc7XG5pbXBvcnQgeyBSaWdodERyYXdlckZvb3RlciB9IGZyb20gJ0AvdWkvbGF5b3V0L3JpZ2h0LWRyYXdlci9jb21wb25lbnRzL1JpZ2h0RHJhd2VyRm9vdGVyJztcbmltcG9ydCB7IFNob3dQYWdlTGVmdENvbnRhaW5lciB9IGZyb20gJ0AvdWkvbGF5b3V0L3Nob3ctcGFnZS9jb21wb25lbnRzL1Nob3dQYWdlTGVmdENvbnRhaW5lcic7XG5pbXBvcnQgeyBnZXRTaG93UGFnZVRhYkxpc3RDb21wb25lbnRJZCB9IGZyb20gJ0AvdWkvbGF5b3V0L3Nob3ctcGFnZS91dGlscy9nZXRTaG93UGFnZVRhYkxpc3RDb21wb25lbnRJZCc7XG5pbXBvcnQgeyBTaW5nbGVUYWJQcm9wcywgVGFiTGlzdCB9IGZyb20gJ0AvdWkvbGF5b3V0L3RhYi9jb21wb25lbnRzL1RhYkxpc3QnO1xuaW1wb3J0IHsgYWN0aXZlVGFiSWRDb21wb25lbnRTdGF0ZSB9IGZyb20gJ0AvdWkvbGF5b3V0L3RhYi9zdGF0ZXMvYWN0aXZlVGFiSWRDb21wb25lbnRTdGF0ZSc7XG5pbXBvcnQgeyBUYWJMaXN0Q29tcG9uZW50SW5zdGFuY2VDb250ZXh0IH0gZnJvbSAnQC91aS9sYXlvdXQvdGFiL3N0YXRlcy9jb250ZXh0cy9UYWJMaXN0Q29tcG9uZW50SW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IHVzZUlzTW9iaWxlIH0gZnJvbSAnQC91aS91dGlsaXRpZXMvcmVzcG9uc2l2ZS9ob29rcy91c2VJc01vYmlsZSc7XG5pbXBvcnQgeyB1c2VDb21wb25lbnRJbnN0YW5jZVN0YXRlQ29udGV4dCB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3N0YXRlL2NvbXBvbmVudC1zdGF0ZS9ob29rcy91c2VDb21wb25lbnRJbnN0YW5jZVN0YXRlQ29udGV4dCc7XG5pbXBvcnQgeyB1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyIH0gZnJvbSAnQC91aS91dGlsaXRpZXMvc3RhdGUvY29tcG9uZW50LXN0YXRlL2hvb2tzL3VzZVJlY29pbENvbXBvbmVudFZhbHVlVjInO1xuaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuXG5jb25zdCBTdHlsZWRTaG93UGFnZVJpZ2h0Q29udGFpbmVyID0gc3R5bGVkLmRpdjx7IGlzTW9iaWxlOiBib29sZWFuIH0+YFxuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGp1c3RpZnktY29udGVudDogc3RhcnQ7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBhdXRvO1xuYDtcblxuY29uc3QgU3R5bGVkVGFiTGlzdENvbnRhaW5lciA9IHN0eWxlZC5kaXY8eyBzaG91bGREaXNwbGF5OiBib29sZWFuIH0+YFxuICBkaXNwbGF5OiAkeyh7IHNob3VsZERpc3BsYXkgfSkgPT4gKHNob3VsZERpc3BsYXkgPyAnZmxleCcgOiAnbm9uZScpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZFRhYkxpc3QgPSBzdHlsZWQoVGFiTGlzdClgXG4gIHBhZGRpbmctbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDIpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZENvbnRlbnRDb250YWluZXIgPSBzdHlsZWQuZGl2PHsgaXNJblJpZ2h0RHJhd2VyOiBib29sZWFuIH0+YFxuICBmbGV4OiAxO1xuICBvdmVyZmxvdy15OiBhdXRvO1xuICBiYWNrZ3JvdW5kOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmJhY2tncm91bmQucHJpbWFyeX07XG4gIHBhZGRpbmctYm90dG9tOiAkeyh7IHRoZW1lLCBpc0luUmlnaHREcmF3ZXIgfSkgPT5cbiAgICBpc0luUmlnaHREcmF3ZXIgPyB0aGVtZS5zcGFjaW5nKDE2KSA6IDB9O1xuYDtcblxudHlwZSBTaG93UGFnZVN1YkNvbnRhaW5lclByb3BzID0ge1xuICBsYXlvdXQ/OiBSZWNvcmRMYXlvdXQ7XG4gIHRhYnM6IFNpbmdsZVRhYlByb3BzW107XG4gIHRhcmdldGFibGVPYmplY3Q6IFBpY2s8XG4gICAgQWN0aXZpdHlUYXJnZXRhYmxlT2JqZWN0LFxuICAgICd0YXJnZXRPYmplY3ROYW1lU2luZ3VsYXInIHwgJ2lkJ1xuICA+O1xuICBpc0luUmlnaHREcmF3ZXI/OiBib29sZWFuO1xuICBsb2FkaW5nOiBib29sZWFuO1xufTtcblxuZXhwb3J0IGNvbnN0IFNob3dQYWdlU3ViQ29udGFpbmVyID0gKHtcbiAgdGFicyxcbiAgbGF5b3V0LFxuICB0YXJnZXRhYmxlT2JqZWN0LFxuICBsb2FkaW5nLFxuICBpc0luUmlnaHREcmF3ZXIgPSBmYWxzZSxcbn06IFNob3dQYWdlU3ViQ29udGFpbmVyUHJvcHMpID0+IHtcbiAgY29uc3QgY29tbWFuZE1lbnVQYWdlQ29tcG9uZW50SW5zdGFuY2UgPSB1c2VDb21wb25lbnRJbnN0YW5jZVN0YXRlQ29udGV4dChcbiAgICBDb21tYW5kTWVudVBhZ2VDb21wb25lbnRJbnN0YW5jZUNvbnRleHQsXG4gICk7XG5cbiAgY29uc3QgdGFiTGlzdENvbXBvbmVudElkID0gZ2V0U2hvd1BhZ2VUYWJMaXN0Q29tcG9uZW50SWQoe1xuICAgIHBhZ2VJZDogY29tbWFuZE1lbnVQYWdlQ29tcG9uZW50SW5zdGFuY2U/Lmluc3RhbmNlSWQsXG4gICAgdGFyZ2V0T2JqZWN0SWQ6IHRhcmdldGFibGVPYmplY3QuaWQsXG4gIH0pO1xuICBjb25zdCBhY3RpdmVUYWJJZCA9IHVzZVJlY29pbENvbXBvbmVudFZhbHVlVjIoXG4gICAgYWN0aXZlVGFiSWRDb21wb25lbnRTdGF0ZSxcbiAgICB0YWJMaXN0Q29tcG9uZW50SWQsXG4gICk7XG5cbiAgY29uc3QgaXNNb2JpbGUgPSB1c2VJc01vYmlsZSgpO1xuXG4gIGNvbnN0IHN1bW1hcnlDYXJkID0gKFxuICAgIDxTdW1tYXJ5Q2FyZFxuICAgICAgb2JqZWN0TmFtZVNpbmd1bGFyPXt0YXJnZXRhYmxlT2JqZWN0LnRhcmdldE9iamVjdE5hbWVTaW5ndWxhcn1cbiAgICAgIG9iamVjdFJlY29yZElkPXt0YXJnZXRhYmxlT2JqZWN0LmlkfVxuICAgICAgaXNJblJpZ2h0RHJhd2VyPXtpc0luUmlnaHREcmF3ZXJ9XG4gICAgLz5cbiAgKTtcblxuICBjb25zdCBmaWVsZHNDYXJkID0gKFxuICAgIDxGaWVsZHNDYXJkXG4gICAgICBvYmplY3ROYW1lU2luZ3VsYXI9e3RhcmdldGFibGVPYmplY3QudGFyZ2V0T2JqZWN0TmFtZVNpbmd1bGFyfVxuICAgICAgb2JqZWN0UmVjb3JkSWQ9e3RhcmdldGFibGVPYmplY3QuaWR9XG4gICAgLz5cbiAgKTtcblxuICBjb25zdCByZW5kZXJBY3RpdmVUYWJDb250ZW50ID0gKCkgPT4ge1xuICAgIGNvbnN0IGFjdGl2ZVRhYiA9IHRhYnMuZmluZCgodGFiKSA9PiB0YWIuaWQgPT09IGFjdGl2ZVRhYklkKTtcbiAgICBpZiAoIWFjdGl2ZVRhYj8uY2FyZHM/Lmxlbmd0aCkgcmV0dXJuIG51bGw7XG5cbiAgICByZXR1cm4gYWN0aXZlVGFiLmNhcmRzLm1hcCgoY2FyZCwgaW5kZXgpID0+IHtcbiAgICAgIGNvbnN0IENhcmRDb21wb25lbnQgPSBDYXJkQ29tcG9uZW50c1tjYXJkLnR5cGVdO1xuICAgICAgcmV0dXJuIENhcmRDb21wb25lbnQgPyAoXG4gICAgICAgIDxDYXJkQ29tcG9uZW50XG4gICAgICAgICAga2V5PXtgJHthY3RpdmVUYWIuaWR9LWNhcmQtJHtpbmRleH1gfVxuICAgICAgICAgIHRhcmdldGFibGVPYmplY3Q9e3RhcmdldGFibGVPYmplY3R9XG4gICAgICAgICAgaXNJblJpZ2h0RHJhd2VyPXtpc0luUmlnaHREcmF3ZXJ9XG4gICAgICAgIC8+XG4gICAgICApIDogbnVsbDtcbiAgICB9KTtcbiAgfTtcblxuICBjb25zdCB2aXNpYmxlVGFicyA9IHRhYnMuZmlsdGVyKCh0YWIpID0+ICF0YWIuaGlkZSk7XG5cbiAgY29uc3QgZGlzcGxheVN1bW1hcnlBbmRGaWVsZHMgPVxuICAgIGxheW91dCAmJiAhbGF5b3V0LmhpZGVTdW1tYXJ5QW5kRmllbGRzICYmICFpc01vYmlsZSAmJiAhaXNJblJpZ2h0RHJhd2VyO1xuXG4gIHJldHVybiAoXG4gICAgPFRhYkxpc3RDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXJcbiAgICAgIHZhbHVlPXt7IGluc3RhbmNlSWQ6IHRhYkxpc3RDb21wb25lbnRJZCB9fVxuICAgID5cbiAgICAgIHtkaXNwbGF5U3VtbWFyeUFuZEZpZWxkcyAmJiAoXG4gICAgICAgIDxTaG93UGFnZUxlZnRDb250YWluZXIgZm9yY2VNb2JpbGU9e2lzTW9iaWxlfT5cbiAgICAgICAgICB7c3VtbWFyeUNhcmR9XG4gICAgICAgICAge2ZpZWxkc0NhcmR9XG4gICAgICAgIDwvU2hvd1BhZ2VMZWZ0Q29udGFpbmVyPlxuICAgICAgKX1cbiAgICAgIDxTdHlsZWRTaG93UGFnZVJpZ2h0Q29udGFpbmVyIGlzTW9iaWxlPXtpc01vYmlsZX0+XG4gICAgICAgIDxTdHlsZWRUYWJMaXN0Q29udGFpbmVyIHNob3VsZERpc3BsYXk9e3Zpc2libGVUYWJzLmxlbmd0aCA+IDF9PlxuICAgICAgICAgIDxTdHlsZWRUYWJMaXN0XG4gICAgICAgICAgICBiZWhhdmVBc0xpbmtzPXshaXNJblJpZ2h0RHJhd2VyfVxuICAgICAgICAgICAgbG9hZGluZz17bG9hZGluZ31cbiAgICAgICAgICAgIHRhYnM9e3RhYnN9XG4gICAgICAgICAgICBpc0luUmlnaHREcmF3ZXI9e2lzSW5SaWdodERyYXdlcn1cbiAgICAgICAgICAgIGNvbXBvbmVudEluc3RhbmNlSWQ9e3RhYkxpc3RDb21wb25lbnRJZH1cbiAgICAgICAgICAvPlxuICAgICAgICA8L1N0eWxlZFRhYkxpc3RDb250YWluZXI+XG4gICAgICAgIHsoaXNNb2JpbGUgfHwgaXNJblJpZ2h0RHJhd2VyKSAmJiBzdW1tYXJ5Q2FyZH1cbiAgICAgICAgPFN0eWxlZENvbnRlbnRDb250YWluZXIgaXNJblJpZ2h0RHJhd2VyPXtpc0luUmlnaHREcmF3ZXJ9PlxuICAgICAgICAgIHtyZW5kZXJBY3RpdmVUYWJDb250ZW50KCl9XG4gICAgICAgIDwvU3R5bGVkQ29udGVudENvbnRhaW5lcj5cbiAgICAgICAge2lzSW5SaWdodERyYXdlciAmJiAoXG4gICAgICAgICAgPFJpZ2h0RHJhd2VyRm9vdGVyXG4gICAgICAgICAgICBhY3Rpb25zPXtbXG4gICAgICAgICAgICAgIDxSZWNvcmRTaG93UmlnaHREcmF3ZXJBY3Rpb25NZW51IC8+LFxuICAgICAgICAgICAgICA8UmVjb3JkU2hvd1JpZ2h0RHJhd2VyT3BlblJlY29yZEJ1dHRvblxuICAgICAgICAgICAgICAgIG9iamVjdE5hbWVTaW5ndWxhcj17dGFyZ2V0YWJsZU9iamVjdC50YXJnZXRPYmplY3ROYW1lU2luZ3VsYXJ9XG4gICAgICAgICAgICAgICAgcmVjb3JkSWQ9e3RhcmdldGFibGVPYmplY3QuaWR9XG4gICAgICAgICAgICAgIC8+LFxuICAgICAgICAgICAgXX1cbiAgICAgICAgICAvPlxuICAgICAgICApfVxuICAgICAgPC9TdHlsZWRTaG93UGFnZVJpZ2h0Q29udGFpbmVyPlxuICAgIDwvVGFiTGlzdENvbXBvbmVudEluc3RhbmNlQ29udGV4dC5Qcm92aWRlcj5cbiAgKTtcbn07XG4iXSwibmFtZXMiOlsiUmVjb3JkU2hvd1JpZ2h0RHJhd2VyQWN0aW9uTWVudSIsIlJlY29yZFNob3dSaWdodERyYXdlck9wZW5SZWNvcmRCdXR0b24iLCJDb21tYW5kTWVudVBhZ2VDb21wb25lbnRJbnN0YW5jZUNvbnRleHQiLCJDYXJkQ29tcG9uZW50cyIsIkZpZWxkc0NhcmQiLCJTdW1tYXJ5Q2FyZCIsIlJpZ2h0RHJhd2VyRm9vdGVyIiwiU2hvd1BhZ2VMZWZ0Q29udGFpbmVyIiwiZ2V0U2hvd1BhZ2VUYWJMaXN0Q29tcG9uZW50SWQiLCJUYWJMaXN0IiwiYWN0aXZlVGFiSWRDb21wb25lbnRTdGF0ZSIsIlRhYkxpc3RDb21wb25lbnRJbnN0YW5jZUNvbnRleHQiLCJ1c2VJc01vYmlsZSIsInVzZUNvbXBvbmVudEluc3RhbmNlU3RhdGVDb250ZXh0IiwidXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMiIsInN0eWxlZCIsIlN0eWxlZFNob3dQYWdlUmlnaHRDb250YWluZXIiLCJkaXYiLCJTdHlsZWRUYWJMaXN0Q29udGFpbmVyIiwic2hvdWxkRGlzcGxheSIsIlN0eWxlZFRhYkxpc3QiLCJ0aGVtZSIsInNwYWNpbmciLCJTdHlsZWRDb250ZW50Q29udGFpbmVyIiwiYmFja2dyb3VuZCIsInByaW1hcnkiLCJpc0luUmlnaHREcmF3ZXIiLCJTaG93UGFnZVN1YkNvbnRhaW5lciIsInRhYnMiLCJsYXlvdXQiLCJ0YXJnZXRhYmxlT2JqZWN0IiwibG9hZGluZyIsImNvbW1hbmRNZW51UGFnZUNvbXBvbmVudEluc3RhbmNlIiwidGFiTGlzdENvbXBvbmVudElkIiwicGFnZUlkIiwiaW5zdGFuY2VJZCIsInRhcmdldE9iamVjdElkIiwiaWQiLCJhY3RpdmVUYWJJZCIsImlzTW9iaWxlIiwic3VtbWFyeUNhcmQiLCJvYmplY3ROYW1lU2luZ3VsYXIiLCJ0YXJnZXRPYmplY3ROYW1lU2luZ3VsYXIiLCJvYmplY3RSZWNvcmRJZCIsImZpZWxkc0NhcmQiLCJyZW5kZXJBY3RpdmVUYWJDb250ZW50IiwiYWN0aXZlVGFiIiwiZmluZCIsInRhYiIsImNhcmRzIiwibGVuZ3RoIiwibWFwIiwiY2FyZCIsImluZGV4IiwiQ2FyZENvbXBvbmVudCIsInR5cGUiLCJ2aXNpYmxlVGFicyIsImZpbHRlciIsImhpZGUiLCJkaXNwbGF5U3VtbWFyeUFuZEZpZWxkcyIsImhpZGVTdW1tYXJ5QW5kRmllbGRzIiwiUHJvdmlkZXIiLCJ2YWx1ZSIsImZvcmNlTW9iaWxlIiwiYmVoYXZlQXNMaW5rcyIsImNvbXBvbmVudEluc3RhbmNlSWQiLCJhY3Rpb25zIiwicmVjb3JkSWQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSwrQkFBK0IsUUFBUSwyREFBMkQ7QUFDM0csU0FBU0MscUNBQXFDLFFBQVEsaUVBQWlFO0FBRXZILFNBQVNDLHVDQUF1QyxRQUFRLHlFQUF5RTtBQUNqSSxTQUFTQyxjQUFjLFFBQVEsd0RBQXdEO0FBQ3ZGLFNBQVNDLFVBQVUsUUFBUSxvREFBb0Q7QUFDL0UsU0FBU0MsV0FBVyxR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

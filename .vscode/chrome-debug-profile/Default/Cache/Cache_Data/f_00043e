@@ -1,0 +1,161 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { RecordChip } from "/src/modules/object-record/components/RecordChip.tsx";
+import { RecordBoardContext } from "/src/modules/object-record/record-board/contexts/RecordBoardContext.ts";
+import { useRecordBoardSelection } from "/src/modules/object-record/record-board/hooks/useRecordBoardSelection.ts";
+import { RecordBoardCardHeaderContainer } from "/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeaderContainer.tsx";
+import { StopPropagationContainer } from "/src/modules/object-record/record-board/record-board-card/components/StopPropagationContainer.tsx";
+import { RecordBoardCardContext } from "/src/modules/object-record/record-board/record-board-card/contexts/RecordBoardCardContext.ts";
+import { RecordBoardScopeInternalContext } from "/src/modules/object-record/record-board/scopes/scope-internal-context/RecordBoardScopeInternalContext.ts";
+import { isRecordBoardCardSelectedComponentFamilyState } from "/src/modules/object-record/record-board/states/isRecordBoardCardSelectedComponentFamilyState.ts";
+import { isRecordBoardCompactModeActiveComponentState } from "/src/modules/object-record/record-board/states/isRecordBoardCompactModeActiveComponentState.ts";
+import { useRecordIndexContextOrThrow } from "/src/modules/object-record/record-index/contexts/RecordIndexContext.ts";
+import { recordIndexOpenRecordInState } from "/src/modules/object-record/record-index/states/recordIndexOpenRecordInState.ts";
+import { recordStoreFamilyState } from "/src/modules/object-record/record-store/states/recordStoreFamilyState.ts";
+import { useAvailableScopeIdOrThrow } from "/src/modules/ui/utilities/recoil-scope/scopes-internal/hooks/useAvailableScopeId.ts";
+import { useRecoilComponentFamilyStateV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentFamilyStateV2.ts";
+import { useRecoilComponentValueV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentValueV2.ts";
+import { ViewOpenRecordInType } from "/src/modules/views/types/ViewOpenRecordInType.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport19_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const useContext = __vite__cjsImport19_react["useContext"];
+import { useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { AvatarChipVariant, Checkbox, CheckboxVariant, IconEye, IconEyeOff, LightIconButton } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledCompactIconContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: ${({ theme })=>theme.spacing(1)};
+`;
+_c = StyledCompactIconContainer;
+const StyledCheckboxContainer = styled.div`
+  margin-left: auto;
+`;
+_c1 = StyledCheckboxContainer;
+export const RecordBoardCardHeader = ({ isCardExpanded, setIsCardExpanded })=>{
+    _s();
+    const { recordId } = useContext(RecordBoardCardContext);
+    const { indexIdentifierUrl } = useRecordIndexContextOrThrow();
+    const record = useRecoilValue(recordStoreFamilyState(recordId));
+    const { objectMetadataItem } = useContext(RecordBoardContext);
+    const recordBoardId = useAvailableScopeIdOrThrow(RecordBoardScopeInternalContext);
+    const showCompactView = useRecoilComponentValueV2(isRecordBoardCompactModeActiveComponentState);
+    const { checkIfLastUnselectAndCloseDropdown } = useRecordBoardSelection(recordBoardId);
+    const [isCurrentCardSelected, setIsCurrentCardSelected] = useRecoilComponentFamilyStateV2(isRecordBoardCardSelectedComponentFamilyState, recordId);
+    const recordIndexOpenRecordIn = useRecoilValue(recordIndexOpenRecordInState);
+    return /*#__PURE__*/ _jsxDEV(RecordBoardCardHeaderContainer, {
+        showCompactView: showCompactView,
+        children: [
+            /*#__PURE__*/ _jsxDEV(StopPropagationContainer, {
+                children: isDefined(record) && /*#__PURE__*/ _jsxDEV(RecordChip, {
+                    objectNameSingular: objectMetadataItem.nameSingular,
+                    record: record,
+                    variant: AvatarChipVariant.Transparent,
+                    maxWidth: 150,
+                    to: recordIndexOpenRecordIn === ViewOpenRecordInType.RECORD_PAGE ? indexIdentifierUrl(recordId) : undefined
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                    lineNumber: 82,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                lineNumber: 80,
+                columnNumber: 7
+            }, this),
+            showCompactView && /*#__PURE__*/ _jsxDEV(StyledCompactIconContainer, {
+                className: "compact-icon-container",
+                children: /*#__PURE__*/ _jsxDEV(StopPropagationContainer, {
+                    children: /*#__PURE__*/ _jsxDEV(LightIconButton, {
+                        Icon: isCardExpanded ? IconEyeOff : IconEye,
+                        accent: "tertiary",
+                        onClick: ()=>{
+                            setIsCardExpanded?.((prev)=>!prev);
+                        }
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                        lineNumber: 99,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                    lineNumber: 98,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                lineNumber: 97,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDEV(StyledCheckboxContainer, {
+                className: "checkbox-container",
+                children: /*#__PURE__*/ _jsxDEV(StopPropagationContainer, {
+                    children: /*#__PURE__*/ _jsxDEV(Checkbox, {
+                        hoverable: true,
+                        checked: isCurrentCardSelected,
+                        onChange: ()=>{
+                            setIsCurrentCardSelected(!isCurrentCardSelected);
+                            checkIfLastUnselectAndCloseDropdown();
+                        },
+                        variant: CheckboxVariant.Secondary
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                        lineNumber: 111,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                    lineNumber: 110,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+                lineNumber: 109,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx",
+        lineNumber: 79,
+        columnNumber: 5
+    }, this);
+};
+_s(RecordBoardCardHeader, "znq6vixBLm4yTJA0JDUCP1yTjUk=", false, function() {
+    return [
+        useRecordIndexContextOrThrow,
+        useRecoilValue,
+        useAvailableScopeIdOrThrow,
+        useRecoilComponentValueV2,
+        useRecordBoardSelection,
+        useRecoilComponentFamilyStateV2,
+        useRecoilValue
+    ];
+});
+_c2 = RecordBoardCardHeader;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledCompactIconContainer");
+$RefreshReg$(_c1, "StyledCheckboxContainer");
+$RefreshReg$(_c2, "RecordBoardCardHeader");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-board/record-board-card/components/RecordBoardCardHeader.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlJlY29yZEJvYXJkQ2FyZEhlYWRlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUmVjb3JkQ2hpcCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9jb21wb25lbnRzL1JlY29yZENoaXAnO1xuaW1wb3J0IHsgUmVjb3JkQm9hcmRDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9jb250ZXh0cy9SZWNvcmRCb2FyZENvbnRleHQnO1xuaW1wb3J0IHsgdXNlUmVjb3JkQm9hcmRTZWxlY3Rpb24gfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWJvYXJkL2hvb2tzL3VzZVJlY29yZEJvYXJkU2VsZWN0aW9uJztcbmltcG9ydCB7IFJlY29yZEJvYXJkQ2FyZEhlYWRlckNvbnRhaW5lciB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtYm9hcmQvcmVjb3JkLWJvYXJkLWNhcmQvY29tcG9uZW50cy9SZWNvcmRCb2FyZENhcmRIZWFkZXJDb250YWluZXInO1xuaW1wb3J0IHsgU3RvcFByb3BhZ2F0aW9uQ29udGFpbmVyIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9yZWNvcmQtYm9hcmQtY2FyZC9jb21wb25lbnRzL1N0b3BQcm9wYWdhdGlvbkNvbnRhaW5lcic7XG5pbXBvcnQgeyBSZWNvcmRCb2FyZENhcmRDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9yZWNvcmQtYm9hcmQtY2FyZC9jb250ZXh0cy9SZWNvcmRCb2FyZENhcmRDb250ZXh0JztcbmltcG9ydCB7IFJlY29yZEJvYXJkU2NvcGVJbnRlcm5hbENvbnRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWJvYXJkL3Njb3Blcy9zY29wZS1pbnRlcm5hbC1jb250ZXh0L1JlY29yZEJvYXJkU2NvcGVJbnRlcm5hbENvbnRleHQnO1xuaW1wb3J0IHsgaXNSZWNvcmRCb2FyZENhcmRTZWxlY3RlZENvbXBvbmVudEZhbWlseVN0YXRlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9zdGF0ZXMvaXNSZWNvcmRCb2FyZENhcmRTZWxlY3RlZENvbXBvbmVudEZhbWlseVN0YXRlJztcbmltcG9ydCB7IGlzUmVjb3JkQm9hcmRDb21wYWN0TW9kZUFjdGl2ZUNvbXBvbmVudFN0YXRlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1ib2FyZC9zdGF0ZXMvaXNSZWNvcmRCb2FyZENvbXBhY3RNb2RlQWN0aXZlQ29tcG9uZW50U3RhdGUnO1xuXG5pbXBvcnQgeyB1c2VSZWNvcmRJbmRleENvbnRleHRPclRocm93IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1pbmRleC9jb250ZXh0cy9SZWNvcmRJbmRleENvbnRleHQnO1xuaW1wb3J0IHsgcmVjb3JkSW5kZXhPcGVuUmVjb3JkSW5TdGF0ZSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtaW5kZXgvc3RhdGVzL3JlY29yZEluZGV4T3BlblJlY29yZEluU3RhdGUnO1xuaW1wb3J0IHsgcmVjb3JkU3RvcmVGYW1pbHlTdGF0ZSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtc3RvcmUvc3RhdGVzL3JlY29yZFN0b3JlRmFtaWx5U3RhdGUnO1xuaW1wb3J0IHsgdXNlQXZhaWxhYmxlU2NvcGVJZE9yVGhyb3cgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9yZWNvaWwtc2NvcGUvc2NvcGVzLWludGVybmFsL2hvb2tzL3VzZUF2YWlsYWJsZVNjb3BlSWQnO1xuaW1wb3J0IHsgdXNlUmVjb2lsQ29tcG9uZW50RmFtaWx5U3RhdGVWMiB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3N0YXRlL2NvbXBvbmVudC1zdGF0ZS9ob29rcy91c2VSZWNvaWxDb21wb25lbnRGYW1pbHlTdGF0ZVYyJztcbmltcG9ydCB7IHVzZVJlY29pbENvbXBvbmVudFZhbHVlVjIgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9zdGF0ZS9jb21wb25lbnQtc3RhdGUvaG9va3MvdXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMic7XG5pbXBvcnQgeyBWaWV3T3BlblJlY29yZEluVHlwZSB9IGZyb20gJ0Avdmlld3MvdHlwZXMvVmlld09wZW5SZWNvcmRJblR5cGUnO1xuaW1wb3J0IHN0eWxlZCBmcm9tICdAZW1vdGlvbi9zdHlsZWQnO1xuaW1wb3J0IHsgRGlzcGF0Y2gsIFNldFN0YXRlQWN0aW9uLCB1c2VDb250ZXh0IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgdXNlUmVjb2lsVmFsdWUgfSBmcm9tICdyZWNvaWwnO1xuaW1wb3J0IHtcbiAgQXZhdGFyQ2hpcFZhcmlhbnQsXG4gIENoZWNrYm94LFxuICBDaGVja2JveFZhcmlhbnQsXG4gIEljb25FeWUsXG4gIEljb25FeWVPZmYsXG4gIExpZ2h0SWNvbkJ1dHRvbixcbn0gZnJvbSAndHdlbnR5LXVpJztcbmltcG9ydCB7IGlzRGVmaW5lZCB9IGZyb20gJ3R3ZW50eS1zaGFyZWQvdXRpbHMnO1xuXG5jb25zdCBTdHlsZWRDb21wYWN0SWNvbkNvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBtYXJnaW4tbGVmdDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDEpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZENoZWNrYm94Q29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG5gO1xuXG50eXBlIFJlY29yZEJvYXJkQ2FyZEhlYWRlclByb3BzID0ge1xuICBpc0NhcmRFeHBhbmRlZD86IGJvb2xlYW47XG4gIHNldElzQ2FyZEV4cGFuZGVkPzogRGlzcGF0Y2g8U2V0U3RhdGVBY3Rpb248Ym9vbGVhbj4+O1xufTtcblxuZXhwb3J0IGNvbnN0IFJlY29yZEJvYXJkQ2FyZEhlYWRlciA9ICh7XG4gIGlzQ2FyZEV4cGFuZGVkLFxuICBzZXRJc0NhcmRFeHBhbmRlZCxcbn06IFJlY29yZEJvYXJkQ2FyZEhlYWRlclByb3BzKSA9PiB7XG4gIGNvbnN0IHsgcmVjb3JkSWQgfSA9IHVzZUNvbnRleHQoUmVjb3JkQm9hcmRDYXJkQ29udGV4dCk7XG5cbiAgY29uc3QgeyBpbmRleElkZW50aWZpZXJVcmwgfSA9IHVzZVJlY29yZEluZGV4Q29udGV4dE9yVGhyb3coKTtcblxuICBjb25zdCByZWNvcmQgPSB1c2VSZWNvaWxWYWx1ZShyZWNvcmRTdG9yZUZhbWlseVN0YXRlKHJlY29yZElkKSk7XG5cbiAgY29uc3QgeyBvYmplY3RNZXRhZGF0YUl0ZW0gfSA9IHVzZUNvbnRleHQoUmVjb3JkQm9hcmRDb250ZXh0KTtcblxuICBjb25zdCByZWNvcmRCb2FyZElkID0gdXNlQXZhaWxhYmxlU2NvcGVJZE9yVGhyb3coXG4gICAgUmVjb3JkQm9hcmRTY29wZUludGVybmFsQ29udGV4dCxcbiAgKTtcblxuICBjb25zdCBzaG93Q29tcGFjdFZpZXcgPSB1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyKFxuICAgIGlzUmVjb3JkQm9hcmRDb21wYWN0TW9kZUFjdGl2ZUNvbXBvbmVudFN0YXRlLFxuICApO1xuXG4gIGNvbnN0IHsgY2hlY2tJZkxhc3RVbnNlbGVjdEFuZENsb3NlRHJvcGRvd24gfSA9XG4gICAgdXNlUmVjb3JkQm9hcmRTZWxlY3Rpb24ocmVjb3JkQm9hcmRJZCk7XG5cbiAgY29uc3QgW2lzQ3VycmVudENhcmRTZWxlY3RlZCwgc2V0SXNDdXJyZW50Q2FyZFNlbGVjdGVkXSA9XG4gICAgdXNlUmVjb2lsQ29tcG9uZW50RmFtaWx5U3RhdGVWMihcbiAgICAgIGlzUmVjb3JkQm9hcmRDYXJkU2VsZWN0ZWRDb21wb25lbnRGYW1pbHlTdGF0ZSxcbiAgICAgIHJlY29yZElkLFxuICAgICk7XG5cbiAgY29uc3QgcmVjb3JkSW5kZXhPcGVuUmVjb3JkSW4gPSB1c2VSZWNvaWxWYWx1ZShyZWNvcmRJbmRleE9wZW5SZWNvcmRJblN0YXRlKTtcblxuICByZXR1cm4gKFxuICAgIDxSZWNvcmRCb2FyZENhcmRIZWFkZXJDb250YWluZXIgc2hvd0NvbXBhY3RWaWV3PXtzaG93Q29tcGFjdFZpZXd9PlxuICAgICAgPFN0b3BQcm9wYWdhdGlvbkNvbnRhaW5lcj5cbiAgICAgICAge2lzRGVmaW5lZChyZWNvcmQpICYmIChcbiAgICAgICAgICA8UmVjb3JkQ2hpcFxuICAgICAgICAgICAgb2JqZWN0TmFtZVNpbmd1bGFyPXtvYmplY3RNZXRhZGF0YUl0ZW0ubmFtZVNpbmd1bGFyfVxuICAgICAgICAgICAgcmVjb3JkPXtyZWNvcmR9XG4gICAgICAgICAgICB2YXJpYW50PXtBdmF0YXJDaGlwVmFyaWFudC5UcmFuc3BhcmVudH1cbiAgICAgICAgICAgIG1heFdpZHRoPXsxNTB9XG4gICAgICAgICAgICB0bz17XG4gICAgICAgICAgICAgIHJlY29yZEluZGV4T3BlblJlY29yZEluID09PSBWaWV3T3BlblJlY29yZEluVHlwZS5SRUNPUkRfUEFHRVxuICAgICAgICAgICAgICAgID8gaW5kZXhJZGVudGlmaWVyVXJsKHJlY29yZElkKVxuICAgICAgICAgICAgICAgIDogdW5kZWZpbmVkXG4gICAgICAgICAgICB9XG4gICAgICAgICAgLz5cbiAgICAgICAgKX1cbiAgICAgIDwvU3RvcFByb3BhZ2F0aW9uQ29udGFpbmVyPlxuXG4gICAgICB7c2hvd0NvbXBhY3RWaWV3ICYmIChcbiAgICAgICAgPFN0eWxlZENvbXBhY3RJY29uQ29udGFpbmVyIGNsYXNzTmFtZT1cImNvbXBhY3QtaWNvbi1jb250YWluZXJcIj5cbiAgICAgICAgICA8U3RvcFByb3BhZ2F0aW9uQ29udGFpbmVyPlxuICAgICAgICAgICAgPExpZ2h0SWNvbkJ1dHRvblxuICAgICAgICAgICAgICBJY29uPXtpc0NhcmRFeHBhbmRlZCA/IEljb25FeWVPZmYgOiBJY29uRXllfVxuICAgICAgICAgICAgICBhY2NlbnQ9XCJ0ZXJ0aWFyeVwiXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHtcbiAgICAgICAgICAgICAgICBzZXRJc0NhcmRFeHBhbmRlZD8uKChwcmV2KSA9PiAhcHJldik7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvU3RvcFByb3BhZ2F0aW9uQ29udGFpbmVyPlxuICAgICAgICA8L1N0eWxlZENvbXBhY3RJY29uQ29udGFpbmVyPlxuICAgICAgKX1cbiAgICAgIDxTdHlsZWRDaGVja2JveENvbnRhaW5lciBjbGFzc05hbWU9XCJjaGVja2JveC1jb250YWluZXJcIj5cbiAgICAgICAgPFN0b3BQcm9wYWdhdGlvbkNvbnRhaW5lcj5cbiAgICAgICAgICA8Q2hlY2tib3hcbiAgICAgICAgICAgIGhvdmVyYWJsZVxuICAgICAgICAgICAgY2hlY2tlZD17aXNDdXJyZW50Q2FyZFNlbGVjdGVkfVxuICAgICAgICAgICAgb25DaGFuZ2U9eygpID0+IHtcbiAgICAgICAgICAgICAgc2V0SXNDdXJyZW50Q2FyZFNlbGVjdGVkKCFpc0N1cnJlbnRDYXJkU2VsZWN0ZWQpO1xuICAgICAgICAgICAgICBjaGVja0lmTGFzdFVuc2VsZWN0QW5kQ2xvc2VEcm9wZG93bigpO1xuICAgICAgICAgICAgfX1cbiAgICAgICAgICAgIHZhcmlhbnQ9e0NoZWNrYm94VmFyaWFudC5TZWNvbmRhcnl9XG4gICAgICAgICAgLz5cbiAgICAgICAgPC9TdG9wUHJvcGFnYXRpb25Db250YWluZXI+XG4gICAgICA8L1N0eWxlZENoZWNrYm94Q29udGFpbmVyPlxuICAgIDwvUmVjb3JkQm9hcmRDYXJkSGVhZGVyQ29udGFpbmVyPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJSZWNvcmRDaGlwIiwiUmVjb3JkQm9hcmRDb250ZXh0IiwidXNlUmVjb3JkQm9hcmRTZWxlY3Rpb24iLCJSZWNvcmRCb2FyZENhcmRIZWFkZXJDb250YWluZXIiLCJTdG9wUHJvcGFnYXRpb25Db250YWluZXIiLCJSZWNvcmRCb2FyZENhcmRDb250ZXh0IiwiUmVjb3JkQm9hcmRTY29wZUludGVybmFsQ29udGV4dCIsImlzUmVjb3JkQm9hcmRDYXJkU2VsZWN0ZWRDb21wb25lbnRGYW1pbHlTdGF0ZSIsImlzUmVjb3JkQm9hcmRDb21wYWN0TW9kZUFjdGl2ZUNvbXBvbmVudFN0YXRlIiwidXNlUmVjb3JkSW5kZXhDb250ZXh0T3JUaHJvdyIsInJlY29yZEluZGV4T3BlblJlY29yZEluU3RhdGUiLCJyZWNvcmRTdG9yZUZhbWlseVN0YXRlIiwidXNlQXZhaWxhYmxlU2NvcGVJZE9yVGhyb3ciLCJ1c2VSZWNvaWxDb21wb25lbnRGYW1pbHlTdGF0ZVYyIiwidXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMiIsIlZpZXdPcGVuUmVjb3JkSW5UeXBlIiwic3R5bGVkIiwidXNlQ29udGV4dCIsInVzZVJlY29pbFZhbHVlIiwiQXZhdGFyQ2hpcFZhcmlhbnQiLCJDaGVja2JveCIsIkNoZWNrYm94VmFyaWFudCIsIkljb25FeWUiLCJJY29uRXllT2ZmIiwiTGlnaHRJY29uQnV0dG9uIiwiaXNEZWZpbmVkIiwiU3R5bGVkQ29tcGFjdEljb25Db250YWluZXIiLCJkaXYiLCJ0aGVtZSIsInNwYWNpbmciLCJTdHlsZWRDaGVja2JveENvbnRhaW5lciIsIlJlY29yZEJvYXJkQ2FyZEhlYWRlciIsImlzQ2FyZEV4cGFuZGVkIiwic2V0SXNDYXJkRXhwYW5kZWQiLCJyZWNvcmRJZCIsImluZGV4SWRlbnRpZmllclVybCIsInJlY29yZCIsIm9iamVjdE1ldGFkYXRhSXRlbSIsInJlY29yZEJvYXJkSWQiLCJzaG93Q29tcGFjdFZpZXciLCJjaGVja0lmTGFzdFVuc2VsZWN0QW5kQ2xvc2VEcm9wZG93biIsImlzQ3VycmVudENhcmRTZWxlY3RlZCIsInNldElzQ3VycmVudENhcmRTZWxlY3RlZCIsInJlY29yZEluZGV4T3BlblJlY29yZEluIiwib2JqZWN0TmFtZVNpbmd1bGFyIiwibmFtZVNpbmd1bGFyIiwidmFyaWFudCIsIlRyYW5zcGFyZW50IiwibWF4V2lkdGgiLCJ0byIsIlJFQ09SRF9QQUdFIiwidW5kZWZpbmVkIiwiY2xhc3NOYW1lIiwiSWNvbiIsImFjY2VudCIsIm9uQ2xpY2siLCJwcmV2IiwiaG92ZXJhYmxlIiwiY2hlY2tlZCIsIm9uQ2hhbmdlIiwiU2Vjb25kYXJ5Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsU0FBU0EsVUFBVSxRQUFRLHdDQUF3QztBQUNuRSxTQUFTQyxrQkFBa0IsUUFBUSwyREFBMkQ7QUFDOUYsU0FBU0MsdUJBQXVCLFFBQVEsNkRBQTZEO0FBQ3JHLFNBQVNDLDhCQUE4QixRQUFRLDJGQUEyRjtBQUMxSSxTQUFTQyx3QkFBd0IsUUFBUSxxRkFBcUY7QUFDOUgsU0FBU0Msc0JBQXNCLFFBQVEsaUZBQWlGO0FBQ3hILFNBQVNDLCtCQUErQixRQUFRLDZGQUE2RjtBQUM3SSxTQUFTQyw2Q0FBNkMsUUFBUSxvRkFBb0Y7QUFDbEosU0FBU0MsNENBQTRDLFFBQVEsbUZBQW1GO0FBRWhKLFNBQVNDLDRCQUE0QixRQUFRLDJEQUEyRDtBQUN4RyxTQUFTQyw0QkFBNEIsUUFBUSxtRUFBbUU7QUFDaEgsU0FBU0Msc0JBQXNCLFFBQVEsNkRBQTZEO0FBQ3BHLFNBQVNDLDBCQUEwQixRQUFRLHdFQUF3RTtBQUNuSCxTQUFTQywrQkFBK0IsUUFBUSw2RUFBNkU7QUFDN0gsU0FBU0MseUJBQXlCLFFBQVEsdUVBQXVFO0FBQ2pILFNBQVNDLG9CQUFvQixRQUFRLHFDQUFxQztBQUMxRSxPQUFPQyxZQUFZLGtCQUFrQjtBQUNyQyxTQUFtQ0MsVUFBVSxRQUFRLFFBQVE7QUFDN0QsU0FBU0MsY0FBYyxRQUFRLFNBQVM7QUFDeEMsU0FDRUMsaUJBQWlCLEVBQ2pCQyxRQUFRLEVBQ1JDLGVBQWUsRUFDZkMsT0FBTyxFQUNQQyxVQUFVLEVBQ1ZDLGVBQWUsUUFDVixZQUFZO0FBQ25CLFNBQVNDLFNBQVMsUUFBUSxzQkFBc0I7QUFFaEQsTUFBTUMsNkJBQTZCVixPQUFPVyxHQUFHLENBQUM7Ozs7ZUFJL0IsRUFBRSxDQUFDLEVBQUVDLEtBQUssRUFBRSxHQUFLQSxNQUFNQyxPQUFPLENBQUMsR0FBRztBQUNqRCxDQUFDO0tBTEtIO0FBT04sTUFBTUksMEJBQTBCZCxPQUFPVyxHQUFHLENBQUM7O0FBRTNDLENBQUM7TUFGS0c7QUFTTixPQUFPLE1BQU1DLHdCQUF3QixDQUFDLEVBQ3BDQyxjQUFjLEVBQ2RDLGlCQUFpQixFQUNVOztJQUMzQixNQUFNLEVBQUVDLFFBQVEsRUFBRSxHQUFHakIsV0FBV1o7SUFFaEMsTUFBTSxFQUFFOEIsa0JBQWtCLEVBQUUsR0FBRzFCO0lBRS9CLE1BQU0yQixTQUFTbEIsZUFBZVAsdUJBQXVCdUI7SUFFckQsTUFBTSxFQUFFRyxrQkFBa0IsRUFBRSxHQUFHcEIsV0FBV2hCO0lBRTFDLE1BQU1xQyxnQkFBZ0IxQiwyQkFDcEJOO0lBR0YsTUFBTWlDLGtCQUFrQnpCLDBCQUN0Qk47SUFHRixNQUFNLEVBQUVnQyxtQ0FBbUMsRUFBRSxHQUMzQ3RDLHdCQUF3Qm9DO0lBRTFCLE1BQU0sQ0FBQ0csdUJBQXVCQyx5QkFBeUIsR0FDckQ3QixnQ0FDRU4sK0NBQ0EyQjtJQUdKLE1BQU1TLDBCQUEwQnpCLGVBQWVSO0lBRS9DLHFCQUNFLFFBQUNQO1FBQStCb0MsaUJBQWlCQTs7MEJBQy9DLFFBQUNuQzswQkFDRXFCLFVBQVVXLHlCQUNULFFBQUNwQztvQkFDQzRDLG9CQUFvQlAsbUJBQW1CUSxZQUFZO29CQUNuRFQsUUFBUUE7b0JBQ1JVLFNBQVMzQixrQkFBa0I0QixXQUFXO29CQUN0Q0MsVUFBVTtvQkFDVkMsSUFDRU4sNEJBQTRCNUIscUJBQXFCbUMsV0FBVyxHQUN4RGYsbUJBQW1CRCxZQUNuQmlCOzs7Ozs7Ozs7OztZQU1YWixpQ0FDQyxRQUFDYjtnQkFBMkIwQixXQUFVOzBCQUNwQyxjQUFBLFFBQUNoRDs4QkFDQyxjQUFBLFFBQUNvQjt3QkFDQzZCLE1BQU1yQixpQkFBaUJULGFBQWFEO3dCQUNwQ2dDLFFBQU87d0JBQ1BDLFNBQVM7NEJBQ1B0QixvQkFBb0IsQ0FBQ3VCLE9BQVMsQ0FBQ0E7d0JBQ2pDOzs7Ozs7Ozs7Ozs7Ozs7OzBCQUtSLFFBQUMxQjtnQkFBd0JzQixXQUFVOzBCQUNqQyxjQUFBLFFBQUNoRDs4QkFDQyxjQUFBLFFBQUNnQjt3QkFDQ3FDLFNBQVM7d0JBQ1RDLFNBQVNqQjt3QkFDVGtCLFVBQVU7NEJBQ1JqQix5QkFBeUIsQ0FBQ0Q7NEJBQzFCRDt3QkFDRjt3QkFDQU0sU0FBU3pCLGdCQUFnQnVDLFNBQVM7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFNOUMsRUFBRTtHQTdFVzdCOztRQU1vQnRCO1FBRWhCUztRQUlPTjtRQUlFRTtRQUt0Qlo7UUFHQVc7UUFLOEJLOzs7TUE3QnJCYSJ9

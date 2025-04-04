@@ -1,0 +1,157 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useRecoilCallback } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { useDeleteOneRecord } from "/src/modules/object-record/hooks/useDeleteOneRecord.ts";
+import { RecordTable } from "/src/modules/object-record/record-table/components/RecordTable.tsx";
+import { EntityDeleteContext } from "/src/modules/object-record/record-table/contexts/EntityDeleteHookContext.ts";
+import { ScrollWrapper } from "/src/modules/ui/utilities/scroll/components/ScrollWrapper.tsx";
+import { useSaveCurrentViewFields } from "/src/modules/views/hooks/useSaveCurrentViewFields.ts";
+import { mapColumnDefinitionsToViewFields } from "/src/modules/views/utils/mapColumnDefinitionToViewField.ts";
+import { RecordUpdateContext } from "/src/modules/object-record/record-table/contexts/EntityUpdateMutationHookContext.ts";
+import { useRecordTable } from "/src/modules/object-record/record-table/hooks/useRecordTable.ts";
+import { ActionBarHotkeyScope } from "/src/modules/action-menu/types/ActionBarHotKeyScope.ts";
+import { RecordTableComponentInstance } from "/src/modules/object-record/record-table/components/RecordTableComponentInstance.tsx";
+import { RecordTableContextProvider } from "/src/modules/object-record/record-table/components/RecordTableContextProvider.tsx";
+import { TableHotkeyScope } from "/src/modules/object-record/record-table/types/TableHotkeyScope.ts";
+import { useScopedHotkeys } from "/src/modules/ui/utilities/hotkey/hooks/useScopedHotkeys.ts";
+import __vite__cjsImport17_tsKeyEnum from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/ts-key-enum.js?v=226f7286"; const Key = __vite__cjsImport17_tsKeyEnum["Key"];
+const StyledTableWithHeader = styled.div`
+  height: 100%;
+`;
+_c = StyledTableWithHeader;
+const StyledTableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+`;
+_c1 = StyledTableContainer;
+const StyledTableInternalContainer = styled.div`
+  height: 100%;
+`;
+_c2 = StyledTableInternalContainer;
+export const RecordTableWithWrappers = ({ updateRecordMutation, objectNameSingular, recordTableId, viewBarId })=>{
+    _s();
+    const { resetTableRowSelection, selectAllRows, setHasUserSelectedAllRows } = useRecordTable({
+        recordTableId
+    });
+    const handleSelectAllRows = ()=>{
+        setHasUserSelectedAllRows(true);
+        selectAllRows();
+    };
+    useScopedHotkeys('ctrl+a,meta+a', handleSelectAllRows, TableHotkeyScope.Table);
+    useScopedHotkeys('ctrl+a,meta+a', handleSelectAllRows, ActionBarHotkeyScope.ActionBar);
+    useScopedHotkeys(Key.Escape, resetTableRowSelection, ActionBarHotkeyScope.ActionBar);
+    const { saveViewFields } = useSaveCurrentViewFields();
+    const { deleteOneRecord } = useDeleteOneRecord({
+        objectNameSingular
+    });
+    const handleColumnsChange = useRecoilCallback(()=>(columns)=>{
+            saveViewFields(mapColumnDefinitionsToViewFields(columns));
+        }, [
+        saveViewFields
+    ]);
+    return /*#__PURE__*/ _jsxDEV(RecordTableComponentInstance, {
+        recordTableId: recordTableId,
+        onColumnsChange: handleColumnsChange,
+        children: /*#__PURE__*/ _jsxDEV(RecordTableContextProvider, {
+            recordTableId: recordTableId,
+            viewBarId: viewBarId,
+            objectNameSingular: objectNameSingular,
+            children: /*#__PURE__*/ _jsxDEV(EntityDeleteContext.Provider, {
+                value: deleteOneRecord,
+                children: /*#__PURE__*/ _jsxDEV(ScrollWrapper, {
+                    contextProviderName: "recordTableWithWrappers",
+                    componentInstanceId: `record-table-scroll-${recordTableId}`,
+                    children: /*#__PURE__*/ _jsxDEV(RecordUpdateContext.Provider, {
+                        value: updateRecordMutation,
+                        children: /*#__PURE__*/ _jsxDEV(StyledTableWithHeader, {
+                            children: /*#__PURE__*/ _jsxDEV(StyledTableContainer, {
+                                children: /*#__PURE__*/ _jsxDEV(StyledTableInternalContainer, {
+                                    children: /*#__PURE__*/ _jsxDEV(RecordTable, {}, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                                        lineNumber: 112,
+                                        columnNumber: 21
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                                    lineNumber: 111,
+                                    columnNumber: 19
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                                lineNumber: 110,
+                                columnNumber: 17
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                            lineNumber: 109,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                        lineNumber: 108,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                    lineNumber: 104,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+                lineNumber: 103,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+            lineNumber: 98,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx",
+        lineNumber: 94,
+        columnNumber: 5
+    }, this);
+};
+_s(RecordTableWithWrappers, "Qe+6O/VgBl2WLG2pkxWCMR4PcNw=", false, function() {
+    return [
+        useRecordTable,
+        useScopedHotkeys,
+        useScopedHotkeys,
+        useScopedHotkeys,
+        useSaveCurrentViewFields,
+        useDeleteOneRecord,
+        useRecoilCallback
+    ];
+});
+_c3 = RecordTableWithWrappers;
+var _c, _c1, _c2, _c3;
+$RefreshReg$(_c, "StyledTableWithHeader");
+$RefreshReg$(_c1, "StyledTableContainer");
+$RefreshReg$(_c2, "StyledTableInternalContainer");
+$RefreshReg$(_c3, "RecordTableWithWrappers");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlJlY29yZFRhYmxlV2l0aFdyYXBwZXJzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyB1c2VSZWNvaWxDYWxsYmFjayB9IGZyb20gJ3JlY29pbCc7XG5cbmltcG9ydCB7IHVzZURlbGV0ZU9uZVJlY29yZCB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9ob29rcy91c2VEZWxldGVPbmVSZWNvcmQnO1xuaW1wb3J0IHsgRmllbGRNZXRhZGF0YSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtZmllbGQvdHlwZXMvRmllbGRNZXRhZGF0YSc7XG5pbXBvcnQgeyBSZWNvcmRUYWJsZSB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtdGFibGUvY29tcG9uZW50cy9SZWNvcmRUYWJsZSc7XG5pbXBvcnQgeyBFbnRpdHlEZWxldGVDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC10YWJsZS9jb250ZXh0cy9FbnRpdHlEZWxldGVIb29rQ29udGV4dCc7XG5pbXBvcnQgeyBDb2x1bW5EZWZpbml0aW9uIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC10YWJsZS90eXBlcy9Db2x1bW5EZWZpbml0aW9uJztcbmltcG9ydCB7IFNjcm9sbFdyYXBwZXIgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9zY3JvbGwvY29tcG9uZW50cy9TY3JvbGxXcmFwcGVyJztcbmltcG9ydCB7IHVzZVNhdmVDdXJyZW50Vmlld0ZpZWxkcyB9IGZyb20gJ0Avdmlld3MvaG9va3MvdXNlU2F2ZUN1cnJlbnRWaWV3RmllbGRzJztcbmltcG9ydCB7IG1hcENvbHVtbkRlZmluaXRpb25zVG9WaWV3RmllbGRzIH0gZnJvbSAnQC92aWV3cy91dGlscy9tYXBDb2x1bW5EZWZpbml0aW9uVG9WaWV3RmllbGQnO1xuXG5pbXBvcnQgeyBSZWNvcmRVcGRhdGVDb250ZXh0IH0gZnJvbSAnLi4vY29udGV4dHMvRW50aXR5VXBkYXRlTXV0YXRpb25Ib29rQ29udGV4dCc7XG5pbXBvcnQgeyB1c2VSZWNvcmRUYWJsZSB9IGZyb20gJy4uL2hvb2tzL3VzZVJlY29yZFRhYmxlJztcblxuaW1wb3J0IHsgQWN0aW9uQmFySG90a2V5U2NvcGUgfSBmcm9tICdAL2FjdGlvbi1tZW51L3R5cGVzL0FjdGlvbkJhckhvdEtleVNjb3BlJztcbmltcG9ydCB7IFJlY29yZFRhYmxlQ29tcG9uZW50SW5zdGFuY2UgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXRhYmxlL2NvbXBvbmVudHMvUmVjb3JkVGFibGVDb21wb25lbnRJbnN0YW5jZSc7XG5pbXBvcnQgeyBSZWNvcmRUYWJsZUNvbnRleHRQcm92aWRlciB9IGZyb20gJ0Avb2JqZWN0LXJlY29yZC9yZWNvcmQtdGFibGUvY29tcG9uZW50cy9SZWNvcmRUYWJsZUNvbnRleHRQcm92aWRlcic7XG5pbXBvcnQgeyBUYWJsZUhvdGtleVNjb3BlIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC10YWJsZS90eXBlcy9UYWJsZUhvdGtleVNjb3BlJztcbmltcG9ydCB7IHVzZVNjb3BlZEhvdGtleXMgfSBmcm9tICdAL3VpL3V0aWxpdGllcy9ob3RrZXkvaG9va3MvdXNlU2NvcGVkSG90a2V5cyc7XG5pbXBvcnQgeyBLZXkgfSBmcm9tICd0cy1rZXktZW51bSc7XG5cbmNvbnN0IFN0eWxlZFRhYmxlV2l0aEhlYWRlciA9IHN0eWxlZC5kaXZgXG4gIGhlaWdodDogMTAwJTtcbmA7XG5cbmNvbnN0IFN0eWxlZFRhYmxlQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG5gO1xuXG5jb25zdCBTdHlsZWRUYWJsZUludGVybmFsQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgaGVpZ2h0OiAxMDAlO1xuYDtcblxudHlwZSBSZWNvcmRUYWJsZVdpdGhXcmFwcGVyc1Byb3BzID0ge1xuICBvYmplY3ROYW1lU2luZ3VsYXI6IHN0cmluZztcbiAgcmVjb3JkVGFibGVJZDogc3RyaW5nO1xuICB2aWV3QmFySWQ6IHN0cmluZztcbiAgdXBkYXRlUmVjb3JkTXV0YXRpb246IChwYXJhbXM6IGFueSkgPT4gdm9pZDtcbn07XG5cbmV4cG9ydCBjb25zdCBSZWNvcmRUYWJsZVdpdGhXcmFwcGVycyA9ICh7XG4gIHVwZGF0ZVJlY29yZE11dGF0aW9uLFxuICBvYmplY3ROYW1lU2luZ3VsYXIsXG4gIHJlY29yZFRhYmxlSWQsXG4gIHZpZXdCYXJJZCxcbn06IFJlY29yZFRhYmxlV2l0aFdyYXBwZXJzUHJvcHMpID0+IHtcbiAgY29uc3QgeyByZXNldFRhYmxlUm93U2VsZWN0aW9uLCBzZWxlY3RBbGxSb3dzLCBzZXRIYXNVc2VyU2VsZWN0ZWRBbGxSb3dzIH0gPVxuICAgIHVzZVJlY29yZFRhYmxlKHtcbiAgICAgIHJlY29yZFRhYmxlSWQsXG4gICAgfSk7XG5cbiAgY29uc3QgaGFuZGxlU2VsZWN0QWxsUm93cyA9ICgpID0+IHtcbiAgICBzZXRIYXNVc2VyU2VsZWN0ZWRBbGxSb3dzKHRydWUpO1xuICAgIHNlbGVjdEFsbFJvd3MoKTtcbiAgfTtcblxuICB1c2VTY29wZWRIb3RrZXlzKFxuICAgICdjdHJsK2EsbWV0YSthJyxcbiAgICBoYW5kbGVTZWxlY3RBbGxSb3dzLFxuICAgIFRhYmxlSG90a2V5U2NvcGUuVGFibGUsXG4gICk7XG4gIHVzZVNjb3BlZEhvdGtleXMoXG4gICAgJ2N0cmwrYSxtZXRhK2EnLFxuICAgIGhhbmRsZVNlbGVjdEFsbFJvd3MsXG4gICAgQWN0aW9uQmFySG90a2V5U2NvcGUuQWN0aW9uQmFyLFxuICApO1xuXG4gIHVzZVNjb3BlZEhvdGtleXMoXG4gICAgS2V5LkVzY2FwZSxcbiAgICByZXNldFRhYmxlUm93U2VsZWN0aW9uLFxuICAgIEFjdGlvbkJhckhvdGtleVNjb3BlLkFjdGlvbkJhcixcbiAgKTtcblxuICBjb25zdCB7IHNhdmVWaWV3RmllbGRzIH0gPSB1c2VTYXZlQ3VycmVudFZpZXdGaWVsZHMoKTtcblxuICBjb25zdCB7IGRlbGV0ZU9uZVJlY29yZCB9ID0gdXNlRGVsZXRlT25lUmVjb3JkKHsgb2JqZWN0TmFtZVNpbmd1bGFyIH0pO1xuXG4gIGNvbnN0IGhhbmRsZUNvbHVtbnNDaGFuZ2UgPSB1c2VSZWNvaWxDYWxsYmFjayhcbiAgICAoKSA9PiAoY29sdW1ucykgPT4ge1xuICAgICAgc2F2ZVZpZXdGaWVsZHMoXG4gICAgICAgIG1hcENvbHVtbkRlZmluaXRpb25zVG9WaWV3RmllbGRzKFxuICAgICAgICAgIGNvbHVtbnMgYXMgQ29sdW1uRGVmaW5pdGlvbjxGaWVsZE1ldGFkYXRhPltdLFxuICAgICAgICApLFxuICAgICAgKTtcbiAgICB9LFxuICAgIFtzYXZlVmlld0ZpZWxkc10sXG4gICk7XG5cbiAgcmV0dXJuIChcbiAgICA8UmVjb3JkVGFibGVDb21wb25lbnRJbnN0YW5jZVxuICAgICAgcmVjb3JkVGFibGVJZD17cmVjb3JkVGFibGVJZH1cbiAgICAgIG9uQ29sdW1uc0NoYW5nZT17aGFuZGxlQ29sdW1uc0NoYW5nZX1cbiAgICA+XG4gICAgICA8UmVjb3JkVGFibGVDb250ZXh0UHJvdmlkZXJcbiAgICAgICAgcmVjb3JkVGFibGVJZD17cmVjb3JkVGFibGVJZH1cbiAgICAgICAgdmlld0JhcklkPXt2aWV3QmFySWR9XG4gICAgICAgIG9iamVjdE5hbWVTaW5ndWxhcj17b2JqZWN0TmFtZVNpbmd1bGFyfVxuICAgICAgPlxuICAgICAgICA8RW50aXR5RGVsZXRlQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17ZGVsZXRlT25lUmVjb3JkfT5cbiAgICAgICAgICA8U2Nyb2xsV3JhcHBlclxuICAgICAgICAgICAgY29udGV4dFByb3ZpZGVyTmFtZT1cInJlY29yZFRhYmxlV2l0aFdyYXBwZXJzXCJcbiAgICAgICAgICAgIGNvbXBvbmVudEluc3RhbmNlSWQ9e2ByZWNvcmQtdGFibGUtc2Nyb2xsLSR7cmVjb3JkVGFibGVJZH1gfVxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxSZWNvcmRVcGRhdGVDb250ZXh0LlByb3ZpZGVyIHZhbHVlPXt1cGRhdGVSZWNvcmRNdXRhdGlvbn0+XG4gICAgICAgICAgICAgIDxTdHlsZWRUYWJsZVdpdGhIZWFkZXI+XG4gICAgICAgICAgICAgICAgPFN0eWxlZFRhYmxlQ29udGFpbmVyPlxuICAgICAgICAgICAgICAgICAgPFN0eWxlZFRhYmxlSW50ZXJuYWxDb250YWluZXI+XG4gICAgICAgICAgICAgICAgICAgIDxSZWNvcmRUYWJsZSAvPlxuICAgICAgICAgICAgICAgICAgPC9TdHlsZWRUYWJsZUludGVybmFsQ29udGFpbmVyPlxuICAgICAgICAgICAgICAgIDwvU3R5bGVkVGFibGVDb250YWluZXI+XG4gICAgICAgICAgICAgIDwvU3R5bGVkVGFibGVXaXRoSGVhZGVyPlxuICAgICAgICAgICAgPC9SZWNvcmRVcGRhdGVDb250ZXh0LlByb3ZpZGVyPlxuICAgICAgICAgIDwvU2Nyb2xsV3JhcHBlcj5cbiAgICAgICAgPC9FbnRpdHlEZWxldGVDb250ZXh0LlByb3ZpZGVyPlxuICAgICAgPC9SZWNvcmRUYWJsZUNvbnRleHRQcm92aWRlcj5cbiAgICA8L1JlY29yZFRhYmxlQ29tcG9uZW50SW5zdGFuY2U+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbInN0eWxlZCIsInVzZVJlY29pbENhbGxiYWNrIiwidXNlRGVsZXRlT25lUmVjb3JkIiwiUmVjb3JkVGFibGUiLCJFbnRpdHlEZWxldGVDb250ZXh0IiwiU2Nyb2xsV3JhcHBlciIsInVzZVNhdmVDdXJyZW50Vmlld0ZpZWxkcyIsIm1hcENvbHVtbkRlZmluaXRpb25zVG9WaWV3RmllbGRzIiwiUmVjb3JkVXBkYXRlQ29udGV4dCIsInVzZVJlY29yZFRhYmxlIiwiQWN0aW9uQmFySG90a2V5U2NvcGUiLCJSZWNvcmRUYWJsZUNvbXBvbmVudEluc3RhbmNlIiwiUmVjb3JkVGFibGVDb250ZXh0UHJvdmlkZXIiLCJUYWJsZUhvdGtleVNjb3BlIiwidXNlU2NvcGVkSG90a2V5cyIsIktleSIsIlN0eWxlZFRhYmxlV2l0aEhlYWRlciIsImRpdiIsIlN0eWxlZFRhYmxlQ29udGFpbmVyIiwiU3R5bGVkVGFibGVJbnRlcm5hbENvbnRhaW5lciIsIlJlY29yZFRhYmxlV2l0aFdyYXBwZXJzIiwidXBkYXRlUmVjb3JkTXV0YXRpb24iLCJvYmplY3ROYW1lU2luZ3VsYXIiLCJyZWNvcmRUYWJsZUlkIiwidmlld0JhcklkIiwicmVzZXRUYWJsZVJvd1NlbGVjdGlvbiIsInNlbGVjdEFsbFJvd3MiLCJzZXRIYXNVc2VyU2VsZWN0ZWRBbGxSb3dzIiwiaGFuZGxlU2VsZWN0QWxsUm93cyIsIlRhYmxlIiwiQWN0aW9uQmFyIiwiRXNjYXBlIiwic2F2ZVZpZXdGaWVsZHMiLCJkZWxldGVPbmVSZWNvcmQiLCJoYW5kbGVDb2x1bW5zQ2hhbmdlIiwiY29sdW1ucyIsIm9uQ29sdW1uc0NoYW5nZSIsIlByb3ZpZGVyIiwidmFsdWUiLCJjb250ZXh0UHJvdmlkZXJOYW1lIiwiY29tcG9uZW50SW5zdGFuY2VJZCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLE9BQU9BLFlBQVksa0JBQWtCO0FBQ3JDLFNBQVNDLGlCQUFpQixRQUFRLFNBQVM7QUFFM0MsU0FBU0Msa0JBQWtCLFFBQVEsMkNBQTJDO0FBRTlFLFNBQVNDLFdBQVcsUUFBUSxzREFBc0Q7QUFDbEYsU0FBU0MsbUJBQW1CLFFBQVEsZ0VBQWdFO0FBRXBHLFNBQVNDLGFBQWEsUUFBUSxpREFBaUQ7QUFDL0UsU0FBU0Msd0JBQXdCLFFBQVEseUNBQXlDO0FBQ2xGLFNBQVNDLGdDQUFnQyxRQUFRLCtDQUErQztBQUVoRyxTQUFTQyxtQkFBbUIsUUFBUSw4Q0FBOEM7QUFDbEYsU0FBU0MsY0FBYyxRQUFRLDBCQUEwQjtBQUV6RCxTQUFTQyxvQkFBb0IsUUFBUSwyQ0FBMkM7QUFDaEYsU0FBU0MsNEJBQTRCLFFBQVEsdUVBQXVFO0FBQ3BILFNBQVNDLDBCQUEwQixRQUFRLHFFQUFxRTtBQUNoSCxTQUFTQyxnQkFBZ0IsUUFBUSxzREFBc0Q7QUFDdkYsU0FBU0MsZ0JBQWdCLFFBQVEsK0NBQStDO0FBQ2hGLFNBQVNDLEdBQUcsUUFBUSxjQUFjO0FBRWxDLE1BQU1DLHdCQUF3QmhCLE9BQU9pQixHQUFHLENBQUM7O0FBRXpDLENBQUM7S0FGS0Q7QUFJTixNQUFNRSx1QkFBdUJsQixPQUFPaUIsR0FBRyxDQUFDOzs7OztBQUt4QyxDQUFDO01BTEtDO0FBT04sTUFBTUMsK0JBQStCbkIsT0FBT2lCLEdBQUcsQ0FBQzs7QUFFaEQsQ0FBQztNQUZLRTtBQVdOLE9BQU8sTUFBTUMsMEJBQTBCLENBQUMsRUFDdENDLG9CQUFvQixFQUNwQkMsa0JBQWtCLEVBQ2xCQyxhQUFhLEVBQ2JDLFNBQVMsRUFDb0I7O0lBQzdCLE1BQU0sRUFBRUMsc0JBQXNCLEVBQUVDLGFBQWEsRUFBRUMseUJBQXlCLEVBQUUsR0FDeEVsQixlQUFlO1FBQ2JjO0lBQ0Y7SUFFRixNQUFNSyxzQkFBc0I7UUFDMUJELDBCQUEwQjtRQUMxQkQ7SUFDRjtJQUVBWixpQkFDRSxpQkFDQWMscUJBQ0FmLGlCQUFpQmdCLEtBQUs7SUFFeEJmLGlCQUNFLGlCQUNBYyxxQkFDQWxCLHFCQUFxQm9CLFNBQVM7SUFHaENoQixpQkFDRUMsSUFBSWdCLE1BQU0sRUFDVk4sd0JBQ0FmLHFCQUFxQm9CLFNBQVM7SUFHaEMsTUFBTSxFQUFFRSxjQUFjLEVBQUUsR0FBRzFCO0lBRTNCLE1BQU0sRUFBRTJCLGVBQWUsRUFBRSxHQUFHL0IsbUJBQW1CO1FBQUVvQjtJQUFtQjtJQUVwRSxNQUFNWSxzQkFBc0JqQyxrQkFDMUIsSUFBTSxDQUFDa0M7WUFDTEgsZUFDRXpCLGlDQUNFNEI7UUFHTixHQUNBO1FBQUNIO0tBQWU7SUFHbEIscUJBQ0UsUUFBQ3JCO1FBQ0NZLGVBQWVBO1FBQ2ZhLGlCQUFpQkY7a0JBRWpCLGNBQUEsUUFBQ3RCO1lBQ0NXLGVBQWVBO1lBQ2ZDLFdBQVdBO1lBQ1hGLG9CQUFvQkE7c0JBRXBCLGNBQUEsUUFBQ2xCLG9CQUFvQmlDLFFBQVE7Z0JBQUNDLE9BQU9MOzBCQUNuQyxjQUFBLFFBQUM1QjtvQkFDQ2tDLHFCQUFvQjtvQkFDcEJDLHFCQUFxQixDQUFDLG9CQUFvQixFQUFFakIsY0FBYyxDQUFDOzhCQUUzRCxjQUFBLFFBQUNmLG9CQUFvQjZCLFFBQVE7d0JBQUNDLE9BQU9qQjtrQ0FDbkMsY0FBQSxRQUFDTDtzQ0FDQyxjQUFBLFFBQUNFOzBDQUNDLGNBQUEsUUFBQ0M7OENBQ0MsY0FBQSxRQUFDaEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQVVyQixFQUFFO0dBN0VXaUI7O1FBT1RYO1FBU0ZLO1FBS0FBO1FBTUFBO1FBTTJCUjtRQUVDSjtRQUVBRDs7O01BckNqQm1CIn0=

@@ -1,0 +1,165 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { useWorkflowRun } from "/src/modules/workflow/hooks/useWorkflowRun.ts";
+import { useWorkflowRunIdOrThrow } from "/src/modules/workflow/hooks/useWorkflowRunIdOrThrow.ts";
+import { getStepDefinitionOrThrow } from "/src/modules/workflow/utils/getStepDefinitionOrThrow.ts";
+import { WorkflowRunStepJsonContainer } from "/src/modules/workflow/workflow-steps/components/WorkflowRunStepJsonContainer.tsx";
+import { WorkflowStepHeader } from "/src/modules/workflow/workflow-steps/components/WorkflowStepHeader.tsx";
+import { getWorkflowPreviousStepId } from "/src/modules/workflow/workflow-steps/utils/getWorkflowPreviousStep.ts";
+import { getWorkflowRunStepContext } from "/src/modules/workflow/workflow-steps/utils/getWorkflowRunStepContext.ts";
+import { getWorkflowVariablesUsedInStep } from "/src/modules/workflow/workflow-steps/utils/getWorkflowVariablesUsedInStep.ts";
+import { getActionHeaderTypeOrThrow } from "/src/modules/workflow/workflow-steps/workflow-actions/utils/getActionHeaderTypeOrThrow.ts";
+import { getActionIcon } from "/src/modules/workflow/workflow-steps/workflow-actions/utils/getActionIcon.ts";
+import { getActionIconColorOrThrow } from "/src/modules/workflow/workflow-steps/workflow-actions/utils/getActionIconColorOrThrow.ts";
+import { useTheme } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react.js?v=226f7286";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { IconBrackets, JsonNestedNode, JsonTreeContextProvider, useIcons } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+export const WorkflowRunStepInputDetail = ({ stepId })=>{
+    _s();
+    const { i18n: $__i18n, i18n, _: $__ } = $_useLingui();
+    const { getIcon } = useIcons();
+    const theme = useTheme();
+    const workflowRunId = useWorkflowRunIdOrThrow();
+    const workflowRun = useWorkflowRun({
+        workflowRunId
+    });
+    const step = workflowRun?.output?.flow.steps.find((step)=>step.id === stepId);
+    if (!(isDefined(workflowRun) && isDefined(workflowRun.context) && isDefined(workflowRun.output?.flow) && isDefined(step))) {
+        return null;
+    }
+    const previousStepId = getWorkflowPreviousStepId({
+        stepId,
+        steps: workflowRun.output.flow.steps
+    });
+    if (previousStepId === undefined) {
+        return null;
+    }
+    const stepDefinition = getStepDefinitionOrThrow({
+        stepId,
+        trigger: workflowRun.output.flow.trigger,
+        steps: workflowRun.output.flow.steps
+    });
+    if (stepDefinition?.type !== 'action') {
+        throw new Error('The input tab must be rendered with an action step.');
+    }
+    const headerTitle = stepDefinition.definition.name;
+    const headerIcon = getActionIcon(stepDefinition.definition.type);
+    const headerIconColor = getActionIconColorOrThrow({
+        theme,
+        actionType: stepDefinition.definition.type
+    });
+    const headerType = getActionHeaderTypeOrThrow(stepDefinition.definition.type);
+    const variablesUsedInStep = getWorkflowVariablesUsedInStep({
+        step
+    });
+    const stepContext = getWorkflowRunStepContext({
+        context: workflowRun.context,
+        flow: workflowRun.output.flow,
+        stepId
+    });
+    if (stepContext.length === 0) {
+        throw new Error('The input tab must be rendered with a non-empty context.');
+    }
+    const isFirstNodeDepthOfPreviousStep = ({ keyPath, depth })=>keyPath.startsWith(previousStepId) && depth < 2;
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxDEV(WorkflowStepHeader, {
+                disabled: true,
+                Icon: getIcon(headerIcon),
+                iconColor: headerIconColor,
+                initialTitle: headerTitle,
+                headerType: i18n._(headerType)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx",
+                lineNumber: 92,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDEV(WorkflowRunStepJsonContainer, {
+                children: /*#__PURE__*/ _jsxDEV(JsonTreeContextProvider, {
+                    value: {
+                        emptyArrayLabel: $__i18n._({
+                            id: "OMbipf",
+                            message: "Empty Array"
+                        }),
+                        emptyObjectLabel: $__i18n._({
+                            id: "3hSGoJ",
+                            message: "Empty Object"
+                        }),
+                        emptyStringLabel: $__i18n._({
+                            id: "ZBGbuw",
+                            message: "[empty string]"
+                        }),
+                        arrowButtonCollapsedLabel: $__i18n._({
+                            id: "1A3EXy",
+                            message: "Expand"
+                        }),
+                        arrowButtonExpandedLabel: $__i18n._({
+                            id: "H86f9p",
+                            message: "Collapse"
+                        }),
+                        shouldHighlightNode: (keyPath)=>variablesUsedInStep.has(keyPath),
+                        shouldExpandNodeInitially: isFirstNodeDepthOfPreviousStep
+                    },
+                    children: /*#__PURE__*/ _jsxDEV(JsonNestedNode, {
+                        elements: stepContext.map(({ id, name, context })=>({
+                                id,
+                                label: name,
+                                value: context
+                            })),
+                        Icon: IconBrackets,
+                        depth: 0,
+                        keyPath: "",
+                        emptyElementsText: ""
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx",
+                        lineNumber: 112,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx",
+                    lineNumber: 101,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx",
+                lineNumber: 100,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+};
+_s(WorkflowRunStepInputDetail, "UeioL1AkkwR9cknX3YS/lRZkJHc=", false, function() {
+    return [
+        useIcons,
+        useTheme,
+        useWorkflowRunIdOrThrow,
+        useWorkflowRun
+    ];
+});
+_c = WorkflowRunStepInputDetail;
+var _c;
+$RefreshReg$(_c, "WorkflowRunStepInputDetail");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/workflow/workflow-steps/components/WorkflowRunStepInputDetail.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldvcmtmbG93UnVuU3RlcElucHV0RGV0YWlsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VXb3JrZmxvd1J1biB9IGZyb20gJ0Avd29ya2Zsb3cvaG9va3MvdXNlV29ya2Zsb3dSdW4nO1xuaW1wb3J0IHsgdXNlV29ya2Zsb3dSdW5JZE9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L2hvb2tzL3VzZVdvcmtmbG93UnVuSWRPclRocm93JztcbmltcG9ydCB7IGdldFN0ZXBEZWZpbml0aW9uT3JUaHJvdyB9IGZyb20gJ0Avd29ya2Zsb3cvdXRpbHMvZ2V0U3RlcERlZmluaXRpb25PclRocm93JztcbmltcG9ydCB7IFdvcmtmbG93UnVuU3RlcEpzb25Db250YWluZXIgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL2NvbXBvbmVudHMvV29ya2Zsb3dSdW5TdGVwSnNvbkNvbnRhaW5lcic7XG5pbXBvcnQgeyBXb3JrZmxvd1N0ZXBIZWFkZXIgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL2NvbXBvbmVudHMvV29ya2Zsb3dTdGVwSGVhZGVyJztcbmltcG9ydCB7IGdldFdvcmtmbG93UHJldmlvdXNTdGVwSWQgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3V0aWxzL2dldFdvcmtmbG93UHJldmlvdXNTdGVwJztcbmltcG9ydCB7IGdldFdvcmtmbG93UnVuU3RlcENvbnRleHQgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3V0aWxzL2dldFdvcmtmbG93UnVuU3RlcENvbnRleHQnO1xuaW1wb3J0IHsgZ2V0V29ya2Zsb3dWYXJpYWJsZXNVc2VkSW5TdGVwIH0gZnJvbSAnQC93b3JrZmxvdy93b3JrZmxvdy1zdGVwcy91dGlscy9nZXRXb3JrZmxvd1ZhcmlhYmxlc1VzZWRJblN0ZXAnO1xuaW1wb3J0IHsgZ2V0QWN0aW9uSGVhZGVyVHlwZU9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3dvcmtmbG93LWFjdGlvbnMvdXRpbHMvZ2V0QWN0aW9uSGVhZGVyVHlwZU9yVGhyb3cnO1xuaW1wb3J0IHsgZ2V0QWN0aW9uSWNvbiB9IGZyb20gJ0Avd29ya2Zsb3cvd29ya2Zsb3ctc3RlcHMvd29ya2Zsb3ctYWN0aW9ucy91dGlscy9nZXRBY3Rpb25JY29uJztcbmltcG9ydCB7IGdldEFjdGlvbkljb25Db2xvck9yVGhyb3cgfSBmcm9tICdAL3dvcmtmbG93L3dvcmtmbG93LXN0ZXBzL3dvcmtmbG93LWFjdGlvbnMvdXRpbHMvZ2V0QWN0aW9uSWNvbkNvbG9yT3JUaHJvdyc7XG5pbXBvcnQgeyB1c2VUaGVtZSB9IGZyb20gJ0BlbW90aW9uL3JlYWN0JztcbmltcG9ydCB7IHVzZUxpbmd1aSB9IGZyb20gJ0BsaW5ndWkvcmVhY3QvbWFjcm8nO1xuaW1wb3J0IHtcbiAgSWNvbkJyYWNrZXRzLFxuICBKc29uTmVzdGVkTm9kZSxcbiAgSnNvblRyZWVDb250ZXh0UHJvdmlkZXIsXG4gIFNob3VsZEV4cGFuZE5vZGVJbml0aWFsbHlQcm9wcyxcbiAgdXNlSWNvbnMsXG59IGZyb20gJ3R3ZW50eS11aSc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxuZXhwb3J0IGNvbnN0IFdvcmtmbG93UnVuU3RlcElucHV0RGV0YWlsID0gKHsgc3RlcElkIH06IHsgc3RlcElkOiBzdHJpbmcgfSkgPT4ge1xuICBjb25zdCB7IHQsIGkxOG4gfSA9IHVzZUxpbmd1aSgpO1xuICBjb25zdCB7IGdldEljb24gfSA9IHVzZUljb25zKCk7XG4gIGNvbnN0IHRoZW1lID0gdXNlVGhlbWUoKTtcblxuICBjb25zdCB3b3JrZmxvd1J1bklkID0gdXNlV29ya2Zsb3dSdW5JZE9yVGhyb3coKTtcbiAgY29uc3Qgd29ya2Zsb3dSdW4gPSB1c2VXb3JrZmxvd1J1bih7IHdvcmtmbG93UnVuSWQgfSk7XG4gIGNvbnN0IHN0ZXAgPSB3b3JrZmxvd1J1bj8ub3V0cHV0Py5mbG93LnN0ZXBzLmZpbmQoXG4gICAgKHN0ZXApID0+IHN0ZXAuaWQgPT09IHN0ZXBJZCxcbiAgKTtcblxuICBpZiAoXG4gICAgIShcbiAgICAgIGlzRGVmaW5lZCh3b3JrZmxvd1J1bikgJiZcbiAgICAgIGlzRGVmaW5lZCh3b3JrZmxvd1J1bi5jb250ZXh0KSAmJlxuICAgICAgaXNEZWZpbmVkKHdvcmtmbG93UnVuLm91dHB1dD8uZmxvdykgJiZcbiAgICAgIGlzRGVmaW5lZChzdGVwKVxuICAgIClcbiAgKSB7XG4gICAgcmV0dXJuIG51bGw7XG4gIH1cblxuICBjb25zdCBwcmV2aW91c1N0ZXBJZCA9IGdldFdvcmtmbG93UHJldmlvdXNTdGVwSWQoe1xuICAgIHN0ZXBJZCxcbiAgICBzdGVwczogd29ya2Zsb3dSdW4ub3V0cHV0LmZsb3cuc3RlcHMsXG4gIH0pO1xuXG4gIGlmIChwcmV2aW91c1N0ZXBJZCA9PT0gdW5kZWZpbmVkKSB7XG4gICAgcmV0dXJuIG51bGw7XG4gIH1cblxuICBjb25zdCBzdGVwRGVmaW5pdGlvbiA9IGdldFN0ZXBEZWZpbml0aW9uT3JUaHJvdyh7XG4gICAgc3RlcElkLFxuICAgIHRyaWdnZXI6IHdvcmtmbG93UnVuLm91dHB1dC5mbG93LnRyaWdnZXIsXG4gICAgc3RlcHM6IHdvcmtmbG93UnVuLm91dHB1dC5mbG93LnN0ZXBzLFxuICB9KTtcbiAgaWYgKHN0ZXBEZWZpbml0aW9uPy50eXBlICE9PSAnYWN0aW9uJykge1xuICAgIHRocm93IG5ldyBFcnJvcignVGhlIGlucHV0IHRhYiBtdXN0IGJlIHJlbmRlcmVkIHdpdGggYW4gYWN0aW9uIHN0ZXAuJyk7XG4gIH1cblxuICBjb25zdCBoZWFkZXJUaXRsZSA9IHN0ZXBEZWZpbml0aW9uLmRlZmluaXRpb24ubmFtZTtcbiAgY29uc3QgaGVhZGVySWNvbiA9IGdldEFjdGlvbkljb24oc3RlcERlZmluaXRpb24uZGVmaW5pdGlvbi50eXBlKTtcbiAgY29uc3QgaGVhZGVySWNvbkNvbG9yID0gZ2V0QWN0aW9uSWNvbkNvbG9yT3JUaHJvdyh7XG4gICAgdGhlbWUsXG4gICAgYWN0aW9uVHlwZTogc3RlcERlZmluaXRpb24uZGVmaW5pdGlvbi50eXBlLFxuICB9KTtcbiAgY29uc3QgaGVhZGVyVHlwZSA9IGdldEFjdGlvbkhlYWRlclR5cGVPclRocm93KHN0ZXBEZWZpbml0aW9uLmRlZmluaXRpb24udHlwZSk7XG5cbiAgY29uc3QgdmFyaWFibGVzVXNlZEluU3RlcCA9IGdldFdvcmtmbG93VmFyaWFibGVzVXNlZEluU3RlcCh7XG4gICAgc3RlcCxcbiAgfSk7XG5cbiAgY29uc3Qgc3RlcENvbnRleHQgPSBnZXRXb3JrZmxvd1J1blN0ZXBDb250ZXh0KHtcbiAgICBjb250ZXh0OiB3b3JrZmxvd1J1bi5jb250ZXh0LFxuICAgIGZsb3c6IHdvcmtmbG93UnVuLm91dHB1dC5mbG93LFxuICAgIHN0ZXBJZCxcbiAgfSk7XG4gIGlmIChzdGVwQ29udGV4dC5sZW5ndGggPT09IDApIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoJ1RoZSBpbnB1dCB0YWIgbXVzdCBiZSByZW5kZXJlZCB3aXRoIGEgbm9uLWVtcHR5IGNvbnRleHQuJyk7XG4gIH1cblxuICBjb25zdCBpc0ZpcnN0Tm9kZURlcHRoT2ZQcmV2aW91c1N0ZXAgPSAoe1xuICAgIGtleVBhdGgsXG4gICAgZGVwdGgsXG4gIH06IFNob3VsZEV4cGFuZE5vZGVJbml0aWFsbHlQcm9wcykgPT5cbiAgICBrZXlQYXRoLnN0YXJ0c1dpdGgocHJldmlvdXNTdGVwSWQpICYmIGRlcHRoIDwgMjtcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8V29ya2Zsb3dTdGVwSGVhZGVyXG4gICAgICAgIGRpc2FibGVkXG4gICAgICAgIEljb249e2dldEljb24oaGVhZGVySWNvbil9XG4gICAgICAgIGljb25Db2xvcj17aGVhZGVySWNvbkNvbG9yfVxuICAgICAgICBpbml0aWFsVGl0bGU9e2hlYWRlclRpdGxlfVxuICAgICAgICBoZWFkZXJUeXBlPXtpMThuLl8oaGVhZGVyVHlwZSl9XG4gICAgICAvPlxuXG4gICAgICA8V29ya2Zsb3dSdW5TdGVwSnNvbkNvbnRhaW5lcj5cbiAgICAgICAgPEpzb25UcmVlQ29udGV4dFByb3ZpZGVyXG4gICAgICAgICAgdmFsdWU9e3tcbiAgICAgICAgICAgIGVtcHR5QXJyYXlMYWJlbDogdGBFbXB0eSBBcnJheWAsXG4gICAgICAgICAgICBlbXB0eU9iamVjdExhYmVsOiB0YEVtcHR5IE9iamVjdGAsXG4gICAgICAgICAgICBlbXB0eVN0cmluZ0xhYmVsOiB0YFtlbXB0eSBzdHJpbmddYCxcbiAgICAgICAgICAgIGFycm93QnV0dG9uQ29sbGFwc2VkTGFiZWw6IHRgRXhwYW5kYCxcbiAgICAgICAgICAgIGFycm93QnV0dG9uRXhwYW5kZWRMYWJlbDogdGBDb2xsYXBzZWAsXG4gICAgICAgICAgICBzaG91bGRIaWdobGlnaHROb2RlOiAoa2V5UGF0aCkgPT4gdmFyaWFibGVzVXNlZEluU3RlcC5oYXMoa2V5UGF0aCksXG4gICAgICAgICAgICBzaG91bGRFeHBhbmROb2RlSW5pdGlhbGx5OiBpc0ZpcnN0Tm9kZURlcHRoT2ZQcmV2aW91c1N0ZXAsXG4gICAgICAgICAgfX1cbiAgICAgICAgPlxuICAgICAgICAgIDxKc29uTmVzdGVkTm9kZVxuICAgICAgICAgICAgZWxlbWVudHM9e3N0ZXBDb250ZXh0Lm1hcCgoeyBpZCwgbmFtZSwgY29udGV4dCB9KSA9PiAoe1xuICAgICAgICAgICAgICBpZCxcbiAgICAgICAgICAgICAgbGFiZWw6IG5hbWUsXG4gICAgICAgICAgICAgIHZhbHVlOiBjb250ZXh0LFxuICAgICAgICAgICAgfSkpfVxuICAgICAgICAgICAgSWNvbj17SWNvbkJyYWNrZXRzfVxuICAgICAgICAgICAgZGVwdGg9ezB9XG4gICAgICAgICAgICBrZXlQYXRoPVwiXCJcbiAgICAgICAgICAgIGVtcHR5RWxlbWVudHNUZXh0PVwiXCJcbiAgICAgICAgICAvPlxuICAgICAgICA8L0pzb25UcmVlQ29udGV4dFByb3ZpZGVyPlxuICAgICAgPC9Xb3JrZmxvd1J1blN0ZXBKc29uQ29udGFpbmVyPlxuICAgIDwvPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJ1c2VXb3JrZmxvd1J1biIsInVzZVdvcmtmbG93UnVuSWRPclRocm93IiwiZ2V0U3RlcERlZmluaXRpb25PclRocm93IiwiV29ya2Zsb3dSdW5TdGVwSnNvbkNvbnRhaW5lciIsIldvcmtmbG93U3RlcEhlYWRlciIsImdldFdvcmtmbG93UHJldmlvdXNTdGVwSWQiLCJnZXRXb3JrZmxvd1J1blN0ZXBDb250ZXh0IiwiZ2V0V29ya2Zsb3dWYXJpYWJsZXNVc2VkSW5TdGVwIiwiZ2V0QWN0aW9uSGVhZGVyVHlwZU9yVGhyb3ciLCJnZXRBY3Rpb25JY29uIiwiZ2V0QWN0aW9uSWNvbkNvbG9yT3JUaHJvdyIsInVzZVRoZW1lIiwiSWNvbkJyYWNrZXRzIiwiSnNvbk5lc3RlZE5vZGUiLCJKc29uVHJlZUNvbnRleHRQcm92aWRlciIsInVzZUljb25zIiwiaXNEZWZpbmVkIiwiV29ya2Zsb3dSdW5TdGVwSW5wdXREZXRhaWwiLCJzdGVwSWQiLCJpMThuIiwidXNlTGluZ3VpIiwiZ2V0SWNvbiIsInRoZW1lIiwid29ya2Zsb3dSdW5JZCIsIndvcmtmbG93UnVuIiwic3RlcCIsIm91dHB1dCIsImZsb3ciLCJzdGVwcyIsImZpbmQiLCJpZCIsImNvbnRleHQiLCJwcmV2aW91c1N0ZXBJZCIsInVuZGVmaW5lZCIsInN0ZXBEZWZpbml0aW9uIiwidHJpZ2dlciIsInR5cGUiLCJFcnJvciIsImhlYWRlclRpdGxlIiwiZGVmaW5pdGlvbiIsIm5hbWUiLCJoZWFkZXJJY29uIiwiaGVhZGVySWNvbkNvbG9yIiwiYWN0aW9uVHlwZSIsImhlYWRlclR5cGUiLCJ2YXJpYWJsZXNVc2VkSW5TdGVwIiwic3RlcENvbnRleHQiLCJsZW5ndGgiLCJpc0ZpcnN0Tm9kZURlcHRoT2ZQcmV2aW91c1N0ZXAiLCJrZXlQYXRoIiwiZGVwdGgiLCJzdGFydHNXaXRoIiwiZGlzYWJsZWQiLCJJY29uIiwiaWNvbkNvbG9yIiwiaW5pdGlhbFRpdGxlIiwiXyIsInZhbHVlIiwiZW1wdHlBcnJheUxhYmVsIiwiZW1wdHlPYmplY3RMYWJlbCIsImVtcHR5U3RyaW5nTGFiZWwiLCJhcnJvd0J1dHRvbkNvbGxhcHNlZExhYmVsIiwiYXJyb3dCdXR0b25FeHBhbmRlZExhYmVsIiwic2hvdWxkSGlnaGxpZ2h0Tm9kZSIsImhhcyIsInNob3VsZEV4cGFuZE5vZGVJbml0aWFsbHkiLCJlbGVtZW50cyIsIm1hcCIsImxhYmVsIiwiZW1wdHlFbGVtZW50c1RleHQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxTQUFTQSxjQUFjLFFBQVEsa0NBQWtDO0FBQ2pFLFNBQVNDLHVCQUF1QixRQUFRLDJDQUEyQztBQUNuRixTQUFTQyx3QkFBd0IsUUFBUSw0Q0FBNEM7QUFDckYsU0FBU0MsNEJBQTRCLFFBQVEsb0VBQW9FO0FBQ2pILFNBQVNDLGtCQUFrQixRQUFRLDBEQUEwRDtBQUM3RixTQUFTQyx5QkFBeUIsUUFBUSwwREFBMEQ7QUFDcEcsU0FBU0MseUJBQXlCLFFBQVEsNERBQTREO0FBQ3RHLFNBQVNDLDhCQUE4QixRQUFRLGlFQUFpRTtBQUNoSCxTQUFTQywwQkFBMEIsUUFBUSw4RUFBOEU7QUFDekgsU0FBU0MsYUFBYSxRQUFRLGlFQUFpRTtBQUMvRixTQUFTQyx5QkFBeUIsUUFBUSw2RUFBNkU7QUFDdkgsU0FBU0MsUUFBUSxRQUFRLGlCQUFpQjs7QUFFMUMsU0FDRUMsWUFBWSxFQUNaQyxjQUFjLEVBQ2RDLHVCQUF1QixFQUV2QkMsUUFBUSxRQUNILFlBQVk7QUFDbkIsU0FBU0MsU0FBUyxRQUFRLHNCQUFzQjtBQUVoRCxPQUFPLE1BQU1DLDZCQUE2QixDQUFDLEVBQUVDLE1BQU0sRUFBc0I7O0lBQ3ZFLE1BQU0saUJBQUtDLElBQUksYUFBS0M7SUFDcEIsTUFBTSxFQUFFQyxPQUFPLEVBQUUsR0FBR047SUFDcEIsTUFBTU8sUUFBUVg7SUFFZCxNQUFNWSxnQkFBZ0J0QjtJQUN0QixNQUFNdUIsY0FBY3hCLGVBQWU7UUFBRXVCO0lBQWM7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

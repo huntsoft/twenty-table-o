@@ -1,0 +1,267 @@
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+import { AppRouterProviders } from "/src/modules/app/components/AppRouterProviders.tsx";
+import { SettingsRoutes } from "/src/modules/app/components/SettingsRoutes.tsx";
+import { VerifyEffect } from "/src/modules/auth/components/VerifyEffect.tsx";
+import { VerifyEmailEffect } from "/src/modules/auth/components/VerifyEmailEffect.tsx";
+import indexAppPath from "/src/modules/navigation/utils/indexAppPath.ts";
+import { AppPath } from "/src/modules/types/AppPath.ts";
+import { BlankLayout } from "/src/modules/ui/layout/page/components/BlankLayout.tsx";
+import { DefaultLayout } from "/src/modules/ui/layout/page/components/DefaultLayout.tsx";
+import { createBrowserRouter, createRoutesFromElements, Route } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react-router-dom.js?v=226f7286";
+import { Authorize } from "/src/pages/auth/Authorize.tsx";
+import { PasswordReset } from "/src/pages/auth/PasswordReset.tsx";
+import { SignInUp } from "/src/pages/auth/SignInUp.tsx";
+import { NotFound } from "/src/pages/not-found/NotFound.tsx";
+import { RecordIndexPage } from "/src/pages/object-record/RecordIndexPage.tsx";
+import { RecordShowPage } from "/src/pages/object-record/RecordShowPage.tsx";
+import { ChooseYourPlan } from "/src/pages/onboarding/ChooseYourPlan.tsx";
+import { CreateProfile } from "/src/pages/onboarding/CreateProfile.tsx";
+import { CreateWorkspace } from "/src/pages/onboarding/CreateWorkspace.tsx";
+import { InviteTeam } from "/src/pages/onboarding/InviteTeam.tsx";
+import { PaymentSuccess } from "/src/pages/onboarding/PaymentSuccess.tsx";
+import { SyncEmails } from "/src/pages/onboarding/SyncEmails.tsx";
+export const useCreateAppRouter = (isFunctionSettingsEnabled, isAdminPageEnabled)=>createBrowserRouter(createRoutesFromElements(/*#__PURE__*/ _jsxDEV(Route, {
+        element: /*#__PURE__*/ _jsxDEV(AppRouterProviders, {}, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+            lineNumber: 35,
+            columnNumber: 18
+        }, void 0),
+        // To switch state to `loading` temporarily to enable us
+        // to set scroll position before the page is rendered
+        loader: async ()=>Promise.resolve(null),
+        children: [
+            /*#__PURE__*/ _jsxDEV(Route, {
+                element: /*#__PURE__*/ _jsxDEV(DefaultLayout, {}, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                    lineNumber: 40,
+                    columnNumber: 25
+                }, void 0),
+                children: [
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.Verify,
+                        element: /*#__PURE__*/ _jsxDEV(VerifyEffect, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 41,
+                            columnNumber: 49
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 41,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.VerifyEmail,
+                        element: /*#__PURE__*/ _jsxDEV(VerifyEmailEffect, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 42,
+                            columnNumber: 54
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 42,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.SignInUp,
+                        element: /*#__PURE__*/ _jsxDEV(SignInUp, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 43,
+                            columnNumber: 51
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 43,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.Invite,
+                        element: /*#__PURE__*/ _jsxDEV(SignInUp, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 44,
+                            columnNumber: 49
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 44,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.ResetPassword,
+                        element: /*#__PURE__*/ _jsxDEV(PasswordReset, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 45,
+                            columnNumber: 56
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 45,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.CreateWorkspace,
+                        element: /*#__PURE__*/ _jsxDEV(CreateWorkspace, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 46,
+                            columnNumber: 58
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 46,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.CreateProfile,
+                        element: /*#__PURE__*/ _jsxDEV(CreateProfile, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 47,
+                            columnNumber: 56
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 47,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.SyncEmails,
+                        element: /*#__PURE__*/ _jsxDEV(SyncEmails, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 48,
+                            columnNumber: 53
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 48,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.InviteTeam,
+                        element: /*#__PURE__*/ _jsxDEV(InviteTeam, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 49,
+                            columnNumber: 53
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 49,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.PlanRequired,
+                        element: /*#__PURE__*/ _jsxDEV(ChooseYourPlan, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 50,
+                            columnNumber: 55
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 50,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.PlanRequiredSuccess,
+                        element: /*#__PURE__*/ _jsxDEV(PaymentSuccess, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 53,
+                            columnNumber: 22
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 51,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: indexAppPath.getIndexAppPath(),
+                        element: /*#__PURE__*/ _jsxDEV(_Fragment, {}, void 0, false)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 55,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.RecordIndexPage,
+                        element: /*#__PURE__*/ _jsxDEV(RecordIndexPage, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 56,
+                            columnNumber: 58
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 56,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.RecordShowPage,
+                        element: /*#__PURE__*/ _jsxDEV(RecordShowPage, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 57,
+                            columnNumber: 57
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 57,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.SettingsCatchAll,
+                        element: /*#__PURE__*/ _jsxDEV(SettingsRoutes, {
+                            isFunctionSettingsEnabled: isFunctionSettingsEnabled,
+                            isAdminPageEnabled: isAdminPageEnabled
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 61,
+                            columnNumber: 15
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 58,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ _jsxDEV(Route, {
+                        path: AppPath.NotFoundWildcard,
+                        element: /*#__PURE__*/ _jsxDEV(NotFound, {}, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                            lineNumber: 67,
+                            columnNumber: 59
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 67,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                lineNumber: 40,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDEV(Route, {
+                element: /*#__PURE__*/ _jsxDEV(BlankLayout, {}, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                    lineNumber: 69,
+                    columnNumber: 25
+                }, void 0),
+                children: /*#__PURE__*/ _jsxDEV(Route, {
+                    path: AppPath.Authorize,
+                    element: /*#__PURE__*/ _jsxDEV(Authorize, {}, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                        lineNumber: 70,
+                        columnNumber: 52
+                    }, void 0)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                    lineNumber: 70,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+                lineNumber: 69,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/app/hooks/useCreateAppRouter.tsx",
+        lineNumber: 34,
+        columnNumber: 7
+    }, this)));
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZUNyZWF0ZUFwcFJvdXRlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBwUm91dGVyUHJvdmlkZXJzIH0gZnJvbSAnQC9hcHAvY29tcG9uZW50cy9BcHBSb3V0ZXJQcm92aWRlcnMnO1xuaW1wb3J0IHsgU2V0dGluZ3NSb3V0ZXMgfSBmcm9tICdAL2FwcC9jb21wb25lbnRzL1NldHRpbmdzUm91dGVzJztcblxuaW1wb3J0IHsgVmVyaWZ5RWZmZWN0IH0gZnJvbSAnQC9hdXRoL2NvbXBvbmVudHMvVmVyaWZ5RWZmZWN0JztcbmltcG9ydCB7IFZlcmlmeUVtYWlsRWZmZWN0IH0gZnJvbSAnQC9hdXRoL2NvbXBvbmVudHMvVmVyaWZ5RW1haWxFZmZlY3QnO1xuaW1wb3J0IGluZGV4QXBwUGF0aCBmcm9tICdAL25hdmlnYXRpb24vdXRpbHMvaW5kZXhBcHBQYXRoJztcbmltcG9ydCB7IEFwcFBhdGggfSBmcm9tICdAL3R5cGVzL0FwcFBhdGgnO1xuaW1wb3J0IHsgQmxhbmtMYXlvdXQgfSBmcm9tICdAL3VpL2xheW91dC9wYWdlL2NvbXBvbmVudHMvQmxhbmtMYXlvdXQnO1xuaW1wb3J0IHsgRGVmYXVsdExheW91dCB9IGZyb20gJ0AvdWkvbGF5b3V0L3BhZ2UvY29tcG9uZW50cy9EZWZhdWx0TGF5b3V0JztcbmltcG9ydCB7XG4gIGNyZWF0ZUJyb3dzZXJSb3V0ZXIsXG4gIGNyZWF0ZVJvdXRlc0Zyb21FbGVtZW50cyxcbiAgUm91dGUsXG59IGZyb20gJ3JlYWN0LXJvdXRlci1kb20nO1xuaW1wb3J0IHsgQXV0aG9yaXplIH0gZnJvbSAnfi9wYWdlcy9hdXRoL0F1dGhvcml6ZSc7XG5pbXBvcnQgeyBQYXNzd29yZFJlc2V0IH0gZnJvbSAnfi9wYWdlcy9hdXRoL1Bhc3N3b3JkUmVzZXQnO1xuaW1wb3J0IHsgU2lnbkluVXAgfSBmcm9tICd+L3BhZ2VzL2F1dGgvU2lnbkluVXAnO1xuaW1wb3J0IHsgTm90Rm91bmQgfSBmcm9tICd+L3BhZ2VzL25vdC1mb3VuZC9Ob3RGb3VuZCc7XG5pbXBvcnQgeyBSZWNvcmRJbmRleFBhZ2UgfSBmcm9tICd+L3BhZ2VzL29iamVjdC1yZWNvcmQvUmVjb3JkSW5kZXhQYWdlJztcbmltcG9ydCB7IFJlY29yZFNob3dQYWdlIH0gZnJvbSAnfi9wYWdlcy9vYmplY3QtcmVjb3JkL1JlY29yZFNob3dQYWdlJztcbmltcG9ydCB7IENob29zZVlvdXJQbGFuIH0gZnJvbSAnfi9wYWdlcy9vbmJvYXJkaW5nL0Nob29zZVlvdXJQbGFuJztcbmltcG9ydCB7IENyZWF0ZVByb2ZpbGUgfSBmcm9tICd+L3BhZ2VzL29uYm9hcmRpbmcvQ3JlYXRlUHJvZmlsZSc7XG5pbXBvcnQgeyBDcmVhdGVXb3Jrc3BhY2UgfSBmcm9tICd+L3BhZ2VzL29uYm9hcmRpbmcvQ3JlYXRlV29ya3NwYWNlJztcbmltcG9ydCB7IEludml0ZVRlYW0gfSBmcm9tICd+L3BhZ2VzL29uYm9hcmRpbmcvSW52aXRlVGVhbSc7XG5pbXBvcnQgeyBQYXltZW50U3VjY2VzcyB9IGZyb20gJ34vcGFnZXMvb25ib2FyZGluZy9QYXltZW50U3VjY2Vzcyc7XG5pbXBvcnQgeyBTeW5jRW1haWxzIH0gZnJvbSAnfi9wYWdlcy9vbmJvYXJkaW5nL1N5bmNFbWFpbHMnO1xuXG5leHBvcnQgY29uc3QgdXNlQ3JlYXRlQXBwUm91dGVyID0gKFxuICBpc0Z1bmN0aW9uU2V0dGluZ3NFbmFibGVkPzogYm9vbGVhbixcbiAgaXNBZG1pblBhZ2VFbmFibGVkPzogYm9vbGVhbixcbikgPT5cbiAgY3JlYXRlQnJvd3NlclJvdXRlcihcbiAgICBjcmVhdGVSb3V0ZXNGcm9tRWxlbWVudHMoXG4gICAgICA8Um91dGVcbiAgICAgICAgZWxlbWVudD17PEFwcFJvdXRlclByb3ZpZGVycyAvPn1cbiAgICAgICAgLy8gVG8gc3dpdGNoIHN0YXRlIHRvIGBsb2FkaW5nYCB0ZW1wb3JhcmlseSB0byBlbmFibGUgdXNcbiAgICAgICAgLy8gdG8gc2V0IHNjcm9sbCBwb3NpdGlvbiBiZWZvcmUgdGhlIHBhZ2UgaXMgcmVuZGVyZWRcbiAgICAgICAgbG9hZGVyPXthc3luYyAoKSA9PiBQcm9taXNlLnJlc29sdmUobnVsbCl9XG4gICAgICA+XG4gICAgICAgIDxSb3V0ZSBlbGVtZW50PXs8RGVmYXVsdExheW91dCAvPn0+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguVmVyaWZ5fSBlbGVtZW50PXs8VmVyaWZ5RWZmZWN0IC8+fSAvPlxuICAgICAgICAgIDxSb3V0ZSBwYXRoPXtBcHBQYXRoLlZlcmlmeUVtYWlsfSBlbGVtZW50PXs8VmVyaWZ5RW1haWxFZmZlY3QgLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguU2lnbkluVXB9IGVsZW1lbnQ9ezxTaWduSW5VcCAvPn0gLz5cbiAgICAgICAgICA8Um91dGUgcGF0aD17QXBwUGF0aC5JbnZpdGV9IGVsZW1lbnQ9ezxTaWduSW5VcCAvPn0gLz5cbiAgICAgICAgICA8Um91dGUgcGF0aD17QXBwUGF0aC5SZXNldFBhc3N3b3JkfSBlbGVtZW50PXs8UGFzc3dvcmRSZXNldCAvPn0gLz5cbiAgICAgICAgICA8Um91dGUgcGF0aD17QXBwUGF0aC5DcmVhdGVXb3Jrc3BhY2V9IGVsZW1lbnQ9ezxDcmVhdGVXb3Jrc3BhY2UgLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguQ3JlYXRlUHJvZmlsZX0gZWxlbWVudD17PENyZWF0ZVByb2ZpbGUgLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguU3luY0VtYWlsc30gZWxlbWVudD17PFN5bmNFbWFpbHMgLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguSW52aXRlVGVhbX0gZWxlbWVudD17PEludml0ZVRlYW0gLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguUGxhblJlcXVpcmVkfSBlbGVtZW50PXs8Q2hvb3NlWW91clBsYW4gLz59IC8+XG4gICAgICAgICAgPFJvdXRlXG4gICAgICAgICAgICBwYXRoPXtBcHBQYXRoLlBsYW5SZXF1aXJlZFN1Y2Nlc3N9XG4gICAgICAgICAgICBlbGVtZW50PXs8UGF5bWVudFN1Y2Nlc3MgLz59XG4gICAgICAgICAgLz5cbiAgICAgICAgICA8Um91dGUgcGF0aD17aW5kZXhBcHBQYXRoLmdldEluZGV4QXBwUGF0aCgpfSBlbGVtZW50PXs8PjwvPn0gLz5cbiAgICAgICAgICA8Um91dGUgcGF0aD17QXBwUGF0aC5SZWNvcmRJbmRleFBhZ2V9IGVsZW1lbnQ9ezxSZWNvcmRJbmRleFBhZ2UgLz59IC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguUmVjb3JkU2hvd1BhZ2V9IGVsZW1lbnQ9ezxSZWNvcmRTaG93UGFnZSAvPn0gLz5cbiAgICAgICAgICA8Um91dGVcbiAgICAgICAgICAgIHBhdGg9e0FwcFBhdGguU2V0dGluZ3NDYXRjaEFsbH1cbiAgICAgICAgICAgIGVsZW1lbnQ9e1xuICAgICAgICAgICAgICA8U2V0dGluZ3NSb3V0ZXNcbiAgICAgICAgICAgICAgICBpc0Z1bmN0aW9uU2V0dGluZ3NFbmFibGVkPXtpc0Z1bmN0aW9uU2V0dGluZ3NFbmFibGVkfVxuICAgICAgICAgICAgICAgIGlzQWRtaW5QYWdlRW5hYmxlZD17aXNBZG1pblBhZ2VFbmFibGVkfVxuICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgfVxuICAgICAgICAgIC8+XG4gICAgICAgICAgPFJvdXRlIHBhdGg9e0FwcFBhdGguTm90Rm91bmRXaWxkY2FyZH0gZWxlbWVudD17PE5vdEZvdW5kIC8+fSAvPlxuICAgICAgICA8L1JvdXRlPlxuICAgICAgICA8Um91dGUgZWxlbWVudD17PEJsYW5rTGF5b3V0IC8+fT5cbiAgICAgICAgICA8Um91dGUgcGF0aD17QXBwUGF0aC5BdXRob3JpemV9IGVsZW1lbnQ9ezxBdXRob3JpemUgLz59IC8+XG4gICAgICAgIDwvUm91dGU+XG4gICAgICA8L1JvdXRlPixcbiAgICApLFxuICApO1xuIl0sIm5hbWVzIjpbIkFwcFJvdXRlclByb3ZpZGVycyIsIlNldHRpbmdzUm91dGVzIiwiVmVyaWZ5RWZmZWN0IiwiVmVyaWZ5RW1haWxFZmZlY3QiLCJpbmRleEFwcFBhdGgiLCJBcHBQYXRoIiwiQmxhbmtMYXlvdXQiLCJEZWZhdWx0TGF5b3V0IiwiY3JlYXRlQnJvd3NlclJvdXRlciIsImNyZWF0ZVJvdXRlc0Zyb21FbGVtZW50cyIsIlJvdXRlIiwiQXV0aG9yaXplIiwiUGFzc3dvcmRSZXNldCIsIlNpZ25JblVwIiwiTm90Rm91bmQiLCJSZWNvcmRJbmRleFBhZ2UiLCJSZWNvcmRTaG93UGFnZSIsIkNob29zZVlvdXJQbGFuIiwiQ3JlYXRlUHJvZmlsZSIsIkNyZWF0ZVdvcmtzcGFjZSIsIkludml0ZVRlYW0iLCJQYXltZW50U3VjY2VzcyIsIlN5bmNFbWFpbHMiLCJ1c2VDcmVhdGVBcHBSb3V0ZXIiLCJpc0Z1bmN0aW9uU2V0dGluZ3NFbmFibGVkIiwiaXNBZG1pblBhZ2VFbmFibGVkIiwiZWxlbWVudCIsImxvYWRlciIsIlByb21pc2UiLCJyZXNvbHZlIiwicGF0aCIsIlZlcmlmeSIsIlZlcmlmeUVtYWlsIiwiSW52aXRlIiwiUmVzZXRQYXNzd29yZCIsIlBsYW5SZXF1aXJlZCIsIlBsYW5SZXF1aXJlZFN1Y2Nlc3MiLCJnZXRJbmRleEFwcFBhdGgiLCJTZXR0aW5nc0NhdGNoQWxsIiwiTm90Rm91bmRXaWxkY2FyZCJdLCJtYXBwaW5ncyI6IjtBQUFBLFNBQVNBLGtCQUFrQixRQUFRLHNDQUFzQztBQUN6RSxTQUFTQyxjQUFjLFFBQVEsa0NBQWtDO0FBRWpFLFNBQVNDLFlBQVksUUFBUSxpQ0FBaUM7QUFDOUQsU0FBU0MsaUJBQWlCLFFBQVEsc0NBQXNDO0FBQ3hFLE9BQU9DLGtCQUFrQixrQ0FBa0M7QUFDM0QsU0FBU0MsT0FBTyxRQUFRLGtCQUFrQjtBQUMxQyxTQUFTQyxXQUFXLFFBQVEsMENBQTBDO0FBQ3RFLFNBQVNDLGFBQWEsUUFBUSw0Q0FBNEM7QUFDMUUsU0FDRUMsbUJBQW1CLEVBQ25CQyx3QkFBd0IsRUFD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

@@ -1,0 +1,214 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import __vite__cjsImport3_react from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/react.js?v=226f7286"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;
+const StyledGridContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 0px;
+  width: 100%;
+`;
+_c = StyledGridContainer;
+const StyledGrid = styled.div`
+  border: 1px solid ${({ theme })=>theme.border.color.medium};
+  border-radius: ${({ theme })=>theme.border.radius.md};
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ theme })=>theme.spacing(8)};
+  width: 100%;
+`;
+_c1 = StyledGrid;
+const StyledGridRow = styled.div`
+  border-bottom: ${({ withBorder, theme })=>withBorder && `1px solid ${theme.border.color.medium}`};
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  min-height: ${({ height = '64px' })=>height};
+`;
+_c2 = StyledGridRow;
+const StyledGridCell = styled.div`
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  padding-bottom: ${({ theme })=>theme.spacing(4)};
+  padding-top: ${({ theme })=>theme.spacing(4)};
+  ${({ position, theme })=>{
+    if (position === 'left') {
+        return `
+        padding-left: ${theme.spacing(4)};
+        padding-right: ${theme.spacing(2)};
+        padding-top:  ${theme.spacing(4)};
+      `;
+    }
+    if (position === 'full-line') {
+        return `
+        padding-left: ${theme.spacing(2)};
+        padding-right: ${theme.spacing(4)};
+        padding-top:  ${theme.spacing(0)};
+        width: 100%;
+      `;
+    }
+    return `
+      padding-left: ${theme.spacing(2)};
+      padding-right: ${theme.spacing(4)};
+      padding-top:  ${theme.spacing(4)};
+    `;
+}};
+`;
+_c3 = StyledGridCell;
+const StyledGridHeader = styled.div`
+  align-items: center;
+  background-color: ${({ theme })=>theme.background.tertiary};
+  box-sizing: border-box;
+  color: ${({ theme })=>theme.font.color.light};
+  display: flex;
+  flex: 1;
+  font-size: ${({ theme })=>theme.font.size.sm};
+  font-weight: ${({ theme })=>theme.font.weight.semiBold};
+  padding-left: ${({ theme })=>theme.spacing(4)};
+  padding-right: ${({ theme })=>theme.spacing(4)};
+  ${({ position, theme })=>{
+    if (position === 'left') {
+        return `border-top-left-radius: calc(${theme.border.radius.md} - 1px);`;
+    }
+    return `border-top-right-radius: calc(${theme.border.radius.md} - 1px);`;
+}};
+  text-transform: uppercase;
+`;
+_c4 = StyledGridHeader;
+export const ColumnGrid = ({ columns, renderUserColumn, renderTemplateColumn, renderUnmatchedColumn })=>{
+    return /*#__PURE__*/ _jsxDEV(_Fragment, {
+        children: /*#__PURE__*/ _jsxDEV(StyledGridContainer, {
+            children: /*#__PURE__*/ _jsxDEV(StyledGrid, {
+                children: [
+                    /*#__PURE__*/ _jsxDEV(StyledGridRow, {
+                        height: "29px",
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(StyledGridHeader, {
+                                position: "left",
+                                children: "Imported data"
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                lineNumber: 121,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(StyledGridHeader, {
+                                position: "right",
+                                children: "Twenty fields"
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                lineNumber: 122,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                        lineNumber: 120,
+                        columnNumber: 11
+                    }, this),
+                    columns.map((column, index)=>{
+                        const userColumn = renderUserColumn(columns, index);
+                        const templateColumn = renderTemplateColumn(columns, index);
+                        const unmatchedColumn = renderUnmatchedColumn(columns, index);
+                        const isSelect = 'matchedOptions' in columns[index];
+                        const isLast = index === columns.length - 1;
+                        if (/*#__PURE__*/ React.isValidElement(userColumn)) {
+                            return /*#__PURE__*/ _jsxDEV("div", {
+                                children: [
+                                    /*#__PURE__*/ _jsxDEV(StyledGridRow, {
+                                        withBorder: !isSelect && !isLast,
+                                        children: [
+                                            /*#__PURE__*/ _jsxDEV(StyledGridCell, {
+                                                position: "left",
+                                                children: userColumn
+                                            }, void 0, false, {
+                                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                                lineNumber: 135,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ _jsxDEV(StyledGridCell, {
+                                                position: "right",
+                                                children: templateColumn
+                                            }, void 0, false, {
+                                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                                lineNumber: 138,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                        lineNumber: 134,
+                                        columnNumber: 19
+                                    }, this),
+                                    isSelect && /*#__PURE__*/ _jsxDEV(StyledGridRow, {
+                                        withBorder: !isLast,
+                                        children: /*#__PURE__*/ _jsxDEV(StyledGridCell, {
+                                            position: "full-line",
+                                            children: unmatchedColumn
+                                        }, void 0, false, {
+                                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                            lineNumber: 144,
+                                            columnNumber: 23
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                        lineNumber: 143,
+                                        columnNumber: 21
+                                    }, this)
+                                ]
+                            }, index, true, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                                lineNumber: 133,
+                                columnNumber: 17
+                            }, this);
+                        }
+                        return null;
+                    })
+                ]
+            }, void 0, true, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+                lineNumber: 119,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx",
+            lineNumber: 118,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
+};
+_c5 = ColumnGrid;
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "StyledGridContainer");
+$RefreshReg$(_c1, "StyledGrid");
+$RefreshReg$(_c2, "StyledGridRow");
+$RefreshReg$(_c3, "StyledGridCell");
+$RefreshReg$(_c4, "StyledGridHeader");
+$RefreshReg$(_c5, "ColumnGrid");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNvbHVtbkdyaWQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFNwcmVhZHNoZWV0Q29sdW1ucyB9IGZyb20gJ0Avc3ByZWFkc2hlZXQtaW1wb3J0L3R5cGVzL1NwcmVhZHNoZWV0Q29sdW1ucyc7XG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuXG5jb25zdCBTdHlsZWRHcmlkQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgZmxleC1ncm93OiAxO1xuICBoZWlnaHQ6IDBweDtcbiAgd2lkdGg6IDEwMCU7XG5gO1xuXG5jb25zdCBTdHlsZWRHcmlkID0gc3R5bGVkLmRpdmBcbiAgYm9yZGVyOiAxcHggc29saWQgJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIuY29sb3IubWVkaXVtfTtcbiAgYm9yZGVyLXJhZGl1czogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5ib3JkZXIucmFkaXVzLm1kfTtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWFyZ2luLXRvcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDgpfTtcbiAgd2lkdGg6IDEwMCU7XG5gO1xuXG50eXBlIEhlaWdodFByb3BzID0ge1xuICBoZWlnaHQ/OiBgJHtudW1iZXJ9cHhgO1xuICB3aXRoQm9yZGVyPzogYm9vbGVhbjtcbn07XG5cbmNvbnN0IFN0eWxlZEdyaWRSb3cgPSBzdHlsZWQuZGl2PEhlaWdodFByb3BzPmBcbiAgYm9yZGVyLWJvdHRvbTogJHsoeyB3aXRoQm9yZGVyLCB0aGVtZSB9KSA9PlxuICAgIHdpdGhCb3JkZXIgJiYgYDFweCBzb2xpZCAke3RoZW1lLmJvcmRlci5jb2xvci5tZWRpdW19YH07XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIG1pbi1oZWlnaHQ6ICR7KHsgaGVpZ2h0ID0gJzY0cHgnIH0pID0+IGhlaWdodH07XG5gO1xuXG50eXBlIFBvc2l0aW9uUHJvcHMgPSB7XG4gIHBvc2l0aW9uOiAnbGVmdCcgfCAncmlnaHQnIHwgJ2Z1bGwtbGluZSc7XG59O1xuXG5jb25zdCBTdHlsZWRHcmlkQ2VsbCA9IHN0eWxlZC5kaXY8UG9zaXRpb25Qcm9wcz5gXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXg6IDE7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIHBhZGRpbmctYm90dG9tOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLnNwYWNpbmcoNCl9O1xuICBwYWRkaW5nLXRvcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDQpfTtcbiAgJHsoeyBwb3NpdGlvbiwgdGhlbWUgfSkgPT4ge1xuICAgIGlmIChwb3NpdGlvbiA9PT0gJ2xlZnQnKSB7XG4gICAgICByZXR1cm4gYFxuICAgICAgICBwYWRkaW5nLWxlZnQ6ICR7dGhlbWUuc3BhY2luZyg0KX07XG4gICAgICAgIHBhZGRpbmctcmlnaHQ6ICR7dGhlbWUuc3BhY2luZygyKX07XG4gICAgICAgIHBhZGRpbmctdG9wOiAgJHt0aGVtZS5zcGFjaW5nKDQpfTtcbiAgICAgIGA7XG4gICAgfVxuICAgIGlmIChwb3NpdGlvbiA9PT0gJ2Z1bGwtbGluZScpIHtcbiAgICAgIHJldHVybiBgXG4gICAgICAgIHBhZGRpbmctbGVmdDogJHt0aGVtZS5zcGFjaW5nKDIpfTtcbiAgICAgICAgcGFkZGluZy1yaWdodDogJHt0aGVtZS5zcGFjaW5nKDQpfTtcbiAgICAgICAgcGFkZGluZy10b3A6ICAke3RoZW1lLnNwYWNpbmcoMCl9O1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgIGA7XG4gICAgfVxuICAgIHJldHVybiBgXG4gICAgICBwYWRkaW5nLWxlZnQ6ICR7dGhlbWUuc3BhY2luZygyKX07XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAke3RoZW1lLnNwYWNpbmcoNCl9O1xuICAgICAgcGFkZGluZy10b3A6ICAke3RoZW1lLnNwYWNpbmcoNCl9O1xuICAgIGA7XG4gIH19O1xuYDtcblxuY29uc3QgU3R5bGVkR3JpZEhlYWRlciA9IHN0eWxlZC5kaXY8UG9zaXRpb25Qcm9wcz5gXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuYmFja2dyb3VuZC50ZXJ0aWFyeX07XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGNvbG9yOiAkeyh7IHRoZW1lIH0pID0+IHRoZW1lLmZvbnQuY29sb3IubGlnaHR9O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4OiAxO1xuICBmb250LXNpemU6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC5zaXplLnNtfTtcbiAgZm9udC13ZWlnaHQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuZm9udC53ZWlnaHQuc2VtaUJvbGR9O1xuICBwYWRkaW5nLWxlZnQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZyg0KX07XG4gIHBhZGRpbmctcmlnaHQ6ICR7KHsgdGhlbWUgfSkgPT4gdGhlbWUuc3BhY2luZyg0KX07XG4gICR7KHsgcG9zaXRpb24sIHRoZW1lIH0pID0+IHtcbiAgICBpZiAocG9zaXRpb24gPT09ICdsZWZ0Jykge1xuICAgICAgcmV0dXJuIGBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiBjYWxjKCR7dGhlbWUuYm9yZGVyLnJhZGl1cy5tZH0gLSAxcHgpO2A7XG4gICAgfVxuICAgIHJldHVybiBgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IGNhbGMoJHt0aGVtZS5ib3JkZXIucmFkaXVzLm1kfSAtIDFweCk7YDtcbiAgfX07XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG5gO1xuXG50eXBlIENvbHVtbkdyaWRQcm9wczxUIGV4dGVuZHMgc3RyaW5nPiA9IHtcbiAgY29sdW1uczogU3ByZWFkc2hlZXRDb2x1bW5zPFQ+O1xuICByZW5kZXJVc2VyQ29sdW1uOiAoXG4gICAgY29sdW1uczogU3ByZWFkc2hlZXRDb2x1bW5zPFQ+LFxuICAgIGNvbHVtbkluZGV4OiBudW1iZXIsXG4gICkgPT4gUmVhY3QuUmVhY3ROb2RlO1xuICByZW5kZXJUZW1wbGF0ZUNvbHVtbjogKFxuICAgIGNvbHVtbnM6IFNwcmVhZHNoZWV0Q29sdW1uczxUPixcbiAgICBjb2x1bW5JbmRleDogbnVtYmVyLFxuICApID0+IFJlYWN0LlJlYWN0Tm9kZTtcbiAgcmVuZGVyVW5tYXRjaGVkQ29sdW1uOiAoXG4gICAgY29sdW1uczogU3ByZWFkc2hlZXRDb2x1bW5zPFQ+LFxuICAgIGNvbHVtbkluZGV4OiBudW1iZXIsXG4gICkgPT4gUmVhY3QuUmVhY3ROb2RlO1xufTtcblxuZXhwb3J0IGNvbnN0IENvbHVtbkdyaWQgPSA8VCBleHRlbmRzIHN0cmluZz4oe1xuICBjb2x1bW5zLFxuICByZW5kZXJVc2VyQ29sdW1uLFxuICByZW5kZXJUZW1wbGF0ZUNvbHVtbixcbiAgcmVuZGVyVW5tYXRjaGVkQ29sdW1uLFxufTogQ29sdW1uR3JpZFByb3BzPFQ+KSA9PiB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxTdHlsZWRHcmlkQ29udGFpbmVyPlxuICAgICAgICA8U3R5bGVkR3JpZD5cbiAgICAgICAgICA8U3R5bGVkR3JpZFJvdyBoZWlnaHQ9XCIyOXB4XCI+XG4gICAgICAgICAgICA8U3R5bGVkR3JpZEhlYWRlciBwb3NpdGlvbj1cImxlZnRcIj5JbXBvcnRlZCBkYXRhPC9TdHlsZWRHcmlkSGVhZGVyPlxuICAgICAgICAgICAgPFN0eWxlZEdyaWRIZWFkZXIgcG9zaXRpb249XCJyaWdodFwiPlR3ZW50eSBmaWVsZHM8L1N0eWxlZEdyaWRIZWFkZXI+XG4gICAgICAgICAgPC9TdHlsZWRHcmlkUm93PlxuICAgICAgICAgIHtjb2x1bW5zLm1hcCgoY29sdW1uLCBpbmRleCkgPT4ge1xuICAgICAgICAgICAgY29uc3QgdXNlckNvbHVtbiA9IHJlbmRlclVzZXJDb2x1bW4oY29sdW1ucywgaW5kZXgpO1xuICAgICAgICAgICAgY29uc3QgdGVtcGxhdGVDb2x1bW4gPSByZW5kZXJUZW1wbGF0ZUNvbHVtbihjb2x1bW5zLCBpbmRleCk7XG4gICAgICAgICAgICBjb25zdCB1bm1hdGNoZWRDb2x1bW4gPSByZW5kZXJVbm1hdGNoZWRDb2x1bW4oY29sdW1ucywgaW5kZXgpO1xuICAgICAgICAgICAgY29uc3QgaXNTZWxlY3QgPSAnbWF0Y2hlZE9wdGlvbnMnIGluIGNvbHVtbnNbaW5kZXhdO1xuICAgICAgICAgICAgY29uc3QgaXNMYXN0ID0gaW5kZXggPT09IGNvbHVtbnMubGVuZ3RoIC0gMTtcblxuICAgICAgICAgICAgaWYgKFJlYWN0LmlzVmFsaWRFbGVtZW50KHVzZXJDb2x1bW4pKSB7XG4gICAgICAgICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICAgICAgPGRpdiBrZXk9e2luZGV4fT5cbiAgICAgICAgICAgICAgICAgIDxTdHlsZWRHcmlkUm93IHdpdGhCb3JkZXI9eyFpc1NlbGVjdCAmJiAhaXNMYXN0fT5cbiAgICAgICAgICAgICAgICAgICAgPFN0eWxlZEdyaWRDZWxsIHBvc2l0aW9uPVwibGVmdFwiPlxuICAgICAgICAgICAgICAgICAgICAgIHt1c2VyQ29sdW1ufVxuICAgICAgICAgICAgICAgICAgICA8L1N0eWxlZEdyaWRDZWxsPlxuICAgICAgICAgICAgICAgICAgICA8U3R5bGVkR3JpZENlbGwgcG9zaXRpb249XCJyaWdodFwiPlxuICAgICAgICAgICAgICAgICAgICAgIHt0ZW1wbGF0ZUNvbHVtbn1cbiAgICAgICAgICAgICAgICAgICAgPC9TdHlsZWRHcmlkQ2VsbD5cbiAgICAgICAgICAgICAgICAgIDwvU3R5bGVkR3JpZFJvdz5cbiAgICAgICAgICAgICAgICAgIHtpc1NlbGVjdCAmJiAoXG4gICAgICAgICAgICAgICAgICAgIDxTdHlsZWRHcmlkUm93IHdpdGhCb3JkZXI9eyFpc0xhc3R9PlxuICAgICAgICAgICAgICAgICAgICAgIDxTdHlsZWRHcmlkQ2VsbCBwb3NpdGlvbj1cImZ1bGwtbGluZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAge3VubWF0Y2hlZENvbHVtbn1cbiAgICAgICAgICAgICAgICAgICAgICA8L1N0eWxlZEdyaWRDZWxsPlxuICAgICAgICAgICAgICAgICAgICA8L1N0eWxlZEdyaWRSb3c+XG4gICAgICAgICAgICAgICAgICApfVxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICApO1xuICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICByZXR1cm4gbnVsbDtcbiAgICAgICAgICB9KX1cbiAgICAgICAgPC9TdHlsZWRHcmlkPlxuICAgICAgPC9TdHlsZWRHcmlkQ29udGFpbmVyPlxuICAgIDwvPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJzdHlsZWQiLCJSZWFjdCIsIlN0eWxlZEdyaWRDb250YWluZXIiLCJkaXYiLCJTdHlsZWRHcmlkIiwidGhlbWUiLCJib3JkZXIiLCJjb2xvciIsIm1lZGl1bSIsInJhZGl1cyIsIm1kIiwic3BhY2luZyIsIlN0eWxlZEdyaWRSb3ciLCJ3aXRoQm9yZGVyIiwiaGVpZ2h0IiwiU3R5bGVkR3JpZENlbGwiLCJwb3NpdGlvbiIsIlN0eWxlZEdyaWRIZWFkZXIiLCJiYWNrZ3JvdW5kIiwidGVydGlhcnkiLCJmb250IiwibGlnaHQiLCJzaXplIiwic20iLCJ3ZWlnaHQiLCJzZW1pQm9sZCIsIkNvbHVtbkdyaWQiLCJjb2x1bW5zIiwicmVuZGVyVXNlckNvbHVtbiIsInJlbmRlclRlbXBsYXRlQ29sdW1uIiwicmVuZGVyVW5tYXRjaGVkQ29sdW1uIiwibWFwIiwiY29sdW1uIiwiaW5kZXgiLCJ1c2VyQ29sdW1uIiwidGVtcGxhdGVDb2x1bW4iLCJ1bm1hdGNoZWRDb2x1bW4iLCJpc1NlbGVjdCIsImlzTGFzdCIsImxlbmd0aCIsImlzVmFsaWRFbGVtZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFDQSxPQUFPQSxZQUFZLGtCQUFrQjtBQUNyQyxPQUFPQyxXQUFXLFFBQVE7QUFFMUIsTUFBTUMsc0JBQXNCRixPQUFPRyxHQUFHLENBQUM7Ozs7Ozs7QUFPdkMsQ0FBQztLQVBLRDtBQVNOLE1BQU1FLGFBQWFKLE9BQU9HLEdBQUcsQ0FBQztvQkFDVixFQUFFLENBQUMsRUFBRUUsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLE1BQU0sQ0FBQ0MsS0FBSyxDQUFDQyxNQUFNLENBQUM7aUJBQzlDLEVBQUUsQ0FBQyxFQUFFSCxLQUFLLEVBQUUsR0FBS0EsTUFBTUMsTUFBTSxDQUFDRyxNQUFNLENBQUNDLEVBQUUsQ0FBQzs7OztjQUkzQyxFQUFFLENBQUMsRUFBRUwsS0FBSyxFQUFFLEdBQUtBLE1BQU1NLE9BQU8sQ0FBQyxHQUFHOztBQUVoRCxDQUFDO01BUktQO0FBZU4sTUFBTVEsZ0JBQWdCWixPQUFPRyxHQUFHLEFBQWEsQ0FBQztpQkFDN0IsRUFBRSxDQUFDLEVBQUVVLFVBQVUsRUFBRVIsS0FBSyxFQUFFLEdBQ3JDUSxjQUFjLENBQUMsVUFBVSxFQUFFUixNQUFNQyxNQUFNLENBQUNDLEtBQUssQ0FBQ0MsTUFBTSxDQUFDLENBQUMsQ0FBQzs7OztjQUk3QyxFQUFFLENBQUMsRUFBRU0sU0FBUyxNQUFNLEVBQUUsR0FBS0EsT0FBTztBQUNoRCxDQUFDO01BUEtGO0FBYU4sTUFBTUcsaUJBQWlCZixPQUFPRyxHQUFHLEFBQWUsQ0FBQzs7Ozs7O2tCQU0vQixFQUFFLENBQUMsRUFBRUUsS0FBSyxFQUFFLEdBQUtBLE1BQU1NLE9BQU8sQ0FBQyxHQUFHO2VBQ3JDLEVBQUUsQ0FBQyxFQUFFTixLQUFLLEVBQUUsR0FBS0EsTUFBTU0sT0FBTyxDQUFDLEdBQUc7RUFDL0MsRUFBRSxDQUFDLEVBQUVLLFFBQVEsRUFBRVgsS0FBSyxFQUFFO0lB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

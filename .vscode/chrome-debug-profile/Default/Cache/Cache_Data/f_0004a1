@@ -1,0 +1,189 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import { Button, H2Title, IconArchive, Section } from "/@fs/D:/twenty-table-o/packages/twenty-ui/src/index.ts";
+import { useUpdateOneObjectMetadataItem } from "/src/modules/object-metadata/hooks/useUpdateOneObjectMetadataItem.ts";
+import { RecordFieldValueSelectorContextProvider } from "/src/modules/object-record/record-store/contexts/RecordFieldValueSelectorContext.tsx";
+import { SettingsUpdateDataModelObjectAboutForm } from "/src/modules/settings/data-model/object-details/components/SettingsUpdateDataModelObjectAboutForm.tsx";
+import { SettingsDataModelObjectSettingsFormCard } from "/src/modules/settings/data-model/objects/forms/components/SettingsDataModelObjectSettingsFormCard.tsx";
+import { SettingsPath } from "/src/modules/types/SettingsPath.ts";
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { useLingui as $_useLingui } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@lingui_react.js?v=226f7286";
+import { useNavigateSettings } from "/src/hooks/useNavigateSettings.ts";
+const StyledContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme })=>theme.spacing(8)};
+`;
+_c = StyledContentContainer;
+const StyledFormSection = styled(Section)`
+  padding-left: 0 !important;
+`;
+_c1 = StyledFormSection;
+export const ObjectSettings = ({ objectMetadataItem })=>{
+    _s();
+    const { i18n: $__i18n, _: $__ } = $_useLingui();
+    const navigate = useNavigateSettings();
+    const { updateOneObjectMetadataItem } = useUpdateOneObjectMetadataItem();
+    const handleDisable = async ()=>{
+        await updateOneObjectMetadataItem({
+            idToUpdate: objectMetadataItem.id,
+            updatePayload: {
+                isActive: false
+            }
+        });
+        navigate(SettingsPath.Objects);
+    };
+    return /*#__PURE__*/ _jsxDEV(RecordFieldValueSelectorContextProvider, {
+        children: /*#__PURE__*/ _jsxDEV(StyledContentContainer, {
+            children: [
+                /*#__PURE__*/ _jsxDEV(StyledFormSection, {
+                    children: [
+                        /*#__PURE__*/ _jsxDEV(H2Title, {
+                            title: $__i18n._({
+                                id: "uyJsf6",
+                                message: "About"
+                            }),
+                            description: $__i18n._({
+                                id: "zaxmAs",
+                                message: "Name in both singular (e.g., 'Invoice') and plural (e.g., 'Invoices') forms."
+                            })
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                            lineNumber: 43,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ _jsxDEV(SettingsUpdateDataModelObjectAboutForm, {
+                            objectMetadataItem: objectMetadataItem
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                            lineNumber: 47,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                    lineNumber: 42,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ _jsxDEV(StyledFormSection, {
+                    children: /*#__PURE__*/ _jsxDEV(Section, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(H2Title, {
+                                title: $__i18n._({
+                                    id: "0zpgxV",
+                                    message: "Options"
+                                }),
+                                description: $__i18n._({
+                                    id: "LHce7q",
+                                    message: "Choose the fields that will identify your records"
+                                })
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                                lineNumber: 53,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(SettingsDataModelObjectSettingsFormCard, {
+                                objectMetadataItem: objectMetadataItem
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                                lineNumber: 57,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                        lineNumber: 52,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                    lineNumber: 51,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ _jsxDEV(StyledFormSection, {
+                    children: /*#__PURE__*/ _jsxDEV(Section, {
+                        children: [
+                            /*#__PURE__*/ _jsxDEV(H2Title, {
+                                title: $__i18n._({
+                                    id: "Zz6Cxn",
+                                    message: "Danger zone"
+                                }),
+                                description: $__i18n._({
+                                    id: "T2YbXF",
+                                    message: "Deactivate object"
+                                })
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                                lineNumber: 64,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDEV(Button, {
+                                Icon: IconArchive,
+                                title: $__i18n._({
+                                    id: "5y3O+A",
+                                    message: "Deactivate"
+                                }),
+                                size: "small",
+                                onClick: handleDisable
+                            }, void 0, false, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                                lineNumber: 68,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                        lineNumber: 63,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+                    lineNumber: 62,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+            lineNumber: 41,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx",
+        lineNumber: 40,
+        columnNumber: 5
+    }, this);
+};
+_s(ObjectSettings, "oRh5mv+9VaxHgW4rlcPmDEJs+9Y=", false, function() {
+    return [
+        useNavigateSettings,
+        useUpdateOneObjectMetadataItem
+    ];
+});
+_c2 = ObjectSettings;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "StyledContentContainer");
+$RefreshReg$(_c1, "StyledFormSection");
+$RefreshReg$(_c2, "ObjectSettings");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk9iamVjdFNldHRpbmdzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBPYmplY3RNZXRhZGF0YUl0ZW0gfSBmcm9tICdAL29iamVjdC1tZXRhZGF0YS90eXBlcy9PYmplY3RNZXRhZGF0YUl0ZW0nO1xuaW1wb3J0IHsgQnV0dG9uLCBIMlRpdGxlLCBJY29uQXJjaGl2ZSwgU2VjdGlvbiB9IGZyb20gJ3R3ZW50eS11aSc7XG5cbmltcG9ydCB7IHVzZVVwZGF0ZU9uZU9iamVjdE1ldGFkYXRhSXRlbSB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL2hvb2tzL3VzZVVwZGF0ZU9uZU9iamVjdE1ldGFkYXRhSXRlbSc7XG5pbXBvcnQgeyBSZWNvcmRGaWVsZFZhbHVlU2VsZWN0b3JDb250ZXh0UHJvdmlkZXIgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXN0b3JlL2NvbnRleHRzL1JlY29yZEZpZWxkVmFsdWVTZWxlY3RvckNvbnRleHQnO1xuaW1wb3J0IHsgU2V0dGluZ3NVcGRhdGVEYXRhTW9kZWxPYmplY3RBYm91dEZvcm0gfSBmcm9tICdAL3NldHRpbmdzL2RhdGEtbW9kZWwvb2JqZWN0LWRldGFpbHMvY29tcG9uZW50cy9TZXR0aW5nc1VwZGF0ZURhdGFNb2RlbE9iamVjdEFib3V0Rm9ybSc7XG5pbXBvcnQgeyBTZXR0aW5nc0RhdGFNb2RlbE9iamVjdFNldHRpbmdzRm9ybUNhcmQgfSBmcm9tICdAL3NldHRpbmdzL2RhdGEtbW9kZWwvb2JqZWN0cy9mb3Jtcy9jb21wb25lbnRzL1NldHRpbmdzRGF0YU1vZGVsT2JqZWN0U2V0dGluZ3NGb3JtQ2FyZCc7XG5pbXBvcnQgeyBTZXR0aW5nc1BhdGggfSBmcm9tICdAL3R5cGVzL1NldHRpbmdzUGF0aCc7XG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyB1c2VMaW5ndWkgfSBmcm9tICdAbGluZ3VpL3JlYWN0L21hY3JvJztcbmltcG9ydCB7IHVzZU5hdmlnYXRlU2V0dGluZ3MgfSBmcm9tICd+L2hvb2tzL3VzZU5hdmlnYXRlU2V0dGluZ3MnO1xuXG50eXBlIE9iamVjdFNldHRpbmdzUHJvcHMgPSB7XG4gIG9iamVjdE1ldGFkYXRhSXRlbTogT2JqZWN0TWV0YWRhdGFJdGVtO1xufTtcblxuY29uc3QgU3R5bGVkQ29udGVudENvbnRhaW5lciA9IHN0eWxlZC5kaXZgXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGdhcDogJHsoeyB0aGVtZSB9KSA9PiB0aGVtZS5zcGFjaW5nKDgpfTtcbmA7XG5cbmNvbnN0IFN0eWxlZEZvcm1TZWN0aW9uID0gc3R5bGVkKFNlY3Rpb24pYFxuICBwYWRkaW5nLWxlZnQ6IDAgIWltcG9ydGFudDtcbmA7XG5cbmV4cG9ydCBjb25zdCBPYmplY3RTZXR0aW5ncyA9ICh7IG9iamVjdE1ldGFkYXRhSXRlbSB9OiBPYmplY3RTZXR0aW5nc1Byb3BzKSA9PiB7XG4gIGNvbnN0IHsgdCB9ID0gdXNlTGluZ3VpKCk7XG4gIGNvbnN0IG5hdmlnYXRlID0gdXNlTmF2aWdhdGVTZXR0aW5ncygpO1xuICBjb25zdCB7IHVwZGF0ZU9uZU9iamVjdE1ldGFkYXRhSXRlbSB9ID0gdXNlVXBkYXRlT25lT2JqZWN0TWV0YWRhdGFJdGVtKCk7XG4gIGNvbnN0IGhhbmRsZURpc2FibGUgPSBhc3luYyAoKSA9PiB7XG4gICAgYXdhaXQgdXBkYXRlT25lT2JqZWN0TWV0YWRhdGFJdGVtKHtcbiAgICAgIGlkVG9VcGRhdGU6IG9iamVjdE1ldGFkYXRhSXRlbS5pZCxcbiAgICAgIHVwZGF0ZVBheWxvYWQ6IHsgaXNBY3RpdmU6IGZhbHNlIH0sXG4gICAgfSk7XG4gICAgbmF2aWdhdGUoU2V0dGluZ3NQYXRoLk9iamVjdHMpO1xuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPFJlY29yZEZpZWxkVmFsdWVTZWxlY3RvckNvbnRleHRQcm92aWRlcj5cbiAgICAgIDxTdHlsZWRDb250ZW50Q29udGFpbmVyPlxuICAgICAgICA8U3R5bGVkRm9ybVNlY3Rpb24+XG4gICAgICAgICAgPEgyVGl0bGVcbiAgICAgICAgICAgIHRpdGxlPXt0YEFib3V0YH1cbiAgICAgICAgICAgIGRlc2NyaXB0aW9uPXt0YE5hbWUgaW4gYm90aCBzaW5ndWxhciAoZS5nLiwgJ0ludm9pY2UnKSBhbmQgcGx1cmFsIChlLmcuLCAnSW52b2ljZXMnKSBmb3Jtcy5gfVxuICAgICAgICAgIC8+XG4gICAgICAgICAgPFNldHRpbmdzVXBkYXRlRGF0YU1vZGVsT2JqZWN0QWJvdXRGb3JtXG4gICAgICAgICAgICBvYmplY3RNZXRhZGF0YUl0ZW09e29iamVjdE1ldGFkYXRhSXRlbX1cbiAgICAgICAgICAvPlxuICAgICAgICA8L1N0eWxlZEZvcm1TZWN0aW9uPlxuICAgICAgICA8U3R5bGVkRm9ybVNlY3Rpb24+XG4gICAgICAgICAgPFNlY3Rpb24+XG4gICAgICAgICAgICA8SDJUaXRsZVxuICAgICAgICAgICAgICB0aXRsZT17dGBPcHRpb25zYH1cbiAgICAgICAgICAgICAgZGVzY3JpcHRpb249e3RgQ2hvb3NlIHRoZSBmaWVsZHMgdGhhdCB3aWxsIGlkZW50aWZ5IHlvdXIgcmVjb3Jkc2B9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgICAgPFNldHRpbmdzRGF0YU1vZGVsT2JqZWN0U2V0dGluZ3NGb3JtQ2FyZFxuICAgICAgICAgICAgICBvYmplY3RNZXRhZGF0YUl0ZW09e29iamVjdE1ldGFkYXRhSXRlbX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9TZWN0aW9uPlxuICAgICAgICA8L1N0eWxlZEZvcm1TZWN0aW9uPlxuICAgICAgICA8U3R5bGVkRm9ybVNlY3Rpb24+XG4gICAgICAgICAgPFNlY3Rpb24+XG4gICAgICAgICAgICA8SDJUaXRsZVxuICAgICAgICAgICAgICB0aXRsZT17dGBEYW5nZXIgem9uZWB9XG4gICAgICAgICAgICAgIGRlc2NyaXB0aW9uPXt0YERlYWN0aXZhdGUgb2JqZWN0YH1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIEljb249e0ljb25BcmNoaXZlfVxuICAgICAgICAgICAgICB0aXRsZT17dGBEZWFjdGl2YXRlYH1cbiAgICAgICAgICAgICAgc2l6ZT1cInNtYWxsXCJcbiAgICAgICAgICAgICAgb25DbGljaz17aGFuZGxlRGlzYWJsZX1cbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9TZWN0aW9uPlxuICAgICAgICA8L1N0eWxlZEZvcm1TZWN0aW9uPlxuICAgICAgPC9TdHlsZWRDb250ZW50Q29udGFpbmVyPlxuICAgIDwvUmVjb3JkRmllbGRWYWx1ZVNlbGVjdG9yQ29udGV4dFByb3ZpZGVyPlxuICApO1xufTtcbiJdLCJuYW1lcyI6WyJCdXR0b24iLCJIMlRpdGxlIiwiSWNvbkFyY2hpdmUiLCJTZWN0aW9uIiwidXNlVXBkYXRlT25lT2JqZWN0TWV0YWRhdGFJdGVtIiwiUmVjb3JkRmllbGRWYWx1ZVNlbGVjdG9yQ29udGV4dFByb3ZpZGVyIiwiU2V0dGluZ3NVcGRhdGVEYXRhTW9kZWxPYmplY3RBYm91dEZvcm0iLCJTZXR0aW5nc0RhdGFNb2RlbE9iamVjdFNldHRpbmdzRm9ybUNhcmQiLCJTZXR0aW5nc1BhdGgiLCJzdHlsZWQiLCJ1c2VOYXZpZ2F0ZVNldHRpbmdzIiwiU3R5bGVkQ29udGVudENvbnRhaW5lciIsImRpdiIsInRoZW1lIiwic3BhY2luZyIsIlN0eWxlZEZvcm1TZWN0aW9uIiwiT2JqZWN0U2V0dGluZ3MiLCJvYmplY3RNZXRhZGF0YUl0ZW0iLCJ1c2VMaW5ndWkiLCJuYXZpZ2F0ZSIsInVwZGF0ZU9uZU9iamVjdE1ldGFkYXRhSXRlbSIsImhhbmRsZURpc2FibGUiLCJpZFRvVXBkYXRlIiwiaWQiLCJ1cGRhdGVQYXlsb2FkIiwiaXNBY3RpdmUiLCJPYmplY3RzIiwidGl0bGUiLCJkZXNjcmlwdGlvbiIsIkljb24iLCJzaXplIiwib25DbGljayJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUNBLFNBQVNBLE1BQU0sRUFBRUMsT0FBTyxFQUFFQyxXQUFXLEVBQUVDLE9BQU8sUUFBUSxZQUFZO0FBRWxFLFNBQVNDLDhCQUE4QixRQUFRLHlEQUF5RDtBQUN4RyxTQUFTQyx1Q0FBdUMsUUFBUSx3RUFBd0U7QUFDaEksU0FBU0Msc0NBQXNDLFFBQVEseUZBQXlGO0FBQ2hKLFNBQVNDLHVDQUF1QyxRQUFRLHlGQUF5RjtBQUNqSixTQUFTQyxZQUFZLFFBQVEsdUJBQXVCO0FBQ3BELE9BQU9DLFlBQVksa0JBQWtCOztBQUVyQyxTQUFTQyxtQkFBbUIsUUFBUSw4QkFBOEI7QUFNbEUsTUFBTUMseUJBQXlCRixPQUFPRyxHQUFHLENBQUM7OztPQUduQyxFQUFFLENBQUMsRUFBRUMsS0FBSyxFQUFFLEdBQUtBLE1BQU1DLE9BQU8sQ0FBQyxHQUFHO0FBQ3pDLENBQUM7S0FKS0g7QUFNTixNQUFNSSxvQkFBb0JOLE9BQU9OLFFBQVEsQ0FBQzs7QUFFMUMsQ0FBQztNQUZLWTtBQUlOLE9BQU8sTUFBTUMsaUJBQWlCLENBQUMsRUFBRUMsa0JBQWtCLEVBQXVCOztJQUN4RSxNQUFNLDRCQUFRQztJQUNkLE1BQU1DLFdBQVdUO0lBQ2pCLE1BQU0sRUFBRVUsMkJBQTJCLEVBQUUsR0FBR2hCO0lBQ3hDLE1BQU1pQixnQkFBZ0I7UUFDcEIsTUFBTUQsNEJBQTRCO1lBQ2hDRSxZQUFZTCxtQkFBbUJNLEVBQUU7WUFDakNDLGVBQWU7Z0JBQUVDLFVBQVU7WUFBTTtRQUNuQztRQUNBTixTQUFTWCxhQUFha0IsT0FBTztJQUMvQjtJQUVBLHFCQUNFLFFBQUNyQjtrQkFDQyxjQUFBLFFBQUNNOzs4QkFDQyxRQUFDSTs7c0NBQ0MsUUFBQ2Q7NEJBQ0MwQixLQUFLOzs7OzRCQUNMQyxXQUFXOzs7Ozs7Ozs7c0NBRWIsUUFBQ3RCOzRCQUNDVyxvQkFBb0JBOzs7Ozs7Ozs7Ozs7OEJBR3hCLFFBQUNGOzhCQUNDLGNBQUEsUUFBQ1o7OzBDQUNDLFFBQUNGO2dDQUNDMEIsS0FBSzs7OztnQ0FDTEMsV0FBVzs7Ozs7Ozs7OzBDQUViLFFBQUNyQjtnQ0FDQ1Usb0JBQW9CQTs7Ozs7Ozs7Ozs7Ozs7Ozs7OEJBSTFCLFFBQUNGOzhCQUNDLGNBQUEsUUFBQ1o7OzBDQUNDLFFBQUNGO2dDQUNDMEIsS0FBSzs7OztnQ0FDTEMsV0FBVzs7Ozs7Ozs7OzBDQUViLFFBQUM1QjtnQ0FDQzZCLE1BQU0zQjtnQ0FDTnlCLEtBQUs7Ozs7Z0NBQ0xHLE1BQUs7Z0NBQ0xDLFNBQVNWOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBT3ZCLEVBQUU7R0FwRFdMOztRQUVNTjtRQUN1Qk47OztNQUg3QlkifQ==

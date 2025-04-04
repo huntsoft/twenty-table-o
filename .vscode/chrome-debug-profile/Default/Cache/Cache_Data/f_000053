@@ -1,0 +1,176 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx");if (!window.$RefreshReg$) throw new Error("React refresh preamble was not loaded. Something is wrong.");
+const prevRefreshReg = window.$RefreshReg$;
+const prevRefreshSig = window.$RefreshSig$;
+window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx");
+window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+
+import * as RefreshRuntime from "/@react-refresh";
+
+import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_react_jsx-dev-runtime.js?v=226f7286";
+var _s = $RefreshSig$();
+import styled from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/@emotion_styled.js?v=226f7286";
+import { ActionMenuComponentInstanceContext } from "/src/modules/action-menu/states/contexts/ActionMenuComponentInstanceContext.ts";
+import { MAIN_CONTEXT_STORE_INSTANCE_ID } from "/src/modules/context-store/constants/MainContextStoreInstanceId.tsx";
+import { contextStoreCurrentObjectMetadataItemIdComponentState } from "/src/modules/context-store/states/contextStoreCurrentObjectMetadataItemIdComponentState.ts";
+import { ContextStoreComponentInstanceContext } from "/src/modules/context-store/states/contexts/ContextStoreComponentInstanceContext.tsx";
+import { objectMetadataItemsState } from "/src/modules/object-metadata/states/objectMetadataItemsState.ts";
+import { RecordFilterGroupsComponentInstanceContext } from "/src/modules/object-record/record-filter-group/states/context/RecordFilterGroupsComponentInstanceContext.ts";
+import { RecordFiltersComponentInstanceContext } from "/src/modules/object-record/record-filter/states/context/RecordFiltersComponentInstanceContext.ts";
+import { RecordIndexContextProvider } from "/src/modules/object-record/record-index/contexts/RecordIndexContext.ts";
+import { RecordSortsComponentInstanceContext } from "/src/modules/object-record/record-sort/states/context/RecordSortsComponentInstanceContext.ts";
+import { RecordTableWithWrappers } from "/src/modules/object-record/record-table/components/RecordTableWithWrappers.tsx";
+import { SignInBackgroundMockContainerEffect } from "/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainerEffect.tsx";
+import { useRecoilComponentValueV2 } from "/src/modules/ui/utilities/state/component-state/hooks/useRecoilComponentValueV2.ts";
+import { ViewBar } from "/src/modules/views/components/ViewBar.tsx";
+import { ViewComponentInstanceContext } from "/src/modules/views/states/contexts/ViewComponentInstanceContext.ts";
+import { useRecoilValue } from "/@fs/D:/twenty-table-o/node_modules/.vite/packages/twenty-front/deps/recoil.js?v=226f7286";
+import { isDefined } from "/@fs/D:/twenty-table-o/packages/twenty-shared/utils/dist/twenty-shared-utils.esm.js";
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+`;
+_c = StyledContainer;
+export const SignInBackgroundMockContainer = ()=>{
+    _s();
+    const objectNamePlural = 'companies';
+    const objectNameSingular = 'company';
+    const recordIndexId = 'sign-up-mock-record-table-id';
+    const viewBarId = 'companies-mock';
+    const objectMetadataItems = useRecoilValue(objectMetadataItemsState);
+    const objectMetadataItemId = useRecoilComponentValueV2(contextStoreCurrentObjectMetadataItemIdComponentState, MAIN_CONTEXT_STORE_INSTANCE_ID);
+    const objectMetadataItem = objectMetadataItems.find((objectMetadataItem)=>objectMetadataItem.id === objectMetadataItemId);
+    return /*#__PURE__*/ _jsxDEV(StyledContainer, {
+        children: /*#__PURE__*/ _jsxDEV(RecordIndexContextProvider, {
+            value: {
+                recordIndexId,
+                objectNamePlural,
+                objectNameSingular,
+                objectMetadataItem: objectMetadataItem ?? objectMetadataItems[0],
+                onIndexRecordsLoaded: ()=>{},
+                indexIdentifierUrl: ()=>''
+            },
+            children: /*#__PURE__*/ _jsxDEV(ViewComponentInstanceContext.Provider, {
+                value: {
+                    instanceId: recordIndexId
+                },
+                children: /*#__PURE__*/ _jsxDEV(RecordFilterGroupsComponentInstanceContext.Provider, {
+                    value: {
+                        instanceId: recordIndexId
+                    },
+                    children: /*#__PURE__*/ _jsxDEV(RecordFiltersComponentInstanceContext.Provider, {
+                        value: {
+                            instanceId: recordIndexId
+                        },
+                        children: /*#__PURE__*/ _jsxDEV(RecordSortsComponentInstanceContext.Provider, {
+                            value: {
+                                instanceId: recordIndexId
+                            },
+                            children: /*#__PURE__*/ _jsxDEV(ContextStoreComponentInstanceContext.Provider, {
+                                value: {
+                                    instanceId: MAIN_CONTEXT_STORE_INSTANCE_ID
+                                },
+                                children: [
+                                    /*#__PURE__*/ _jsxDEV(SignInBackgroundMockContainerEffect, {
+                                        objectNamePlural: objectNamePlural,
+                                        recordTableId: recordIndexId,
+                                        viewId: viewBarId
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                                        lineNumber: 73,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDEV(ActionMenuComponentInstanceContext.Provider, {
+                                        value: {
+                                            instanceId: recordIndexId
+                                        },
+                                        children: isDefined(objectMetadataItem) && /*#__PURE__*/ _jsxDEV(_Fragment, {
+                                            children: [
+                                                /*#__PURE__*/ _jsxDEV(ViewBar, {
+                                                    viewBarId: viewBarId,
+                                                    optionsDropdownButton: /*#__PURE__*/ _jsxDEV(_Fragment, {}, void 0, false)
+                                                }, void 0, false, {
+                                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                                                    lineNumber: 83,
+                                                    columnNumber: 25
+                                                }, this),
+                                                /*#__PURE__*/ _jsxDEV(RecordTableWithWrappers, {
+                                                    objectNameSingular: objectNameSingular,
+                                                    recordTableId: recordIndexId,
+                                                    viewBarId: viewBarId,
+                                                    updateRecordMutation: ()=>{}
+                                                }, void 0, false, {
+                                                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                                                    lineNumber: 88,
+                                                    columnNumber: 25
+                                                }, this)
+                                            ]
+                                        }, void 0, true)
+                                    }, void 0, false, {
+                                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                                        lineNumber: 78,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                                lineNumber: 68,
+                                columnNumber: 17
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                            lineNumber: 65,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                        lineNumber: 62,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                    lineNumber: 59,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+                lineNumber: 56,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+            lineNumber: 46,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx",
+        lineNumber: 45,
+        columnNumber: 5
+    }, this);
+};
+_s(SignInBackgroundMockContainer, "vjtVyheeOxEm6DvhKL2lBf+7+Xw=", false, function() {
+    return [
+        useRecoilValue,
+        useRecoilComponentValueV2
+    ];
+});
+_c1 = SignInBackgroundMockContainer;
+var _c, _c1;
+$RefreshReg$(_c, "StyledContainer");
+$RefreshReg$(_c1, "SignInBackgroundMockContainer");
+
+
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
+RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+  RefreshRuntime.registerExportsForReactRefresh("D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx", currentExports);
+  import.meta.hot.accept((nextExports) => {
+    if (!nextExports) return;
+    const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/twenty-table-o/packages/twenty-front/src/modules/sign-in-background-mock/components/SignInBackgroundMockContainer.tsx", currentExports, nextExports);
+    if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+  });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNpZ25JbkJhY2tncm91bmRNb2NrQ29udGFpbmVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5cbmltcG9ydCB7IEFjdGlvbk1lbnVDb21wb25lbnRJbnN0YW5jZUNvbnRleHQgfSBmcm9tICdAL2FjdGlvbi1tZW51L3N0YXRlcy9jb250ZXh0cy9BY3Rpb25NZW51Q29tcG9uZW50SW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IE1BSU5fQ09OVEVYVF9TVE9SRV9JTlNUQU5DRV9JRCB9IGZyb20gJ0AvY29udGV4dC1zdG9yZS9jb25zdGFudHMvTWFpbkNvbnRleHRTdG9yZUluc3RhbmNlSWQnO1xuaW1wb3J0IHsgY29udGV4dFN0b3JlQ3VycmVudE9iamVjdE1ldGFkYXRhSXRlbUlkQ29tcG9uZW50U3RhdGUgfSBmcm9tICdAL2NvbnRleHQtc3RvcmUvc3RhdGVzL2NvbnRleHRTdG9yZUN1cnJlbnRPYmplY3RNZXRhZGF0YUl0ZW1JZENvbXBvbmVudFN0YXRlJztcbmltcG9ydCB7IENvbnRleHRTdG9yZUNvbXBvbmVudEluc3RhbmNlQ29udGV4dCB9IGZyb20gJ0AvY29udGV4dC1zdG9yZS9zdGF0ZXMvY29udGV4dHMvQ29udGV4dFN0b3JlQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IG9iamVjdE1ldGFkYXRhSXRlbXNTdGF0ZSB9IGZyb20gJ0Avb2JqZWN0LW1ldGFkYXRhL3N0YXRlcy9vYmplY3RNZXRhZGF0YUl0ZW1zU3RhdGUnO1xuaW1wb3J0IHsgUmVjb3JkRmlsdGVyR3JvdXBzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0IH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1maWx0ZXItZ3JvdXAvc3RhdGVzL2NvbnRleHQvUmVjb3JkRmlsdGVyR3JvdXBzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IFJlY29yZEZpbHRlcnNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLWZpbHRlci9zdGF0ZXMvY29udGV4dC9SZWNvcmRGaWx0ZXJzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0JztcbmltcG9ydCB7IFJlY29yZEluZGV4Q29udGV4dFByb3ZpZGVyIH0gZnJvbSAnQC9vYmplY3QtcmVjb3JkL3JlY29yZC1pbmRleC9jb250ZXh0cy9SZWNvcmRJbmRleENvbnRleHQnO1xuaW1wb3J0IHsgUmVjb3JkU29ydHNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXNvcnQvc3RhdGVzL2NvbnRleHQvUmVjb3JkU29ydHNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQnO1xuaW1wb3J0IHsgUmVjb3JkVGFibGVXaXRoV3JhcHBlcnMgfSBmcm9tICdAL29iamVjdC1yZWNvcmQvcmVjb3JkLXRhYmxlL2NvbXBvbmVudHMvUmVjb3JkVGFibGVXaXRoV3JhcHBlcnMnO1xuaW1wb3J0IHsgU2lnbkluQmFja2dyb3VuZE1vY2tDb250YWluZXJFZmZlY3QgfSBmcm9tICdAL3NpZ24taW4tYmFja2dyb3VuZC1tb2NrL2NvbXBvbmVudHMvU2lnbkluQmFja2dyb3VuZE1vY2tDb250YWluZXJFZmZlY3QnO1xuaW1wb3J0IHsgdXNlUmVjb2lsQ29tcG9uZW50VmFsdWVWMiB9IGZyb20gJ0AvdWkvdXRpbGl0aWVzL3N0YXRlL2NvbXBvbmVudC1zdGF0ZS9ob29rcy91c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyJztcbmltcG9ydCB7IFZpZXdCYXIgfSBmcm9tICdAL3ZpZXdzL2NvbXBvbmVudHMvVmlld0Jhcic7XG5pbXBvcnQgeyBWaWV3Q29tcG9uZW50SW5zdGFuY2VDb250ZXh0IH0gZnJvbSAnQC92aWV3cy9zdGF0ZXMvY29udGV4dHMvVmlld0NvbXBvbmVudEluc3RhbmNlQ29udGV4dCc7XG5pbXBvcnQgeyB1c2VSZWNvaWxWYWx1ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgeyBpc0RlZmluZWQgfSBmcm9tICd0d2VudHktc2hhcmVkL3V0aWxzJztcblxuY29uc3QgU3R5bGVkQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdzogYXV0bztcbmA7XG5cbmV4cG9ydCBjb25zdCBTaWduSW5CYWNrZ3JvdW5kTW9ja0NvbnRhaW5lciA9ICgpID0+IHtcbiAgY29uc3Qgb2JqZWN0TmFtZVBsdXJhbCA9ICdjb21wYW5pZXMnO1xuICBjb25zdCBvYmplY3ROYW1lU2luZ3VsYXIgPSAnY29tcGFueSc7XG4gIGNvbnN0IHJlY29yZEluZGV4SWQgPSAnc2lnbi11cC1tb2NrLXJlY29yZC10YWJsZS1pZCc7XG4gIGNvbnN0IHZpZXdCYXJJZCA9ICdjb21wYW5pZXMtbW9jayc7XG5cbiAgY29uc3Qgb2JqZWN0TWV0YWRhdGFJdGVtcyA9IHVzZVJlY29pbFZhbHVlKG9iamVjdE1ldGFkYXRhSXRlbXNTdGF0ZSk7XG5cbiAgY29uc3Qgb2JqZWN0TWV0YWRhdGFJdGVtSWQgPSB1c2VSZWNvaWxDb21wb25lbnRWYWx1ZVYyKFxuICAgIGNvbnRleHRTdG9yZUN1cnJlbnRPYmplY3RNZXRhZGF0YUl0ZW1JZENvbXBvbmVudFN0YXRlLFxuICAgIE1BSU5fQ09OVEVYVF9TVE9SRV9JTlNUQU5DRV9JRCxcbiAgKTtcblxuICBjb25zdCBvYmplY3RNZXRhZGF0YUl0ZW0gPSBvYmplY3RNZXRhZGF0YUl0ZW1zLmZpbmQoXG4gICAgKG9iamVjdE1ldGFkYXRhSXRlbSkgPT4gb2JqZWN0TWV0YWRhdGFJdGVtLmlkID09PSBvYmplY3RNZXRhZGF0YUl0ZW1JZCxcbiAgKTtcblxuICByZXR1cm4gKFxuICAgIDxTdHlsZWRDb250YWluZXI+XG4gICAgICA8UmVjb3JkSW5kZXhDb250ZXh0UHJvdmlkZXJcbiAgICAgICAgdmFsdWU9e3tcbiAgICAgICAgICByZWNvcmRJbmRleElkLFxuICAgICAgICAgIG9iamVjdE5hbWVQbHVyYWwsXG4gICAgICAgICAgb2JqZWN0TmFtZVNpbmd1bGFyLFxuICAgICAgICAgIG9iamVjdE1ldGFkYXRhSXRlbTogb2JqZWN0TWV0YWRhdGFJdGVtID8/IG9iamVjdE1ldGFkYXRhSXRlbXNbMF0sXG4gICAgICAgICAgb25JbmRleFJlY29yZHNMb2FkZWQ6ICgpID0+IHt9LFxuICAgICAgICAgIGluZGV4SWRlbnRpZmllclVybDogKCkgPT4gJycsXG4gICAgICAgIH19XG4gICAgICA+XG4gICAgICAgIDxWaWV3Q29tcG9uZW50SW5zdGFuY2VDb250ZXh0LlByb3ZpZGVyXG4gICAgICAgICAgdmFsdWU9e3sgaW5zdGFuY2VJZDogcmVjb3JkSW5kZXhJZCB9fVxuICAgICAgICA+XG4gICAgICAgICAgPFJlY29yZEZpbHRlckdyb3Vwc0NvbXBvbmVudEluc3RhbmNlQ29udGV4dC5Qcm92aWRlclxuICAgICAgICAgICAgdmFsdWU9e3sgaW5zdGFuY2VJZDogcmVjb3JkSW5kZXhJZCB9fVxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxSZWNvcmRGaWx0ZXJzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0LlByb3ZpZGVyXG4gICAgICAgICAgICAgIHZhbHVlPXt7IGluc3RhbmNlSWQ6IHJlY29yZEluZGV4SWQgfX1cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgPFJlY29yZFNvcnRzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0LlByb3ZpZGVyXG4gICAgICAgICAgICAgICAgdmFsdWU9e3sgaW5zdGFuY2VJZDogcmVjb3JkSW5kZXhJZCB9fVxuICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgPENvbnRleHRTdG9yZUNvbXBvbmVudEluc3RhbmNlQ29udGV4dC5Qcm92aWRlclxuICAgICAgICAgICAgICAgICAgdmFsdWU9e3tcbiAgICAgICAgICAgICAgICAgICAgaW5zdGFuY2VJZDogTUFJTl9DT05URVhUX1NUT1JFX0lOU1RBTkNFX0lELFxuICAgICAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICA8U2lnbkluQmFja2dyb3VuZE1vY2tDb250YWluZXJFZmZlY3RcbiAgICAgICAgICAgICAgICAgICAgb2JqZWN0TmFtZVBsdXJhbD17b2JqZWN0TmFtZVBsdXJhbH1cbiAgICAgICAgICAgICAgICAgICAgcmVjb3JkVGFibGVJZD17cmVjb3JkSW5kZXhJZH1cbiAgICAgICAgICAgICAgICAgICAgdmlld0lkPXt2aWV3QmFySWR9XG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgPEFjdGlvbk1lbnVDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXJcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e3sgaW5zdGFuY2VJZDogcmVjb3JkSW5kZXhJZCB9fVxuICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICB7aXNEZWZpbmVkKG9iamVjdE1ldGFkYXRhSXRlbSkgJiYgKFxuICAgICAgICAgICAgICAgICAgICAgIDw+XG4gICAgICAgICAgICAgICAgICAgICAgICA8Vmlld0JhclxuICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3QmFySWQ9e3ZpZXdCYXJJZH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgb3B0aW9uc0Ryb3Bkb3duQnV0dG9uPXs8PjwvPn1cbiAgICAgICAgICAgICAgICAgICAgICAgIC8+XG5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxSZWNvcmRUYWJsZVdpdGhXcmFwcGVyc1xuICAgICAgICAgICAgICAgICAgICAgICAgICBvYmplY3ROYW1lU2luZ3VsYXI9e29iamVjdE5hbWVTaW5ndWxhcn1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgcmVjb3JkVGFibGVJZD17cmVjb3JkSW5kZXhJZH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgdmlld0JhcklkPXt2aWV3QmFySWR9XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHVwZGF0ZVJlY29yZE11dGF0aW9uPXsoKSA9PiB7fX1cbiAgICAgICAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgICAgICAgPC8+XG4gICAgICAgICAgICAgICAgICAgICl9XG4gICAgICAgICAgICAgICAgICA8L0FjdGlvbk1lbnVDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgICAgICAgICAgPC9Db250ZXh0U3RvcmVDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgICAgICAgIDwvUmVjb3JkU29ydHNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgICAgICA8L1JlY29yZEZpbHRlcnNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgICAgPC9SZWNvcmRGaWx0ZXJHcm91cHNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQuUHJvdmlkZXI+XG4gICAgICAgIDwvVmlld0NvbXBvbmVudEluc3RhbmNlQ29udGV4dC5Qcm92aWRlcj5cbiAgICAgIDwvUmVjb3JkSW5kZXhDb250ZXh0UHJvdmlkZXI+XG4gICAgPC9TdHlsZWRDb250YWluZXI+XG4gICk7XG59O1xuIl0sIm5hbWVzIjpbInN0eWxlZCIsIkFjdGlvbk1lbnVDb21wb25lbnRJbnN0YW5jZUNvbnRleHQiLCJNQUlOX0NPTlRFWFRfU1RPUkVfSU5TVEFOQ0VfSUQiLCJjb250ZXh0U3RvcmVDdXJyZW50T2JqZWN0TWV0YWRhdGFJdGVtSWRDb21wb25lbnRTdGF0ZSIsIkNvbnRleHRTdG9yZUNvbXBvbmVudEluc3RhbmNlQ29udGV4dCIsIm9iamVjdE1ldGFkYXRhSXRlbXNTdGF0ZSIsIlJlY29yZEZpbHRlckdyb3Vwc0NvbXBvbmVudEluc3RhbmNlQ29udGV4dCIsIlJlY29yZEZpbHRlcnNDb21wb25lbnRJbnN0YW5jZUNvbnRleHQiLCJSZWNvcmRJbmRleENvbnRleHRQcm92aWRlciIsIlJlY29yZFNvcnRzQ29tcG9uZW50SW5zdGFuY2VDb250ZXh0IiwiUmVjb3JkVGFibGVXaXRoV3JhcHBlcnMiLCJTaWduSW5CYWNrZ3JvdW5kTW9ja0NvbnRhaW5lckVmZmVjdCIsInVzZVJlY29pbENvbXBvbmVudFZhbHVlVjIiLCJWaWV3QmFyIiwiVmlld0NvbXBvbmVudEluc3RhbmNlQ29udGV4dCIsInVzZVJlY29pbFZhbHVlIiwiaXNEZWZpbmVkIiwiU3R5bGVkQ29udGFpbmVyIiwiZGl2IiwiU2lnbkluQmFja2dyb3VuZE1vY2tDb250YWluZXIiLCJvYmplY3ROYW1lUGx1cmFsIiwib2JqZWN0TmFtZVNpbmd1bGFyIiwicmVjb3JkSW5kZXhJZCIsInZpZXdCYXJJZCIsIm9iamVjdE1ldGFkYXRhSXRlbXMiLCJvYmplY3RNZXRhZGF0YUl0ZW1JZCIsIm9iamVjdE1ldGFkYXRhSXRlbSIsImZpbmQiLCJpZCIsInZhbHVlIiwib25JbmRleFJlY29yZHNMb2FkZWQiLCJpbmRleElkZW50aWZpZXJVcmwiLCJQcm92aWRlciIsImluc3RhbmNlSWQiLCJyZWNvcmRUYWJsZUlkIiwidmlld0lkIiwib3B0aW9uc0Ryb3Bkb3duQnV0dG9uIiwidXBkYXRlUmVjb3JkTXV0YXRpb24iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxPQUFPQSxZQUFZLGtCQUFrQjtBQUVyQyxTQUFTQyxrQ0FBa0MsUUFBUSxtRUFBbUU7QUFDdEgsU0FBU0MsOEJBQThCLFFBQVEsdURBQXVEO0FBQ3RHLFNBQVNDLHFEQUFxRCxRQUFRLCtFQUErRTtBQUNySixTQUFTQyxvQ0FBb0MsUUFBUSx1RUFBdUU7QUFDNUgsU0FBU0Msd0JBQXdCLFFBQVEsb0RBQW9EO0FBQzdGLFNBQVNDLDBDQUEwQyxRQUFRLGdHQUFnRztBQUMzSixTQUFTQyxxQ0FBcUMsUUFBUSxxRkFBcUY7QUFDM0ksU0FBU0MsMEJBQTBCLFFBQVEsMkRBQTJEO0FBQ3RHLFNBQVNDLG1DQUFtQyxRQUFRLGlGQUFpRjtBQUNySSxTQUFTQyx1QkFBdUIsUUFBUSxrRUFBa0U7QUFDMUcsU0FBU0MsbUNBQW1DLFFBQVEsMkVBQTJFO0FBQy9ILFNBQVNDLHlCQUF5QixRQUFRLHVFQUF1RTtBQUNqSCxTQUFTQyxPQUFPLFFBQVEsNkJBQTZCO0FBQ3JELFNBQVNDLDRCQUE0QixRQUFRLHVEQUF1RDtBQUNwRyxTQUFTQyxjQUFjLFFBQVEsU0FBUztBQUN4QyxTQUFTQyxTQUFTLFFBQVEsc0JBQXNCO0FBRWhELE1BQU1DLGtCQUFrQmpCLE9BQU9rQixHQUFHLENBQUM7Ozs7O0FBS25DLENBQUM7S0FMS0Q7QUFPTixPQUFPLE1BQU1FLGdDQUFnQzs7SUFDM0MsTUFBTUMsbUJBQW1CO0lBQ3pCLE1BQU1DLHFCQUFxQjtJQUMzQixNQUFNQyxnQkFBZ0I7SUFDdEIsTUFBTUMsWUFBWTtJQUVsQixNQUFNQyxzQkFBc0JULGVBQWVWO0lBRTNDLE1BQU1vQix1QkFBdUJiLDBCQUMzQlQsdURBQ0FEO0lBR0YsTUFBTXdCLHFCQUFxQkYsb0JBQW9CRyxJQUFJLENBQ2pELENBQUNELHFCQUF1QkEsbUJBQW1CRSxFQUFFLEtBQUtIO0lBR3BELHFCQUNFLFFBQUNSO2tCQUNDLGNBQUEsUUFBQ1Q7WUFDQ3FCLE9BQU87Z0JBQ0xQO2dCQUNBRjtnQkFDQUM7Z0JBQ0FLLG9CQUFvQkEsc0JBQXNCRixtQkFBbUIsQ0FBQyxFQUFFO2dCQUNoRU0sc0JBQXNCLEtBQU87Z0JBQzdCQyxvQkFBb0IsSUFBTTtZQUM1QjtzQkFFQSxjQUFBLFFBQUNqQiw2QkFBNkJrQixRQUFRO2dCQUNwQ0gsT0FBTztvQkFBRUksWUFBWVg7Z0JBQWM7MEJBRW5DLGNBQUEsUUFBQ2hCLDJDQUEyQzBCLFFBQVE7b0JBQ2xESCxPQUFPO3dCQUFFSSxZQUFZWDtvQkFBYzs4QkFFbkMsY0FBQSxRQUFDZixzQ0FBc0N5QixRQUFRO3dCQUM3Q0gsT0FBTzs0QkFBRUksWUFBWVg7d0JBQWM7a0NBRW5DLGNBQUEsUUFBQ2Isb0NBQW9DdUIsUUFBUTs0QkFDM0NILE9BQU87Z0NBQUVJLFlBQVlYOzRCQUFjO3NDQUVuQyxjQUFBLFFBQUNsQixxQ0FBcUM0QixRQUFRO2dDQUM1Q0gsT0FBTztvQ0FDTEksWUFBWS9CO2dDQUNkOztrREFFQSxRQUFDUzt3Q0FDQ1Msa0JBQWtCQTt3Q0FDbEJjLGVBQWVaO3dDQUNmYSxRQUFRWjs7Ozs7O2tEQUVWLFFBQUN0QixtQ0FBbUMrQixRQUFRO3dDQUMxQ0gsT0FBTzs0Q0FBRUksWUFBWVg7d0NBQWM7a0RBRWxDTixVQUFVVSxxQ0FDVDs7OERBQ0UsUUFBQ2I7b0RBQ0NVLFdBQVdBO29EQUNYYSxxQ0FBdUI7Ozs7Ozs4REFHekIsUUFBQzFCO29EQUNDVyxvQkFBb0JBO29EQUNwQmEsZUFBZVo7b0RBQ2ZDLFdBQVdBO29EQUNYYyxzQkFBc0IsS0FBTzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQWF2RCxFQUFFO0dBOUVXbEI7O1FBTWlCSjtRQUVDSDs7O01BUmxCTyJ9
