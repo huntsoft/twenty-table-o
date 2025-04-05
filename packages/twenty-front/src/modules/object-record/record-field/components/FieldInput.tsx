@@ -14,6 +14,7 @@ import { isFieldPhones } from '@/object-record/record-field/types/guards/isField
 import { isFieldRelationFromManyObjects } from '@/object-record/record-field/types/guards/isFieldRelationFromManyObjects';
 
 import { ArrayFieldInput } from '@/object-record/record-field/meta-types/input/components/ArrayFieldInput';
+import { JudgementsFieldInput } from '@/object-record/record-field/meta-types/input/components/JudgementsFieldInput';
 import { OpinionsFieldInput } from '@/object-record/record-field/meta-types/input/components/OpinionsFieldInput';
 import { isFieldAddress } from '@/object-record/record-field/types/guards/isFieldAddress';
 import { isFieldArray } from '@/object-record/record-field/types/guards/isFieldArray';
@@ -23,6 +24,7 @@ import { isFieldDate } from '@/object-record/record-field/types/guards/isFieldDa
 import { isFieldDateTime } from '@/object-record/record-field/types/guards/isFieldDateTime';
 import { isFieldEmails } from '@/object-record/record-field/types/guards/isFieldEmails';
 import { isFieldFullName } from '@/object-record/record-field/types/guards/isFieldFullName';
+import { isFieldJudgements } from '@/object-record/record-field/types/guards/isFieldJudgements';
 import { isFieldLinks } from '@/object-record/record-field/types/guards/isFieldLinks';
 import { isFieldMultiSelect } from '@/object-record/record-field/types/guards/isFieldMultiSelect';
 import { isFieldNumber } from '@/object-record/record-field/types/guards/isFieldNumber';
@@ -169,6 +171,11 @@ export const FieldInput = ({
         />
       ) : isFieldOpinions(fieldDefinition) ? (
         <OpinionsFieldInput
+          onCancel={onCancel}
+          onClickOutside={(event) => onClickOutside?.(() => {}, event)}
+        />
+      ) : isFieldJudgements(fieldDefinition) ? (
+        <JudgementsFieldInput
           onCancel={onCancel}
           onClickOutside={(event) => onClickOutside?.(() => {}, event)}
         />

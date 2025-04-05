@@ -1,21 +1,21 @@
 import { FieldContext } from '@/object-record/record-field/contexts/FieldContext';
 import { FieldDefinition } from '@/object-record/record-field/types/FieldDefinition';
 import {
-    FieldOpinionsMetadata,
-    FieldOpinionsValue,
+    FieldJudgementsMetadata,
+    FieldJudgementsValue,
 } from '@/object-record/record-field/types/FieldMetadata';
 import { useRecordFieldValue } from '@/object-record/record-store/contexts/RecordFieldValueSelectorContext';
 import { useContext, useMemo } from 'react';
 import { isDefined } from 'twenty-shared/utils';
-import { useOpinionsFieldInitialValue } from './useOpinionsFieldInitialValue';
+import { useJudgementsFieldInitialValue } from './useJudgementsFieldInitialValue';
 
-export const useOpinionsFieldDisplay = () => {
+export const useJudgementsFieldDisplay = () => {
   const { recordId, fieldDefinition } = useContext(FieldContext);
-  const initialValue = useOpinionsFieldInitialValue();
+  const initialValue = useJudgementsFieldInitialValue();
 
   const { fieldName } = fieldDefinition.metadata;
 
-  const rawFieldValue = useRecordFieldValue<FieldOpinionsValue | undefined>(
+  const rawFieldValue = useRecordFieldValue<FieldJudgementsValue | undefined>(
     recordId,
     fieldName,
   );
@@ -33,8 +33,21 @@ export const useOpinionsFieldDisplay = () => {
     return rawFieldValue;
   }, [rawFieldValue, initialValue]);
 
+  // Get the latest judgement for display in the table
+  const latestJudgement = useMemo(() => {
+    if (!fieldValue.length) {
+      return null;
+    }
+
+    // Sort by createdAt in descending order and take the first one
+    return [...fieldValue].sort((a, b) => 
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )[0];
+  }, [fieldValue]);
+
   return {
-    fieldDefinition: fieldDefinition as FieldDefinition<FieldOpinionsMetadata>,
+    fieldDefinition: fieldDefinition as FieldDefinition<FieldJudgementsMetadata>,
     fieldValue,
+    latestJudgement,
   };
 };

@@ -4,13 +4,16 @@ import { FieldOpinionsValue } from '@/object-record/record-field/types/FieldMeta
 import { ExpandableList } from '@/ui/layout/expandable-list/components/ExpandableList';
 
 type OpinionsDisplayProps = {
-  value: FieldOpinionsValue;
+  value: FieldOpinionsValue | null | undefined;
 };
 
 export const OpinionsDisplay = ({ value }: OpinionsDisplayProps) => {
+  // Ensure value is an array
+  const safeValue = Array.isArray(value) ? value : [];
+
   return (
     <ExpandableList>
-      {value?.map((item, index) => (
+      {safeValue.map((item, index) => (
         <Chip
           key={`${item}-${index}`}
           variant={ChipVariant.Highlighted}

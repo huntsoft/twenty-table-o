@@ -4,7 +4,9 @@ import { ActorFieldDisplay } from '@/object-record/record-field/meta-types/displ
 import { ArrayFieldDisplay } from '@/object-record/record-field/meta-types/display/components/ArrayFieldDisplay';
 import { BooleanFieldDisplay } from '@/object-record/record-field/meta-types/display/components/BooleanFieldDisplay';
 import { EmailsFieldDisplay } from '@/object-record/record-field/meta-types/display/components/EmailsFieldDisplay';
+import { JudgementsFieldDisplay } from '@/object-record/record-field/meta-types/display/components/JudgementsFieldDisplay';
 import { LinksFieldDisplay } from '@/object-record/record-field/meta-types/display/components/LinksFieldDisplay';
+import { OpinionsFieldDisplay } from '@/object-record/record-field/meta-types/display/components/OpinionsFieldDisplay';
 import { PhonesFieldDisplay } from '@/object-record/record-field/meta-types/display/components/PhonesFieldDisplay';
 import { RatingFieldDisplay } from '@/object-record/record-field/meta-types/display/components/RatingFieldDisplay';
 import { RelationFromManyFieldDisplay } from '@/object-record/record-field/meta-types/display/components/RelationFromManyFieldDisplay';
@@ -15,7 +17,9 @@ import { isFieldActor } from '@/object-record/record-field/types/guards/isFieldA
 import { isFieldArray } from '@/object-record/record-field/types/guards/isFieldArray';
 import { isFieldBoolean } from '@/object-record/record-field/types/guards/isFieldBoolean';
 import { isFieldEmails } from '@/object-record/record-field/types/guards/isFieldEmails';
+import { isFieldJudgements } from '@/object-record/record-field/types/guards/isFieldJudgements';
 import { isFieldLinks } from '@/object-record/record-field/types/guards/isFieldLinks';
+import { isFieldOpinions } from '@/object-record/record-field/types/guards/isFieldOpinions';
 import { isFieldPhones } from '@/object-record/record-field/types/guards/isFieldPhones';
 import { isFieldRating } from '@/object-record/record-field/types/guards/isFieldRating';
 import { isFieldRelationFromManyObjects } from '@/object-record/record-field/types/guards/isFieldRelationFromManyObjects';
@@ -102,5 +106,9 @@ export const FieldDisplay = () => {
     <EmailsFieldDisplay />
   ) : isFieldPhones(fieldDefinition) ? (
     <PhonesFieldDisplay />
+  ) : isFieldOpinions(fieldDefinition) ? (
+    <OpinionsFieldDisplay />
+  ) : isFieldJudgements(fieldDefinition) ? (
+    <JudgementsFieldDisplay showLatestOnly={true} />
   ) : null;
 };

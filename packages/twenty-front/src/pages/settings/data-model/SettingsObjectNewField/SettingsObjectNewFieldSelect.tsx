@@ -21,12 +21,7 @@ import { t } from '@lingui/core/macro';
 import { isDefined } from 'twenty-shared/utils';
 
 export const settingsDataModelFieldTypeFormSchema = z.object({
-  type: z.enum(
-    Object.keys(SETTINGS_FIELD_TYPE_CONFIGS) as [
-      SettingsFieldType,
-      ...SettingsFieldType[],
-    ],
-  ),
+  type: z.nativeEnum(FieldMetadataType),  // Use nativeEnum to include all valid types
 });
 
 export type SettingsDataModelFieldTypeFormValues = z.infer<
@@ -40,11 +35,13 @@ export const SettingsObjectNewFieldSelect = () => {
     useFilteredObjectMetadataItems();
   const activeObjectMetadataItem =
     findActiveObjectMetadataItemByNamePlural(objectNamePlural);
-  const formMethods = useForm({
+  const formMethods = useForm<SettingsDataModelFieldTypeFormValues>({
     resolver: zodResolver(settingsDataModelFieldTypeFormSchema),
     defaultValues: {
       type: FieldMetadataType.TEXT,
     },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
   const excludedFieldTypes: FieldType[] = (
     [
@@ -56,6 +53,17 @@ export const SettingsObjectNewFieldSelect = () => {
   ).filter(isDefined);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fieldType = params.get('fieldType');
+    
+    if (fieldType && Object.values(FieldMetadataType).includes(fieldType as FieldMetadataType)) {
+      formMethods.setValue('type', fieldType as FieldMetadataType, {
+        shouldValidate: false,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     if (!activeObjectMetadataItem) {
       navigate(AppPath.NotFound);
     }
@@ -65,9 +73,7 @@ export const SettingsObjectNewFieldSelect = () => {
 
   return (
     <RecordFieldValueSelectorContextProvider>
-      <FormProvider // eslint-disable-next-line react/jsx-props-no-spreading
-        {...formMethods}
-      >
+      <FormProvider {...formMethods}>
         <SubMenuTopBarContainer
           title={t`1. Select a field type`}
           links={[

@@ -20,6 +20,7 @@ export const isNonCompositeField = (type: FieldType) => {
     FieldMetadataType.RICH_TEXT,
     FieldMetadataType.ARRAY,
     FieldMetadataType.OPINIONS,
+    FieldMetadataType.JUDGEMENTS,
   ].includes(type as any);
 
   return fieldIsSimpleValue;

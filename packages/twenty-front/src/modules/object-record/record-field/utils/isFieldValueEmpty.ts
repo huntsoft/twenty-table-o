@@ -17,6 +17,8 @@ import { isFieldEmails } from '@/object-record/record-field/types/guards/isField
 import { isFieldEmailsValue } from '@/object-record/record-field/types/guards/isFieldEmailsValue';
 import { isFieldFullName } from '@/object-record/record-field/types/guards/isFieldFullName';
 import { isFieldFullNameValue } from '@/object-record/record-field/types/guards/isFieldFullNameValue';
+import { isFieldJudgements } from '@/object-record/record-field/types/guards/isFieldJudgements';
+import { isFieldJudgementsValue } from '@/object-record/record-field/types/guards/isFieldJudgementsValue';
 import { isFieldLinks } from '@/object-record/record-field/types/guards/isFieldLinks';
 import { isFieldLinksValue } from '@/object-record/record-field/types/guards/isFieldLinksValue';
 import { isFieldMultiSelect } from '@/object-record/record-field/types/guards/isFieldMultiSelect';
@@ -141,6 +143,12 @@ export const isFieldValueEmpty = ({
       !isFieldMultiSelectValue(fieldValue, selectOptionValues) ||
       !isDefined(fieldValue) ||
       !isNonEmptyArray(fieldValue)
+    );
+  }
+
+  if (isFieldJudgements(fieldDefinition)) {
+    return (
+      !isFieldJudgementsValue(fieldValue) || !isValueEmpty(fieldValue.judgements)
     );
   }
 

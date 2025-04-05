@@ -15,6 +15,8 @@ import { settingsDataModelFieldCurrencyFormSchema } from '@/settings/data-model/
 import { SettingsDataModelFieldCurrencySettingsFormCard } from '@/settings/data-model/fields/forms/currency/components/SettingsDataModelFieldCurrencySettingsFormCard';
 import { settingsDataModelFieldDateFormSchema } from '@/settings/data-model/fields/forms/date/components/SettingsDataModelFieldDateForm';
 import { SettingsDataModelFieldDateSettingsFormCard } from '@/settings/data-model/fields/forms/date/components/SettingsDataModelFieldDateSettingsFormCard';
+import { settingsDataModelFieldJudgementsFormSchema } from '@/settings/data-model/fields/forms/judgements/components/SettingsDataModelFieldJudgementsForm';
+import { SettingsDataModelFieldJudgementsSettingsFormCard } from '@/settings/data-model/fields/forms/judgements/components/SettingsDataModelFieldJudgementsSettingsFormCard';
 import { settingsDataModelFieldNumberFormSchema } from '@/settings/data-model/fields/forms/number/components/SettingsDataModelFieldNumberForm';
 import { SettingsDataModelFieldNumberSettingsFormCard } from '@/settings/data-model/fields/forms/number/components/SettingsDataModelFieldNumberSettingsFormCard';
 import { settingsDataModelFieldPhonesFormSchema } from '@/settings/data-model/fields/forms/phones/components/SettingsDataModelFieldPhonesForm';
@@ -76,6 +78,10 @@ const phonesFieldFormSchema = z
   .object({ type: z.literal(FieldMetadataType.PHONES) })
   .merge(settingsDataModelFieldPhonesFormSchema);
 
+const judgementsFieldFormSchema = z
+  .object({ type: z.literal(FieldMetadataType.JUDGEMENTS) })
+  .merge(settingsDataModelFieldJudgementsFormSchema);
+
 const otherFieldsFormSchema = z.object({
   type: z.enum(
     Object.keys(
@@ -91,6 +97,7 @@ const otherFieldsFormSchema = z.object({
         FieldMetadataType.ADDRESS,
         FieldMetadataType.PHONES,
         FieldMetadataType.TEXT,
+        FieldMetadataType.JUDGEMENTS,
       ]),
     ) as [FieldMetadataType, ...FieldMetadataType[]],
   ),
@@ -110,6 +117,7 @@ export const settingsDataModelFieldSettingsFormSchema = z.discriminatedUnion(
     textFieldFormSchema,
     addressFieldFormSchema,
     phonesFieldFormSchema,
+    judgementsFieldFormSchema,
     otherFieldsFormSchema,
   ],
 );
@@ -139,6 +147,7 @@ const previewableTypes = [
   FieldMetadataType.MULTI_SELECT,
   FieldMetadataType.NUMBER,
   FieldMetadataType.OPINIONS,
+  FieldMetadataType.JUDGEMENTS,
   FieldMetadataType.PHONES,
   FieldMetadataType.RATING,
   FieldMetadataType.RAW_JSON,
@@ -224,6 +233,15 @@ export const SettingsDataModelFieldSettingsFormCard = ({
   if (fieldMetadataItem.type === FieldMetadataType.PHONES) {
     return (
       <SettingsDataModelFieldPhonesSettingsFormCard
+        fieldMetadataItem={fieldMetadataItem}
+        objectMetadataItem={objectMetadataItem}
+      />
+    );
+  }
+
+  if (fieldMetadataItem.type === FieldMetadataType.JUDGEMENTS) {
+    return (
+      <SettingsDataModelFieldJudgementsSettingsFormCard
         fieldMetadataItem={fieldMetadataItem}
         objectMetadataItem={objectMetadataItem}
       />

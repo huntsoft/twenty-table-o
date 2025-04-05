@@ -20,6 +20,7 @@ import {
   FieldDateTimeValue,
   FieldDateValue,
   FieldJsonValue,
+  FieldJudgementsValue,
   FieldMultiSelectValue,
   FieldNumberValue,
   FieldOpinionsValue,
@@ -32,7 +33,7 @@ import {
 import { DEFAULT_DATE_VALUE } from '@/settings/data-model/constants/DefaultDateValue';
 import { SettingsFieldTypeCategoryType } from '@/settings/data-model/types/SettingsFieldTypeCategoryType';
 import { SettingsNonCompositeFieldType } from '@/settings/data-model/types/SettingsNonCompositeFieldType';
-import { FieldMetadataType } from '~/generated-metadata/graphql';
+import { FieldMetadataType } from 'twenty-shared/types';
 
 DEFAULT_DATE_VALUE.setFullYear(DEFAULT_DATE_VALUE.getFullYear() + 2);
 
@@ -133,4 +134,16 @@ export const SETTINGS_NON_COMPOSITE_FIELD_TYPE_CONFIGS: SettingsNonCompositeFiel
       category: 'Advanced',
       exampleValue: ['value1', 'value2'],
     } as const satisfies SettingsFieldTypeConfig<FieldOpinionsValue>,
+    [FieldMetadataType.JUDGEMENTS]: {
+      label: 'Judgements',
+      Icon: IllustrationIconArray,
+      category: 'Advanced',
+      exampleValue: [
+        {
+          text: 'This is a judgement',
+          author: 'John Doe',
+          createdAt: new Date().toISOString()
+        }
+      ],
+    } as const satisfies SettingsFieldTypeConfig<FieldJudgementsValue>,
   };

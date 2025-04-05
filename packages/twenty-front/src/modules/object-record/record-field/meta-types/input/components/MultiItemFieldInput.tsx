@@ -3,8 +3,8 @@ import { Key } from 'ts-key-enum';
 import { IconCheck, IconPlus, LightIconButton, MenuItem } from 'twenty-ui';
 
 import {
-  MultiItemBaseInput,
-  MultiItemBaseInputProps,
+    MultiItemBaseInput,
+    MultiItemBaseInputProps,
 } from '@/object-record/record-field/meta-types/input/components/MultiItemBaseInput';
 import { PhoneRecord } from '@/object-record/record-field/types/FieldMetadata';
 import { DropdownMenu } from '@/ui/layout/dropdown/components/DropdownMenu';
@@ -57,6 +57,10 @@ export const MultiItemFieldInput = <T,>({
   onError,
 }: MultiItemFieldInputProps<T>) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Ensure items is always an array
+  const safeItems = Array.isArray(items) ? items : [];
+
   const handleDropdownClose = () => {
     onCancel?.();
   };
@@ -87,7 +91,7 @@ export const MultiItemFieldInput = <T,>({
     setErrorData(
       errorData.isValid ? errorData : { isValid: true, errorMessage: '' },
     );
-    onError?.(false, items);
+    onError?.(false, safeItems);
   };
 
   const handleAddButtonClick = () => {
@@ -99,19 +103,20 @@ export const MultiItemFieldInput = <T,>({
     let item;
     switch (fieldMetadataType) {
       case FieldMetadataType.LINKS:
-        item = items[index] as { label: string; url: string };
+        item = safeItems[index] as { label: string; url: string };
         setInputValue(item.url || '');
         break;
       case FieldMetadataType.PHONES:
-        item = items[index] as PhoneRecord;
+        item = safeItems[index] as PhoneRecord;
         setInputValue(item.callingCode + item.number);
         break;
       case FieldMetadataType.EMAILS:
-        item = items[index] as string;
+        item = safeItems[index] as string;
         setInputValue(item);
         break;
       case FieldMetadataType.ARRAY:
-        item = items[index] as string;
+      case FieldMetadataType.OPINIONS:
+        item = safeItems[index] as string;
         setInputValue(item);
         break;
       default:
@@ -126,7 +131,7 @@ export const MultiItemFieldInput = <T,>({
     if (validateInput !== undefined) {
       const validationData = validateInput(inputValue) ?? { isValid: true };
       if (!validationData.isValid) {
-        onError?.(true, items);
+        onError?.(true, safeItems);
         setErrorData(validationData);
         return;
       }
@@ -145,15 +150,15 @@ export const MultiItemFieldInput = <T,>({
       ? formatInput(inputValue)
       : (inputValue as unknown as T);
 
-    if (!isAddingNewItem && newItem === items[itemToEditIndex]) {
+    if (!isAddingNewItem && newItem === safeItems[itemToEditIndex]) {
       setIsInputDisplayed(false);
       setInputValue('');
       return;
     }
 
     const updatedItems = isAddingNewItem
-      ? [...items, newItem]
-      : toSpliced(items, itemToEditIndex, 1, newItem);
+      ? [...safeItems, newItem]
+      : toSpliced(safeItems, itemToEditIndex, 1, newItem);
 
     onPersist(updatedItems);
     setIsInputDisplayed(false);
@@ -161,21 +166,23 @@ export const MultiItemFieldInput = <T,>({
   };
 
   const handleSetPrimaryItem = (index: number) => {
-    const updatedItems = moveArrayItem(items, { fromIndex: index, toIndex: 0 });
+    const updatedItems = moveArrayItem(safeItems, { fromIndex: index, toIndex: 0 });
     onPersist(updatedItems);
   };
 
   const handleDeleteItem = (index: number) => {
-    const updatedItems = toSpliced(items, index, 1);
+    const updatedItems = toSpliced(safeItems, index, 1);
     onPersist(updatedItems);
   };
 
+
+
   return (
     <DropdownMenu ref={containerRef} width={200}>
-      {!!items.length && (
+      {!!safeItems.length && (
         <>
           <DropdownMenuItemsContainer>
-            {items.map((item, index) =>
+            {safeItems.map((item, index) =>
               renderItem({
                 value: item,
                 index,
@@ -188,7 +195,7 @@ export const MultiItemFieldInput = <T,>({
           <DropdownMenuSeparator />
         </>
       )}
-      {isInputDisplayed || !items.length ? (
+      {isInputDisplayed || !safeItems.length ? (
         <MultiItemBaseInput
           autoFocus
           placeholder={placeholder}
@@ -212,9 +219,9 @@ export const MultiItemFieldInput = <T,>({
             )
           }
           onEnter={handleSubmitInput}
-          hasItem={!!items.length}
+          hasItem={!!safeItems.length}
           rightComponent={
-            items.length ? (
+            safeItems.length ? (
               <LightIconButton
                 Icon={isAddingNewItem ? IconPlus : IconCheck}
                 onClick={handleSubmitInput}

@@ -1,21 +1,25 @@
 import { FieldContext } from '@/object-record/record-field/contexts/FieldContext';
 import { usePersistField } from '@/object-record/record-field/hooks/usePersistField';
-import { assertFieldMetadata } from '@/object-record/record-field/types/guards/assertFieldMetadata';
-import { isFieldOpinions } from '@/object-record/record-field/types/guards/isFieldOpinions';
-import { opinionsSchema } from '@/object-record/record-field/types/guards/isFieldOpinionsValue';
+import { JudgementItem } from '@/object-record/record-field/types/FieldMetadata';
+import { isFieldJudgements } from '@/object-record/record-field/types/guards/isFieldJudgements';
+import { judgementsSchema } from '@/object-record/record-field/types/guards/isFieldJudgementsValue';
 import { recordStoreFamilySelector } from '@/object-record/record-store/states/selectors/recordStoreFamilySelector';
 import { useContext, useMemo } from 'react';
 import { useRecoilState } from 'recoil';
-import { FieldMetadataType } from '~/generated-metadata/graphql';
-import { useOpinionsFieldInitialValue } from './useOpinionsFieldInitialValue';
+import { useJudgementsFieldInitialValue } from './useJudgementsFieldInitialValue';
 
-export const useOpinionsField = () => {
+export const useJudgementsField = () => {
   const { recordId, fieldDefinition, hotkeyScope } = useContext(FieldContext);
 
-  assertFieldMetadata(FieldMetadataType.OPINIONS, isFieldOpinions, fieldDefinition);
+  // Check if the field is a judgements field
+  if (!isFieldJudgements(fieldDefinition)) {
+    throw new Error(
+      `Trying to use a "${fieldDefinition.type}" field as a "JUDGEMENTS" field.`,
+    );
+  }
 
   const fieldName = fieldDefinition.metadata.fieldName;
-  const initialValue = useOpinionsFieldInitialValue();
+  const initialValue = useJudgementsFieldInitialValue();
 
   const [rawFieldValue, setRawFieldValue] = useRecoilState(
     recordStoreFamilySelector({
@@ -24,7 +28,7 @@ export const useOpinionsField = () => {
     }),
   );
 
-  // Safely handle the field value to ensure it's always an array
+  // Safely handle the field value to ensure it's always an array of JudgementItems
   const fieldValue = useMemo(() => {
     if (!rawFieldValue) {
       return initialValue;
@@ -34,31 +38,37 @@ export const useOpinionsField = () => {
       return rawFieldValue;
     }
 
-    // If it's a string, try to make it a single-item array
-    if (typeof rawFieldValue === 'string') {
-      return [rawFieldValue];
-    }
-
     return initialValue;
   }, [rawFieldValue, initialValue]);
 
   const persistField = usePersistField();
 
-  const persistOpinionsField = (nextValue: string[]) => {
+  const persistJudgementsField = (nextValue: JudgementItem[]) => {
     try {
       // Always ensure we're persisting an array
       const valueToSave = Array.isArray(nextValue) ? nextValue : [];
 
       // Validate with schema
-      const validValue = opinionsSchema.parse(valueToSave);
+      const validValue = judgementsSchema.parse(valueToSave);
 
       // Persist the validated value
       persistField(validValue);
     } catch (error) {
-      console.error('Error persisting opinions field:', error);
+      console.error('Error persisting judgements field:', error);
       // Fallback to empty array if validation fails
       persistField([]);
     }
+  };
+
+  const addJudgement = (text: string, author: string) => {
+    const newJudgement: JudgementItem = {
+      text,
+      author,
+      createdAt: new Date().toISOString(),
+    };
+
+    const updatedJudgements = [...fieldValue, newJudgement];
+    persistJudgementsField(updatedJudgements);
   };
 
   const setFieldValue = (value: unknown) => {
@@ -70,7 +80,8 @@ export const useOpinionsField = () => {
   return {
     fieldValue,
     setFieldValue,
-    persistOpinionsField,
+    persistJudgementsField,
+    addJudgement,
     hotkeyScope,
   };
 };

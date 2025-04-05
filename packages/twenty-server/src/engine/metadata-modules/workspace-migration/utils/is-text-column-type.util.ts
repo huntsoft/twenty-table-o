@@ -4,6 +4,7 @@ export const isTextColumnType = (type: FieldMetadataType) => {
     type === FieldMetadataType.TEXT ||
     type === FieldMetadataType.RICH_TEXT ||
     type === FieldMetadataType.ARRAY ||
-    type === FieldMetadataType.OPINIONS
+    type === FieldMetadataType.OPINIONS ||
+    type === FieldMetadataType.JUDGEMENTS
   );
 };

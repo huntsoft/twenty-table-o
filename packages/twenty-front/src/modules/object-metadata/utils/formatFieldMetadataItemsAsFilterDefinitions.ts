@@ -50,7 +50,9 @@ export const getFilterTypeFromFieldType = (
     case FieldMetadataType.BOOLEAN:
       return 'BOOLEAN';
     case FieldMetadataType.OPINIONS:
-        return 'OPINIONS';
+      return 'OPINIONS';
+    case FieldMetadataType.JUDGEMENTS:
+      return 'JUDGEMENTS';
     default:
       return 'TEXT';
   }

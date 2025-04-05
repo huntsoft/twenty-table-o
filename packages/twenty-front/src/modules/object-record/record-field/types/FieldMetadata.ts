@@ -205,6 +205,13 @@ export type FieldOpinionsMetadata = {
   settings?: null;
 };
 
+export type FieldJudgementsMetadata = {
+  objectMetadataNameSingular?: string;
+  fieldName: string;
+  values: { label: string; value: string }[];
+  settings?: null;
+};
+
 export type FieldMetadata =
   | FieldBooleanMetadata
   | FieldCurrencyMetadata
@@ -228,7 +235,8 @@ export type FieldMetadata =
   | FieldTsVectorMetadata
   | FieldRichTextV2Metadata
   | FieldRichTextMetadata
-  | FieldOpinionsMetadata;
+  | FieldOpinionsMetadata
+  | FieldJudgementsMetadata;
 
 export type FieldTextValue = string;
 export type FieldUUidValue = string; // TODO: can we replace with a template literal type, or maybe overkill ?
@@ -331,3 +339,11 @@ export type FieldPhonesValue = {
 };
 
 export type FieldOpinionsValue = string[];
+
+export type JudgementItem = {
+  text: string;
+  author: string;
+  createdAt: string;
+};
+
+export type FieldJudgementsValue = JudgementItem[];

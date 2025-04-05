@@ -27,6 +27,8 @@ import { recordStoreFamilySelector } from '@/object-record/record-store/states/s
 
 import { isFieldArray } from '@/object-record/record-field/types/guards/isFieldArray';
 import { isFieldArrayValue } from '@/object-record/record-field/types/guards/isFieldArrayValue';
+import { isFieldJudgements } from '@/object-record/record-field/types/guards/isFieldJudgements';
+import { isFieldJudgementsValue } from '@/object-record/record-field/types/guards/isFieldJudgementsValue';
 import { isFieldOpinions } from '@/object-record/record-field/types/guards/isFieldOpinions';
 import { isFieldOpinionsValue } from '@/object-record/record-field/types/guards/isFieldOpinionsValue';
 import { isFieldRichText } from '@/object-record/record-field/types/guards/isFieldRichText';
@@ -130,6 +132,9 @@ export const usePersistField = () => {
 
         const fieldIsOpinions =
           isFieldOpinions(fieldDefinition) && isFieldOpinionsValue(valueToPersist);
+        
+        const fieldIsJudgements =
+          isFieldJudgements(fieldDefinition) && isFieldJudgementsValue(valueToPersist);
 
         const isValuePersistable =
           fieldIsRelationToOneObject ||
@@ -150,6 +155,7 @@ export const usePersistField = () => {
           fieldIsRawJson ||
           fieldIsArray ||
           fieldIsOpinions ||
+          fieldIsJudgements ||
           fieldIsRichText ||
           fieldIsRichTextV2;
 

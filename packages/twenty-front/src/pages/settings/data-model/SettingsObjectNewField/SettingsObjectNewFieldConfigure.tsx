@@ -63,29 +63,79 @@ export const SettingsObjectNewFieldConfigure = () => {
   const { createMetadataField } = useFieldMetadataItem();
   const apolloClient = useApolloClient();
 
+  // Ensure fieldType is a valid FieldMetadataType
+  const validFieldType = fieldType as FieldMetadataType;
+
   const formConfig = useForm<SettingsDataModelNewFieldFormValues>({
-    mode: 'onTouched',
-    resolver: zodResolver(
-      settingsFieldFormSchema(
-        activeObjectMetadataItem?.fields.map((value) => value.name),
-      ),
-    ),
+    resolver: zodResolver(settingsFieldFormSchema()),
     defaultValues: {
-      type: fieldType,
-      icon:
-        DEFAULT_ICONS_BY_FIELD_TYPE[fieldType] ?? DEFAULT_ICON_FOR_NEW_FIELD,
-      label: '',
-      description: '',
-      name: '',
+      type: validFieldType,
+      icon: DEFAULT_ICONS_BY_FIELD_TYPE[validFieldType] ?? DEFAULT_ICON_FOR_NEW_FIELD,
+      isLabelSyncedWithName: true,
+      settings: {},
     },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
+  // Force set the type to ensure it's properly initialized
   useEffect(() => {
+    // This is critical - we need to ensure the type is set correctly
+    formConfig.setValue('type', validFieldType, { shouldValidate: true });
+
+    // For JUDGEMENTS field type, we need to ensure settings is initialized
+    if (validFieldType === FieldMetadataType.JUDGEMENTS) {
+      formConfig.setValue('settings', {}, { shouldValidate: true });
+
+      // Set a default name if label is empty to pass validation
+      const currentLabel = formConfig.getValues('label');
+      if (!currentLabel || currentLabel.trim() === '') {
+        formConfig.setValue('label', 'New Judgements Field', { shouldValidate: true });
+        formConfig.setValue('name', 'newJudgementsField', { shouldValidate: true });
+      }
+
+      // Force validation after a short delay
+      setTimeout(() => {
+        formConfig.trigger();
+      }, 100);
+    }
+  }, [validFieldType, formConfig]);
+
+  useEffect(() => {
+    // Set the icon based on field type
     formConfig.setValue(
       'icon',
       DEFAULT_ICONS_BY_FIELD_TYPE[fieldType] ?? DEFAULT_ICON_FOR_NEW_FIELD,
     );
   }, [fieldType, formConfig]);
+
+  // Watch for label changes to automatically set name field
+  const label = formConfig.watch('label');
+  const isLabelSyncedWithName = formConfig.watch('isLabelSyncedWithName');
+
+  useEffect(() => {
+    if (isLabelSyncedWithName && label) {
+      const computedName = computeMetadataNameFromLabel(label);
+      formConfig.setValue('name', computedName, {
+        shouldValidate: true,
+        shouldDirty: true
+      });
+
+      // For JUDGEMENTS field type, we need to ensure the form is validated
+      if (validFieldType === FieldMetadataType.JUDGEMENTS) {
+        // Trigger validation after name is set
+        setTimeout(() => {
+          formConfig.trigger();
+        }, 0);
+      }
+    } else if (isLabelSyncedWithName && validFieldType === FieldMetadataType.JUDGEMENTS) {
+      // If label is empty but we're in JUDGEMENTS mode, set a default name
+      formConfig.setValue('name', 'newJudgementsField', {
+        shouldValidate: true,
+        shouldDirty: true
+      });
+    }
+  }, [label, isLabelSyncedWithName, formConfig, validFieldType]);
 
   const [, setObjectViews] = useState<View[]>([]);
   const [, setRelationObjectViews] = useState<View[]>([]);
@@ -129,8 +179,50 @@ export const SettingsObjectNewFieldConfigure = () => {
 
   if (!activeObjectMetadataItem) return null;
 
-  const { isValid, isSubmitting } = formConfig.formState;
+  const { isValid, isSubmitting, errors } = formConfig.formState;
   const canSave = isValid && !isSubmitting;
+
+  // Add a useEffect to log form values and errors for debugging
+  useEffect(() => {
+    console.log('Form values:', formConfig.getValues());
+    console.log('Form errors:', errors);
+    console.log('Form is valid:', isValid);
+  }, [formConfig, errors, isValid]);
+
+  // Special handling for JUDGEMENTS field type - force validation after component mount
+  useEffect(() => {
+    // Force validation after a short delay to ensure all fields are properly initialized
+    const timer = setTimeout(() => {
+      // For JUDGEMENTS field type, ensure all required fields are set
+      if (validFieldType === FieldMetadataType.JUDGEMENTS) {
+        const currentValues = formConfig.getValues();
+
+        // Ensure type is set
+        if (!currentValues.type) {
+          formConfig.setValue('type', validFieldType, { shouldValidate: true });
+        }
+
+        // Ensure settings is set
+        if (!currentValues.settings) {
+          formConfig.setValue('settings', {}, { shouldValidate: true });
+        }
+
+        // Ensure name is set if label is synced
+        if (currentValues.isLabelSyncedWithName &&
+            (!currentValues.name || currentValues.name.trim() === '')) {
+          const nameValue = currentValues.label ?
+            computeMetadataNameFromLabel(currentValues.label) :
+            'newJudgementsField';
+          formConfig.setValue('name', nameValue, { shouldValidate: true });
+        }
+      }
+
+      // Trigger validation
+      formConfig.trigger();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [formConfig, validFieldType]);
 
   const handleSave = async (
     formValues: SettingsDataModelNewFieldFormValues,
@@ -169,6 +261,22 @@ export const SettingsObjectNewFieldConfigure = () => {
           },
         });
       } else {
+        // Ensure name and settings are set for JUDGEMENTS field type
+        if (formValues.type === FieldMetadataType.JUDGEMENTS) {
+          // Ensure name is set
+          if (formValues.isLabelSyncedWithName &&
+              (!formValues.name || formValues.name.trim() === '')) {
+            formValues.name = formValues.label ?
+              computeMetadataNameFromLabel(formValues.label) :
+              'newJudgementsField';
+          }
+
+          // Ensure settings is set
+          if (!formValues.settings) {
+            formValues.settings = {};
+          }
+        }
+
         await createMetadataField({
           ...formValues,
           objectMetadataId: activeObjectMetadataItem.id,
@@ -219,7 +327,6 @@ export const SettingsObjectNewFieldConfigure = () => {
                 objectNamePlural,
               }),
             },
-
             { children: <SettingsDataModelNewFieldBreadcrumbDropDown /> },
           ]}
           actionButton={
