@@ -115,6 +115,9 @@ export const generateEmptyFieldValue = ({
     case FieldMetadataType.OPINIONS: {
       return null;
     }
+    case FieldMetadataType.JUDGEMENTS: {
+      return [];
+    }
     case FieldMetadataType.TS_VECTOR: {
       throw new Error('TS_VECTOR not implemented yet');
     }

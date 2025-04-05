@@ -114,6 +114,18 @@ const getSchemaComponentsProperties = ({
           },
         };
         break;
+      case FieldMetadataType.JUDGEMENTS:
+        itemProperty = {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              value: { type: 'string' },
+              createdAt: { type: 'string', format: 'date-time' }
+            }
+          }
+        };
+        break;
       case FieldMetadataType.RATING:
         itemProperty = {
           type: 'string',

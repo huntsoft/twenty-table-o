@@ -26,4 +26,5 @@ export const DEFAULT_ICONS_BY_FIELD_TYPE: Record<FieldMetadataType, string> = {
   [FieldMetadataType.RICH_TEXT_V2]: 'IconUsers',
   [FieldMetadataType.TS_VECTOR]: 'IconUsers',
   [FieldMetadataType.OPINIONS]: 'IconChatBubble',
+  [FieldMetadataType.JUDGEMENTS]: 'IconChatBubble',
 };

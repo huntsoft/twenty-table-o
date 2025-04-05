@@ -85,6 +85,7 @@ export class TypeMapperService {
         FieldMetadataType.OPINIONS,
         StringArrayScalarType as unknown as GraphQLScalarType,
       ],
+      [FieldMetadataType.JUDGEMENTS, StringArrayScalarType as unknown as GraphQLScalarType],
       [FieldMetadataType.RICH_TEXT, GraphQLString],
       [FieldMetadataType.TS_VECTOR, GraphQLString],
     ]);
@@ -124,6 +125,7 @@ export class TypeMapperService {
       [FieldMetadataType.RICH_TEXT_V2, RichTextV2FilterType],
       [FieldMetadataType.ARRAY, ArrayFilterType],
       [FieldMetadataType.OPINIONS, ArrayFilterType],
+      [FieldMetadataType.JUDGEMENTS, ArrayFilterType],
       [FieldMetadataType.MULTI_SELECT, MultiSelectFilterType],
       [FieldMetadataType.SELECT, SelectFilterType],
       [FieldMetadataType.TS_VECTOR, StringFilterType], // TODO: Add TSVectorFilterType
@@ -151,6 +153,7 @@ export class TypeMapperService {
       [FieldMetadataType.RICH_TEXT, OrderByDirectionType],
       [FieldMetadataType.ARRAY, OrderByDirectionType],
       [FieldMetadataType.OPINIONS, OrderByDirectionType],
+      [FieldMetadataType.JUDGEMENTS, OrderByDirectionType],
       [FieldMetadataType.TS_VECTOR, OrderByDirectionType], // TODO: Add TSVectorOrderByType
     ]);
 

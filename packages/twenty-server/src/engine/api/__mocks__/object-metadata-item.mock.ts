@@ -231,6 +231,13 @@ const fieldOpinionsMock = {
   defaultValue: null,
 };
 
+const fieldJudgementsMock = {
+  name: 'fieldJudgements',
+  type: FieldMetadataType.JUDGEMENTS,
+  isNullable: true,
+  defaultValue: null,
+};
+
 const fieldPhonesMock = {
   name: FIELD_PHONES_MOCK_NAME,
   type: FieldMetadataType.PHONES,
@@ -269,6 +276,7 @@ export const fields = [
   fieldActorMock,
   fieldArrayMock,
   fieldOpinionsMock,
+  fieldJudgementsMock,
 ];
 
 export const objectMetadataItemMock = {

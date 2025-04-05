@@ -3,8 +3,8 @@ import { Key } from 'ts-key-enum';
 import { IconCheck, IconPlus, LightIconButton, MenuItem } from 'twenty-ui';
 
 import {
-    MultiItemBaseInput,
-    MultiItemBaseInputProps,
+  MultiItemBaseInput,
+  MultiItemBaseInputProps,
 } from '@/object-record/record-field/meta-types/input/components/MultiItemBaseInput';
 import { PhoneRecord } from '@/object-record/record-field/types/FieldMetadata';
 import { DropdownMenu } from '@/ui/layout/dropdown/components/DropdownMenu';
@@ -116,6 +116,10 @@ export const MultiItemFieldInput = <T,>({
         break;
       case FieldMetadataType.ARRAY:
       case FieldMetadataType.OPINIONS:
+        item = safeItems[index] as string;
+        setInputValue(item);
+        break;
+      case FieldMetadataType.JUDGEMENTS:
         item = safeItems[index] as string;
         setInputValue(item);
         break;

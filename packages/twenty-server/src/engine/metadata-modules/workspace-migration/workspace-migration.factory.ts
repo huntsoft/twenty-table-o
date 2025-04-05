@@ -83,6 +83,7 @@ export class WorkspaceMigrationFactory {
       [FieldMetadataType.ACTOR, { factory: this.compositeColumnActionFactory }],
       [FieldMetadataType.ARRAY, { factory: this.basicColumnActionFactory }],
       [FieldMetadataType.OPINIONS, { factory: this.basicColumnActionFactory }],
+      [FieldMetadataType.JUDGEMENTS, { factory: this.basicColumnActionFactory }],
       [
         FieldMetadataType.EMAILS,
         { factory: this.compositeColumnActionFactory },

@@ -3,6 +3,6 @@ import { FieldJudgementsMetadata } from '@/object-record/record-field/types/Fiel
 import { FieldMetadataType } from 'twenty-shared/types';
 
 export const isFieldJudgements = (
-  field: FieldDefinition<any>,
-): field is FieldDefinition<FieldJudgementsMetadata> =>
+  field: Pick<FieldDefinition<any>, 'type'>,
+): field is Pick<FieldDefinition<FieldJudgementsMetadata>, 'type'> =>
   field.type === FieldMetadataType.JUDGEMENTS;

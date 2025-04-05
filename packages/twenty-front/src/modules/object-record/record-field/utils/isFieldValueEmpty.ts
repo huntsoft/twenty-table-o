@@ -147,9 +147,11 @@ export const isFieldValueEmpty = ({
   }
 
   if (isFieldJudgements(fieldDefinition)) {
-    return (
-      !isFieldJudgementsValue(fieldValue) || !isValueEmpty(fieldValue.judgements)
-    );
+      return (
+        !isFieldJudgementsValue(fieldValue) || 
+        !Array.isArray(fieldValue) ||
+        fieldValue.length === 0
+      );
   }
 
   if (isFieldPhones(fieldDefinition)) {
@@ -170,6 +172,6 @@ export const isFieldValueEmpty = ({
   }
 
   throw new Error(
-    `Entity field type not supported in isFieldValueEmpty : ${fieldDefinition.type}}`,
+    `Entity field type not supported in isFieldValueEmpty : ${(fieldDefinition as FieldDefinition<FieldMetadata>).type}`,
   );
 };

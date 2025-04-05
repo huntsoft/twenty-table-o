@@ -22,4 +22,5 @@ export type FilterableFieldType = PickLiteral<
   | 'RAW_JSON'
   | 'BOOLEAN'
   | 'OPINIONS'
+  | 'JUDGEMENTS'
 >;
